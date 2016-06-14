@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Restricted Files"
+AuthUserFile /var/www/html/linux-dash/.htpasswd
+Require valid-user
