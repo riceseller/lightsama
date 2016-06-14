@@ -96,6 +96,7 @@ else{
         container2 #user_info{
             display: flex;
             width: auto;
+            max-width: 500px;
             min-width: 200px;
             height: auto;
             flex-wrap: nowrap;
