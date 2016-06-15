@@ -106,7 +106,7 @@
                 <?php
                 if($user->isLoggedIn())
                 {
-                    echo "<a class='nav' href='users/login.php'>YOU THERE</a>";
+                    echo "<a class='nav' href='users/account.php'>YOU THERE</a>";
                 }
                 else
                 {
