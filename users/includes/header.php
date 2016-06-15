@@ -53,33 +53,14 @@ if($settings->track_guest == 1){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
 	
-	<?php
-	if(file_exists($abs_us_root.$us_url_root.'usersc/includes/head_tags.php')){
-		require_once $abs_us_root.$us_url_root.'usersc/includes/head_tags.php';
-	}
-	?>
+	
 	
 	<title>Photolib</title>
 
-	<!-- Bootstrap Core CSS -->
-	<!-- AKA Primary CSS -->
-	<link href="<?=$us_url_root?><?=str_replace('../','',$settings->us_css1);?>" rel="stylesheet">
-
-	<!-- Template CSS -->
-	<!-- AKA Secondary CSS -->
-	<link href="<?=$us_url_root?><?=str_replace('../','',$settings->us_css2);?>" rel="stylesheet">
-
-	<!-- Your Custom CSS Goes Here!-->
-	<link href="<?=$us_url_root?><?=str_replace('../','',$settings->us_css3);?>" rel="stylesheet">
-
-	<!-- Custom Fonts -->
-	<link href="<?=$us_url_root?>users/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<?php
+            include "../topNav2.php";
+        ?>
 </head>
 
 <body>
