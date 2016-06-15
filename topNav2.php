@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
     
-    <?php
-        require_once 'spice/users/init.php';
-        echo"i send request";
-    ?>
     
     <navheader>
         <link rel="stylesheet" type="text/css" href="proxima-nova.css">
