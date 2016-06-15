@@ -10,8 +10,7 @@
                 align-items: center;
                 background: black;
                 text-decoration: none;
-                display: flex;
-               
+                display: flex; 
             } 
             a.nav{
                 color: white; 
@@ -98,8 +97,8 @@
                 </form>
             
             <div class="user">
-                <a class="nav" href="lightsama.php">LOGIN</a>
-                <a class="nav" href="gpsLocSearch.php">SIGNUP</a>
+                <a class="nav" href="usermanage/users/login.php">LOGIN</a>
+                <a class="nav" href="usermanage/users/join.php">SIGNUP</a>
             </div>
             
         </div>
