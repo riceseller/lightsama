@@ -97,7 +97,7 @@
                     <input type="image" src="/media/mag2.png" class="button2">
                 </form>
             
-            <div class="user">
+            <div class="user" id="test">
                 <a class="nav" href="lightsama.php">LOGIN</a>
                 <a class="nav" href="gpsLocSearch.php">SIGNUP</a>
             </div>
