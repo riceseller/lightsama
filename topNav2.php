@@ -61,12 +61,12 @@
                 overflow: hidden;
             }
             .user{
-                max-width: 50px;
+                max-width: 270px;
                 text-align: center;
                 vertical-align: middle;
                 position: absolute;
                 top: 8px;
-                right: 70px;
+                right: 20px;
             }
             body{
                 position: relative;
@@ -106,11 +106,12 @@
                 <?php
                 if($user->isLoggedIn())
                 {
-                    echo "<a class='nav' href='users/account.php'>YOU THERE</a>";
+                    echo "<a class='nav' href='users/account.php' style='text-decoration:None' >WELCOME<br>" .$user->data()->fname." "
+                                        .$user->data()->lname."</a>";
                 }
                 else
                 {
-                    echo "<a class='nav' href='users/login.php'>LOGIN/SIGNUP</a>"; 
+                    echo "<a class='nav' href='users/login.php'>LOGIN<br>SIGNUP</a>"; 
                 }
                 
                 ?>
