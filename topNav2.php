@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+    
+    <?php
+        require_once 'usermanage/users/init.php';
+        echo"i send request";
+    ?>
+    
     <navheader>
         <link rel="stylesheet" type="text/css" href="proxima-nova.css">
         <style>
