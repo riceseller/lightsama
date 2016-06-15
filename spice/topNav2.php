@@ -97,8 +97,8 @@
                 </form>
             
             <div class="user">
-                <a class="nav" href="users/login.php">LOGIN</a>
-                <a class="nav" href="users/join.php">SIGNUP</a>
+                <a class="nav" href="spice/users/login.php">LOGIN</a>
+                <a class="nav" href="spice/users/join.php">SIGNUP</a>
             </div>
             
         </div>
