@@ -1,6 +1,10 @@
+<?php
+    require_once 'users/init.php';
+?>
+
 <!DOCTYPE html>
+
 <html>
-    
     
     <navheader>
         <link rel="stylesheet" type="text/css" href="proxima-nova.css">
@@ -99,8 +103,17 @@
                 </form>
             
             <div class="user">
-                <a class="nav" href="spice/users/login.php">LOGIN</a>
-                <a class="nav" href="spice/users/join.php">SIGNUP</a>
+                <?php
+                if($user->isLoggedIn())
+                {
+                    echo "<a class='nav' href='users/login.php'>YOU THERE</a>";
+                }
+                else
+                {
+                    echo "<a class='nav' href='users/login.php'>LOGIN/SIGNUP</a>"; 
+                }
+                
+                ?>
             </div>
             
         </div>

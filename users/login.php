@@ -77,7 +77,7 @@ if (Input::exists()) {
 				//	require_once $abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php';
 				//}else{
 					//Feel free to change where the user goes after login!
-					Redirect::to('../main.php');
+					Redirect::to('../index.php');
 				//}
 			} else {
 				$error_message .= 'Log in failed. Please check your username and password and try again.';

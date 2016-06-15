@@ -1,4 +1,7 @@
-<?php include 'topNav2.php';?>
+<?php 
+    include 'topNav2.php';
+?>
+
 <header>       
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <style>
