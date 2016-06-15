@@ -98,7 +98,7 @@
                 </form>
             
             <div class="user">
-                <a class="nav" href="gpsLocSearch.php">LOGIN</a>
+                <a class="nav" href="fuckyou.php">LOGIN</a>
                 <a class="nav" href="gpsLocSearch.php">SIGNUP</a>
             </div>
             
