@@ -2,7 +2,7 @@
 <html>
     
     <?php
-        require_once 'usermanage/users/init.php';
+        require_once 'spice/users/init.php';
         echo"i send request";
     ?>
     
@@ -103,8 +103,8 @@
                 </form>
             
             <div class="user">
-                <a class="nav" href="usermanage/users/login.php">LOGIN</a>
-                <a class="nav" href="usermanage/users/join.php">SIGNUP</a>
+                <a class="nav" href="spice/users/login.php">LOGIN</a>
+                <a class="nav" href="spice/users/join.php">SIGNUP</a>
             </div>
             
         </div>
