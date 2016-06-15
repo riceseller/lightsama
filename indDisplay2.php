@@ -439,7 +439,7 @@ else{
                 </div>
                 <div id="date">
                 <?php
-                        if($row[date]==None)
+                        if($row[dateR]=='0000-00-00 00:00:00')
                         {
                             echo "<p>\"some time in the universe\"</p>";
                         }
