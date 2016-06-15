@@ -169,7 +169,7 @@ if(isset($_GET['page'])) {
 <section class="Collage effect-parent">
     <?php
         $off = $page*20-20;
-        $query = "select distinct u.id, u.url, u.width, u.height from Url u join Common c on u.id=c.p_id where c.nsfw=0 and u.width is not null and u.height is not null order by RAND(123) limit 20 offset $off";
+        $query = "select distinct u.id, u.url, u.width, u.height from Url u join Common c on u.id=c.p_id where c.nsfw=0 and u.width is not null and u.height is not null order by c.dateR desc limit 20 offset $off";
         $result=$conn->query($query);
         if ($result->num_rows > 0) {
         // output data of each row

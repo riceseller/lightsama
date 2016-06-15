@@ -445,7 +445,7 @@ else{
                         }
                         else
                         {
-                            echo "<p>Taken on ".$row[date]."</p>";
+                            echo "<p>Taken on ".$row[dateR]."</p>";
                         }
                 ?>
                 </div>
