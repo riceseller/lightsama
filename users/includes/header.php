@@ -65,7 +65,7 @@ if($settings->track_guest == 1){
 	}
 	?>
 	
-	<title><?=$settings->site_name;?></title>
+	<title>Photolib</title>
 
 	<!-- Bootstrap Core CSS -->
 	<!-- AKA Primary CSS -->

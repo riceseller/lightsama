@@ -50,6 +50,13 @@ $results = $query->first();
 $email_act=$results->email_act;
 
 ?>
+
+
+
+
+
+
+
 <!-- Navigation -->
 <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
 	<div class="container">
@@ -106,3 +113,10 @@ $email_act=$results->email_act;
 
 	</div> <!-- End of Div for navigation bar -->
 </div> <!-- End of Div for navigation bar styling -->
+
+
+
+
+
+
+

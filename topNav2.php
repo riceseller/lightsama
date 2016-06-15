@@ -50,12 +50,12 @@
                 justify-content: center;
                 position: absolute;
                 top: 11px;
-                right: 170px; 
+                right: 270px; 
             }
             .button2{
                 position: absolute;
                 top: 12px;
-                right: 355px; 
+                right: 455px; 
                 width: 20px;
                 height: 25px;
                 overflow: hidden;
@@ -66,7 +66,7 @@
                 vertical-align: middle;
                 position: absolute;
                 top: 8px;
-                right: 20px;
+                right: 80px;
             }
             body{
                 position: relative;
@@ -90,11 +90,11 @@
         <div class="topNav">
             
             <div class="navButton">
-                <a class="nav" href="explore.php">Explore</a>
+                <a class="nav" href="explore.php" >Explore</a>
             </div>
                         
             <div class="logo">
-                <a  class="nav" href="http://db.luokerenz.com">PHOTOLIB</a>
+                <a  class="nav" href="http://db.luokerenz.com" >PHOTOLIB</a>
             </div>
             
                 <form action="keyword.php" method="get" >
@@ -106,8 +106,8 @@
                 <?php
                 if($user->isLoggedIn())
                 {
-                    echo "<a class='nav' href='users/account.php' style='text-decoration:None' >WELCOME<br>" .$user->data()->fname." "
-                                        .$user->data()->lname."</a>";
+                    echo "<a class='nav' href='users/account.php' style='text-decoration:None' >WELCOME " .$user->data()->fname." <br></a>";
+                    echo "<a class='nav' href='users/logout.php'>LOGOUT</a>";
                 }
                 else
                 {
