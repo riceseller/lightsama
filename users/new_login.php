@@ -1,134 +1,143 @@
+<?php require_once 'init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+
+
 <?php
 //this section of php code handles existing user to login to the page. It includes php code 
 //for future management. 
 ini_set("allow_url_fopen", 1);
+$category=$_GET["category"];        //for controling initial display use
+$through=$_GET["through"];          //for controling form submission use
 ?>
-<?php require_once 'init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
-<?php
-$settingsQ = $db->query("SELECT * FROM settings");
-$settings = $settingsQ->first();
-$error_message = '';
-$reCaptchaValid=FALSE;
 
-if (Input::exists()) {
-	$token = Input::get('csrf');
-	if(!Token::check($token)){
-		die('Token doesn\'t match!');
-	}
 
-	//Check to see if recaptcha is enabled
-	if($settings->recaptcha == 1){
-		require_once 'includes/recaptcha.config.php';
 
-		//reCAPTCHA 2.0 check
-		$response = null;
 
-		// check secret key
-		$reCaptcha = new ReCaptcha($privatekey);
 
-		// if submitted check response
-		if ($_POST["g-recaptcha-response"]) {
-			$response = $reCaptcha->verifyResponse($_SERVER["REMOTE_ADDR"],$_POST["g-recaptcha-response"]);
-		}
-		if ($response != null && $response->success) {
-			$reCaptchaValid=TRUE;
+<?php       //login handling set down here
+    if($through=='login')
+    {
+        $settingsQ = $db->query("SELECT * FROM settings");
+        $settings = $settingsQ->first();
+        $error_message = '';
+        $reCaptchaValid=FALSE;
 
-		}else{
-			$reCaptchaValid=FALSE;
-			$error_message .= 'Please check the reCaptcha.';
-		}
+        if (Input::exists()) {
+            $token = Input::get('csrf');
+            if(!Token::check($token)){
+               	die('Token doesn\'t match!');
+        }
+
+            //Check to see if recaptcha is enabled
+        if($settings->recaptcha == 1){
+            require_once 'includes/recaptcha.config.php';
+
+            //reCAPTCHA 2.0 check
+            $response = null;
+
+            // check secret key
+            $reCaptcha = new ReCaptcha($privatekey);
+
+            // if submitted check response
+            if ($_POST["g-recaptcha-response"]) {
+                $response = $reCaptcha->verifyResponse($_SERVER["REMOTE_ADDR"],$_POST["g-recaptcha-response"]);
+            }
+            if ($response != null && $response->success) {
+                $reCaptchaValid=TRUE;
+
+            }else{
+                $reCaptchaValid=FALSE;
+                $error_message .= 'Please check the reCaptcha.';
+            }
 	}else{
-		$reCaptchaValid=TRUE;
+            $reCaptchaValid=TRUE;
 	}
 
 	if($reCaptchaValid || $settings->recaptcha == 0){ //if recaptcha valid or recaptcha disabled
 
-		$validate = new Validate();
-		$validation = $validate->check($_POST, array('username' => array('display' => 'Username','required' => true),'password' => array('display' => 'Password', 'required' => true)));
+            $validate = new Validate();
+            $validation = $validate->check($_POST, array('username' => array('display' => 'Username','required' => true),'password' => array('display' => 'Password', 'required' => true)));
 
-		if ($validation->passed()) {
+            if ($validation->passed()) {
 			//Log user in
 
-			$remember = (Input::get('remember') === 'on') ? true : false;
-			$user = new User();
-			$login = $user->loginEmail(Input::get('username'), trim(Input::get('password')), $remember);
-			if ($login) {
+                $remember = (Input::get('remember') === 'on') ? true : false;
+                $user = new User();
+                $login = $user->loginEmail(Input::get('username'), trim(Input::get('password')), $remember);
+                if ($login) {
 				//if(file_exists($abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php')){
 				//	require_once $abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php';
 				//}else{
 					//Feel free to change where the user goes after login!
-					Redirect::to('../index.php');
+                    Redirect::to('../index.php');
 				//}
-			} else {
-				$error_message .= 'Log in failed. Please check your username and password and try again.';
-			}
-		} else{
-			$error_message .= '<ul>';
-			foreach ($validation->errors() as $error) {
-				$error_message .= '<li>' . $error . '</li>';
-			}
-			$error_message .= '</ul>';
-		}
-	}
+                } 
+                else {
+                    $error_message .= 'Log in failed. Please check your username and password and try again.';
+                }
+            } else{
+                $error_message .= '<ul>';
+                foreach ($validation->errors() as $error) {
+                    $error_message .= '<li>' . $error . '</li>';
+                }
+                $error_message .= '</ul>';
+            }
+        }
+    }
 }
-?>
 
-<?php
-//This is the section that handles user login request. It will execute in parallel 
-//with signup form. Users who are signed in will never come back to this page 
-//any more, therefore it is valid and secure. 
-?>
-<?php require_once 'init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
-<?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
-<?php
-$settingsQ = $db->query("SELECT * FROM settings");
-$settings = $settingsQ->first();
-if($settings->recaptcha == 1){
+
+
+
+else if($through=='signup')
+{
+    if (!securePage($_SERVER['PHP_SELF'])){die();}
+    $settingsQ = $db->query("SELECT * FROM settings");
+    $settings = $settingsQ->first();
+    if($settings->recaptcha == 1){
 	require_once("includes/recaptcha.config.php");
-}
-//There is a lot of commented out code for a future release of sign ups with payments
-$form_method = 'POST';
-$form_action = 'join.php';  //source of the error in the future
-$vericode = rand(100000,999999);
+    }
+    //There is a lot of commented out code for a future release of sign ups with payments
+    $form_method = 'POST';
+    $form_action = 'join.php';  //source of the error in the future
+    $vericode = rand(100000,999999);
 
-$form_valid=FALSE;
+    $form_valid=FALSE;
 
-//Decide whether or not to use email activation
-$query = $db->query("SELECT * FROM email");
-$results = $query->first();
-$act = $results->email_act;
+    //Decide whether or not to use email activation
+    $query = $db->query("SELECT * FROM email");
+    $results = $query->first();
+    $act = $results->email_act;
 
-//Opposite Day for Pre-Activation - Basically if you say in email
-//settings that you do NOT want email activation, this lists new
-//users as active in the database, otherwise they will become
-//active after verifying their email.
-if($act==1){
+    //Opposite Day for Pre-Activation - Basically if you say in email
+    //settings that you do NOT want email activation, this lists new
+    //users as active in the database, otherwise they will become
+    //active after verifying their email.
+    if($act==1){
 	$pre = 0;
-} else {
+    } else {
 	$pre = 1;
-}
+    }
 
-$token = Input::get('csrf');
-if(Input::exists()){
-	if(!Token::check($token)){
-		die('Token doesn\'t match!');
-	}
-}
+    //$token = Input::get('csrf');
+    //if(Input::exists()){
+	//if(!Token::check($token)){
+	//	die('Token doesn\'t match!');
+	//}
+    //}
 
-$reCaptchaValid=FALSE;
+    $reCaptchaValid=FALSE;
 
-if(Input::exists()){
-
+    if(Input::exists()){
 	$username = Input::get('username');
 	$fname = Input::get('fname');
 	$lname = Input::get('lname');
 	$email = Input::get('email');
-	$company = Input::get('company');
-	$agreement_checkbox = Input::get('agreement_checkbox');
+	//$company = Input::get('company');
+	//$agreement_checkbox = Input::get('agreement_checkbox');
+        $company = 'northeastern university';
+        $agreement_checkbox = 'on';
 	
 	if ($agreement_checkbox=='on'){
 		$agreement_checkbox=TRUE;
@@ -166,12 +175,12 @@ if(Input::exists()){
 		'valid_email' => true,
 		'unique' => 'users',
 	  ),
-	  'company' => array(
-		'display' => 'Company Name',
-		'required' => false,
-		'min' => 0,
-		'max' => 75,
-	  ),
+	  //'company' => array(
+	//	'display' => 'Company Name',
+	//	'required' => false,
+	//	'min' => 0,
+	//	'max' => 75,
+	  //),
 	  'password' => array(
 		'display' => 'Password',
 		'required' => true,
@@ -261,8 +270,12 @@ if(Input::exists()){
 		}
 	
 	} //Validation and agreement checbox
-} //Input exists
+    } //Input exists
+}
 ?>
+
+
+
 
 <style>
     #formbody{
@@ -295,7 +308,7 @@ if(Input::exists()){
                 }   //exact copy from join.php
             ?>
           
-        <form action="<?=$form_action;?>" method="<?=$form_method;?>">
+        <form action="new_login.php?through=signup" method="POST">
             <div class="top-row">
                 <div class="field-wrap">
                     <input type="text" placeholder="First Name" name="fname" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required autocomplete="off" />
@@ -322,21 +335,21 @@ if(Input::exists()){
                 <input type="password" name="confirm" placeholder="Confirm Password" required autocomplete="off"/>
             </div>
             
-            <div class="field-wrap">
-                <label><input type="checkbox" id="agreement_checkbox" name="agreement_checkbox"/>Confirm above info by checking the box</label>
-                <br><br><br>
-            </div>
-          
-          <button type="submit" class="button button-block"/>Get Started</button>
-          
+           
+            <input type="hidden" value="<?=Token::generate();?>" name="csrf">
+            <button type="submit" class="button button-block"/>Get Started</button>
           </form>
 
         </div>
         
+          
+          
+          
+          
         <div id="login">   
           <h1>Welcome Back to Photolib</h1>
           
-          <form action="new_login.php" method="post">
+          <form action="new_login.php?through=login" method="post">
           
             <div class="field-wrap">
                 <input type="text" name="username" placeholder="Username/Email" required autocomplete="off"/>

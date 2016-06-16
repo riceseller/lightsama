@@ -69,7 +69,8 @@ if(Input::exists()){
 	$lname = Input::get('lname');
 	$email = Input::get('email');
 	$company = Input::get('company');
-	$agreement_checkbox = Input::get('agreement_checkbox');
+	//$agreement_checkbox = Input::get('agreement_checkbox');
+        $agreement_checkbox = 'on';
 	
 	if ($agreement_checkbox=='on'){
 		$agreement_checkbox=TRUE;

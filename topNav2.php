@@ -120,7 +120,8 @@
                 else
                 {
                     ?>
-                   <a class="nav" href="<?=$us_url_root?>users/new_login.php">LOGIN<br>SIGNUP</a>; 
+                    <a class="nav" href="<?=$us_url_root?>users/new_login.php?category=login">LOGIN<br></a> 
+                    <a class="nav" href="<?=$us_url_root?>users/new_login.php?category=signup">SIGNUP</a>
                     <?php 
                 }
                 
