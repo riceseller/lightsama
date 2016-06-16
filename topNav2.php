@@ -41,7 +41,7 @@
                 top: 13px;
                 left: 200px;
             }
-            .searchBar2{
+            #searchBar2{
                 width:200px;
                 height: 20px;
                 flex-grow: 1;
@@ -82,7 +82,13 @@
                 font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
                 text-rendering: optimizeLegibility;
                 -webkit-font-smoothing: antialiased;
-            }     
+            } 
+            .normalform{
+                
+            }
+            .normalform .input{
+                
+            }
         </style>
     </navheader>
     
@@ -90,15 +96,15 @@
         <div class="topNav">
             
             <div class="navButton">
-                <a class="nav" href="explore.php" >Explore</a>
+                <a class="nav" href="<?=$us_url_root?>explore.php" >Explore</a>
             </div>
                         
             <div class="logo">
                 <a  class="nav" href="http://db.luokerenz.com" >PHOTOLIB</a>
             </div>
             
-                <form action="keyword.php" method="get" >
-                    <input class="searchBar2" type="text" placeholder="keyword search" name="search">
+                <form class="normalform" action="keyword.php" method="get" >
+                    <input id="searchBar2" type="text" placeholder="keyword search" name="search">
                     <input type="image" src="/media/mag2.png" class="button2">
                 </form>
             
@@ -113,7 +119,9 @@
                 }
                 else
                 {
-                    echo "<a class='nav' href='users/login.php'>LOGIN<br>SIGNUP</a>"; 
+                    ?>
+                   <a class="nav" href="<?=$us_url_root?>users/new_login.php">LOGIN<br>SIGNUP</a>; 
+                    <?php 
                 }
                 
                 ?>

@@ -77,7 +77,7 @@ if (Input::exists()) {
 				//	require_once $abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php';
 				//}else{
 					//Feel free to change where the user goes after login!
-					Redirect::to('../index.php');
+					Redirect::to('../../index.php');
 				//}
 			} else {
 				$error_message .= 'Log in failed. Please check your username and password and try again.';
@@ -94,75 +94,61 @@ if (Input::exists()) {
 
 ?>
 
-<style>
-    #login_left{
-        width: 50%;
-        height: 100%;
-        border: 3px solid red;
-        position: relative;
-    }
-    
-    
-    
-    
-</style>
+<div id="page-wrapper">
+<div class="container">
+<div class="row">
+	<div class="col-xs-12">
+	<div class="bg-danger"><?=$error_message;?></div>
+	<form name="login" class="form-signin" action="login.php" method="post">
+	<h2 class="form-signin-heading"></i> <?=lang("SIGNIN_TITLE","");?></h2>
 
+	<div class="form-group">
+		<label for="username" >Username OR Email</label>
+		<input  class="form-control" type="text" name="username" id="username" placeholder="Username/Email" required autofocus>
+	</div>
 
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control"  name="password" id="password"  placeholder="Password" required autocomplete="off">
+	</div>
 
+	<?php
+	if($settings->recaptcha == 1){
+	?>
+	<div class="form-group">
+	<label>Please check the box below to continue</label>
+	<div class="g-recaptcha" data-sitekey="<?=$publickey; ?>"></div>
+	</div>
+	<?php } ?>
 
+	<div class="form-group">
+	<label for="remember">
+	<input type="checkbox" name="remember" id="remember" > Remember Me</label>
+	</div>
 
+	<input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
+	<button class="submit  btn  btn-primary" type="submit"><i class="fa fa-sign-in"></i> <?=lang("SIGNIN_BUTTONTEXT","");?></button>
 
-<div id="login_left">
-                <div><?=$error_message;?></div>
-                    <form name="login" class="form-signin" action="login.php" method="post">
-                        <h2 class="form-signin-heading"></i> <?=lang("SIGNIN_TITLE","");?></h2>
-
-                        <div class="form-group">
-                            <label for="username" >Username OR Email</label>
-                            <input  class="form-control" type="text" name="username" id="username" placeholder="Username/Email" required autofocus>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control"  name="password" id="password"  placeholder="Password" required autocomplete="off">
-                        </div>
-
-                        <?php
-                            if($settings->recaptcha == 1){
-                        ?>
-                    
-                                <div class="form-group">
-                                    <label>Please check the box below to continue</label>
-                                    <div class="g-recaptcha" data-sitekey="<?=$publickey; ?>"></div>
-                                </div>
-                        <?php } ?>
-
-                                <div class="form-group">
-                                    <label for="remember">
-                                    <input type="checkbox" name="remember" id="remember" > Remember Me</label>
-                                </div>
-
-                                <input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
-                                <button class="submit  btn  btn-primary" type="submit"><i class="fa fa-sign-in"></i> <?=lang("SIGNIN_BUTTONTEXT","");?></button>
-                    </form>
-            
-        
-
-        
-        <div class="row">
-            <div class="col-xs-6"><br>
+	</form>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-6"><br>
 		<a class="pull-left" href='forgot_password.php'><i class="fa fa-wrench"></i> Forgot Password</a><br><br>
-            </div>
-            
-            <div class="col-xs-6"><br>
+	</div>
+	<div class="col-xs-6"><br>
 		<a class="pull-right" href='join.php'><i class="fa fa-plus-square"></i> <?=lang("SIGNUP_TEXT","");?></a><br><br>
-            </div>
-        </div>
-    
+	</div>
+</div>
+</div>
 </div>
 
-</body>
+    <!-- footers -->
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
-</html>
+    <!-- Place any per-page javascript here -->
 
-   
+<?php 	if($settings->recaptcha == 1){ ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<?php } ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
