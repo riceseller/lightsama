@@ -15,7 +15,7 @@ else{
     #echo "<br><br><br><br><br>";     //debug
 }
 
-$query = "select c.*, u.url from Common c left join Url u on c.p_id=u.id where c.p_id=$pid";
+$query = "select c.*, u.url, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";
 $result=$conn->query($query);
 $row = mysqli_fetch_array($result);
 if(isset($_GET['page'])) {
@@ -105,12 +105,20 @@ else{
         container2 #userPic{
             display: flex;
             height: auto;
-            width: 72px;
+            width: 62px;
             order: 1;
             margin: 0px;
         }
         container2 #userPic img{
-            height: 86px;
+            margin-top: 15px;
+            width: 52px;
+            height: 52px;
+            /* fill the container, preserving aspect ratio, and cropping to fit */
+            background-size: cover;
+            /* center the image vertically and horizontally */
+            background-position: center;
+            /* round the edges to a circle with border radius 1/2 container size */
+            border-radius: 50%;
         }
         container2 #userInfo_content{
             display: flex;
@@ -125,12 +133,16 @@ else{
             height: 1px;*/
             width: 150px;
         }
+        container2 p{
+            margin: 0px;            
+        }
         .user_name{
             width: auto;
             height: 30px;
             text-align: left;
             font-size: 20px;
             font-weight: 600;
+            margin-top: 16px;
         }
         .title{
             width: auto;
@@ -392,10 +404,32 @@ else{
    
     <container2>
         <div id="user_info">
-            <div id="userPic"><img src="/media/aperture.png"></div>
+            <div id="userPic"><img style="<?php
+                                            if($row[Ubelong]=='flickr')
+                                            {
+                                                 $server = $row[extraOne];
+                                                 $farm = $row[extraTwo];
+                                                 $userr = $row[userID];
+                                                 print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr."_l.jpg)";
+                                             }
+                                             else
+                                             {
+                                                 print "background-image:url(/media/aperture.png)"; 
+                                             }
+                                        ?>"></div>
             <div id="userInfo_content">
                 <div class="user_name">
-                    <p>user name</p>
+                    <?php
+                        if($row[userBelong]==1)
+                        {
+                            echo "<p> Need Scrape </p>";
+                        }
+                        else
+                        {
+                            echo "<p> ".$row[displayName]." </p>";
+                            //echo "<font size=12> ".$row2[model]."</font>";
+                        }
+                    ?>
                 </div>      
                 <div class="title">
                     <?php
