@@ -392,7 +392,19 @@ else{
    
     <container2>
         <div id="user_info">
-            <div id="userPic"><img src="/media/aperture.png"></div>
+            <div id="userPic"><img src="<?php
+                                            if($row[Ubelong]=='flickr')
+                                            {
+                                                 $server = $row[extraOne];
+                                                 $farm = $row[extraTwo];
+                                                 $userr = $row[userID];
+                                                 print "https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr."_l.jpg";
+                                             }
+                                             else
+                                             {
+                                                 print "/media/aperture.png"; 
+                                             }
+                                        ?>"></div>
             <div id="userInfo_content">
                 <div class="user_name">
                     <?php
