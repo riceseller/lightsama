@@ -16,12 +16,15 @@
                 align-items: center;
                 background: black;
                 text-decoration: none;
-                display: flex; 
+                display: flex;
             } 
             a.nav{
                 color: white; 
+                font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
+                TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
+                Arial, sans-serif;
             }
-            .logo{
+            topNav .logo{
                 width: 15%;
                 /*background: #9F9386;*/
                 max-width: 100px;
@@ -43,7 +46,8 @@
             }
             #searchBar2{
                 width:200px;
-                height: 20px;
+                min-height: 20px;
+                max-height: 27px;
                 flex-grow: 1;
                 text-align: center;
                 vertical-align: middle;
@@ -51,6 +55,19 @@
                 position: absolute;
                 top: 11px;
                 right: 270px; 
+                padding: 1px;
+                -webkit-appearance: textfield;
+                background-color: white;
+                color: initial;
+                letter-spacing: normal;
+                word-spacing: normal;
+                text-transform: none;
+                text-indent: 0px;
+                text-shadow: none;
+                display: inline-block;
+                margin: 0em 0em 0em 0em;
+                font: 11px BlinkMacSystemFont;
+                -webkit-font-smoothing: antialiased;
             }
             .button2{
                 position: absolute;
@@ -59,6 +76,10 @@
                 width: 20px;
                 height: 25px;
                 overflow: hidden;
+                -webkit-appearance: initial;
+                background-color: initial;
+                padding: initial;
+                border: initial;
             }
             .user{
                 max-width: 270px;
@@ -80,7 +101,6 @@
                 width: 100%;
                 height: 100%;
                 font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
-                text-rendering: optimizeLegibility;
                 -webkit-font-smoothing: antialiased;
             } 
             .normalform{
@@ -92,9 +112,7 @@
         </style>
     </navheader>
     
-    <body>
         <topNav>
-            
             <div class="navButton">
                 <a class="nav" href="<?=$us_url_root?>explore.php" >Explore</a>
             </div>
@@ -127,5 +145,4 @@
                 
                 ?>
             </div>
-            
         </topNav>
