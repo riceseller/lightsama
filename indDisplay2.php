@@ -376,6 +376,11 @@ else{
                                                             $link=$link . $pid;
                                                             print $link;
                                                         }
+                                                        elseif($row['belong']=='Flickr')
+                                                        {
+                                                            $userID = $row['userID'];
+                                                            print "https://www.flickr.com/photos/$userID/$pid";
+                                                        }
                                                         else
                                                         {
                                                             print $row['url']; 
@@ -407,20 +412,24 @@ else{
             <div id="userPic"><img style="<?php
                                             if($row[Ubelong]=='flickr')
                                             {
-                                                 $server = $row[extraOne];
-                                                 $farm = $row[extraTwo];
-                                                 $userr = $row[userID];
-                                                 print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr."_l.jpg)";
-                                             }
-                                             else
-                                             {
-                                                 print "background-image:url(/media/aperture.png)"; 
-                                             }
+                                                $server = $row[extraOne];
+                                                $farm = $row[extraTwo];
+                                                $userr = $row[userID];
+                                                print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr."_l.jpg)";
+                                            }
+                                            elseif($row[Ubelong]=='500px')
+                                            {
+                                                print "background-image:url($row[extraTwo])";
+                                            }
+                                            else
+                                            {
+                                                print "background-image:url(/media/aperture.png)"; 
+                                            }
                                         ?>"></div>
             <div id="userInfo_content">
                 <div class="user_name">
                     <?php
-                        if($row[userBelong]==1)
+                        if($row[userBelong]<=1)
                         {
                             echo "<p> Need Scrape </p>";
                         }

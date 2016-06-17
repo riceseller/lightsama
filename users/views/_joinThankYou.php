@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <div class="row">
 <div class="col-xs-12">
 <div class="jumbotron text-center">
-<h1>Welcome To UserSpice!</h1>
+<h1>Welcome To Photolib!</h1>
 <p>Thanks for registering!</p>
 <a href="../index.php" class="btn btn-primary">Back to page</a>
 </div>

@@ -9,7 +9,7 @@
     <navheader>
         <link rel="stylesheet" type="text/css" href="proxima-nova.css">
         <style>
-            .topNav{
+            topNav{
                 justify-content: center;
                 width: 100%;
                 height: 50px;
@@ -93,7 +93,7 @@
     </navheader>
     
     <body>
-        <div class="topNav">
+        <topNav>
             
             <div class="navButton">
                 <a class="nav" href="<?=$us_url_root?>explore.php" >Explore</a>
@@ -128,4 +128,4 @@
                 ?>
             </div>
             
-        </div>
+        </topNav>

@@ -55,7 +55,7 @@ $through=$_GET["through"];          //for controling form submission use
 	}
 
 	if($reCaptchaValid || $settings->recaptcha == 0){ //if recaptcha valid or recaptcha disabled
-
+            //start of verifying if user is logged in
             $validate = new Validate();
             $validation = $validate->check($_POST, array('username' => array('display' => 'Username','required' => true),'password' => array('display' => 'Password', 'required' => true)));
 
@@ -72,7 +72,7 @@ $through=$_GET["through"];          //for controling form submission use
 					//Feel free to change where the user goes after login!
                     Redirect::to('../index.php');
 				//}
-                } 
+                } //end of the validation code
                 else {
                     $error_message .= 'Log in failed. Please check your username and password and try again.';
                 }
@@ -266,7 +266,14 @@ else if($through=='signup')
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}
-			Redirect::to($us_url_root.'users/joinThankYou.php');
+                        //login code add on after adding to the database
+                        
+                        $remember=false;
+                        $login = $user->loginEmail(Input::get('username'), trim(Input::get('password')), $remember);
+                        
+                        
+                        //login code finishes after adding to the database
+			Redirect::to($us_url_root.'../index.php');
 		}
 	
 	} //Validation and agreement checbox
