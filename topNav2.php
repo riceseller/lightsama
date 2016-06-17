@@ -7,7 +7,7 @@
 <html>
     
     <navheader>
-        <link rel="stylesheet" type="text/css" href="proxima-nova.css">
+        <link rel="stylesheet" type="text/css" href="../proxima-nova.css">
         <style>
             topNav{
                 justify-content: center;

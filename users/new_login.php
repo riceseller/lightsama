@@ -1,4 +1,5 @@
-<?php require_once 'init.php'; ?>
+<?php require_once 'init.php'; 
+      $category=$_GET["category"]; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 
@@ -6,8 +7,7 @@
 <?php
 //this section of php code handles existing user to login to the page. It includes php code 
 //for future management. 
-ini_set("allow_url_fopen", 1);
-$category=$_GET["category"];        //for controling initial display use
+ini_set("allow_url_fopen", 1);       //for controling initial display use
 $through=$_GET["through"];          //for controling form submission use
 ?>
 
@@ -297,12 +297,14 @@ else if($through=='signup')
 <link rel="stylesheet" href="css/reg/css/style.css">
 
 <div id="formbody">
-    
+
     <div class="form3">
 
       <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
+        <li <?php if($category=='signup'){print "class=\"tab active\"";}else{print "class=\"tab\"";}?>>
+            <a id='sup' href="#signup">Sign Up</a></li>
+        <li <?php if($category=='login'){print "class=\"tab active\"";}else{print "class=\"tab\"";}?>>
+            <a id='log' href="#login">Log In</a></li>
       </ul>
       
       <div class="tab-content">
@@ -346,11 +348,7 @@ else if($through=='signup')
           </form>
 
         </div>
-        
-          
-          
-          
-          
+      
         <div id="login">   
           <h1>Welcome Back to Photolib</h1>
           
@@ -375,8 +373,20 @@ else if($through=='signup')
         
       </div><!-- tab-content -->
       
-</div> <!-- /form -->
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript" src="css/reg/js/index.js"></script>
+<script>
+    var mode = '<?php print $category; ?>';
+    $( document ).ready(function(){
+    console.log(mode);
+    if(mode==='login'){
+        $('#log').click();
+        console.log('click log');
+    }else{
+        $('#sup').click();
+    }
+});
+</script>
 
-        <script src="css/reg/js/index.js"></script>
-</div>
+    </body>
+    </html>
