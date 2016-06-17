@@ -55,7 +55,7 @@ a:hover {
   transition: .5s ease;
 }
 .tab-group li a:hover {
-  background: #34bf69;
+  background: #41cb56;
   color: #ffffff;
 }
 .tab-group .active a {
@@ -77,7 +77,7 @@ h1 {
 label {
   position: absolute;
   -webkit-transform: translateY(6px);
-          transform: translateY(6px);
+  transform: translateY(6px);
   left: 13px;
   color: rgba(255, 255, 255, 0.5);
   -webkit-transition: all 0.25s ease;
@@ -155,7 +155,6 @@ textarea {
   padding: 15px 0;
   font-size: 2rem;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: .1em;
   background: #34bf49;
   color: #ffffff;
@@ -164,7 +163,7 @@ textarea {
   -webkit-appearance: none;
 }
 .button:hover, .button:focus {
-  background: #34bf89;
+  background: #41cb56;
 }
 
 .button-block {
