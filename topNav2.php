@@ -44,30 +44,58 @@
                 top: 13px;
                 left: 200px;
             }
-            #searchBar2{
-                width:200px;
-                min-height: 20px;
-                max-height: 27px;
-                flex-grow: 1;
-                text-align: center;
-                vertical-align: middle;
-                justify-content: center;
+            #search {
+                width: 220px;
+                margin: 1px;
                 position: absolute;
-                top: 11px;
-                right: 270px; 
-                padding: 1px;
-                -webkit-appearance: textfield;
-                background-color: white;
-                color: initial;
-                letter-spacing: normal;
-                word-spacing: normal;
-                text-transform: none;
-                text-indent: 0px;
-                text-shadow: none;
-                display: inline-block;
-                margin: 0em 0em 0em 0em;
-                font: 11px BlinkMacSystemFont;
-                -webkit-font-smoothing: antialiased;
+                top: 7px;
+                right: 170px;
+            }
+            #searchBox{
+                border-radius: 2px;
+            }
+            #search_text{
+                width: 183px;
+                padding: 1px 0 1px 2px;
+                font-size: 16px;
+                border: 0 none;
+                height: 34px;
+                margin-right: 0;
+                color: #78787a;
+                outline: none;
+                background: #d0d0d1;
+                float: left;
+                box-sizing: border-box;
+                border-top-left-radius: 2px;
+                border-bottom-left-radius: 2px;
+                transition: all 0.15s;
+            }
+            ::-webkit-input-placeholder { /* WebKit browsers */
+                color: #78787a;
+            }
+            :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                color: #78787a;
+            }
+            ::-moz-placeholder { /* Mozilla Firefox 19+ */
+                color: #78787a;
+            }
+            :-ms-input-placeholder { /* Internet Explorer 10+ */
+                color: #78787a;
+            }
+            #search_text:focus {
+                background: #ffffff;
+            }
+            #search_button {
+                border: 0 none;
+                background: #d0d0d1 url(../media/search.png) center no-repeat;
+                width: 29px;
+                float: left;
+                padding: 0;
+                text-align: center;
+                height: 34px;
+                cursor: pointer;
+                border-top-right-radius: 2px;
+                border-bottom-right-radius: 2px;
             }
             .button2{
                 position: absolute;
@@ -121,10 +149,12 @@
                 <a  class="nav" href="http://db.luokerenz.com" >PHOTOLIB</a>
             </div>
             
-                <form class="normalform" action="../keyword.php" method="get" >
-                    <input id="searchBar2" type="text" placeholder="keyword search" name="search">
-                    <input type="image" src="../media/mag2.png" class="button2">
+            <div id='search'>
+                <form id='searchBox' action="../keyword.php" method="get">
+                    <input type="text" name="search_text" id="search_text" placeholder="Search"/>
+                    <input type="button" name="search_button" id="search_button"></a>
                 </form>
+            </div>
             
             <div class="user">
                 <?php
