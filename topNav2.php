@@ -105,7 +105,7 @@
             
                 <form class="normalform" action="keyword.php" method="get" >
                     <input id="searchBar2" type="text" placeholder="keyword search" name="search">
-                    <input type="image" src="/media/mag2.png" class="button2">
+                    <input type="image" src="../media/mag2.png" class="button2">
                 </form>
             
             <div class="user">
