@@ -26,9 +26,8 @@ a:hover {
   padding: 40px;
   max-width: 600px;
   margin: 40px auto;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-  border: 1px #a0b3b0;
+  border-radius: 2px;
+  border: 2px solid #cdcdce;
 }
 
 .tab-group {
@@ -46,7 +45,7 @@ a:hover {
   text-decoration: none;
   padding: 15px;
   background: rgba(160, 179, 176, 0.25);
-  color: #a0b3b0;
+  color: #b9c1c7;
   font-size: 20px;
   float: left;
   width: 50%;
@@ -114,7 +113,7 @@ input, textarea {
   padding: 5px 10px;
   background: none;
   background-image: none;
-  border: 1px solid #a0b3b0;
+  border: 1px solid #b9c1c7;
   color: #222;
   border-radius: 0;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
@@ -126,7 +125,7 @@ input:focus, textarea:focus {
 }
 
 textarea {
-  border: 2px solid #a0b3b0;
+  border: 2px solid #b9c1c7;
   resize: vertical;
 }
 
