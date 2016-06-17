@@ -307,8 +307,6 @@ else if($through=='signup')
       
       <div class="tab-content">
         <div id="signup">   
-          <h1>Sign up on Photolib if you haven't</h1>
-          
             <?php 
                 if (!$form_valid && Input::exists()){
                     echo display_errors($validation->errors());
