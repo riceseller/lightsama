@@ -108,6 +108,7 @@ else{
             width: 62px;
             order: 1;
             margin: 0px;
+            padding-right: 13px;
         }
         container2 #userPic img{
             margin-top: 15px;
@@ -157,19 +158,6 @@ else{
             text-align: left;
             font-size: 14px;
             font-weight: 400;
-        }
-        .location{
-            display: flex;
-            justify-content: flex-start;
-            width: 70%;
-            height: 6vh;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-            align-items: flex-end;
-            border: 0;
-            margin: 0;
-            padding: 0;
         }
         container2 .top{
             display: flex;
@@ -415,7 +403,7 @@ else{
                                                 $server = $row[extraOne];
                                                 $farm = $row[extraTwo];
                                                 $userr = $row[userID];
-                                                print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr."_l.jpg)";
+                                                print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg)";
                                             }
                                             elseif($row[Ubelong]=='500px')
                                             {
