@@ -110,7 +110,7 @@ function email($to,$subject,$body,$attachment=false){
 	$smtp_password=$results->email_pass;
 	$smtp_transport=$results->transport;
         
-        error_reporting(E_ALL);
+        
         require_once '../users/classes/class.phpmailer.php';
 	$mail = new PHPMailer;
 
