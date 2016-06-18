@@ -125,6 +125,7 @@ else{
             display: flex;
             height: auto;
             width: auto;
+            max-width: 500px;
             order: 2;
             flex-direction: column;
         }
@@ -135,7 +136,8 @@ else{
             width: 150px;
         }
         container2 p{
-            margin: 0px;            
+            margin: 0px;
+            word-wrap: break-word;
         }
         .user_name{
             width: auto;
@@ -174,6 +176,11 @@ else{
             text-align: center;
             line-height: 18px;
         }
+        #view, #fav, #comment{
+            font-weight: 400;
+            font-size: 20px;
+            color: #212124;
+        }
         container2 .bot{
             display: flex;
         }
@@ -201,9 +208,8 @@ else{
             align-content: center;
             align-items: center;
             padding-bottom: 28px;
-        }
-        #model div{
-            height: 32px;
+            font-size: 14px;
+            font-weight:400;
         }
         .exif img{
             margin-right: 15px;
