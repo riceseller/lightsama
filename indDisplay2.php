@@ -18,12 +18,17 @@ else{
 $query = "select c.*, u.url, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";
 $result=$conn->query($query);
 $row = mysqli_fetch_array($result);
-if(isset($_GET['page'])) {
-    // id index exists
-    $page = $_GET["page"];
-}else{
-    $page = 1;
-}
+#page need to delete in future version
+$page = 1;
+
+$date = $row[dateR];
+$userB = $row[userBelong];
+$query34 = "select p_id from Common where userBelong=\"$userB\" and dateR<\"$date\" order by dateR desc limit 1";
+$result34=$conn->query($query34);
+$prev = mysqli_fetch_array($result34);
+$query35 = "select p_id from Common where userBelong=\"$userB\" and dateR>\"$date\" order by dateR limit 1";
+$result35=$conn->query($query35);
+$next = mysqli_fetch_array($result35);
 
 $query11 = "select c.longitude, c.latitude from Coordinate c join CoordinateCorrespondance cc on c.id=cc.coeid where cc.pid=$pid";
 $result11=$conn->query($query11);
@@ -359,7 +364,9 @@ else{
       
     <div class="container">
         <div id="scrolla">
-            <a style="text-decoration: none; ">
+            <a style="text-decoration: none;" href="<?php if(mysqli_num_rows($result35)>0){
+                            $nextpid = $next[p_id];
+                            print "/indDisplay2.php?pid=$nextpid";}else{print "#";}?>">
                 <img src="/media/left_arrow.png" />
             </a>
         </div>
@@ -383,7 +390,9 @@ else{
         </a>
         </div>
         <div id="scrollc">
-            <a style="text-decoration: none;">
+            <a style="text-decoration: none;" href="<?php if(mysqli_num_rows($result34)>0){
+                            $prevpid = $prev[p_id];
+                            print "/indDisplay2.php?pid=$prevpid";}else{print "#";}?>">
                 <img src="/media/left_arrow_2.png" />
             </a>
         </div>
