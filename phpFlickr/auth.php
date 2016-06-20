@@ -26,7 +26,7 @@ use \Flickr;
     $_SERVER['SERVER_PORT'],
     $_SERVER['SCRIPT_NAME']
     );*/
-$callback = 'http://db.luokerenz.com/phpFlickr/auth.php'
+$callback = 'http://db.luokerenz.com/phpFlickr/auth.php';
 
 $flickr = new Flickr($flickrApiKey, $flickrApiSecret, $callback);
 
