@@ -534,6 +534,8 @@ class Flickr
         $baseString = $this->getBaseString($this->method, $url, $parameters);
         $signature  = $this->getSignature($baseString);
         $parameters['oauth_signature'] = $signature;
+        print $signature;
+        print_r($parameters);
     }
 
     /**
