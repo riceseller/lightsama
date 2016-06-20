@@ -20,12 +20,13 @@ spl_autoload_register(function($className)
 use \Flickr;
 
 // Build the URL for the current page and use it for our callback
-$callback = sprintf('%s://%s:%d%s',
+/*$callback = sprintf('%s://%s:%d%s',
     (@$_SERVER['HTTPS'] == "on") ? 'https' : 'http',
     $_SERVER['SERVER_NAME'],
     $_SERVER['SERVER_PORT'],
     $_SERVER['SCRIPT_NAME']
-    );
+    );*/
+$callback = 'http://db.luokerenz.com/phpFlickr/auth.php'
 
 $flickr = new Flickr($flickrApiKey, $flickrApiSecret, $callback);
 
