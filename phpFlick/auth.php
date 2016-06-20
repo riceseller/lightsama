@@ -1,89 +1,38 @@
 <?php
+    /* Last updated with phpFlickr 2.3.2
+     *
+     * Edit these variables to reflect the values you need. $default_redirect 
+     * and $permissions are only important if you are linking here instead of
+     * using phpFlickr::auth() from another page or if you set the remember_uri
+     * argument to false.
+     */
+    $api_key                 = "af11215c6fb85ece5c24edf3dbf00581";
+    $api_secret              = "0c3468606f69b344";
+    $default_redirect        = "http://db.luokerenz.com/phpFlick/example.php";
+    $permissions             = "read";
+    $path_to_phpFlickr_class = "./";
 
-$configFile = dirname(__FILE__) . '/config.php';
-
-if (file_exists($configFile))
-{
-    include $configFile;
-}
-else
-{
-    die("Please rename the config-sample.php file to config.php and add your Flickr API key and secret to it\n");
-}
-
-spl_autoload_register(function($className)
-{
-    $className = str_replace ('\\', DIRECTORY_SEPARATOR, $className);
-    include (dirname(__FILE__) . '/src/' . $className . '.php');
-});
-
-use \DPZ\Flickr;
-
-// Build the URL for the current page and use it for our callback
-$callback = sprintf('%s://%s:%d%s',
-    (@$_SERVER['HTTPS'] == "on") ? 'https' : 'http',
-    $_SERVER['SERVER_NAME'],
-    $_SERVER['SERVER_PORT'],
-    $_SERVER['SCRIPT_NAME']
-    );
-
-$flickr = new Flickr($flickrApiKey, $flickrApiSecret, $callback);
-
-if (!$flickr->authenticate('read'))
-{
-    die("Hmm, something went wrong...\n");
-}
-
-$userNsid = $flickr->getOauthData(Flickr::USER_NSID);
-$userName = $flickr->getOauthData(Flickr::USER_NAME);
-$userFullName = $flickr->getOauthData(Flickr::USER_FULL_NAME);
-
-$parameters =  array(
-    'per_page' => 100,
-    'extras' => 'url_sq,path_alias',
-);
-
-$response = $flickr->call('flickr.stats.getPopularPhotos', $parameters);
-
-$ok = @$response['stat'];
-
-if ($ok == 'ok')
-{
-    $photos = $response['photos'];
-}
-else
-{
-    $err = @$response['err'];
-    die("Error: " . @$err['msg']);
-}
-
+    ob_start();
+    require_once($path_to_phpFlickr_class . "phpFlickr.php");
+    @unset($_SESSION['phpFlickr_auth_token']);
+     
+	if ( isset($_SESSION['phpFlickr_auth_redirect']) && !empty($_SESSION['phpFlickr_auth_redirect']) ) {
+		$redirect = $_SESSION['phpFlickr_auth_redirect'];
+		unset($_SESSION['phpFlickr_auth_redirect']);
+	}
+    
+    $f = new phpFlickr($api_key, $api_secret);
+ 
+    if (empty($_GET['frob'])) {
+        $f->auth($permissions, false);
+    } else {
+        $f->auth_getToken($_GET['frob']);
+	}
+    
+    if (empty($redirect)) {
+		header("Location: " . $default_redirect);
+    } else {
+		header("Location: " . $redirect);
+    }
+ 
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>DPZFlickr Auth Example</title>
-        <link rel="stylesheet" href="example.css" />
-    </head>
-    <body>
-        <h1>Popular photos from <?php echo $userName ?></h1>
-        <ul id="photos">
-            <?php foreach ($photos['photo'] as $photo) { ?>
-                <li>
-                    <a href="<?php echo sprintf("http://flickr.com/photos/%s/%s/", $photo['pathalias'], $photo['id']) ?>">
-                        <img src="<?php echo $photo['url_sq'] ?>" />
-                    </a>
-                </li>
-            <?php } ?>
-        </ul>
-        <p class="signout"><a href="signout.php">Sign
-            out</a></p>
-
-        <p><a href="index.php">Unauthenticated Example</a> |
-            <a href="auth.php">Authenticated Example</a> |
-            <a href="convert-token.php">Convert Token Example</a> <br/>
-            <a href="upload.php">Upload Photo Example</a> |
-            <a href="replace.php">Replace Photo Example</a>
-        </p>
-    </body>
-</html>
-
