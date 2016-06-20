@@ -228,6 +228,7 @@ if ( !class_exists('phpFlickr') ) {
 				// added by sookoll (turn off ssl)
 				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 				curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+                                print_r($curl);
 				$response = curl_exec($curl);
 				curl_close($curl);
 			} else {
@@ -284,8 +285,12 @@ if ( !class_exists('phpFlickr') ) {
 			$args = array_merge(array("method" => $command, "format" => "json", "nojsoncallback" => "1", "api_key" => $this->api_key), $args);
 			if (!empty($this->token)) {
 				$args = array_merge($args, array("auth_token" => $this->token));
+                                echo 'this token method';
+                                print_r($this->token);
 			} elseif (!empty($_SESSION['phpFlickr_auth_token'])) {
 				$args = array_merge($args, array("auth_token" => $_SESSION['phpFlickr_auth_token']));
+                                echo 'session method';
+                                print_r($_SESSION['phpFlickr_auth_token']);
 			}
 			ksort($args);
 			$auth_sig = "";
