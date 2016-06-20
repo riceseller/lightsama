@@ -419,12 +419,12 @@ class Flickr
 
         $rsp = $this->httpRequest(self::REQUEST_TOKEN_ENDPOINT, $params);
         $responseParameters = $this->splitParameters($rsp);
-        $callbackOK = (@$responseParameters['oauth_callback_confirmed'] == 'true');
+        $callbackOK = ($responseParameters['oauth_callback_confirmed'] == 'true');
         print 'sucess callback';
         if ($callbackOK)
         {
-            $this->setOauthData(self::OAUTH_REQUEST_TOKEN, @$responseParameters['oauth_token']);
-            $this->setOauthData(self::OAUTH_REQUEST_TOKEN_SECRET, @$responseParameters['oauth_token_secret']);
+            $this->setOauthData(self::OAUTH_REQUEST_TOKEN, $responseParameters['oauth_token']);
+            $this->setOauthData(self::OAUTH_REQUEST_TOKEN_SECRET, $responseParameters['oauth_token_secret']);
         }
 
         return $callbackOK;
@@ -518,7 +518,7 @@ class Flickr
             );
 
         $baseString = implode("&", $components);
-        print 'baseString return: '.$baseString;
+        //print 'baseString return: '.$baseString;
         return $baseString;
     }
 
@@ -530,7 +530,7 @@ class Flickr
      */
     private function sign($url, &$parameters)
     {
-        print 'entering sing()';
+        //print 'entering sign()';
         $baseString = $this->getBaseString($this->method, $url, $parameters);
         $signature  = $this->getSignature($baseString);
         $parameters['oauth_signature'] = $signature;
@@ -557,7 +557,7 @@ class Flickr
 
         $key = "$keyPart1&$keyPart2";
         
-        print 'getSigniture return: '.$key;
+        //print 'getSigniture return: '.$key;
 
         return base64_encode(hash_hmac('sha1', $string, $key, true));
     }
@@ -690,7 +690,7 @@ class Flickr
             // Assume GET
             curl_setopt($curl, CURLOPT_URL, "$url?" . $this->joinParameters($parameters));
         }
-
+        print "$url?".$this->joinParameters($parameters);
         $response = curl_exec($curl);
         $headers = curl_getinfo($curl);
 
