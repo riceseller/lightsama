@@ -29,7 +29,7 @@ $callback = sprintf('%s://%s:%d%s',
 
 $flickr = new Flickr($flickrApiKey, $flickrApiSecret, $callback);
 
-if(!empty($_GET['oauth_token']) && !empty($_GET['oauth_verifier'])){
+if(empty($_GET['oauth_token']) && empty($_GET['oauth_verifier'])){
     if (!$flickr->authenticate('read'))
     {
         die("Hmm, something went wrong...\n");
