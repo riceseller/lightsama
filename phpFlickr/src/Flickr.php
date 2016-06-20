@@ -450,6 +450,7 @@ class Flickr
 
         if ($ok)
         {
+            print 'obtainAccessToken success';
             $this->setOauthData(self::OAUTH_ACCESS_TOKEN, @$responseParameters['oauth_token']);
             $this->setOauthData(self::OAUTH_ACCESS_TOKEN_SECRET, @$responseParameters['oauth_token_secret']);
             $this->setOauthData(self::USER_NSID, @$responseParameters['user_nsid']);
@@ -517,7 +518,7 @@ class Flickr
             );
 
         $baseString = implode("&", $components);
-
+        print 'baseString return: '.$baseString;
         return $baseString;
     }
 
@@ -554,6 +555,8 @@ class Flickr
         }
 
         $key = "$keyPart1&$keyPart2";
+        
+        print 'getSigniture return: '.$key;
 
         return base64_encode(hash_hmac('sha1', $string, $key, true));
     }
@@ -572,7 +575,7 @@ class Flickr
             'oauth_signature_method' => 'HMAC-SHA1',
             'oauth_version' => '1.0',
         );
-
+        print $params;
         return $params;
     }
 
@@ -693,6 +696,8 @@ class Flickr
         curl_close($curl);
 
         $this->lastHttpResponseCode = $headers['http_code'];
+        
+        print 'httpRequest rsp: '.$response;
 
         return $response;
     }
