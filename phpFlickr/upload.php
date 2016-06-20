@@ -14,10 +14,10 @@ else
 spl_autoload_register(function($className)
 {
     $className = str_replace ('\\', DIRECTORY_SEPARATOR, $className);
-    include (dirname(__FILE__) . '/../src/' . $className . '.php');
+    include (dirname(__FILE__) . '/src/' . $className . '.php');
 });
 
-use \DPZ\Flickr;
+use \Flickr;
 
 // Build the URL for the current page and use it for our callback
 $callback = sprintf('%s://%s:%d%s',
