@@ -36,6 +36,6 @@
     }*/
     $userID = $f->test_login ();
     print 'user id is: ';
-    vardump($userID);
+    echo json_encode($userID, JSON_PRETTY_PRINT);
  
 ?>
