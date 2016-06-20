@@ -14,7 +14,7 @@ else
 spl_autoload_register(function($className)
 {
     $className = str_replace ('\\', DIRECTORY_SEPARATOR, $className);
-    include (dirname(__FILE__) . '/../src/' . $className . '.php');
+    include (dirname(__FILE__) . '/src/' . $className . '.php');
 });
 
 use \DPZ\Flickr;
