@@ -205,6 +205,10 @@ class Flickr
         // First of all, check to see if we're part way through the authentication process
         if ($this->getOauthData(self::IS_AUTHENTICATING))
         {
+            echo '<script language="javascript">';
+            echo 'alert("entering ok if")';
+            echo '</script>';
+            
             $oauthToken = @$_GET['oauth_token'];
             $oauthVerifier = @$_GET['oauth_verifier'];
 
