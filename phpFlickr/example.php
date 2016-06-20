@@ -14,7 +14,7 @@
  */
 
 require_once("phpFlickr.php");
-$f = new phpFlickr("<api key>");
+$f = new phpFlickr("af11215c6fb85ece5c24edf3dbf00581");
 
 $recent = $f->photos_getRecent();
 
