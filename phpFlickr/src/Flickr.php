@@ -692,7 +692,9 @@ class Flickr
         else
         {
             // Assume GET
-            curl_setopt($curl, CURLOPT_URL, "$url?" . joinParameters($paraaa));
+            $correctGet = "$url?" . $this->joinParameters($paraaa);
+            print $correctGet;
+            curl_setopt($curl, CURLOPT_URL, $correctGet);
         }
         $response = curl_exec($curl);
         $headers = curl_getinfo($curl);
