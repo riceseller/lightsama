@@ -497,7 +497,7 @@ class Flickr
         {
             array_push($keyValuePairs, rawurlencode($k) . "=" . rawurlencode($parameters[$k]));
         }
-
+        print implode("&", $keyValuePairs);
         return implode("&", $keyValuePairs);
     }
 
@@ -576,7 +576,7 @@ class Flickr
             'oauth_signature_method' => 'HMAC-SHA1',
             'oauth_version' => '1.0',
         );
-        print_r($params);
+        //print_r($params);
         return $params;
     }
 
