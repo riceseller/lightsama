@@ -6,8 +6,8 @@
      * using phpFlickr::auth() from another page or if you set the remember_uri
      * argument to false.
      */
-    $api_key                 = "af11215c6fb85ece5c24edf3dbf00581";
-    $api_secret              = "0c3468606f69b344";
+    $api_key                 = "9c7e15fd3e006075c3647c94ee891bd8";
+    $api_secret              = "59cd2bc5e832fe79";
     $default_redirect        = "http://db.luokerenz.com/phpFlick/example.php";
     $permissions             = "read";
     $path_to_phpFlickr_class = "./";
