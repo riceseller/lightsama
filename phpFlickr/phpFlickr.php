@@ -599,7 +599,7 @@ if ( !class_exists('phpFlickr') ) {
 			if (empty($_SESSION['phpFlickr_auth_token']) && empty($this->token)) {
 				if ( $remember_uri === true ) {
 					$_SESSION['phpFlickr_auth_redirect'] = $_SERVER['REQUEST_URI'];
-				} elseif ( $remember_uri !== false ) {
+				} elseif ( $remember_uri === false ) {
 					$_SESSION['phpFlickr_auth_redirect'] = $remember_uri;
 				}
 				$api_sig = md5($this->secret . "api_key" . $this->api_key . "perms" . $perms);
