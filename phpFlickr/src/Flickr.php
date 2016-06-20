@@ -674,10 +674,10 @@ class Flickr
      * @param array $parameters
      * @return mixed
      */
-    private function httpRequest($url, $parameters)
+    private function httpRequest($url, $paraaa)
     {
         $curl = curl_init();
-        print_r($parameters);
+        print_r($paraaa);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($curl, CURLOPT_TIMEOUT, $this->httpTimeout);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -687,12 +687,12 @@ class Flickr
         {
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_POST, TRUE);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $parameters);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $paraaa);
         }
         else
         {
             // Assume GET
-            curl_setopt($curl, CURLOPT_URL, "$url?" . $this->joinParameters($parameters));
+            curl_setopt($curl, CURLOPT_URL, "$url?" . $this->joinParameters($paraaa));
         }
         $response = curl_exec($curl);
         $headers = curl_getinfo($curl);
