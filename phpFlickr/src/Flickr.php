@@ -416,6 +416,7 @@ class Flickr
         $params['oauth_callback'] = $this->callback;
 
         $params = $this->sign(self::REQUEST_TOKEN_ENDPOINT, $params);
+        print_r($params);
 
         $rsp = $this->httpRequest(self::REQUEST_TOKEN_ENDPOINT, $params);
         $responseParameters = $this->splitParameters($rsp);
@@ -497,7 +498,7 @@ class Flickr
         {
             array_push($keyValuePairs, rawurlencode($k) . "=" . rawurlencode($parameters[$k]));
         }
-        print implode("&", $keyValuePairs);
+        //print implode("&", $keyValuePairs);
         return implode("&", $keyValuePairs);
     }
 
@@ -535,7 +536,7 @@ class Flickr
         $signature  = $this->getSignature($baseString);
         $parameters['oauth_signature'] = $signature;
         //print $signature;
-        //print_r($parameters);
+        print_r($parameters);
         return $parameters;
     }
 
