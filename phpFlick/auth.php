@@ -29,10 +29,13 @@
         $f->auth_getToken($_GET['frob']);
 	}
     
-    if (empty($redirect)) {
+    /*if (empty($redirect)) {
 		header("Location: " . $default_redirect);
     } else {
 		header("Location: " . $redirect);
-    }
+    }*/
+    $userID = $f->test_login ();
+    print 'user id is: ';
+    vardump($userID);
  
 ?>
