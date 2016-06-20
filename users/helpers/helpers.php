@@ -135,10 +135,10 @@ function email($to,$subject,$body,$attachment=false){
 
 	$result = $mail->send();
         
-        if(!$result)
-        {
-             echo 'Mailer Error: ' . $mail->ErrorInfo;
-        }
+        //if(!$result)
+        //{
+        //     echo 'Mailer Error: ' . $mail->ErrorInfo;
+        //}
 	
 	return $result;
 }
