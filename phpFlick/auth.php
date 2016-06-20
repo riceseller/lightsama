@@ -25,6 +25,7 @@
  
     if (empty($_GET['frob'])) {
         $f->auth($permissions, false);
+        print 'read permission requested';
     } else {
         $f->auth_getToken($_GET['frob']);
 	}
