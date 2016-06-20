@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/topNav2.php</file>
-            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/views/_joinThankYou.php</file>
-            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/includes/navigation.php</file>
-            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/includes/header.php</file>
-            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/new_login.php</file>
+            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/email_test.php</file>
+            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/index.php</file>
+            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/keyword.php</file>
+            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/forgot_password.php</file>
+            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/classes/phpmailer/class.phpmailer.php</file>
+            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/classes/phpmailer/class.smtp.php</file>
+            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/helpers/helpers.php</file>
+            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/classes/phpmailer/PHPMailerAutoload.php</file>
             <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/init.php</file>
-            <file>file:/Users/cheng.yic/NetBeansProjects/lightsama/users/joinThankYou.php</file>
         </group>
     </open-files>
 </project-private>
