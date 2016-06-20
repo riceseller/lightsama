@@ -576,7 +576,7 @@ class Flickr
             'oauth_signature_method' => 'HMAC-SHA1',
             'oauth_version' => '1.0',
         );
-        //print $params;
+        print_r($params);
         return $params;
     }
 
@@ -690,7 +690,6 @@ class Flickr
             // Assume GET
             curl_setopt($curl, CURLOPT_URL, "$url?" . $this->joinParameters($parameters));
         }
-        print "$url?".$this->joinParameters($parameters);
         $response = curl_exec($curl);
         $headers = curl_getinfo($curl);
 
