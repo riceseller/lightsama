@@ -272,7 +272,7 @@ if ( !class_exists('phpFlickr') ) {
 			return $response;
 		}
 
-		function request ($command, $args = array(), $nocache = false)
+		function request ($command, $args = array(), $nocache = true)
 		{
 			//Sends a request to Flickr's REST endpoint via POST.
 			if (substr($command,0,7) != "flickr.") {
@@ -302,6 +302,7 @@ if ( !class_exists('phpFlickr') ) {
 					$api_sig = md5($this->secret . $auth_sig);
 					$args['api_sig'] = $api_sig;
 				}
+                                print_r($args);
 				$this->response = $this->post($args);
 				$this->cache($args, $this->response);
 			}
