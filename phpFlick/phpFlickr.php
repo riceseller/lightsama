@@ -269,6 +269,7 @@ if ( !class_exists('phpFlickr') ) {
 					$response = trim(strstr($response, "\r\n\r\n"));
 				}
 			}
+                        print_r($response);
 			return $response;
 		}
 
