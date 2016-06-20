@@ -17,7 +17,7 @@ spl_autoload_register(function($className)
     include (dirname(__FILE__) . '/../src/' . $className . '.php');
 });
 
-use \DPZ\Flickr;
+use \Flickr;
 
 $flickr = new Flickr($flickrApiKey, $flickrApiSecret);
 
