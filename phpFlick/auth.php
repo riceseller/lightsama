@@ -38,10 +38,9 @@ if(!empty($_GET['oauth_token']) && !empty($_GET['oauth_verifier'])){
     $oauthToken = @$_GET['oauth_token'];
     $oauthVerifier = @$_GET['oauth_verifier'];
     // Looks like we're in the callback
-    $this->setOauthData(self::OAUTH_REQUEST_TOKEN, $oauthToken);
-    $this->setOauthData(self::OAUTH_VERIFIER, $oauthVerifier);
-    $ok = $this->obtainAccessToken();
-    $this->setOauthData(self::IS_AUTHENTICATING, false);
+    setOauthData(self::OAUTH_REQUEST_TOKEN, $oauthToken);
+    setOauthData(self::OAUTH_VERIFIER, $oauthVerifier);
+    setOauthData(self::IS_AUTHENTICATING, false);
 }
 
 $userNsid = $flickr->getOauthData(Flickr::USER_NSID);
