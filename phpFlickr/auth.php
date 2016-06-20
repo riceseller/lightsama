@@ -45,7 +45,7 @@ $parameters =  array(
 
 $response = $flickr->call('flickr.stats.getPopularPhotos', $parameters);
 
-$ok = @$response['stat'];
+$ok = $response['stat'];
 
 if ($ok == 'ok')
 {
@@ -53,8 +53,8 @@ if ($ok == 'ok')
 }
 else
 {
-    $err = @$response['err'];
-    die("Error: " . @$err['msg']);
+    $err = $response['err'];
+    die("Error: " . $err['msg']);
 }
 
 ?>
