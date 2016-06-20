@@ -134,6 +134,11 @@ function email($to,$subject,$body,$attachment=false){
 	$mail->Body    = $body;
 
 	$result = $mail->send();
+        
+        if(!$result)
+        {
+             echo 'Mailer Error: ' . $mail->ErrorInfo;
+        }
 	
 	return $result;
 }
