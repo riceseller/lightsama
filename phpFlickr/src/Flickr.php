@@ -23,7 +23,7 @@
  *
  */
 
-namespace DPZ;
+//namespace DPZ;
 
 class Flickr
 {
