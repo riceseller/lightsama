@@ -81,7 +81,7 @@ class Flickr
     /**
      * @var string HTTP Method to use for API calls
      */
-    private $method = 'POST';
+    private $method = 'GET';
 
     /**
      * @var int HTTP Response code for last call made
