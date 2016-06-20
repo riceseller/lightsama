@@ -37,6 +37,6 @@
     }*/
     $userID = $f->test_login ();
     print 'user id is: ';
-    print $userID;
+    print_r($userID);
  
 ?>
