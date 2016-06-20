@@ -226,7 +226,7 @@ class Flickr
             // We're authenticating afresh, clear out the session just in case there are remnants of a
             // previous authentication in there
             $this->signout();
-            echo 'function entered';
+            //echo 'function entered';
             if ($this->obtainRequestToken())
             {
                 // We've got the request token, redirect to Flickr for authentication/authorisation
@@ -239,6 +239,11 @@ class Flickr
                     $this->getOauthData(self::OAUTH_REQUEST_TOKEN),
                     $permissions
                 ));
+                echo sprintf('Location: %s?oauth_token=%s&perms=%s',
+                    self::AUTH_ENDPOINT,
+                    $this->getOauthData(self::OAUTH_REQUEST_TOKEN),
+                    $permissions
+                );
                 exit(0);
             }
         }
