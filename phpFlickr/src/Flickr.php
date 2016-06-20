@@ -239,6 +239,7 @@ class Flickr
                     $this->getOauthData(self::OAUTH_REQUEST_TOKEN),
                     $permissions
                 ));
+                echo 'verify';
                 echo sprintf('Location: %s?oauth_token=%s&perms=%s',
                     self::AUTH_ENDPOINT,
                     $this->getOauthData(self::OAUTH_REQUEST_TOKEN),
