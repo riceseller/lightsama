@@ -489,16 +489,16 @@ class Flickr
      * @param array $parameters
      * @return string
      */
-    private function joinParameters($parameters)
+    private function joinParameters($parameee)
     {
-        $keys = array_keys($parameters);
+        $keys = array_keys($parameee);
         sort($keys, SORT_STRING);
         $keyValuePairs = array();
         foreach ($keys as $k)
         {
-            array_push($keyValuePairs, rawurlencode($k) . "=" . rawurlencode($parameters[$k]));
+            array_push($keyValuePairs, rawurlencode($k) . "=" . rawurlencode($parameee[$k]));
         }
-        //print implode("&", $keyValuePairs);
+        print implode("&", $keyValuePairs);
         return implode("&", $keyValuePairs);
     }
 
