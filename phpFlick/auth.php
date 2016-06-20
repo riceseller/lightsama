@@ -40,8 +40,8 @@ $userNsid = $flickr->getOauthData(Flickr::USER_NSID);
 $userName = $flickr->getOauthData(Flickr::USER_NAME);
 $userFullName = $flickr->getOauthData(Flickr::USER_FULL_NAME);
 
-print userNsid;
-print userName;
+print $userNsid;
+print $userName;
 
 $parameters =  array(
     'per_page' => 100,
