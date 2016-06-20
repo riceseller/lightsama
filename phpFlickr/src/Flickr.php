@@ -81,7 +81,7 @@ class Flickr
     /**
      * @var string HTTP Method to use for API calls
      */
-    private $method = 'GET';
+    private $method = 'POST';
 
     /**
      * @var int HTTP Response code for last call made
@@ -132,7 +132,7 @@ class Flickr
         $requestParams = array_merge($requestParams, $this->getOauthParams());
 
         $requestParams['oauth_token'] = $this->getOauthData(self::OAUTH_ACCESS_TOKEN);
-        $requestParams = $this->sign(self::API_ENDPOINT, $requestParams);
+        $this->sign(self::API_ENDPOINT, $requestParams);
 
         $response = $this->httpRequest(self::API_ENDPOINT, $requestParams);
 
@@ -156,7 +156,7 @@ class Flickr
         // so temporarily remove it whilst we sign
         $photo = $requestParams['photo'];
         unset($requestParams['photo']);
-        $requestParams = $this->sign(self::UPLOAD_ENDPOINT, $requestParams);
+        $this->sign(self::UPLOAD_ENDPOINT, $requestParams);
         $requestParams['photo'] = $photo;
 
         $xml = $this->httpRequest(self::UPLOAD_ENDPOINT, $requestParams);
@@ -183,7 +183,7 @@ class Flickr
         // so temporarily remove it whilst we sign
         $photo = $requestParams['photo'];
         unset($requestParams['photo']);
-        $requestParams = $this->sign(self::REPLACE_ENDPOINT, $requestParams);
+        $this->sign(self::REPLACE_ENDPOINT, $requestParams);
         $requestParams['photo'] = $photo;
 
         $xml = $this->httpRequest(self::REPLACE_ENDPOINT, $requestParams);
@@ -226,7 +226,7 @@ class Flickr
             // We're authenticating afresh, clear out the session just in case there are remnants of a
             // previous authentication in there
             $this->signout();
-            //echo 'function entered';
+
             if ($this->obtainRequestToken())
             {
                 // We've got the request token, redirect to Flickr for authentication/authorisation
@@ -239,15 +239,10 @@ class Flickr
                     $this->getOauthData(self::OAUTH_REQUEST_TOKEN),
                     $permissions
                 ));
-                echo 'verify';
-                echo sprintf('Location: %s?oauth_token=%s&perms=%s',
-                    self::AUTH_ENDPOINT,
-                    $this->getOauthData(self::OAUTH_REQUEST_TOKEN),
-                    $permissions
-                );
                 exit(0);
             }
         }
+
         return $ok;
     }
 
@@ -415,17 +410,16 @@ class Flickr
         $params = $this->getOauthParams();
         $params['oauth_callback'] = $this->callback;
 
-        $params = $this->sign(self::REQUEST_TOKEN_ENDPOINT, $params);
-        //print_r($params);
+        $this->sign(self::REQUEST_TOKEN_ENDPOINT, $params);
 
         $rsp = $this->httpRequest(self::REQUEST_TOKEN_ENDPOINT, $params);
         $responseParameters = $this->splitParameters($rsp);
-        $callbackOK = ($responseParameters['oauth_callback_confirmed'] == 'true');
-        print 'sucess callback';
+        $callbackOK = (@$responseParameters['oauth_callback_confirmed'] == 'true');
+
         if ($callbackOK)
         {
-            $this->setOauthData(self::OAUTH_REQUEST_TOKEN, $responseParameters['oauth_token']);
-            $this->setOauthData(self::OAUTH_REQUEST_TOKEN_SECRET, $responseParameters['oauth_token_secret']);
+            $this->setOauthData(self::OAUTH_REQUEST_TOKEN, @$responseParameters['oauth_token']);
+            $this->setOauthData(self::OAUTH_REQUEST_TOKEN_SECRET, @$responseParameters['oauth_token_secret']);
         }
 
         return $callbackOK;
@@ -442,7 +436,7 @@ class Flickr
         $params['oauth_token'] = $this->getOauthData(self::OAUTH_REQUEST_TOKEN);
         $params['oauth_verifier'] = $this->getOauthData(self::OAUTH_VERIFIER);
 
-        $params = $this->sign(self::ACCESS_TOKEN_ENDPOINT, $params);
+        $this->sign(self::ACCESS_TOKEN_ENDPOINT, $params);
 
         $rsp = $this->httpRequest(self::ACCESS_TOKEN_ENDPOINT, $params);
 
@@ -451,7 +445,6 @@ class Flickr
 
         if ($ok)
         {
-            print 'obtainAccessToken success';
             $this->setOauthData(self::OAUTH_ACCESS_TOKEN, @$responseParameters['oauth_token']);
             $this->setOauthData(self::OAUTH_ACCESS_TOKEN_SECRET, @$responseParameters['oauth_token_secret']);
             $this->setOauthData(self::USER_NSID, @$responseParameters['user_nsid']);
@@ -489,16 +482,16 @@ class Flickr
      * @param array $parameters
      * @return string
      */
-    private function joinParameters($parameee)
+    private function joinParameters($parameters)
     {
-        $keys = array_keys($parameee);
+        $keys = array_keys($parameters);
         sort($keys, SORT_STRING);
         $keyValuePairs = array();
         foreach ($keys as $k)
         {
-            array_push($keyValuePairs, rawurlencode($k) . "=" . rawurlencode($parameee[$k]));
+            array_push($keyValuePairs, rawurlencode($k) . "=" . rawurlencode($parameters[$k]));
         }
-        print implode("&", $keyValuePairs);
+
         return implode("&", $keyValuePairs);
     }
 
@@ -519,7 +512,7 @@ class Flickr
             );
 
         $baseString = implode("&", $components);
-        //print 'baseString return: '.$baseString;
+
         return $baseString;
     }
 
@@ -531,13 +524,9 @@ class Flickr
      */
     private function sign($url, &$parameters)
     {
-        //print 'entering sign()';
         $baseString = $this->getBaseString($this->method, $url, $parameters);
         $signature  = $this->getSignature($baseString);
         $parameters['oauth_signature'] = $signature;
-        //print $signature;
-        //print_r($parameters);
-        return $parameters;
     }
 
     /**
@@ -560,8 +549,6 @@ class Flickr
         }
 
         $key = "$keyPart1&$keyPart2";
-        
-        //print 'getSigniture return: '.$key;
 
         return base64_encode(hash_hmac('sha1', $string, $key, true));
     }
@@ -580,7 +567,7 @@ class Flickr
             'oauth_signature_method' => 'HMAC-SHA1',
             'oauth_version' => '1.0',
         );
-        //print_r($params);
+
         return $params;
     }
 
@@ -674,10 +661,10 @@ class Flickr
      * @param array $parameters
      * @return mixed
      */
-    private function httpRequest($url, $paraaa)
+    private function httpRequest($url, $parameters)
     {
         $curl = curl_init();
-        print_r($paraaa);
+
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($curl, CURLOPT_TIMEOUT, $this->httpTimeout);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -687,23 +674,20 @@ class Flickr
         {
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_POST, TRUE);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $paraaa);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $parameters);
         }
         else
         {
             // Assume GET
-            $correctGet = "$url?" . $this->joinParameters($paraaa);
-            print $correctGet;
-            curl_setopt($curl, CURLOPT_URL, $correctGet);
+            curl_setopt($curl, CURLOPT_URL, "$url?" . $this->joinParameters($parameters));
         }
+
         $response = curl_exec($curl);
         $headers = curl_getinfo($curl);
 
         curl_close($curl);
 
         $this->lastHttpResponseCode = $headers['http_code'];
-        
-        print 'httpRequest rsp: '.$response;
 
         return $response;
     }
