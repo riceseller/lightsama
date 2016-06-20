@@ -132,7 +132,7 @@ class Flickr
         $requestParams = array_merge($requestParams, $this->getOauthParams());
 
         $requestParams['oauth_token'] = $this->getOauthData(self::OAUTH_ACCESS_TOKEN);
-        $this->sign(self::API_ENDPOINT, $requestParams);
+        $requestParams = $this->sign(self::API_ENDPOINT, $requestParams);
 
         $response = $this->httpRequest(self::API_ENDPOINT, $requestParams);
 
@@ -156,7 +156,7 @@ class Flickr
         // so temporarily remove it whilst we sign
         $photo = $requestParams['photo'];
         unset($requestParams['photo']);
-        $this->sign(self::UPLOAD_ENDPOINT, $requestParams);
+        $requestParams = $this->sign(self::UPLOAD_ENDPOINT, $requestParams);
         $requestParams['photo'] = $photo;
 
         $xml = $this->httpRequest(self::UPLOAD_ENDPOINT, $requestParams);
@@ -183,7 +183,7 @@ class Flickr
         // so temporarily remove it whilst we sign
         $photo = $requestParams['photo'];
         unset($requestParams['photo']);
-        $this->sign(self::REPLACE_ENDPOINT, $requestParams);
+        $requestParams = $this->sign(self::REPLACE_ENDPOINT, $requestParams);
         $requestParams['photo'] = $photo;
 
         $xml = $this->httpRequest(self::REPLACE_ENDPOINT, $requestParams);
@@ -415,7 +415,7 @@ class Flickr
         $params = $this->getOauthParams();
         $params['oauth_callback'] = $this->callback;
 
-        $this->sign(self::REQUEST_TOKEN_ENDPOINT, $params);
+        $params = $this->sign(self::REQUEST_TOKEN_ENDPOINT, $params);
 
         $rsp = $this->httpRequest(self::REQUEST_TOKEN_ENDPOINT, $params);
         $responseParameters = $this->splitParameters($rsp);
@@ -441,7 +441,7 @@ class Flickr
         $params['oauth_token'] = $this->getOauthData(self::OAUTH_REQUEST_TOKEN);
         $params['oauth_verifier'] = $this->getOauthData(self::OAUTH_VERIFIER);
 
-        $this->sign(self::ACCESS_TOKEN_ENDPOINT, $params);
+        $params = $this->sign(self::ACCESS_TOKEN_ENDPOINT, $params);
 
         $rsp = $this->httpRequest(self::ACCESS_TOKEN_ENDPOINT, $params);
 
@@ -534,8 +534,9 @@ class Flickr
         $baseString = $this->getBaseString($this->method, $url, $parameters);
         $signature  = $this->getSignature($baseString);
         $parameters['oauth_signature'] = $signature;
-        print $signature;
-        print_r($parameters);
+        //print $signature;
+        //print_r($parameters);
+        return $parameters;
     }
 
     /**
