@@ -26,9 +26,7 @@ $callback = sprintf('%s://%s:%d%s',
     $_SERVER['SERVER_PORT'],
     $_SERVER['SCRIPT_NAME']
     );
-echo $callback;
-$callback = 'http://db.luokerenz.com/phpFlickr/auth.php';
-echo $callback;
+//echo $callback;
 
 $flickr = new Flickr($flickrApiKey, $flickrApiSecret, $callback);
 

@@ -226,7 +226,7 @@ class Flickr
             // We're authenticating afresh, clear out the session just in case there are remnants of a
             // previous authentication in there
             $this->signout();
-
+            echo 'function entered';
             if ($this->obtainRequestToken())
             {
                 // We've got the request token, redirect to Flickr for authentication/authorisation
@@ -242,7 +242,6 @@ class Flickr
                 exit(0);
             }
         }
-
         return $ok;
     }
 
