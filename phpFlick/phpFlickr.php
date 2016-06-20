@@ -325,7 +325,7 @@ if ( !class_exists('phpFlickr') ) {
 				$this->error_code = false;
 				$this->error_msg = false;
 			}
-                        echo $this->parsed_response;
+                        print_r($this->parsed_response);
 			return $this->response;
 		}
 
