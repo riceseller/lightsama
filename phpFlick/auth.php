@@ -29,19 +29,14 @@ $callback = sprintf('%s://%s:%d%s',
 
 $flickr = new Flickr($flickrApiKey, $flickrApiSecret, $callback);
 
-if(empty($_GET['oauth_token']) && empty($_GET['oauth_verifier'])){
-    if (!$flickr->authenticate('read'))
-    {
-        die("Hmm, something went wrong...\n");
-    }
+if (!$flickr->authenticate('read'))
+{
+    die("Hmm, something went wrong...\n");
 }
 
 $userNsid = $flickr->getOauthData(Flickr::USER_NSID);
 $userName = $flickr->getOauthData(Flickr::USER_NAME);
 $userFullName = $flickr->getOauthData(Flickr::USER_FULL_NAME);
-
-print $userNsid;
-print $userName;
 
 $parameters =  array(
     'per_page' => 100,
