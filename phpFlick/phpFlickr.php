@@ -288,7 +288,8 @@ if ( !class_exists('phpFlickr') ) {
                                 echo 'this token method';
                                 print_r($this->token);
 			} elseif (!empty($_SESSION['phpFlickr_auth_token'])) {
-				$args = array_merge($args, array("auth_token" => $_SESSION['phpFlickr_auth_token']));
+                                $auth_token_correct = $_SESSION['phpFlickr_auth_token'];
+				$args = array_merge($args, array("auth_token" => $auth_token_correct[0]));
                                 echo 'session method';
                                 print_r($_SESSION['phpFlickr_auth_token']);
 			}
