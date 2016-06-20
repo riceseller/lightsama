@@ -8,7 +8,7 @@
      */
     $api_key                 = "af11215c6fb85ece5c24edf3dbf00581";
     $api_secret              = "0c3468606f69b344";
-    $default_redirect        = "/";
+    $default_redirect        = "http://db.luokerenz.com/phpFlickr/auth.php";
     $permissions             = "read";
     $path_to_phpFlickr_class = "./";
 
