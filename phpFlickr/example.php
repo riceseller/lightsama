@@ -17,6 +17,7 @@ require_once("phpFlickr.php");
 $f = new phpFlickr("af11215c6fb85ece5c24edf3dbf00581");
 
 $recent = $f->photos_getRecent();
+echo $f->getErrorMsg ();
 
 foreach ($recent['photo'] as $photo) {
     $owner = $f->people_getInfo($photo['owner']);
