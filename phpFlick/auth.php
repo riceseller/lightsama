@@ -1,5 +1,5 @@
 <?php require_once '../users/init.php'; ?>
-<?php include("../supplyment/dbAccess.php"); ?>
+<?php require_once "../supplyment/dbAccess.php"; ?>
 <?php
 if($user->isLoggedIn()){
     /* Last updated with phpFlickr 2.3.2
@@ -44,7 +44,7 @@ if($user->isLoggedIn()){
     print 'db user id is: '.$dbUserID;
     $query = "select id from ScrapeUser where userID = $flickr_userID";
     $result=$conn->query($query);
-    $row = $result->fetch_assoc();
+    $row = mysqli_fetch_array($result);
     if($result->num_rows>0){
         //userID existed in ScrapeUser table
         $scrape_link_id = $row['id'];
@@ -53,7 +53,7 @@ if($user->isLoggedIn()){
         //need to insert new scrape user
         $conn->query("insert into ScrapeUser(userID,Ubelong) values($flickr_userID,\'flickr\')");
         $result2 = $conn->query("select id from ScrapeUser where userID = $flickr_userID");
-        $row2 = $result2->fetch_assoc();
+        $row2 = $mysqli_fetch_array($result2);
         $scrape_link_id = $row2['id'];
         //need to scrape this user in further script
         $scrapemode = 1;
