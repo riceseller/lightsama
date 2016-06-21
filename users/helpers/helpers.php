@@ -111,7 +111,7 @@ function email($to,$subject,$body,$attachment=false){
 	$smtp_transport=$results->transport;
         
         
-        require_once '../users/classes/class.phpmailer.php';
+        require_once '../users/classes/phpmailer/class.phpmailer.php';
 	$mail = new PHPMailer;
 
 	//$mail->SMTPDebug = 3;                               // Enable verbose debug output
