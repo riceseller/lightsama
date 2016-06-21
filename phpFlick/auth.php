@@ -42,7 +42,8 @@ if($user->isLoggedIn()){
     print 'user id is: '.$flickr_userID['id'];
     $dbUserID = $user->data()->id;
     print 'db user id is: '.$dbUserID;
-    $query = "select id from ScrapeUser where userID = $flickr_userID";
+    $query = "select id from ScrapeUser where userID = \'$flickr_userID\'";
+    print $query;
     $result=$conn->query($query);
     $row = mysqli_fetch_array($result);
     if($result->num_rows>0){
