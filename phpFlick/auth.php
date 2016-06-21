@@ -1,4 +1,4 @@
-<?php include "../topNav2.php"; ?>
+<?php require_once '../users/init.php'; ?>
 <?php
 if($user->isLoggedIn()){
     /* Last updated with phpFlickr 2.3.2
