@@ -164,7 +164,7 @@
                 <?php
                 if($user->isLoggedIn())
                 {
-                    echo "<a class='nav' href='users/account.php' style='text-decoration:None' >WELCOME " .$user->data()->fname." <br></a>";
+                    echo "<a class='nav' href='../users/account.php' style='text-decoration:None' >WELCOME " .$user->data()->fname." <br></a>";
                 ?>
                     <a class="nav" href="<?=$us_url_root?>users/logout.php">LOGOUT</a>;  
                 <?php

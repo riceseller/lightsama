@@ -1,4 +1,5 @@
 <?php require_once '../users/init.php'; ?>
+<?php include("../supplyment/dbAccess.php"); ?>
 <?php
 if($user->isLoggedIn()){
     /* Last updated with phpFlickr 2.3.2
@@ -39,6 +40,27 @@ if($user->isLoggedIn()){
     }*/
     $flickr_userID = $f->test_login ();
     print 'user id is: '.$flickr_userID['id'];
+    $dbUserID = $user->data()->id;
+    print 'db user id is: '.$dbUserID;
+    $query = "select id from ScrapeUser where userID = $flickr_userID";
+    $result=$conn->query($query);
+    $row = mysqli_fetch_object($result);
+    if($result->num_rows>0){
+        //userID existed in ScrapeUser table
+        $scrape_link_id = $row->id;
+        $scrapemode = 0;
+    }else{
+        //need to insert new scrape user
+        $conn->query("insert into ScrapeUser(userID,Ubelong) values($flickr_userID,\'flickr\')");
+        $result2 = $conn->query("select id from ScrapeUser where userID = $flickr_userID");
+        $scrape_link_id = mysqli_fetch_object($result2);
+        $scrape_link_id = $scrape_link_id->id;
+        //need to scrape this user in further script
+        $scrapemode = 1;
+    }
+    //link between two
+    $conn->query("insert into LinkUser(scrapeUserID, usersID, needAction) values($scrape_link_id,$dbUserID,$scrapemode)");
+    echo 'insert success, ready to exit';
 }
 else{
     echo 'please login first';
