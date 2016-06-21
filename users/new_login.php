@@ -274,7 +274,7 @@ else if($through=='signup')
                         
                         
                         //login code finishes after adding to the database
-			Redirect::to($us_url_root.'../index.php');
+			Redirect::to($us_url_root.'../users/account.php');
 		}
 	
 	} //Validation and agreement checbox

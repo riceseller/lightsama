@@ -1,4 +1,5 @@
 <?php
+header('Location: http://db.luokerenz.com/users/new_login.php?category=login');
 /*
 UserSpice 4
 An Open Source PHP User Management System

@@ -1,4 +1,6 @@
+<?php include "../topNav2.php"; ?>
 <?php
+if($user->isLoggedIn()){
     /* Last updated with phpFlickr 2.3.2
      *
      * Edit these variables to reflect the values you need. $default_redirect 
@@ -35,8 +37,10 @@
     } else {
 		header("Location: " . $redirect);
     }*/
-    $userID = $f->test_login ();
-    print 'user id is: ';
-    print_r($userID);
- 
+    $flickr_userID = $f->test_login ();
+    print 'user id is: '.$flickr_userID['id'];
+}
+else{
+    echo 'please login first';
+}
 ?>
