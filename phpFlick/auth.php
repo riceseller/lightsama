@@ -55,7 +55,7 @@ if($user->isLoggedIn()){
         //need to insert new scrape user
         $conn->query("insert into ScrapeUser(userID,Ubelong) values($flickr_userID,'flickr')");
         $result2 = $conn->query("select id from ScrapeUser where userID = $flickr_userID");
-        $row2 = $mysqli_fetch_array($result2);
+        $row2 = mysqli_fetch_array($result2);
         $scrape_link_id = $row2['id'];
         //need to scrape this user in further script
         $scrapemode = 1;
