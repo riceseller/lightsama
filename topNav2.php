@@ -23,6 +23,10 @@
                 font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
                 TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
                 Arial, sans-serif;
+                text-decoration: underline;
+            }
+            a.nav:hover{
+                color: white; 
             }
             topNav .logo{
                 width: 15%;

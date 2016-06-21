@@ -1,5 +1,6 @@
 <?php require_once 'init.php'; 
-      $category=$_GET["category"]; ?>
+error_reporting( error_reporting() & ~E_NOTICE );
+$category=$_GET["category"]; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 
@@ -349,9 +350,10 @@ else if($through=='signup')
 
         </div>
       
-        <div id="login">   
+        <div id="login">
+            
           <h1>Welcome Back to Photolib</h1>
-          
+       
           <form action="new_login.php?through=login" method="post">
           
             <div class="field-wrap">
@@ -368,7 +370,7 @@ else if($through=='signup')
           <button class="button button-block" type="submit"/>Log In</button>
           
           </form>
-
+          
         </div>
         
       </div><!-- tab-content -->

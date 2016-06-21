@@ -33,7 +33,7 @@
             vertical-align: middle;
         }
     </style>
-</header>
+
 
 <script type="text/javascript" src="http://maps.google.cn/maps/api/js?sensor=false&libraries=places"></script>
 <script type="text/javascript" src="/node_modules/markerclusterer.js"></script>
@@ -264,15 +264,24 @@ function initialize() {
     
 }
 
+
+
 initialize();
+
+
 $("#floatPic").mThumbnailScroller({
               axis:"x", //change to "y" for vertical scroller
               theme:"hover-classic"
             });
 };
-</script>
 
+
+
+</script>
 <div id="map"></div>
+</header>
+
+<body>
 <div id="floatPic"><ul></ul></div>
 </body>    
 </html>

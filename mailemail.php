@@ -1,8 +1,7 @@
 <?php
 
-require_once '/users/classes/phpmailer/class.phpmailer.php';
-require_once '/users/classes/phpmailer/PHPMailerAutoload.php';
-require_once '/users/classes/phpmailer/class.smtp.php';
+require_once 'users/init.php';
+
 
 $mail = new PHPMailer;
 
