@@ -60,7 +60,7 @@ if($user->isLoggedIn()){
     }
     //link between two
     $conn->query("insert into LinkUser(scrapeUserID, usersID, needAction) values($scrape_link_id,$dbUserID,$scrapemode)");
-    echo 'insert success, ready to exit';
+    print 'insert success, ready to exit';
 }
 else{
     echo 'please login first';
