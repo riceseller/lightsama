@@ -47,21 +47,27 @@ if($user->isLoggedIn()){
     $row = mysqli_fetch_array($result);
     if($result->num_rows>0){
         //userID existed in ScrapeUser table
-        $scrape_link_id = $row->id;
+        $scrape_link_id = $row['id'];
         $scrapemode = 0;
     }else{
         //need to insert new scrape user
         $conn->query("insert into ScrapeUser(userID,Ubelong) values($flickr_userID,\'flickr\')");
         $result2 = $conn->query("select id from ScrapeUser where userID = $flickr_userID");
-        $scrape_link_id = mysqli_fetch_array($result2);
-        $scrape_link_id = $scrape_link_id->id;
+        $row2 = mysqli_fetch_array($result2);
+        $scrape_link_id = $row2['id'];
         //need to scrape this user in further script
         $scrapemode = 1;
     }
     //link between two
-    print "insert into LinkUser(scrapeUserID, usersID, needAction) values($scrape_link_id,$dbUserID,$scrapemode)";
-    $conn->query("insert into LinkUser(scrapeUserID, usersID, needAction) values($scrape_link_id,$dbUserID,$scrapemode)");
-    print 'insert success, ready to exit';
+    $query2 = "insert into LinkUser(scrapeUserID, usersID, needAction) values($scrape_link_id,$dbUserID,$scrapemode)";
+    print $query2;
+    if ($conn->query($query2) === True){
+        //insert success
+        print 'insert success, ready to exit';
+    }else{
+        print $conn->error;
+        print 'fail to insert due to duplicate';
+    }
 }
 else{
     echo 'please login first';
