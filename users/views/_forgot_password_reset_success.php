@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <div class="col-xs-12">
 <div class="jumbotron text-center">
 <h2>Your password has been reset!</h2>
-<p><a href="new_login.php" class="btn btn-primary">Login</a></p>
+<p><a href="new_login.php?category=login" class="btn btn-primary">Login</a></p>
 </div>	
 </div><!-- /.col -->
 </div><!-- /.row -->
