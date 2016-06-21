@@ -71,7 +71,7 @@ $through=$_GET["through"];          //for controling form submission use
 				//	require_once $abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php';
 				//}else{
 					//Feel free to change where the user goes after login!
-                    Redirect::to('../index.php');
+                    Redirect::to('../users/account.php');
 				//}
                 } //end of the validation code
                 else {
