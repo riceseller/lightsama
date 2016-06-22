@@ -363,11 +363,11 @@ else if($through=='signup')
           <form action="new_login.php?through=login" method="post" autocomplete="off">
           
             <div class="field-wrap">
-                <input type="text" name="username" placeholder="Username/Email" required autocomplete="off"/>
+                <input type="text" name="username" placeholder="Username/Email" value="" required autocomplete="off"/>
             </div>
           
             <div class="field-wrap">
-                <input type="password" name="password" placeholder="Password" required autocomplete="off"/>
+                <input type="password" name="password" placeholder="Password" value="" required autocomplete="off"/>
             </div>
           
           <p class="forgot"><a href="forgot_password.php">Forgot Password?</a></p>
