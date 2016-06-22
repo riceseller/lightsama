@@ -73,15 +73,24 @@ else{
             height: calc(100vh - 50px);
             order: 3;
         }
-        .container a{
+        .container div{
             display: flex;
             justify-content: center; /* align horizontal */
             align-items: center; /* align vertical */
             height: calc(100vh - 50px);
         }
-        #scrollb img{
+        .container a{
+            display: flex;
+            justify-content: center; /* align horizontal */
+            align-items: center; /* align vertical */
+            text-decoration: none;
+        }
+        .container #scrollb a{
+            width: calc(100% - 100px);
+        }
+        .scrollbIMG{
             object-fit: contain;
-            height: calc(100vh - 50px - 10%); /*addtional 100px margin */
+            height: calc(90vh - 50px); /*addtional 100px margin */
             width: calc(100% - 100px); /*addtional 100px margin */
         }
 </style>
@@ -364,14 +373,16 @@ else{
       
     <div class="container">
         <div id="scrolla">
-            <a style="text-decoration: none;" href="<?php if(mysqli_num_rows($result35)>0){
-                            $nextpid = $next[p_id];
-                            print "/indDisplay2.php?pid=$nextpid";}else{print "#";}?>">
+            <?php if(mysqli_num_rows($result35)>0): ?>
+                <a href="<?php $nextpid = $next[p_id]; print "/indDisplay2.php?pid=$nextpid";?> ">
+            <?php else: ?>
+                <a style="opacity: 0.1;">
+            <?php endif; ?>
                 <img src="/media/left_arrow.png" />
             </a>
         </div>
         <div id="scrollb">
-        <a  style="text-decoration: none;" href="<?php if($row['belong']=='500px')
+        <a class="scrollIMG" style="text-decoration: none;" href="<?php if($row['belong']=='500px')
                                                        {
                                                             $link="https://500px.com/photo/";
                                                             $link=$link . $pid;
@@ -386,14 +397,16 @@ else{
                                                         {
                                                             print $row['url']; 
                                                         }?>">
-            <img  class="effect" src="<?php print $row['url']?>" />
+            <img  class="scrollbIMG" src="<?php print $row['url']?>" />
         </a>
         </div>
         <div id="scrollc">
-            <a style="text-decoration: none;" href="<?php if(mysqli_num_rows($result34)>0){
-                            $prevpid = $prev[p_id];
-                            print "/indDisplay2.php?pid=$prevpid";}else{print "#";}?>">
-                <img src="/media/left_arrow_2.png" />
+            <?php if(mysqli_num_rows($result34)>0): ?>
+                <a href="<?php $prevpid = $prev[p_id]; print "/indDisplay2.php?pid=$prevpid";?> ">
+            <?php else: ?>
+                <a style="opacity: 0.1;">                
+            <?php endif; ?>
+                <img src="/media/right_arrow.png" />
             </a>
         </div>
     </div>
