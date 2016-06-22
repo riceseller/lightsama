@@ -23,6 +23,7 @@ $through=$_GET["through"];          //for controling form submission use
 <?php       //login handling set down here
     if($through=='login')
     {
+        $category='login';
         $settingsQ = $db->query("SELECT * FROM settings");
         $settings = $settingsQ->first();
         $error_message = '';
@@ -99,6 +100,7 @@ $through=$_GET["through"];          //for controling form submission use
 
 else if($through=='signup')
 {
+    $category='signup';
     if (!securePage($_SERVER['PHP_SELF'])){die();}
     $settingsQ = $db->query("SELECT * FROM settings");
     $settings = $settingsQ->first();
