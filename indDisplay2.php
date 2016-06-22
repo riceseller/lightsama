@@ -83,6 +83,7 @@ else{
             display: flex;
             justify-content: center; /* align horizontal */
             align-items: center; /* align vertical */
+            text-decoration: none;
         }
         .container #scrollb a{
             width: calc(100% - 100px);
@@ -372,9 +373,11 @@ else{
       
     <div class="container">
         <div id="scrolla">
-            <a style="text-decoration: none;" href="<?php if(mysqli_num_rows($result35)>0){
-                            $nextpid = $next[p_id];
-                            print "/indDisplay2.php?pid=$nextpid";}else{print "#";}?>">
+            <?php if(mysqli_num_rows($result35)>0): ?>
+                <a href="<?php $nextpid = $next[p_id]; print "/indDisplay2.php?pid=$nextpid";?> ">
+            <?php else: ?>
+                <a style="opacity: 0.1;">
+            <?php endif; ?>
                 <img src="/media/left_arrow.png" />
             </a>
         </div>
@@ -398,9 +401,11 @@ else{
         </a>
         </div>
         <div id="scrollc">
-            <a style="text-decoration: none;" href="<?php if(mysqli_num_rows($result34)>0){
-                            $prevpid = $prev[p_id];
-                            print "/indDisplay2.php?pid=$prevpid";}else{print "#";}?>">
+            <?php if(mysqli_num_rows($result34)>0): ?>
+                <a href="<?php $prevpid = $prev[p_id]; print "/indDisplay2.php?pid=$prevpid";?> ">
+            <?php else: ?>
+                <a style="opacity: 0.1;">                
+            <?php endif; ?>
                 <img src="/media/right_arrow.png" />
             </a>
         </div>
