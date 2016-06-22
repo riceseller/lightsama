@@ -15,7 +15,7 @@ else{
     #echo "<br><br><br><br><br>";     //debug
 }
 
-$query = "select c.*, u.url, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";
+$query = "select c.*, u.url, u.urlSource, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";
 $result=$conn->query($query);
 $row = mysqli_fetch_array($result);
 #page need to delete in future version
@@ -397,7 +397,7 @@ else{
                                                         {
                                                             print $row['url']; 
                                                         }?>">
-            <img  class="scrollbIMG" src="<?php print $row['url']?>" />
+            <img  class="scrollbIMG" src="<?php print $row['urlSource']?>" />
         </a>
         </div>
         <div id="scrollc">
