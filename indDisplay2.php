@@ -73,15 +73,23 @@ else{
             height: calc(100vh - 50px);
             order: 3;
         }
-        .container a{
+        .container div{
             display: flex;
             justify-content: center; /* align horizontal */
             align-items: center; /* align vertical */
             height: calc(100vh - 50px);
         }
-        #scrollb img{
+        .container a{
+            display: flex;
+            justify-content: center; /* align horizontal */
+            align-items: center; /* align vertical */
+        }
+        .container #scrollb a{
+            width: calc(100% - 100px);
+        }
+        .scrollbIMG{
             object-fit: contain;
-            height: calc(100vh - 50px - 10%); /*addtional 100px margin */
+            height: calc(90vh - 50px); /*addtional 100px margin */
             width: calc(100% - 100px); /*addtional 100px margin */
         }
 </style>
@@ -371,7 +379,7 @@ else{
             </a>
         </div>
         <div id="scrollb">
-        <a  style="text-decoration: none;" href="<?php if($row['belong']=='500px')
+        <a class="scrollIMG" style="text-decoration: none;" href="<?php if($row['belong']=='500px')
                                                        {
                                                             $link="https://500px.com/photo/";
                                                             $link=$link . $pid;
@@ -386,14 +394,14 @@ else{
                                                         {
                                                             print $row['url']; 
                                                         }?>">
-            <img  class="effect" src="<?php print $row['url']?>" />
+            <img  class="scrollbIMG" src="<?php print $row['url']?>" />
         </a>
         </div>
         <div id="scrollc">
             <a style="text-decoration: none;" href="<?php if(mysqli_num_rows($result34)>0){
                             $prevpid = $prev[p_id];
                             print "/indDisplay2.php?pid=$prevpid";}else{print "#";}?>">
-                <img src="/media/left_arrow_2.png" />
+                <img src="/media/right_arrow.png" />
             </a>
         </div>
     </div>
