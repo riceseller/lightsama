@@ -397,7 +397,7 @@ else if($through=='signup')
 </script>
 
 <script>
-     document.getElementById('form').reset();
+     document.getElementById('login').reset();
 </script>
 
     </body>
