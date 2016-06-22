@@ -12,7 +12,11 @@ ini_set("allow_url_fopen", 1);       //for controling initial display use
 $through=$_GET["through"];          //for controling form submission use
 ?>
 
-
+<script>
+    function passwordwrong() {
+    alert("login failed, please type in the correct username and password!");
+}
+</script>
 
 
 
@@ -76,6 +80,8 @@ $through=$_GET["through"];          //for controling form submission use
                 } //end of the validation code
                 else {
                     $error_message .= 'Log in failed. Please check your username and password and try again.';
+                    echo "<script>passwordwrong()</script>";
+                    $category='login';
                 }
             } else{
                 $error_message .= '<ul>';
@@ -316,7 +322,7 @@ else if($through=='signup')
                 }   //exact copy from join.php
             ?>
           
-        <form action="new_login.php?through=signup" method="POST">
+        <form action="new_login.php?through=signup" method="POST" autocomplete="off">
             <div class="top-row">
                 <div class="field-wrap">
                     <input type="text" placeholder="First Name" name="fname" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required autocomplete="off" />
@@ -354,7 +360,7 @@ else if($through=='signup')
             
           <h1>Welcome Back to Photolib</h1>
        
-          <form action="new_login.php?through=login" method="post">
+          <form action="new_login.php?through=login" method="post" autocomplete="off">
           
             <div class="field-wrap">
                 <input type="text" name="username" placeholder="Username/Email" required autocomplete="off"/>

@@ -7,6 +7,7 @@
 <html>
     
     <navheader>
+        <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="../proxima-nova.css">
         <style>
             topNav{
@@ -53,7 +54,7 @@
                 margin: 1px;
                 position: absolute;
                 top: 7px;
-                right: 170px;
+                right: 250px;
             }
             #searchBox{
                 border-radius: 2px;
