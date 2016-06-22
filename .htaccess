@@ -1,0 +1,7 @@
+
+
+
+
+
+#------prevent directory file listing in all of the folder
+IndexIgnore *
