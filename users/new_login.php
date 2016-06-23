@@ -385,15 +385,14 @@ else if($through=='signup')
       
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script type="text/javascript" src="css/reg/js/index.js"></script>
+
 <script>
     var mode = '<?php print $category; ?>';
     $( document ).ready(function(){
-    console.log(mode);
     if(mode==='login'){
-        $('#log').click();
-        console.log('click log');
+        $('#log').click();  //jump to log css
     }else{
-        $('#sup').click();
+        $('#sup').click();  //
     }
 });
 </script>
