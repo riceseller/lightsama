@@ -228,7 +228,7 @@ if ( !class_exists('phpFlickr') ) {
 				// added by sookoll (turn off ssl)
 				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 				curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
-                                print_r($curl);
+                                //print_r($curl);
 				$response = curl_exec($curl);
 				curl_close($curl);
 			} else {
@@ -270,7 +270,7 @@ if ( !class_exists('phpFlickr') ) {
 					$response = trim(strstr($response, "\r\n\r\n"));
 				}
 			}
-                        print_r($response);
+                        //print_r($response);
 			return $response;
 		}
 
@@ -286,12 +286,12 @@ if ( !class_exists('phpFlickr') ) {
 			if (!empty($this->token)) {
 				$args = array_merge($args, array("auth_token" => $this->token));
                                 echo 'this token method';
-                                print_r($this->token);
+                                //print_r($this->token);
 			} elseif (!empty($_SESSION['phpFlickr_auth_token'])) {
                                 $auth_token_correct = $_SESSION['phpFlickr_auth_token'];
 				$args = array_merge($args, array("auth_token" => array_values($auth_token_correct)[0]));
                                 echo 'session method';
-                                print_r($_SESSION['phpFlickr_auth_token']);
+                                //print_r($_SESSION['phpFlickr_auth_token']);
 			}
 			ksort($args);
 			$auth_sig = "";
@@ -309,7 +309,7 @@ if ( !class_exists('phpFlickr') ) {
 					$api_sig = md5($this->secret . $auth_sig);
 					$args['api_sig'] = $api_sig;
 				}
-                                print_r($args);
+                                //print_r($args);
 				$this->response = $this->post($args);
 				$this->cache($args, $this->response);
 			}
@@ -333,7 +333,7 @@ if ( !class_exists('phpFlickr') ) {
 				$this->error_code = false;
 				$this->error_msg = false;
 			}
-                        print_r($this->parsed_response);
+                        //print_r($this->parsed_response);
 			return $this->response;
 		}
 

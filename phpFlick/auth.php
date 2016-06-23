@@ -70,12 +70,16 @@ if($user->isLoggedIn()){
     if ($conn->query($query2) === True){
         //insert success
         print 'insert success, ready to exit';
+        echo '<script type="text/javascript">window.close();</script>';
     }else{
         print $conn->error;
-        print 'fail to insert due to duplicate';
+        echo '<script type="text/javascript">alert("possible duplicate linking or this account is belong to others");</script>';
+        echo "<script>window.location = 'http://db.luokerenz.com/users/account.php'</script>";
+        echo '<script type="text/javascript">window.close();</script>';
     }
 }
 else{
-    echo 'please login first';
+    echo '<script type="text/javascript">alert("please login first");</script>';
+    echo "<script>window.location = 'http://db.luokerenz.com'</script>";
 }
 ?>
