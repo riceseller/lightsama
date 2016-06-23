@@ -397,7 +397,7 @@ else{
                                                         {
                                                             print $row['url']; 
                                                         }?>">
-            <img  class="scrollbIMG" src="<?php print $row['urlSource']?>" />
+            <img  class="scrollbIMG" src="<?php if($row['urlSource']){print $row['urlSource'];}else{print $row['url'];}?>" />
         </a>
         </div>
         <div id="scrollc">
