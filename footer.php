@@ -1,5 +1,5 @@
 <style>
-    .footer{
+    footer{
         width: 100%;
         height: 100px;
         justify-content: center;
