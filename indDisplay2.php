@@ -669,14 +669,12 @@ else{
         </section>
         
         
-        
-        
-        
-        
-        
-        
-    </body>
-    <?php
+        <?php
         include "footer.php";
         ?>
+        
+          
+        
+    </body>
+    
 </html>
