@@ -15,9 +15,14 @@ else{
     #echo "<br><br><br><br><br>";     //debug
 }
 
-$query = "select c.*, u.url, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";
+$query = "select c.*, u.url, u.urlSource, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";
 $result=$conn->query($query);
 $row = mysqli_fetch_array($result);
+
+/*$userQuery = "";
+$resultUser = $conn->query($userQuery);
+$rowU = mysqli_fetch_array($resultUser);*/
+
 #page need to delete in future version
 $page = 1;
 
@@ -397,7 +402,7 @@ else{
                                                         {
                                                             print $row['url']; 
                                                         }?>">
-            <img  class="scrollbIMG" src="<?php print $row['url']?>" />
+            <img  class="scrollbIMG" src="<?php if($row['urlSource']){print $row['urlSource'];}else{print $row['url'];}?>" />
         </a>
         </div>
         <div id="scrollc">
@@ -449,11 +454,13 @@ else{
                         {
                             echo "<p> Need Scrape </p>";
                         }
-                        else
+                        elseif($row['displayName'])
                         {
-                            echo "<p> ".$row[displayName]." </p>";
+                            echo "<p><a href=\"../indUser.php?id=$row[id]\">$row[displayName]</a></p>";
                             //echo "<font size=12> ".$row2[model]."</font>";
-                        }
+                        }else{
+                            echo "<p> null displayName </p>";
+                        }                           
                     ?>
                 </div>      
                 <div class="title">

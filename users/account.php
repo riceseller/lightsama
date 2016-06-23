@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <?php require_once 'init.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+<?php require_once "../supplyment/dbAccess.php"; ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}
  if ($settings->site_offline==1){die("The site is currently offline.");}?>
@@ -33,6 +34,12 @@ $signupdate = $raw['month']."/".$raw['day']."/".$raw['year'];
 $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
  ?>
 
+<?php
+    $query = "select scrapeUserID from LinkUser where usersID=$get_info_id";
+    $result=$conn->query($query);
+    $row = mysqli_fetch_array($result);
+?>
+
 <div id="page-wrapper">
 <div class="container">
 <div class="well">
@@ -42,6 +49,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
 		<p><a href="user_settings.php" class="btn btn-primary">Edit Account Info</a></p>
 		<p><a class="btn btn-primary " href="profile.php?id=<?=$get_info_id;?>" role="button">Public Profile</a></p>
                 <p><a href="../phpFlick/auth.php" target="_blank">verify your flickr account</a></p>
+                <p><a href="../indUser.php?id=<?php print $row[scrapeUserID]; ?>">your linked account</a></p>
 	</div>
 	<div class="col-xs-12 col-md-9">
 		<h1><?=ucfirst($user->data()->username)?></h1>
