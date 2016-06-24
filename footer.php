@@ -81,7 +81,7 @@
         align-items: center;
         text-align: right;
     }
-    footer .description a.link{
+    footer .link a{
         font-size:14px;
         line-height: 1.4em;
         color: white;
