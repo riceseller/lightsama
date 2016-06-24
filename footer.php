@@ -14,7 +14,7 @@
     footer .logo{
         width: 30%;
         height: 240px;
-        display: flex;
+        display: block;
         position: relative;
         order: 1;
         border: 3px solid white;
@@ -23,7 +23,7 @@
         text-align: center
     }
     
-    footer p{
+    footer .logo p{
         font-size: 20px;
         line-height: 1.4em;
         color: white;
