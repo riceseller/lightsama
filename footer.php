@@ -17,6 +17,7 @@
         display: block;
         position: relative;
         order: 1;
+        border: 3px solid white;
     }
     
     p.logo{
