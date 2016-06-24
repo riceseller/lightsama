@@ -75,7 +75,7 @@
         <p>PHOTOLIB</p>
     </div>
     <div class="description">
-        <p class="title">About</p><br><br>
+        <p class="title">About</p><br>
         <p class="descript">photolib is a website for indexing pictures only</p>
     </div>
 </footer>
