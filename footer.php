@@ -12,9 +12,9 @@
     }
     
     footer .logo{
-        width: 35%;
+        width: 30%;
         height: 240px;
-        display: block;
+        display: flex;
         position: relative;
         order: 1;
         border: 3px solid white;
