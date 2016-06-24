@@ -27,7 +27,6 @@
         font-size: 25px;
         font-weight: bold;
         line-height: 2.4em;
-        color: white;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
         TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
         Arial, sans-serif;
@@ -41,7 +40,6 @@
         display: block;
         position: relative;
         order: 2;
-        border: 3px solid white;
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -76,7 +74,6 @@
         display: block;
         position: relative;
         order: 3;
-        border: 3px solid white;
         justify-content: center;
         align-items: center;
         text-align: right;
