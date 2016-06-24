@@ -47,7 +47,7 @@
     
     
     footer .description p.title{
-        font-size: 14px;
+        font-size: 20px;
         font-weight: bold;
         text-transform: uppercase;
         line-height: 1.4em;
@@ -59,7 +59,7 @@
     }   
     
     footer .description p.descript{
-        font-size: 10px;
+        font-size:14px;
         line-height: 1.4em;
         color: white;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
