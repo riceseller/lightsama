@@ -18,6 +18,8 @@
         position: relative;
         order: 1;
         border: 3px solid white;
+        justify-content: center;
+        align-items: center;
     }
     
     footer p{
