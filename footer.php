@@ -13,7 +13,7 @@
     
     footer .logo{
         width: 35%;
-        height: 245px;
+        height: 240px;
         display: block;
         position: relative;
         order: 1;
@@ -23,7 +23,10 @@
     p.logo{
         font-size: 20px;
         line-height: 1.4em;
-        color: #ffffff;
+        color: white;
+        font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
+        TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
+        Arial, sans-serif;
     }    
 </style>
 
