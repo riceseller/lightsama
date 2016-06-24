@@ -32,6 +32,6 @@
 
 <footer>
     <div class="logo">
-        <p>PHOTOLIB</p>
+        <p color="white">PHOTOLIB</p>
     </div>
 </footer>
