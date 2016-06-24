@@ -32,7 +32,7 @@
         TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
         Arial, sans-serif;
         position: relative;
-        padding: 5px;
+        padding: 15px;
     }    
     
     footer .description{
