@@ -119,7 +119,7 @@ top:17%;
 margin-left:-202px;
 font-family:'Raleway',sans-serif
 }
-form {
+form2 {
 max-width:300px;
 min-width:250px;
 padding:10px 50px;
@@ -128,7 +128,7 @@ border-radius:10px;
 font-family:raleway;
 background-color:#fff
 }
-p {
+p2 {
 margin-top:30px
 }
 h2 {
@@ -190,11 +190,11 @@ font-size:20px;
 cursor:pointer;
 border-radius:5px
 }
-span {
+span2 {
 color:red;
 font-weight:700
 }
-button {
+button2 {
 width:10%;
 height:45px;
 border-radius:3px;
