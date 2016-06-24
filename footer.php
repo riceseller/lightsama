@@ -71,7 +71,7 @@
     }    
     
     footer .link{
-        width: 38%;
+        width: 32%;
         height: 240px;
         display: block;
         position: relative;
