@@ -151,7 +151,7 @@
             </div>
                         
             <div class="logo">
-                <a  class="nav" href="http://db.luokerenz.com" >PHOTOLIB</a>
+                <a  class="nav" href="http://db.luokerenz.com" >HAILOINN</a>
             </div>
             
             <div id='search'>
