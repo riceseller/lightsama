@@ -1,7 +1,7 @@
 <style>
     footer{
         width: 100%;
-        height: 250px;
+        height: 150px;
         justify-content: flex-start;
         align-items: center;
         background: black;
@@ -13,7 +13,7 @@
     
     footer .logo{
         width: 20%;
-        height: 240px;
+        height: 140px;
         display: block;
         position: relative;
         order: 1;
@@ -37,7 +37,7 @@
     
     footer .description{
         width: 30%;
-        height: 240px;
+        height: 140px;
         display: block;
         position: relative;
         order: 2;
@@ -72,7 +72,7 @@
     
     footer .link{
         width: 32%;
-        height: 240px;
+        height: 140px;
         display: block;
         position: relative;
         order: 3;
