@@ -83,7 +83,7 @@
     }
     footer .link a{
         font-size:14px;
-        padding: 30px;
+        padding: 19px;
         color: white;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
         TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
@@ -104,6 +104,6 @@
     </div>
     <div class="link">
         <br>
-        <a>term/privacy</a>
+        <a>term/privacy</a><br>
     </div>
 </footer>
