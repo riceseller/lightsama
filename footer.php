@@ -20,6 +20,7 @@
         border: 3px solid white;
         justify-content: center;
         align-items: center;
+        text-align: center
     }
     
     footer p{
