@@ -17,7 +17,6 @@
         display: block;
         position: relative;
         order: 1;
-        border: 3px solid white;
         justify-content: center;
         align-items: center;
         text-align: left;
@@ -25,6 +24,7 @@
     
     footer .logo p{
         font-size: 25px;
+        color: white;
         font-weight: bold;
         line-height: 2.4em;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
