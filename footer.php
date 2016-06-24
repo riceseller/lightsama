@@ -24,7 +24,8 @@
     }
     
     footer .logo p{
-        font-size: 40px;
+        font-size: 25px;
+        font-weight: bold;
         line-height: 1.4em;
         color: white;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
