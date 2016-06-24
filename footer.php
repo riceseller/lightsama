@@ -1,7 +1,7 @@
 <style>
     footer{
         width: 100%;
-        height: 100px;
+        height: 300px;
         justify-content: center;
         align-items: center;
         background: black;
@@ -13,5 +13,4 @@
 </style>
 
 <footer>
-    <p>position here</p>
 </footer>
