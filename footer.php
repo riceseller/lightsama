@@ -72,7 +72,7 @@
     
     footer .link{
         width: 32%;
-        height: 140px;
+        height: 190px;
         display: block;
         position: relative;
         order: 3;
