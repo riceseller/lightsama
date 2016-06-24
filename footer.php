@@ -105,5 +105,6 @@
     <div class="link">
         <br>
         <a>term/privacy</a><br>
+        <a>Report a bug</a>
     </div>
 </footer>
