@@ -12,7 +12,7 @@
     }
     
     footer .logo{
-        width: 30%;
+        width: 20%;
         height: 240px;
         display: block;
         position: relative;
