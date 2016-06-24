@@ -47,7 +47,19 @@
     
     
     footer .description p.title{
-        font-size: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 1.4em;
+        color: white;
+        font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
+        TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
+        Arial, sans-serif;
+        position: relative;
+    }   
+    
+    footer .description p.descript{
+        font-size: 10px;
         line-height: 1.4em;
         color: white;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
@@ -63,6 +75,7 @@
         <p>PHOTOLIB</p>
     </div>
     <div class="description">
-        <p class="title">About</p>
+        <p class="title">About</p><br><br>
+        <p class="descript">photolib is a website for indexing pictures only</p>
     </div>
 </footer>
