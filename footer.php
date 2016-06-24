@@ -20,7 +20,7 @@
         border: 3px solid white;
     }
     
-    p.logo{
+    footer p{
         font-size: 20px;
         line-height: 1.4em;
         color: white;
@@ -32,6 +32,6 @@
 
 <footer>
     <div class="logo">
-        <p color="white">PHOTOLIB</p>
+        <p>PHOTOLIB</p>
     </div>
 </footer>
