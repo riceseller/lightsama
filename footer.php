@@ -84,7 +84,6 @@
     footer .link a{
         font-size:14px;
         padding: 30px;
-        line-height: 1.4em;
         color: white;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
         TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
@@ -104,6 +103,7 @@
         <p class="descript">photolib is a website for indexing pictures only</p>
     </div>
     <div class="link">
+        <br>
         <a>term/privacy</a>
     </div>
 </footer>
