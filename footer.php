@@ -92,4 +92,7 @@
         <p class="title">About</p><br>
         <p class="descript">photolib is a website for indexing pictures only</p>
     </div>
+    <div class="link">
+        
+    </div>
 </footer>
