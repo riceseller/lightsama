@@ -26,7 +26,7 @@
     footer .logo p{
         font-size: 25px;
         font-weight: bold;
-        line-height: 1.4em;
+        line-height: 2.4em;
         color: white;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
         TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
