@@ -81,6 +81,16 @@
         align-items: center;
         text-align: right;
     }
+    footer .description a.link{
+        font-size:14px;
+        line-height: 1.4em;
+        color: white;
+        font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
+        TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
+        Arial, sans-serif;
+        position: relative;
+        text-decoration: underline;
+    }    
     
 </style>
 
@@ -93,6 +103,6 @@
         <p class="descript">photolib is a website for indexing pictures only</p>
     </div>
     <div class="link">
-        
+        <a>term/privacy</a>
     </div>
 </footer>
