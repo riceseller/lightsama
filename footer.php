@@ -20,11 +20,11 @@
         border: 3px solid white;
         justify-content: center;
         align-items: center;
-        text-align: center
+        text-align: center;
     }
     
     footer .logo p{
-        font-size: 20px;
+        font-size: 40px;
         line-height: 1.4em;
         color: white;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
@@ -32,10 +32,26 @@
         Arial, sans-serif;
         position: relative;
     }    
+    
+    footer .description{
+        width: 30%;
+        height: 240px;
+        display: block;
+        position: relative;
+        order: 1;
+        border: 3px solid white;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
 </style>
 
 <footer>
     <div class="logo">
         <p>PHOTOLIB</p>
+    </div>
+    <div class="description">
+        
     </div>
 </footer>
