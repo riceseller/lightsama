@@ -107,7 +107,6 @@
         <a>term/privacy</a>
         <br>
         <br>
-        <br>
         <a>Report a bug</a>
     </div>
 </footer>
