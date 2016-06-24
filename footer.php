@@ -83,6 +83,7 @@
     }
     footer .link a{
         font-size:14px;
+        padding: 30px;
         line-height: 1.4em;
         color: white;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
