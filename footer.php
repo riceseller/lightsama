@@ -2,7 +2,7 @@
     footer{
         width: 100%;
         height: 250px;
-        justify-content: space-around;
+        justify-content: flex-start;
         align-items: center;
         background: black;
         text-decoration: none;
