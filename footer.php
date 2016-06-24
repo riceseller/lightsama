@@ -40,7 +40,7 @@
         height: 240px;
         display: block;
         position: relative;
-        order: 1;
+        order: 2;
         border: 3px solid white;
         justify-content: center;
         align-items: center;
@@ -69,6 +69,18 @@
         Arial, sans-serif;
         position: relative;
     }    
+    
+    footer .link{
+        width: 45%;
+        height: 240px;
+        display: block;
+        position: relative;
+        order: 3;
+        border: 3px solid white;
+        justify-content: center;
+        align-items: center;
+        text-align: right;
+    }
     
 </style>
 
