@@ -94,7 +94,6 @@
 
 
 <style>
-    
     #abc {     //this is pop-up whole cover
         width:100%;
         height:100%;
@@ -128,8 +127,82 @@
         font-family:raleway;
         background-color:#fff
     }
-    
-    
+    #abc p {
+        margin-top:30px
+    }
+    #abc h2 {
+        background-color:#FEFFED;
+        padding:20px 35px;
+        margin:-10px -50px;
+        text-align:center;
+        border-radius:10px 10px 0 0
+    }
+    #abc hr {
+        margin:10px -50px;
+        border:0;
+        border-top:1px solid #ccc
+    }
+    #abc input[type=text] {
+        width:82%;
+        padding:10px;
+        margin-top:30px;
+        border:1px solid #ccc;
+        padding-left:40px;
+        font-size:16px;
+        font-family:raleway
+    }
+    #abc #name {
+        background-image:url(../images/name.jpg);
+        background-repeat:no-repeat;
+        background-position:5px 7px
+    }
+    #abc #email {
+        background-image:url(../images/email.png);
+        background-repeat:no-repeat;
+        background-position:5px 7px
+    }
+    #abc textarea {
+        background-image:url(../images/msg.png);
+        background-repeat:no-repeat;
+        background-position:5px 7px;
+        width:82%;
+        height:95px;
+        padding:10px;
+        resize:none;
+        margin-top:30px;
+        border:1px solid #ccc;
+        padding-left:40px;
+        font-size:16px;
+        font-family:raleway;
+        margin-bottom:30px
+    }
+    #abc #submit {
+        text-decoration:none;
+        width:100%;
+        text-align:center;
+        display:block;
+        background-color:#FFBC00;
+        color:#fff;
+        border:1px solid #FFCB00;
+        padding:10px 0;
+        font-size:20px;
+        cursor:pointer;
+        border-radius:5px
+    }
+    #abc span {
+        color:red;
+        font-weight:700
+    }
+    #abc button {
+        width:10%;
+        height:45px;
+        border-radius:3px;
+        background-color:#cd853f;
+        color:#fff;
+        font-family:'Raleway',sans-serif;
+        font-size:18px;
+        cursor:pointer
+    } 
 </style>
 
 
