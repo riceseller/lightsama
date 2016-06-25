@@ -119,6 +119,15 @@
         margin-left:-202px;
         font-family:'Raleway',sans-serif
     }
+    #abc form {
+        max-width:300px;
+        min-width:250px;
+        padding:10px 50px;
+        border:2px solid gray;
+        border-radius:10px;
+        font-family:raleway;
+        background-color:#fff
+    }
     
     
 </style>
