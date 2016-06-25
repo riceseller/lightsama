@@ -94,7 +94,7 @@
 
 
 <style>
-    #abc {     //this is pop-up whole cover
+    #abc {     
         width:100%;
         height:100%;
         opacity:.95;
@@ -242,9 +242,26 @@
     </div>
     <div class="link">
         <br>
-        <a>term/privacy</a>
+        <a onclick="div_show()">term/privacy</a>
         <br>
         <br>
         <a>Report a bug</a>
     </div>
 </footer>
+
+<div id="abc">
+<!-- Popup Div Starts Here -->
+<div id="popupContact">
+<!-- Contact Us Form -->
+<form action="#" id="form" method="post" name="form">
+<img id="close" src="images/3.png" onclick ="div_hide()">
+<h2>Contact Us</h2>
+<hr>
+<input id="name" name="name" placeholder="Name" type="text">
+<input id="email" name="email" placeholder="Email" type="text">
+<textarea id="msg" name="message" placeholder="Message"></textarea>
+<a href="javascript:%20check_empty()" id="submit">Send</a>
+</form>
+</div>
+<!-- Popup Div Ends Here -->
+</div>
