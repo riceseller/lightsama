@@ -93,6 +93,31 @@
 </style>
 
 
+<style>
+    
+    #abc {     //this is pop-up whole cover
+    width:100%;
+    height:100%;
+    opacity:.95;
+    top:0;
+    left:0;
+    display:none;
+    position:fixed;
+    background-color:#313131;
+    overflow:auto
+    }
+    #abc img #close {
+    position:absolute;
+    right:-14px;
+    top:-14px;
+    cursor:pointer
+    }
+    
+    
+</style>
+
+
+
 
 
 
