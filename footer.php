@@ -79,7 +79,7 @@
         align-items: center;
         text-align: right;
     }
-    footer .link a{
+    footer .link button{
         font-size:14px;
         padding: 19px;
         color: white;
@@ -243,10 +243,10 @@
     </div>
     <div class="link">
         <br>
-        <a onclick="return div_show()">term/privacy</a>
+        <button>term/privacy</button>
         <br>
         <br>
-        <a>Report a bug</a>
+        <button onclick="return div_show()">Report a bug</button>
     </div>
 </footer>
 
