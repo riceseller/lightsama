@@ -246,7 +246,7 @@
         <button>term/privacy</button>
         <br>
         <br>
-        <button onclick="return div_show()">Report a bug</button>
+        <button onclick="div_show()">Report a bug</button>
     </div>
 </footer>
 
