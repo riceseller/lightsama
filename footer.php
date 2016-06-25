@@ -79,7 +79,7 @@
         align-items: center;
         text-align: right;
     }
-    footer .link a{
+    footer .link button{
         font-size:14px;
         padding: 19px;
         color: white;
