@@ -96,21 +96,28 @@
 <style>
     
     #abc {     //this is pop-up whole cover
-    width:100%;
-    height:100%;
-    opacity:.95;
-    top:0;
-    left:0;
-    display:none;
-    position:fixed;
-    background-color:#313131;
-    overflow:auto
+        width:100%;
+        height:100%;
+        opacity:.95;
+        top:0;
+        left:0;
+        display:none;
+        position:fixed;
+        background-color:#313131;
+        overflow:auto
     }
     #abc img #close {
-    position:absolute;
-    right:-14px;
-    top:-14px;
-    cursor:pointer
+        position:absolute;
+        right:-14px;
+        top:-14px;
+        cursor:pointer
+    }
+    #abc div #popupContact {
+        position:absolute;  
+        left:50%;
+        top:17%;
+        margin-left:-202px;
+        font-family:'Raleway',sans-serif
     }
     
     
