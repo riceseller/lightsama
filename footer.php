@@ -248,6 +248,9 @@
         <br>
         
         
+        
+        
+        
         <a onclick="return div_show()">Report a bug</a>
     </div>
 </footer>
