@@ -79,7 +79,7 @@
         align-items: center;
         text-align: right;
     }
-    footer .link button{
+    footer .link a{
         font-size:14px;
         padding: 19px;
         color: white;
@@ -246,7 +246,7 @@
         <a>term/privacy</a>
         <br>
         <br>
-        <a href="../index.php">Report a bug</a>
+        <a onclick="return div_show()">Report a bug</a>
     </div>
 </footer>
 
