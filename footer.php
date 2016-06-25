@@ -223,6 +223,7 @@
     //Function To Display Popup
     function div_show() {
         document.getElementById('abc').style.display = "block";
+        return true;
     }
     //Function to Hide Popup
     function div_hide(){
@@ -242,7 +243,7 @@
     </div>
     <div class="link">
         <br>
-        <a onclick="div_show()">term/privacy</a>
+        <a onclick="return div_show()">term/privacy</a>
         <br>
         <br>
         <a>Report a bug</a>
