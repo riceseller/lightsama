@@ -246,7 +246,7 @@
         <a>term/privacy</a>
         <br>
         <br>
-        <a href="div_show()">Report a bug</a>
+        <a href="../index.php">Report a bug</a>
     </div>
 </footer>
 
