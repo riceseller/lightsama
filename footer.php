@@ -43,7 +43,7 @@
         order: 2;
         justify-content: center;
         align-items: center;
-        text-align: center;
+        text-align: left;
     }
     
     
@@ -164,13 +164,13 @@
         background-position:0px 0px
     }
     #abc #email {
-        background-image:url(/media/email.png);
-        background-size: contain;
+        background-image:url(/media/msg.png);
+        background-size: 35px 37.1px;
         background-repeat:no-repeat;
         background-position:0px 0px
     }
     #abc textarea {
-        background-image:url(/media/msg.png);
+        background-image:url(/media/email.png);
         background-size: 37px 37px;
         background-repeat:no-repeat;
         background-position:0px 0px;
