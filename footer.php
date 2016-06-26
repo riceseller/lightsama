@@ -79,7 +79,7 @@
         align-items: center;
         text-align: right;
     }
-    footer .link a{
+    footer .link button{
         font-size:14px;
         padding: 19px;
         color: white;
@@ -88,6 +88,12 @@
         Arial, sans-serif;
         position: relative;
         text-decoration: underline;
+        background-color: black;
+        padding: 2px 6px 2px 6px;
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 0;
+        border-left: 0;
     }    
     
 </style>
@@ -105,13 +111,13 @@
         background-color:#313131;
         overflow:auto
     }
-    #abc img #close {
+    #abc #close {
         position:absolute;
         right:-14px;
         top:-14px;
         cursor:pointer
     }
-    #abc div #popupContact {
+    #abc #popupContact {
         position:absolute;  
         left:50%;
         top:17%;
@@ -152,19 +158,22 @@
         font-family:raleway
     }
     #abc #name {
-        background-image:url(../images/name.jpg);
+        background-image:url(/media/name.png);
+        background-size: contain;
         background-repeat:no-repeat;
-        background-position:5px 7px
+        background-position:0px 0px
     }
     #abc #email {
-        background-image:url(../images/email.png);
+        background-image:url(/media/email.png);
+        background-size: contain;
         background-repeat:no-repeat;
-        background-position:5px 7px
+        background-position:0px 0px
     }
     #abc textarea {
-        background-image:url(../images/msg.png);
+        background-image:url(/media/msg.png);
+        background-size: 37px 37px;
         background-repeat:no-repeat;
-        background-position:5px 7px;
+        background-position:0px 0px;
         width:82%;
         height:95px;
         padding:10px;
@@ -228,6 +237,9 @@
     //Function to Hide Popup
     function div_hide(){
         document.getElementById('abc').style.display = "none";
+        
+        
+   
     }
 </script>
 
@@ -243,31 +255,26 @@
     </div>
     <div class="link">
         <br>
-        <a>term/privacy</a>
+        <button>term/privacy</button>
         <br>
         <br>
-        
-        
-        
-        
-        
-        <a onclick="return div_show()">Report a bug</a>
+        <button onclick="div_show()">Report a bug</button>
     </div>
 </footer>
 
 <div id="abc">
-<!-- Popup Div Starts Here -->
-<div id="popupContact">
-<!-- Contact Us Form -->
-<form action="#" id="form" method="post" name="form">
-<img id="close" src="images/3.png" onclick ="div_hide()">
-<h2>Contact Us</h2>
-<hr>
-<input id="name" name="name" placeholder="Name" type="text">
-<input id="email" name="email" placeholder="Email" type="text">
-<textarea id="msg" name="message" placeholder="Message"></textarea>
-<a href="javascript:%20check_empty()" id="submit">Send</a>
-</form>
-</div>
+    <!-- Popup Div Starts Here -->
+    <div id="popupContact">
+    <!-- Contact Us Form -->
+        <form action="#" id="form" method="post" name="form">
+            <img id="close" src="media/close.png" onclick ="div_hide()">
+            <h2>Contact Us</h2>
+            <hr>
+            <input id="name" name="name" placeholder="Name" type="text">
+            <input id="email" name="email" placeholder="Email" type="text">
+            <textarea id="msg" name="message" placeholder="Message"></textarea>
+            <a href="javascript:%20check_empty()" id="submit">Send</a>
+        </form>
+    </div>
 <!-- Popup Div Ends Here -->
 </div>
