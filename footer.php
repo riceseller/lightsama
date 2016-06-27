@@ -473,7 +473,7 @@
     <div id="popupContact">
     <!-- Contact Us Form -->
         <form action="<?=$us_url_root?>emailresponse.php" id="form" method="post" name="form">
-            <img id="close" src="media/close.png" onclick ="div_hide()">
+            <img id="close" src="../media/close.png" onclick ="div_hide()">
             <h2>Report Problem</h2>
             <hr>
             <input id="name" name="name" placeholder="Name" type="text">
