@@ -1,6 +1,6 @@
 <?php
 require_once 'init.php';
-include "supplyment/dbAccess.php";
+//include "supplyment/dbAccess.php";
 $purpose=$_GET["purpose"];
 $name=$_POST["name"];
 $email=$_POST["email"];
