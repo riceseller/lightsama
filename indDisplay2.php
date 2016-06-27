@@ -670,6 +670,7 @@ else{
         
         
         <?php
+        echo "SECTION HERE!!!!!!!!!!!!!!";
         include "footer.php";
         ?>
         
