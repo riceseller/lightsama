@@ -339,13 +339,13 @@
         font-size:16px;
         font-family:raleway
     }
-    #abc3 #name {
+    #abc3 #name2 {
         background-image:url(/media/name.png);
         background-size: contain;
         background-repeat:no-repeat;
         background-position:0px 0px
     }
-    #abc3 #email {
+    #abc3 #email2 {
         background-image:url(/media/msg.png);
         background-size: 35px 37.1px;
         background-repeat:no-repeat;
