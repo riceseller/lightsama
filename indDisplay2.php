@@ -375,7 +375,7 @@ else{
             );
         };
     </script>
-      
+    <body>
     <div class="container">
         <div id="scrolla">
             <?php if(mysqli_num_rows($result35)>0): ?>
