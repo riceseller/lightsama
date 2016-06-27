@@ -32,11 +32,12 @@ else
 {
     echo "you come here from a wrong place";
 }
-/*
+
 if($mail_result)
 {
     echo "message sent successfully";
 }
+/*
 else
 {
     echo "message sent fail, please contact admin";
