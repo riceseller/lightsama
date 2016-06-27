@@ -1,5 +1,5 @@
 <?php
-require_once 'init.php';
+require_once 'users/init.php';
 //include "supplyment/dbAccess.php";
 $purpose=$_GET["purpose"];
 $name=$_POST["name"];
