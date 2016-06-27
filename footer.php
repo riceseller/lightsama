@@ -7,8 +7,9 @@
         background: black;
         text-decoration: none;
         display: flex;
-        position: relative;
-        order: 20;    
+        position: fixed;
+        bottom: 0;
+        left: 0;
     }   
     footer .logo{
         width: 20%;
