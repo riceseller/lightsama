@@ -10,20 +10,37 @@ $db = DB::getInstance();
 $query = $db->query("SELECT * FROM email");
 $results = $query->first();
 
-echo $results->email_login;
+$to=$results->email_login;
 
 if($purpose=="bug")
 {
+    $subject="a bug to report";
     $body="someone has a bug to report, here is his find: ".$message." ";
-    echo $body;
-    
+    $mail_result=email($to,$subject,$body); 
+}
+
+else if($purpose=="contact")
+{
+    $subject="someone just left you a message";
+    $body="someone is giving you a word, here is the message: ".$message."";
+    $mail_result=email($to, $subject, $body);
+}
+else
+{
+    echo "you come here from a wrong place";
+}
+
+if($mail_result)
+{
+    echo "message sent successfully";
+}
+else
+{
+    echo "message sent fail, please contact admin";
 }
 
 
-echo $purpose;
-echo $name;
-echo $email;
-echo $message;
+
 
 ?>
 
