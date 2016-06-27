@@ -70,7 +70,7 @@
     }    
     
     footer .link{
-        width: 47%;
+        width: 49%;
         height: 140px;
         display: block;
         position: relative;
@@ -94,6 +94,7 @@
         border-right: 0;
         border-bottom: 0;
         border-left: 0;
+        text-align: right;
     }    
     
 </style>
@@ -214,9 +215,181 @@
     } 
 </style>
 
+<style>
+    #abc2 {     
+        width:100%;
+        height:100%;
+        opacity:.95;
+        top:0;
+        left:0;
+        display:none;
+        position:fixed;
+        background-color:#313131;
+        overflow:auto
+    }   
+    #abc2 #close {
+        position:absolute;
+        right:-14px;
+        top:-14px;
+        cursor:pointer
+    }
+    #abc2 #popupContact {
+        position:absolute;  
+        left:50%;
+        top:17%;
+        margin-left:-202px;
+        font-family:'Raleway',sans-serif
+    }
+    #abc2 #term {
+        width:300px;
+        width:250px;
+        padding:10px 50px;
+        border:2px solid gray;
+        border-radius:10px;
+        font-family:raleway;
+        background-color:#fff
+    }
+    #abc2 h2 {
+        background-color:#FEFFED;
+        padding:20px 35px;
+        margin:-10px -50px;
+        text-align:center;
+        border-radius:10px 10px 0 0
+    }
+    #abc2 hr {
+        margin:10px -50px;
+        border:0;
+        border-top:1px solid #ccc
+    }
+    #abc2 textarea {
+        background-size: 37px 37px;
+        background-repeat:no-repeat;
+        background-position:0px 0px;
+        width:82%;
+        height:95px;
+        padding:10px;
+        resize:none;
+        border:none;
+        font-family:raleway;
+    }
+</style>
 
 
 
+<style>
+    #abc3 {     
+        width:100%;
+        height:100%;
+        opacity:.95;
+        top:0;
+        left:0;
+        display:none;
+        position:fixed;
+        background-color:#313131;
+        overflow:auto
+    }
+    #abc3 #close {
+        position:absolute;
+        right:-14px;
+        top:-14px;
+        cursor:pointer
+    }
+    #abc3 #popupContact {
+        position:absolute;  
+        left:50%;
+        top:17%;
+        margin-left:-202px;
+        font-family:'Raleway',sans-serif
+    }
+    #abc3 form {
+        max-width:300px;
+        min-width:250px;
+        padding:10px 50px;
+        border:2px solid gray;
+        border-radius:10px;
+        font-family:raleway;
+        background-color:#fff
+    }
+    #abc3 p {
+        margin-top:30px
+    }
+    #abc3 h2 {
+        background-color:#FEFFED;
+        padding:20px 35px;
+        margin:-10px -50px;
+        text-align:center;
+        border-radius:10px 10px 0 0
+    }
+    #abc3 hr {
+        margin:10px -50px;
+        border:0;
+        border-top:1px solid #ccc
+    }
+    #abc3 input[type=text] {
+        width:82%;
+        padding:10px;
+        margin-top:30px;
+        border:1px solid #ccc;
+        padding-left:40px;
+        font-size:16px;
+        font-family:raleway
+    }
+    #abc3 #name {
+        background-image:url(/media/name.png);
+        background-size: contain;
+        background-repeat:no-repeat;
+        background-position:0px 0px
+    }
+    #abc3 #email {
+        background-image:url(/media/msg.png);
+        background-size: 35px 37.1px;
+        background-repeat:no-repeat;
+        background-position:0px 0px
+    }
+    #abc3 textarea {
+        background-image:url(/media/email.png);
+        background-size: 37px 37px;
+        background-repeat:no-repeat;
+        background-position:0px 0px;
+        width:82%;
+        height:95px;
+        padding:10px;
+        resize:none;
+        margin-top:30px;
+        border:1px solid #ccc;
+        padding-left:40px;
+        font-size:16px;
+        font-family:raleway;
+        margin-bottom:30px
+    }
+    #abc3 #submit {
+        text-decoration:none;
+        width:100%;
+        text-align:center;
+        display:block;
+        background-color:#FFBC00;
+        color:#fff;
+        border:1px solid #FFCB00;
+        padding:10px 0;
+        font-size:20px;
+        cursor:pointer;
+        border-radius:5px
+    }
+    #abc3 span {
+        color:red;
+        font-weight:700
+    }
+    #abc3 button {
+        width:10%;
+        height:45px;
+        border-radius:3px;
+        background-color:#cd853f;
+        color:#fff;
+        font-family:'Raleway',sans-serif;
+        font-size:18px;
+        cursor:pointer;
+    } 
+</style>
 
 
 <script>
@@ -238,9 +411,34 @@
     function div_hide(){
         document.getElementById('abc').style.display = "none";
         
-        
+         //Function To Display Popup
    
     }
+    function div_show2() {
+        document.getElementById('abc2').style.display = "block";
+        return true;
+    }
+    function div_hide2(){
+        document.getElementById('abc2').style.display = "none";
+        
+         //Function To Display Popup
+   
+    }
+    
+    function div_show3() {
+        document.getElementById('abc3').style.display = "block";
+        return true;
+    }
+    function div_hide3(){
+        document.getElementById('abc3').style.display = "none";
+        
+         //Function To Display Popup
+   
+    }
+    
+    
+    
+    
 </script>
 
 
@@ -255,10 +453,13 @@
     </div>
     <div class="link">
         <br>
-        <button>term/privacy</button>
+        <button onclick="div_show2()">term/privacy</button>
         <br>
         <br>
         <button onclick="div_show()">Report a bug</button>
+        <br>
+        <br>
+        <button onclick="div_show3()">Contact Us</button>
     </div>
 </footer>
 
@@ -268,11 +469,39 @@
     <!-- Contact Us Form -->
         <form action="#" id="form" method="post" name="form">
             <img id="close" src="media/close.png" onclick ="div_hide()">
+            <h2>Report Problem</h2>
+            <hr>
+            <input id="name" name="name" placeholder="Name" type="text">
+            <input id="email" name="email" placeholder="Email" type="text">
+            <textarea id="msg" name="message" placeholder="Describe Your Problem"></textarea>
+            <a href="javascript:%20check_empty()" id="submit">Send</a>
+        </form>
+    </div>
+<!-- Popup Div Ends Here -->
+</div>
+
+<div id="abc2">
+    <div id="popupContact">
+        <div id="term">
+           <img id="close" src="media/close.png" onclick ="div_hide2()">
+            <h2>Term & Privacy</h2>
+            <hr>
+            <textarea>legal rights preserved</textarea>
+        </div>
+    </div>
+</div>
+
+<div id="abc3">
+    <!-- Popup Div Starts Here -->
+    <div id="popupContact">
+    <!-- Contact Us Form -->
+        <form action="#" id="form" method="post" name="form">
+            <img id="close" src="media/close.png" onclick ="div_hide3()">
             <h2>Contact Us</h2>
             <hr>
             <input id="name" name="name" placeholder="Name" type="text">
             <input id="email" name="email" placeholder="Email" type="text">
-            <textarea id="msg" name="message" placeholder="Message"></textarea>
+            <textarea id="msg" name="message" placeholder="Describe Your Problem"></textarea>
             <a href="javascript:%20check_empty()" id="submit">Send</a>
         </form>
     </div>
