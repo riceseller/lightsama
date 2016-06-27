@@ -408,6 +408,15 @@
         alert("Form Submitted Successfully...");
         }
     }
+    
+    function check_empty2() {
+        if (document.getElementById('name2').value == "" || document.getElementById('email2').value == "" || document.getElementById('msg2').value == "") {
+        alert("Fill All Fields !");
+    } else {
+        document.getElementById('form2').submit();
+        alert("Form Submitted Successfully...");
+        }
+    }
    
     //Function To Display Popup
     function div_show() {
@@ -502,14 +511,14 @@
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
     <!-- Contact Us Form -->
-        <form action="<?=$us_url_root?>emailresponse.php?purpose=bug" id="form" method="post" name="form2">
+        <form action="<?=$us_url_root?>emailresponse.php?purpose=contact" id="form2" method="post" name="form2">
             <img id="close" src="../media/close.png" onclick ="div_hide()">
             <h2>Contact Us</h2>
             <hr>
-            <input id="name" name="name" placeholder="Name" type="text">
-            <input id="email" name="email" placeholder="Email" type="text">
-            <textarea id="msg" name="message" placeholder="Describe Your Problem"></textarea>
-            <a href="javascript:%20check_empty()" id="submit">Send</a>
+            <input id="name2" name="name" placeholder="Name" type="text">
+            <input id="email2" name="email" placeholder="Email" type="text">
+            <textarea id="msg2" name="message" placeholder="leave your feedback"></textarea>
+            <a href="javascript:%20check_empty2()" id="submit">Send</a>
         </form>
     </div>
 <!-- Popup Div Ends Here -->
