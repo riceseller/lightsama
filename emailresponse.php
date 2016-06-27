@@ -62,7 +62,8 @@ else
 }
 
 
-Redirect::to($us_url_root.'index.php');
+header("Location: ../index.php"); 
+exit();
 
 
 
