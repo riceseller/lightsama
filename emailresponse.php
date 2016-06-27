@@ -6,19 +6,36 @@ $name=$_POST["name"];
 $email=$_POST["email"];
 $message=$_POST["message"];
 
-$db = DB::getInstance();
-$query = $db->query("SELECT * FROM email");
-$results = $query->first();
+$mail = new PHPMailer;
 
-$to=$results->email_login;
-echo $to;
+//$mail->SMTPDebug = 2;                               // Enable verbose debug output
+
+$mail->isSMTP();                                      // Set mailer to use SMTP
+$mail->Host = 'smtp.live.com';  // Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = 'hailoinn@hotmail.com';                 // SMTP username
+$mail->Password = 'ChengandYu';                           // SMTP password
+$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 587;                                    // TCP port to connect to
+
+$mail->setFrom('hailoinn@hotmail.com', 'Mailer');
+$mail->addAddress('hailoinn@hotmail.com', 'admin');     // Add a recipient
+
+$mail->isHTML(true);                                  // Set email format to HTML
+
+
 
 if($purpose=="bug")
 {
-    $subject="a bug to report";
-    $body="someone has a bug to report, here is his find: ".$message." ";
-    echo $body;
+    $mail->Subject = 'website bug report';
+    $mail->Body    ="someone has a bug to report, here is his find: ".$message." ";
     $mail_result=email($to,$subject,$body); 
+    if(!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+        echo 'Message has been sent';
+    }
 }
 
 else if($purpose=="contact")
