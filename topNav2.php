@@ -18,6 +18,9 @@
                 background: black;
                 text-decoration: none;
                 display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
             } 
             a.nav{
                 color: white; 
