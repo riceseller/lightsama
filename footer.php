@@ -479,7 +479,7 @@
             <input id="name" name="name" placeholder="Name" type="text">
             <input id="email" name="email" placeholder="Email" type="text">
             <textarea id="msg" name="message" placeholder="Describe Your Problem"></textarea>
-            <a href="javascript:%20check_empty()" id="submit">Send</a>
+            <a id="submit">Send</a>
         </form>
     </div>
 <!-- Popup Div Ends Here -->
@@ -500,7 +500,7 @@
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
     <!-- Contact Us Form -->
-        <form action="<?=$us_url_root?>emailresponse.php?purpose=bug" method="post" name="form2">
+        <form action="<?=$us_url_root?>emailresponse.php?purpose=contact" method="post" name="form2">
             <img id="close" src="../media/close.png" onclick ="div_hide()">
             <h2>Contact Us</h2>
             <hr>
