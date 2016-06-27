@@ -13,8 +13,10 @@
         background: black;
         text-decoration: none;
         display: flex;
-        position: relative;
+        position: absolute;
         order: 20;
+        bottom: 0;
+        left: 0;
      
     }
     
