@@ -502,7 +502,7 @@
     <!-- Contact Us Form -->
         <form action="<?=$us_url_root?>emailresponse.php?purpose=bug" id="form" method="post" name="form">
             <img id="close" src="../media/close.png" onclick ="div_hide()">
-            <h2>Report Problem</h2>
+            <h2>Contact Us</h2>
             <hr>
             <input id="name" name="name" placeholder="Name" type="text">
             <input id="email" name="email" placeholder="Email" type="text">
