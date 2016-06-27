@@ -28,25 +28,29 @@ $mail->isHTML(true);                                  // Set email format to HTM
 if($purpose=="bug")
 {
     $mail->Subject = 'website bug report';
-    $mail->Body    ="someone has a bug to report, here is his find: ".$message." ";
+    $mail->Body    =" ".$name." has a bug to report, here is his find: ".$message."<br>"
+            . "please get back to the sender via email provided: ".$email." as soon as possible";
     if(!$mail->send()) {
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
         echo 'Test bug message has been sent';
     }
-    //echo "bug here";
 }
 
 else if($purpose=="contact")
 {
-    $mail->Subject = 'website bug report';
-    $mail->Body    ="someone wants to contact you, here is the message: ".$message." ";
+    $mail->Subject = 'website contact form';
+    $mail->Body    =" ".$name." just left a message for our website: ".$message."<br>"
+            . "please get back to the sender via email provided: ".$email." if you want ";
     if(!$mail->send()) {
-        echo 'Message could not be sent.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
+        echo '<script language="javascript">';
+        echo 'alert("message sent error, contact admin")';
+        echo '</script>';
     } else {
-        echo 'Test contact message has been sent';
+        echo '<script language="javascript">';
+        echo 'alert("your message has been successfully sent")';
+        echo '</script>';
     }
 }
 else
