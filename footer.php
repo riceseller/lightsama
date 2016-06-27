@@ -1,9 +1,3 @@
-<?php
-    require_once 'init.php';
-?>
-
-
-
 <style>
     footer{
         width: 100%;
@@ -14,10 +8,8 @@
         text-decoration: none;
         display: flex;
         position: relative;
-        order: 20;
-     
-    }
-    
+        order: 20;    
+    }   
     footer .logo{
         width: 20%;
         height: 140px;
@@ -27,8 +19,7 @@
         justify-content: center;
         align-items: center;
         text-align: left;
-    }
-    
+    }   
     footer .logo p{
         font-size: 25px;
         color: white;
@@ -40,8 +31,7 @@
         position: relative;
         padding: 0;
         margin-left: 20px;
-    }    
-    
+    }       
     footer .description{
         width: 30%;
         height: 140px;
@@ -51,9 +41,7 @@
         justify-content: center;
         align-items: center;
         text-align: left;
-    }
-    
-    
+    } 
     footer .description p.title{
         font-size: 20px;
         font-weight: bold;
@@ -64,8 +52,7 @@
         TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
         Arial, sans-serif;
         position: relative;
-    }   
-    
+    }      
     footer .description p.descript{
         font-size:14px;
         line-height: 1.4em;
@@ -74,8 +61,7 @@
         TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
         Arial, sans-serif;
         position: relative;
-    }    
-    
+    }        
     footer .link{
         width: 49%;
         height: 140px;

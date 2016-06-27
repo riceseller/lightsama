@@ -1,7 +1,8 @@
 <?php
-include "topNav2.php";
+require_once "topNav2.php";
+require_once "footer.php";
 $pid = $_GET["pid"]; 
-include("supplyment/dbAccess.php");
+require_once("supplyment/dbAccess.php");
 $come_from=$_REQUEST["come_from"];
 if(isset($come_from))
 {
@@ -666,16 +667,7 @@ else{
                     echo "0 results";
                 }
             ?>
-        </section>
-        
-        
-        <?php
-        echo "SECTION HERE!!!!!!!!!!!!!!";
-        include "footer.php";
-        ?>
-        
-          
-        
+        </section>   
     </body>
     
 </html>
