@@ -11,11 +11,11 @@ $message=$_POST["message"];
 //$row=$result->fetch_assoc();
 //echo $row;
 
-if($purpose=="bug")
-{
-    $body="someone has a bug to report, here is his find: ".$message." ";
+//if($purpose=="bug")
+//{
+//    $body="someone has a bug to report, here is his find: ".$message." ";
     
-}
+//}
 
 /*
 echo $purpose;
