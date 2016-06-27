@@ -30,13 +30,13 @@ if($purpose=="bug")
     $mail->Subject = 'website bug report';
     $mail->Body    ="someone has a bug to report, here is his find: ".$message." ";
     //$mail_result=email($to,$subject,$body); 
-    //if(!$mail->send()) {
-      //  echo 'Message could not be sent.';
-      //  echo 'Mailer Error: ' . $mail->ErrorInfo;
-    //} else {
-    //    echo 'Message has been sent';
-    //}
-    echo "bug here";
+    if(!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+        echo 'Message has been sent';
+    }
+    //echo "bug here";
 }
 
 else if($purpose=="contact")
