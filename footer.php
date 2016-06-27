@@ -307,7 +307,7 @@
         margin-left:-202px;
         font-family:'Raleway',sans-serif
     }
-    #abc3 form2 {
+    #abc3 form {
         width: 500px;
         padding:10px 50px;
         border:2px solid gray;
