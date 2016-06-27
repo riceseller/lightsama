@@ -488,7 +488,7 @@
 <div id="abc2">
     <div id="popupContact">
         <div id="term">
-           <img id="close" src="media/close.png" onclick ="div_hide2()">
+           <img id="close" src="../media/close.png" onclick ="div_hide2()">
             <h2>Term & Privacy</h2>
             <hr>
             <textarea>legal rights preserved</textarea>
@@ -500,8 +500,8 @@
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
     <!-- Contact Us Form -->
-        <form action="#" id="form" method="post" name="form">
-            <img id="close" src="media/close.png" onclick ="div_hide3()">
+        <form action="<?=$us_url_root?>emailresponse.php" id="form" method="post" name="form">
+            <img id="close" src="../media/close.png" onclick ="div_hide3()">
             <h2>Contact Us</h2>
             <hr>
             <input id="name" name="name" placeholder="Name" type="text">
