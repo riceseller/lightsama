@@ -6,7 +6,7 @@ $name=$_POST["name"];
 $email=$_POST["email"];
 $message=$_POST["message"];
 
-$query = $db->query("SELECT email_login FROM email");
+$query = "SELECT email_login FROM email";
 $results = $conn->query($query);
 $row=$result->fetch_assoc();
 echo $row;
