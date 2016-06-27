@@ -500,7 +500,7 @@
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
     <!-- Contact Us Form -->
-        <form action="<?=$us_url_root?>emailresponse.php" id="form" method="post" name="form">
+        <form action="<?=$us_url_root?>emailresponse.php?purpose=contact" id="form" method="post" name="form">
             <img id="close" src="../media/close.png" onclick ="div_hide3()">
             <h2>Contact Us</h2>
             <hr>
