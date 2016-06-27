@@ -28,6 +28,8 @@ a:hover {
   margin: 40px auto;
   border-radius: 2px;
   border: 2px solid #cdcdce;
+  position: relative;
+  order: 1;
 }
 
 .tab-group {

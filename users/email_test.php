@@ -71,12 +71,11 @@ if(!empty($_POST)){
 		  
 		  ?>
 		  
-		  <form class="" name="test_email" action="email_test.php" method="post">
+          <form class="" name="test_email" action="email_test.php" method="post">
             <label>Send test to (Ideally different than your from address):
-              <input required size='50' class='form-control' type='text' name='test_acct' value='' /></label>
-
-              <label>&nbsp;</label>
-              <input class='btn btn-primary' type='submit' value='Send A Test Email' class='submit' />
+            <input required size='50' class='form-control' type='text' name='test_acct' value='' /></label>
+            <label>&nbsp;</label>
+            <input class='btn btn-primary' type='submit' value='Send A Test Email' class='submit' />
           </form>
 
           <!-- End of main content section

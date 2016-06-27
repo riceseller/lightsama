@@ -1,3 +1,9 @@
+<?php
+    require_once 'init.php';
+?>
+
+
+
 <style>
     footer{
         width: 100%;
@@ -9,6 +15,7 @@
         display: flex;
         position: relative;
         order: 20;
+     
     }
     
     footer .logo{
@@ -126,8 +133,7 @@
         font-family:'Raleway',sans-serif
     }
     #abc form {
-        max-width:300px;
-        min-width:250px;
+        width: 500px;
         padding:10px 50px;
         border:2px solid gray;
         border-radius:10px;
@@ -302,8 +308,7 @@
         font-family:'Raleway',sans-serif
     }
     #abc3 form {
-        max-width:300px;
-        min-width:250px;
+        width: 500px;
         padding:10px 50px;
         border:2px solid gray;
         border-radius:10px;
@@ -467,7 +472,7 @@
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
     <!-- Contact Us Form -->
-        <form action="#" id="form" method="post" name="form">
+        <form action="<?=$us_url_root?>emailresponse.php" id="form" method="post" name="form">
             <img id="close" src="media/close.png" onclick ="div_hide()">
             <h2>Report Problem</h2>
             <hr>
