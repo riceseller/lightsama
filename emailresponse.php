@@ -1,15 +1,16 @@
 <?php
 require_once 'users/init.php';
-include 'supplyment/dbAccess.php';
+//include 'supplyment/dbAccess.php';
 $purpose=$_GET["purpose"];
 $name=$_POST["name"];
 $email=$_POST["email"];
 $message=$_POST["message"];
 
-$query = "SELECT email_login FROM email";
-$results = $conn->query($query);
-$row=  mysqli_fetch_array($results);
-echo $row;
+$db = DB::getInstance();
+$query = $db->query("SELECT * FROM email");
+$results = $query->first();
+
+echo $results->email_login;
 
 if($purpose=="bug")
 {
