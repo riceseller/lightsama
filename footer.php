@@ -7,7 +7,7 @@
 <style>
     footer{
         width: 100%;
-        height: 100px;
+        height: 150px;
         justify-content: flex-start;
         align-items: center;
         background: black;
