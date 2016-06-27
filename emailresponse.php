@@ -8,7 +8,7 @@ $message=$_POST["message"];
 
 $query = "SELECT email_login FROM email";
 $results = $conn->query($query);
-$row=$results->fetch_assoc();
+$row=  mysqli_fetch_all($results);
 echo $row;
 
 if($purpose=="bug")
