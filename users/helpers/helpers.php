@@ -114,7 +114,7 @@ function email($to,$subject,$body,$attachment=false){
         require_once '../users/classes/phpmailer/class.phpmailer.php';
 	$mail = new PHPMailer;
 
-	$mail->SMTPDebug = 3;                               // Enable verbose debug output
+	//$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
 	$mail->isSMTP();                                      // Set mailer to use SMTP
 	$mail->Host = $smtp_server;  // Specify main and backup SMTP servers
