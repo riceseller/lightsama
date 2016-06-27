@@ -18,7 +18,7 @@ if($purpose=="bug")
     $subject="a bug to report";
     $body="someone has a bug to report, here is his find: ".$message." ";
     echo $body;
-    //$mail_result=email($to,$subject,$body); 
+    $mail_result=email($to,$subject,$body); 
 }
 
 else if($purpose=="contact")
