@@ -307,7 +307,7 @@
         margin-left:-202px;
         font-family:'Raleway',sans-serif
     }
-    #abc3 form {
+    #abc3 form2 {
         width: 500px;
         padding:10px 50px;
         border:2px solid gray;
@@ -512,7 +512,7 @@
     <div id="popupContact">
     <!-- Contact Us Form -->
         <form action="<?=$us_url_root?>emailresponse.php?purpose=contact" id="form2" method="post" name="form2">
-            <img id="close" src="../media/close.png" onclick ="div_hide()">
+            <img id="close" src="../media/close.png" onclick ="div_hide3()">
             <h2>Contact Us</h2>
             <hr>
             <input id="name2" name="name" placeholder="Name" type="text">
