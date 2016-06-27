@@ -11,25 +11,28 @@ $query = $db->query("SELECT * FROM email");
 $results = $query->first();
 
 $to=$results->email_login;
+echo $to;
 
 if($purpose=="bug")
 {
     $subject="a bug to report";
     $body="someone has a bug to report, here is his find: ".$message." ";
-    $mail_result=email($to,$subject,$body); 
+    echo $body;
+    //$mail_result=email($to,$subject,$body); 
 }
 
 else if($purpose=="contact")
 {
     $subject="someone just left you a message";
     $body="someone is giving you a word, here is the message: ".$message."";
-    $mail_result=email($to, $subject, $body);
+    //$mail_result=email($to, $subject, $body);
+    echo $body;
 }
 else
 {
     echo "you come here from a wrong place";
 }
-
+/*
 if($mail_result)
 {
     echo "message sent successfully";
@@ -38,7 +41,7 @@ else
 {
     echo "message sent fail, please contact admin";
 }
-
+*/
 
 
 
