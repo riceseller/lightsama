@@ -25,6 +25,12 @@ $conn->close();
 
 ?>
 <head>
+<style>
+    #chart_div{
+        height: 90vh;
+        width: 100%;
+    }
+</style>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 google.charts.load('current', {packages: ['corechart', 'line']});

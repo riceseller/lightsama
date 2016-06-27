@@ -636,8 +636,7 @@ else{
             .link-button {
                 background: none;
                 border: none;
-                text-decoration: none;
-              
+                text-decoration: none;              
             }
         </style>    
     

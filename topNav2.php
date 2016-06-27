@@ -10,6 +10,10 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="../proxima-nova.css">
         <style>
+            a{
+                text-decoration: none;
+                color: #212124;
+            }
             topNav{
                 justify-content: center;
                 width: 100%;
