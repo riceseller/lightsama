@@ -29,38 +29,31 @@ if($purpose=="bug")
 {
     $mail->Subject = 'website bug report';
     $mail->Body    ="someone has a bug to report, here is his find: ".$message." ";
-    //$mail_result=email($to,$subject,$body); 
     if(!$mail->send()) {
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
-        echo 'Message has been sent';
+        echo 'Test bug message has been sent';
     }
     //echo "bug here";
 }
 
 else if($purpose=="contact")
 {
-    $subject="someone just left you a message";
-    $body="someone is giving you a word, here is the message: ".$message."";
-    //$mail_result=email($to, $subject, $body);
-    echo $body;
+    $mail->Subject = 'website bug report';
+    $mail->Body    ="someone wants to contact you, here is the message: ".$message." ";
+    if(!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+        echo 'Test contact message has been sent';
+    }
 }
 else
 {
     echo "you come here from a wrong place";
 }
 
-if($mail_result)
-{
-    echo "message sent successfully";
-}
-/*
-else
-{
-    echo "message sent fail, please contact admin";
-}
-*/
 
 
 
