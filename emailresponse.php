@@ -31,10 +31,13 @@ if($purpose=="bug")
     $mail->Body    =" ".$name." has a bug to report, here is his find: ".$message."<br>"
             . "please get back to the sender via email provided: ".$email." as soon as possible";
     if(!$mail->send()) {
-        echo 'Message could not be sent.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
+        echo '<script language="javascript">';
+        echo 'alert("message sent error, contact admin")';
+        echo '</script>';
     } else {
-        echo 'Test bug message has been sent';
+        echo '<script language="javascript">';
+        echo 'alert("your bug message has been successfully sent, thanks for making our site better")';
+        echo '</script>';
     }
 }
 
@@ -49,7 +52,7 @@ else if($purpose=="contact")
         echo '</script>';
     } else {
         echo '<script language="javascript">';
-        echo 'alert("your message has been successfully sent")';
+        echo 'alert("your message has been successfully sent, thanks for giving us feedback")';
         echo '</script>';
     }
 }
