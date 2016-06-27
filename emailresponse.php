@@ -62,6 +62,9 @@ else
 }
 
 
+Redirect::to($us_url_root.'index.php');
+
+
 
 
 ?>
