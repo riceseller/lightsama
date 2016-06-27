@@ -507,7 +507,7 @@
             <input id="name" name="name" placeholder="Name" type="text">
             <input id="email" name="email" placeholder="Email" type="text">
             <textarea id="msg" name="message" placeholder="Describe Your Problem"></textarea>
-            <a href="javascript:%20check_empty()" id="submit">Send</a>
+            <a id="submit">Send</a>
         </form>
     </div>
 <!-- Popup Div Ends Here -->
