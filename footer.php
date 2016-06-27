@@ -13,10 +13,10 @@
         background: black;
         text-decoration: none;
         display: flex;
-        position: absolute;
-        order: 20;
+        position: fixed;
         bottom: 0;
         left: 0;
+        right: 0;
      
     }
     
