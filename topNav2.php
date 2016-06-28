@@ -139,6 +139,7 @@
                 height: 100%;
                 font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
                 -webkit-font-smoothing: antialiased;
+                margin-bottom:150px;/* Height of footer*/
             } 
             .normalform{
                 
