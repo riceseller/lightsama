@@ -7,7 +7,7 @@
         background: black;
         text-decoration: none;
         display: flex;
-        position: fixed;
+        position: absolute;
         bottom: 0;
         left: 0;
     }   
