@@ -1,7 +1,7 @@
 <style>
     footer{
         width: 100%;
-        height: 150px;
+        height: 20vh;
         justify-content: flex-start;
         align-items: center;
         background: black;

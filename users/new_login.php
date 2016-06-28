@@ -290,7 +290,13 @@ else if($through=='signup')
 }
 ?>
 
-
+<style>
+    #pagewrapper{
+        width: 100%;
+        height: 80vh;
+        border: 3px solid yellow;
+    }
+</style>
 
 
 
@@ -303,6 +309,8 @@ else if($through=='signup')
 
 
 <body>
+    
+    <div id="pagewrapper">
     <div class="form3">
 
       <ul class="tab-group">
@@ -378,7 +386,13 @@ else if($through=='signup')
         </div>
         
       </div><!-- tab-content -->
-    </div>  
+    </div> 
+       
+    </div>
+    
+    
+    
+    
       
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script type="text/javascript" src="css/reg/js/index.js"></script>
@@ -398,12 +412,10 @@ else if($through=='signup')
      document.getElementById('login').reset();
 </script>
 
-
-
-</body>
-
 <?php
     include "../footer.php";
 ?>
-  
+
+</body>
+
 </html>
