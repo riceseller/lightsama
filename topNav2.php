@@ -136,7 +136,7 @@
                 -webkit-justify-content: flex-start;
                 justify-content: flex-start;
                 width: 100%;
-                min-height: 110vh;
+                beight: 100%;
                 font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
                 -webkit-font-smoothing: antialiased;
             } 
