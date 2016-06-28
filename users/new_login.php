@@ -293,7 +293,7 @@ else if($through=='signup')
 <style>
     #pagewrapper{
         width: 100%;
-        height: 75vh;
+        min-height: 75vh;
     }
 </style>
 
