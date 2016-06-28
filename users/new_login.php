@@ -399,10 +399,10 @@ else if($through=='signup')
 </script>
 
 
-</body>
-
 <?php
     include "../footer.php";
 ?>
-    
+
+</body>
+  
 </html>
