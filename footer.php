@@ -7,10 +7,11 @@
         background: black;
         text-decoration: none;
         display: flex;
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
     }   
+    
     footer .logo{
         width: 20%;
         height: 140px;
