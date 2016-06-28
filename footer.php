@@ -11,7 +11,7 @@
         order: 20;
         clear: both;
         z-index: 10;
-        margin-top: -3em;
+        margin-top: 3em;
     }   
     
     footer .logo{
