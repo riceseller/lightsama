@@ -60,6 +60,7 @@ else{
             height: calc(100vh - 50px);
             justify-content: center; /* align horizontal */
             align-items: center; /* align vertical */
+            
         }
         #scrolla{
             align-items: center;
@@ -67,11 +68,13 @@ else{
             width: 50px;
             height: calc(100vh - 50px);
             order: 1;
+            
         }
         #scrollb{
             order: 2;
             height: calc(100vh - 50px);
             width: calc(100% - 100px);
+            
         }
         #scrollc{
             flex-shrink: 0;
@@ -98,6 +101,39 @@ else{
             object-fit: contain;
             height: calc(90vh - 50px); /*addtional 100px margin */
             width: calc(100% - 100px); /*addtional 100px margin */
+        }
+        .container favicon{
+            width: 40px;
+            height:40px;
+            position: absolute;
+            top: 50%;
+            right:10px;
+        }
+        .container favicon input[type=checkbox].css-checkbox {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+        .container favicon input[type=checkbox].css-checkbox + label.css-label {
+            padding-left:45px;
+            height:40px; 
+            display:inline-block;
+            line-height:40px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:40px;
+            vertical-align:middle;
+            cursor:pointer;
+        }
+        .container favicon input[type=checkbox].css-checkbox:checked + label.css-label {
+            background-position: 0 -40px;
+        }
+        .container favicon label.css-label {
+            background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_019807af606f0dea9eb28a8d35a7afc6.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 </style>
 
@@ -154,6 +190,7 @@ else{
             min-width: 5%;
             height: 1px;*/
             width: 150px;
+            
         }
         container2 p{
             margin: 0px;
@@ -414,7 +451,13 @@ else{
             <?php endif; ?>
                 <img src="/media/right_arrow.png" />
             </a>
+            <favicon>
+                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off"/>
+                <label for="checkboxG5" class="css-label"></label>
+            </favicon>     
         </div>
+        
+        
     </div>
     
     <div class="container3">
@@ -498,7 +541,7 @@ else{
                 <div id="view">
                     <p>10000<br>view</p>
                 </div>
-                <div id="fav">
+                <div id="fav">  
                     <p>100<br>favorites</p>
                 </div>
                 <div id="comment">
