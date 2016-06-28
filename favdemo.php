@@ -38,8 +38,22 @@
     }
 </style>
 
+<script>
+    function myFunction() {
+    //document.getElementById("myCheck").disabled = true;
+    if(document.getElementById("checkboxG5").checked === true)
+    {
+         alert("checked");
+    }
+    if(document.getElementById("checkboxG5").checked === false)
+    {
+         alert("unchecked");
+    }
+}
+</script>
+
 <div id="favicon">
-    <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off"/>
+    <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" onclick="myFunction()"/>
     <label for="checkboxG5" class="css-label"></label>
 </div>
 
