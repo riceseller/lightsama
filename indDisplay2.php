@@ -441,10 +441,23 @@ else{
             <img  class="scrollbIMG" src="<?php if($row['urlSource']){print $row['urlSource'];}else{print $row['url'];}?>" />
         </a>
             
+            <script>
+                function myFunction() {
+                    //document.getElementById("myCheck").disabled = true;
+                    if(document.getElementById("checkboxG5").checked === true)
+                    {
+                       alert("checked");
+                    }
+                    if(document.getElementById("checkboxG5").checked === false)
+                    {
+                        alert("unchecked");
+                    }
+                }
+            </script>
             
             
-            <favicon>
-                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off"/>
+            <favicon>     
+                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" onclick="myFunction()"/>
                 <label for="checkboxG5" class="css-label"></label>
             </favicon>
             
