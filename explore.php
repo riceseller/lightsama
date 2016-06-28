@@ -129,9 +129,6 @@ if(isset($_GET['page'])) {
         color:#000000;
         border-bottom: 2px solid #0091dc;
     }
-    .clearFloat{
-        clear:both;
-    }
     </style>
 </header>
 

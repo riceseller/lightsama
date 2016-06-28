@@ -14,6 +14,9 @@
                 text-decoration: none;
                 color: #212124;
             }
+            a:hover{
+                color: #006dac;
+            }
             topNav{
                 justify-content: center;
                 width: 100%;
