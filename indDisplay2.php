@@ -74,13 +74,13 @@ else{
             order: 2;
             height: calc(100vh - 50px);
             width: calc(100% - 100px);
-            
         }
         #scrollc{
             flex-shrink: 0;
             width: 50px;
             height: calc(100vh - 50px);
             order: 3;
+            display: flex;
         }
         .container div{
             display: flex;
@@ -105,9 +105,7 @@ else{
         .container favicon{
             width: 40px;
             height:40px;
-            position: absolute;
-            top: 50%;
-            right:10px;
+            position: relative;
         }
         .container favicon input[type=checkbox].css-checkbox {
             position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
@@ -442,6 +440,16 @@ else{
                                                         }?>">
             <img  class="scrollbIMG" src="<?php if($row['urlSource']){print $row['urlSource'];}else{print $row['url'];}?>" />
         </a>
+            
+            
+            
+            <favicon>
+                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off"/>
+                <label for="checkboxG5" class="css-label"></label>
+            </favicon>
+            
+            
+            
         </div>
         <div id="scrollc">
             <?php if(mysqli_num_rows($result34)>0): ?>
@@ -450,11 +458,7 @@ else{
                 <a style="opacity: 0.1;">                
             <?php endif; ?>
                 <img src="/media/right_arrow.png" />
-            </a>
-            <favicon>
-                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off"/>
-                <label for="checkboxG5" class="css-label"></label>
-            </favicon>     
+            </a>   
         </div>
         
         
