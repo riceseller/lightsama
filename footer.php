@@ -7,8 +7,10 @@
         background: black;
         text-decoration: none;
         display: flex;
-        position: relative;
-        order: 20;
+        position: absolute;
+        bottom:0;
+        left: 0;
+        right: 0;
         clear: both;
         z-index: 10;
         margin-top: 3em;
