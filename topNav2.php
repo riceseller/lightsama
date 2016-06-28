@@ -126,7 +126,7 @@
                 top: 8px;
                 right: 80px;
             }
-            body{
+            wrapper{
                 position: relative;
                 display: -webkit-flex;
                 display: flex;

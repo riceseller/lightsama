@@ -302,7 +302,7 @@ else if($through=='signup')
 <link rel="stylesheet" href="css/reg/css/style.css">
 
 
-<body>
+<wrapper>
     <div class="form3">
 
       <ul class="tab-group">
@@ -398,9 +398,10 @@ else if($through=='signup')
      document.getElementById('login').reset();
 </script>
 
+</wrapper> 
+
 <?php
     include "../footer.php";
 ?>
 
-</body> 
 </html>

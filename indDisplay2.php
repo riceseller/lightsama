@@ -375,7 +375,7 @@ else{
             );
         };
     </script>
-    <body>
+    <wrapper>
     <div class="container">
         <div id="scrolla">
             <?php if(mysqli_num_rows($result35)>0): ?>
@@ -666,7 +666,9 @@ else{
                 }
             ?>
         </section> 
-        <?php require_once "footer.php";?>
-    </body>
+
+    </wrapper>
+    
+    <?php require_once "footer.php";?>
     
 </html>
