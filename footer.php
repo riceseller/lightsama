@@ -12,7 +12,7 @@
         left:0;
         clear: both;
         z-index: 10;
-        margin-top: 3em;
+        padding: 3em;
     }   
     
     footer .logo{
