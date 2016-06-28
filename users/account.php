@@ -48,7 +48,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
 		<p><img src="<?=$grav; ?>" class="img-thumbnail" alt="Generic placeholder thumbnail"></p>
 		<p><a href="user_settings.php" class="btn btn-primary">Edit Account Info</a></p>
 		<p><a class="btn btn-primary " href="profile.php?id=<?=$get_info_id;?>" role="button">Public Profile</a></p>
-                <p><a href="../phpFlick/auth.php">verify your flickr account</a></p>
+                <p><a href="http://188.166.182.177/phpFlick/auth.php">verify your flickr account</a></p>
                 <p><a href="../indUser.php?id=<?php print $row[scrapeUserID]; ?>">your linked account</a></p>
 	</div>
 	<div class="col-xs-12 col-md-9">

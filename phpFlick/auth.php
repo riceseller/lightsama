@@ -70,16 +70,17 @@ if($user->isLoggedIn()){
     if ($conn->query($query2) === True){
         //insert success
         print 'insert success, ready to exit';
-        echo '<script type="text/javascript">window.close();</script>';
+        shell_exec('airflow trigger_dag flickr_link_script');
+        //echo '<script type="text/javascript">window.close();</script>';
     }else{
         print $conn->error;
         echo '<script type="text/javascript">alert("possible duplicate linking or this account is belong to others");</script>';
-        echo "<script>window.location = 'http://db.luokerenz.com/users/account.php'</script>";
-        echo '<script type="text/javascript">window.close();</script>';
+        echo "<script>window.location = 'http://hailoinn.luokerenz.com/users/account.php'</script>";
+        //echo '<script type="text/javascript">window.close();</script>';
     }
 }
 else{
     echo '<script type="text/javascript">alert("please login first");</script>';
-    echo "<script>window.location = 'http://db.luokerenz.com'</script>";
+    echo "<script>window.location = 'http://hailoinn.luokerenz.com'</script>";
 }
 ?>
