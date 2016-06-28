@@ -294,7 +294,6 @@ else if($through=='signup')
     #pagewrapper{
         width: 100%;
         height: 80vh;
-        border: 3px solid yellow;
     }
 </style>
 
