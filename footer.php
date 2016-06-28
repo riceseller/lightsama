@@ -47,7 +47,6 @@
         justify-content: center;
         align-items: center;
         text-align: left;
-        border: 3px solid white;
     } 
     footer .description p.title{
         font-size: 20px;
