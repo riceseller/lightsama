@@ -6,7 +6,7 @@
         align-items: center;
         background: black;
         text-decoration: none;
-        display: flex;
+        display: block;
         position: absolute;
         bottom: 0;
         left: 0;

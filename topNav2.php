@@ -136,7 +136,7 @@
                 -webkit-justify-content: flex-start;
                 justify-content: flex-start;
                 width: 100%;
-                min-height: 100vh;
+                min-height: 120vh;
                 font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
                 -webkit-font-smoothing: antialiased;
                 margin-bottom:150px;/* Height of footer*/
