@@ -1,5 +1,6 @@
 <?php
 require_once "topNav2.php";
+require_once "footer.php";
 $pid = $_GET["pid"]; 
 require_once("supplyment/dbAccess.php");
 $come_from=$_REQUEST["come_from"];
@@ -666,7 +667,8 @@ else{
                 }
             ?>
         </section> 
-        <?php require_once "footer.php";?>
+        
+        
     </body>
     
 </html>
