@@ -7,10 +7,9 @@
         background: black;
         text-decoration: none;
         display: flex;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        position: relative;
+        order:20;
+        margin-top: 30vh;
         clear: both;
         z-index: 10;
         margin-top: 3em;
