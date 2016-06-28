@@ -11,7 +11,6 @@
         order: 20;
         clear: both;
         z-index: 10;
-        padding: 3em;
     }   
     
     footer .logo{
