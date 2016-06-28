@@ -7,9 +7,7 @@
         background: black;
         text-decoration: none;
         display: flex;
-        position: fixed;
-        bottom:0;
-        left:0;
+        position: relative;
         clear: both;
         z-index: 10;
         padding: 3em;
