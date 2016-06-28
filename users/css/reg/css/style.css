@@ -25,9 +25,7 @@ a:hover {
   background: #ffffff;
   padding: 40px;
   max-width: 600px;
-  margin-top: 40px;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin: 40px auto;
   margin-bottom: 40vh;
   border-radius: 2px;
   border: 2px solid #cdcdce;
