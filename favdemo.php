@@ -40,15 +40,19 @@
 
 <script>
     function myFunction() {
-    //document.getElementById("myCheck").disabled = true;
-    if(document.getElementById("checkboxG5").checked === true)
-    {
-         alert("checked");
-    }
-    if(document.getElementById("checkboxG5").checked === false)
-    {
-         alert("unchecked");
-    }
+        //document.getElementById("myCheck").disabled = true;
+        if(document.getElementById("checkboxG5").checked === true)
+        {   
+            var result=a+' favorites';
+            result = result.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            document.getElementById('ppp').innerHTML = result;
+        }
+        if(document.getElementById("checkboxG5").checked === false)
+        {
+            var result=a+' favorites';
+            result = result.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            document.getElementById('ppp').innerHTML = result;
+        }
 }
 </script>
 

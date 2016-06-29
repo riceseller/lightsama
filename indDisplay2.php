@@ -456,33 +456,28 @@ $current_fav=$row50[0];
             <img  class="scrollbIMG" src="<?php if($row['urlSource']){print $row['urlSource'];}else{print $row['url'];}?>" />
         </a>
             
-            <script>
-                window.onload = function () {
-                var input = document.querySelector('input[type=checkbox]');
-                
-                function check() {
-                    if(input.checked)
-                    {
-                        var a="1";
+            <script>             
+                 function myFunction() {
+                    //document.getElementById("myCheck").disabled = true;
+                    if(document.getElementById("checkboxG5").checked === true)
+                    {   var a="9";
+                        var result=a+'<br>favorites';
+                        result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+                        document.getElementById('ppp').innerHTML = result;
                     }
-                    else
+                    if(document.getElementById("checkboxG5").checked === false)
                     {
-                        var a="2";
+                        var a="10";
+                        var result=a+'<br>favorites';
+                        result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+                        document.getElementById('ppp').innerHTML = result;
                     }
-                    var result=a+' favorites';
-                    result = result.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                    document.getElementById('ppp').innerHTML = result;
-                }
-   
-                input.onchange = check;
-                check();
-    
-            }
+                }           
             </script>
             
             
             <favicon>     
-                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" onclick="checkClick()"/>
+                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" onclick="myFunction()"/>
                 <label for="checkboxG5" class="css-label"></label>
             </favicon>
             
@@ -586,7 +581,7 @@ $current_fav=$row50[0];
                 
                 
                 <div id="fav">  
-                    <p id="ppp"></p>
+                    <p id="ppp"><?php echo $current_fav;?><br>favorites</p>
                 </div>
                 
                 
