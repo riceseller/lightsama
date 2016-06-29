@@ -48,6 +48,13 @@ else{
     $myLat = 0;
     $myLng = 0;
 }
+
+$query50="select count(*) from fav where favpic=$pid";
+$result50=$conn->query($query50);
+$row50=  mysqli_fetch_array($result50);
+
+
+
 ?>
         
     <style>
@@ -235,9 +242,16 @@ else{
             font-weight: 400;
             font-size: 20px;
             color: #212124;
+            display: flex;
+            justify-content: flex-end;
         }
         
-        #favorites{
+        .top #fav div{
+            margin:0;
+            padding: 0;
+        }
+        #favorite{
+            position: relative;
             
         }
         
@@ -451,23 +465,14 @@ else{
                    
                     if(document.getElementById("checkboxG5").checked === true)
                     {   //PHP code gets in here, favAdd return 
-                       alert("checked");
-                       favAdd();
+                       
+                       
                     }
                     if(document.getElementById("checkboxG5").checked === false)
                     {   //PHP code gets in here, favMin return
                         alert("unchecked");
                     }
-                }
-                
-                function favAdd() {
-                    
-                }
-                
-                function favMin(){
-                    
-                }
-                
+                }                
             </script>
             
             
@@ -574,7 +579,7 @@ else{
                     <p>10000<br>view</p>
                 </div>
                 <div id="fav">  
-                    <p><div id="favorites">100</div><br>favorites</p>
+                    <p>100<br>favorites</p>
                 </div>
                 <div id="comment">
                     <p>10<br>comments</p>
