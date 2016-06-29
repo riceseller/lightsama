@@ -51,8 +51,8 @@ else{
 
 $query50="select count(*) from fav where favpic=$pid";
 $result50=$conn->query($query50);
-$row50=  mysqli_fetch_array($result50);
-
+$row50=mysqli_fetch_array($result50);
+$current_fav=$row50[0];
 
 
 ?>
@@ -246,13 +246,9 @@ $row50=  mysqli_fetch_array($result50);
             justify-content: flex-end;
         }
         
-        .top #fav div{
-            margin:0;
-            padding: 0;
-        }
-        #favorite{
-            position: relative;
-            
+        #fav #ppp{
+            margin: 0px;
+            word-wrap: break-word;
         }
         
         container2 .bot{
@@ -461,18 +457,27 @@ $row50=  mysqli_fetch_array($result50);
         </a>
             
             <script>
-                function checkClick() {
-                   
-                    if(document.getElementById("checkboxG5").checked === true)
-                    {   //PHP code gets in here, favAdd return 
-                       
-                       
+                window.onload = function () {
+                var input = document.querySelector('input[type=checkbox]');
+                
+                function check() {
+                    if(input.checked)
+                    {
+                        var a="1";
                     }
-                    if(document.getElementById("checkboxG5").checked === false)
-                    {   //PHP code gets in here, favMin return
-                        alert("unchecked");
+                    else
+                    {
+                        var a="2";
                     }
-                }                
+                    var result=a+' favorites';
+                    result = result.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    document.getElementById('ppp').innerHTML = result;
+                }
+   
+                input.onchange = check;
+                check();
+    
+            }
             </script>
             
             
@@ -578,9 +583,13 @@ $row50=  mysqli_fetch_array($result50);
                 <div id="view">
                     <p>10000<br>view</p>
                 </div>
+                
+                
                 <div id="fav">  
-                    <p>100<br>favorites</p>
+                    <p id="ppp"></p>
                 </div>
+                
+                
                 <div id="comment">
                     <p>10<br>comments</p>
                 </div>

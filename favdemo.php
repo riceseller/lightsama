@@ -39,16 +39,19 @@
 </style>
 
 <script>
-    function myFunction() {
-    //document.getElementById("myCheck").disabled = true;
-    if(document.getElementById("checkboxG5").checked === true)
-    {
-         alert("checked");
+    window.onload = function () {
+    var input = document.querySelector('input[type=checkbox]');
+
+
+    function check() {
+        var a = input.checked ? "checked" : "not checked";
+        document.getElementById('result').innerHTML = a+' result';
     }
-    if(document.getElementById("checkboxG5").checked === false)
-    {
-         alert("unchecked");
-    }
+    
+    
+    input.onchange = check;
+    check();
+    
 }
 </script>
 
@@ -56,4 +59,6 @@
     <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" onclick="myFunction()"/>
     <label for="checkboxG5" class="css-label"></label>
 </div>
+
+<span id="result"></span>
 
