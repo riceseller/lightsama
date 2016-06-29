@@ -102,7 +102,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
     }
     .well{
         display: flex;
-        
+        justify-content: flex-start;
         width:80%;
         margin: 0 10%;
         min-height: calc(100vh - 50px - 250px - 50px);
