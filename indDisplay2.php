@@ -480,10 +480,7 @@ if($user->isLoggedIn())
                         var result=a+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;
-                        <?php     //delete from database if user id is different 
-                            $query90="delete from fav where userid=$current_id and favpic=$pid";
-                            $conn->query($query90);  
-                        ?>
+                        
                     }
                 }   
                 function LogInCheck2() {
