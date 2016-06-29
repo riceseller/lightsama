@@ -443,13 +443,13 @@ else{
             
             <script>
                 function myFunction() {
-                    //document.getElementById("myCheck").disabled = true;
+                   
                     if(document.getElementById("checkboxG5").checked === true)
-                    {
+                    {   //PHP code gets in here
                        alert("checked");
                     }
                     if(document.getElementById("checkboxG5").checked === false)
-                    {
+                    {   //PHP code gets in here
                         alert("unchecked");
                     }
                 }
