@@ -1,22 +1,12 @@
 <?php
-/*
-UserSpice 4
-An Open Source PHP User Management System
-by the UserSpice Team at http://UserSpice.com
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+function displayBlock($suid,$userID,$belong){
+    if($userID!=0){
+        //display ind block using input
+        print "<div class='acc-block'><a href='../indUser.php?id=$suid'>$userID</a></div>";
+    }
+    //display add block directly
+    print '<div class="acc-block"><a href="../phpFlick/auth.php" style="font-size:80px;opacity:0.5;">&#8853</a></div>';
+}
 ?>
 <?php require_once 'init.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
@@ -40,6 +30,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
     $row = mysqli_fetch_array($result);
     #24380571446
     if($result->num_rows>0){
+        $Umode = 1;
         $query2 = "select urlSource from Url where id=24493854475"; //temp cover
         $result2=$conn->query($query2);
         $row2 = mysqli_fetch_array($result2);
@@ -47,10 +38,12 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
 ?>
 <style>
     #main-content{
-        height: calc(100vh - 50px - 20vh);
+        min-height: calc(100vh - 50px);
         width: 100%;
     }
     .user-container{
+        display: flex;
+        flex-wrap: nowrap;
         height: 250px;
         width: 100%;
     }
@@ -66,8 +59,15 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
         /* round the edges to a circle with border radius 1/2 container size */
         border-radius: 50%;
     }
+    .user-container a{
+        color: #fff;
+    }
+    .user-info{
+        margin-top: 140px;
+        margin-left: 15px;
+        max-width: 40%;
+    }
     .menu{
-        font-size:12pt;
         font-weight: 600;
         width:100%;
         height: 49px;
@@ -101,7 +101,21 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
         border-bottom: 3px solid #0091dc;
     }
     .well{
-        width:100%;
+        display: flex;
+        justify-content: flex-start;
+        width:80%;
+        margin: 0 10%;
+        min-height: calc(100vh - 50px - 250px - 50px);
+    }
+    .acc-block {
+        /*border-radius: 25px;*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 30px 1% 0px 1%;
+        border: 2px solid #cfd6d9;
+        width: 30%;
+        height: 150px; 
     }
 </style>
 
@@ -124,37 +138,37 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
                         print $grav;
                     }
                 ?>">
+    <div class="user-info">
+        <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
+        <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?=$signupdate?></a><br>
+        <a style="font-size:16px;font-weight:600;">Number of Logins: <?=$user->data()->logins?></a>
+    </div>
 </div>
     
 <div class="menu">
 <ul>
-<li class="active"><a href="#">Explore All</a></li>
-<li><a href="tags.php">Tags</a></li>
-<li><a>Keyword</a></li>
+<li class="active"><a href="#">Your Linked Account</a></li>
+<li><a href="../phpFlick/auth.php">Add New Flickr Account</a></li>
+<li><a href="user_settings.php">Edit Account Info</a></li>
 <div class="clearFloat"></div>
 </ul>
 </div>
     
 <div class="well">
-    <div class="row">
-        <div class="col-xs-12 col-md-3">
-            <p><a href="user_settings.php" class="btn btn-primary">Edit Account Info</a></p>
-            <p><a class="btn btn-primary " href="profile.php?id=<?=$get_info_id;?>" role="button">Public Profile</a></p>
-            <p><a href="../phpFlick/auth.php">verify your flickr account</a></p>
-            <p><a href="../indUser.php?id=<?php print $row[scrapeUserID]; ?>">your linked account</a></p>
-        </div>
-        <div class="col-xs-12 col-md-9">
-            <h1><?=ucfirst($user->data()->username)?></h1>
-            <p><?=ucfirst($user->data()->fname)." ".ucfirst($user->data()->lname)?></p>
-            <p>Member Since:<?=$signupdate?></p>
-            <p>Number of Logins: <?=$user->data()->logins?></p>
-            <p>This is the private account page for your users. It can be whatever you want it to be; This code serves as a guide on how to use some of the built-in UserSpice functionality. </p>
-        </div>
-    </div>
+    <?php
+        if($Umode==1){
+            //print $row[userID]
+            displayBlock($row[scrapeUserID],$row[userID], $row[Ubelong]);
+            /*while($row = $result->fetch_assoc()) {
+                //displayBlock($row[userId], $row[Ubelong]);
+            }*/
+        }else{
+            displayBlock(0,0,0);
+        }
+    ?>
 </div>
 
 </div> <!-- /#main-content -->
-
 <!-- footers -->
 <?php require_once '../footer.php' //require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
