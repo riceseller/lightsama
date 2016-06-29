@@ -49,7 +49,7 @@ else{
     $myLng = 0;
 }
 
-$query50="select count(*) from fav where favpic=$pid";
+$query50="select count(*), userid, favpic from fav where favpic=$pid";
 $result50=$conn->query($query50);
 $row50=mysqli_fetch_array($result50);
 $current_fav=$row50[0];
@@ -457,27 +457,41 @@ $current_fav=$row50[0];
         </a>
             
             <script>             
-                 function myFunction() {
-                    //document.getElementById("myCheck").disabled = true;
+                 function LogInCheck() {
                     if(document.getElementById("checkboxG5").checked === true)
-                    {   var a="9";
+                    {   var a=<?php print $current_fav;?>;
+                        a++;
                         var result=a+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;
                     }
                     if(document.getElementById("checkboxG5").checked === false)
                     {
-                        var a="10";
+                        var a=<?php print $current_fav;?>;
                         var result=a+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;
                     }
-                }           
+                }    
+                function UnLogCheck(){
+                    alert("please log in then you can fav that pic");
+                    document.getElementById("checkboxG5").checked = false;
+                }
             </script>
             
             
             <favicon>     
-                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" onclick="myFunction()"/>
+                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" 
+                       <?php if($user->isLoggedIn())
+                            {
+                                echo "onclick='LogInCheck()'";
+                            }
+                            else
+                            {
+                                echo "onclick='UnLogCheck()'";
+                            }
+                        ?>
+                />
                 <label for="checkboxG5" class="css-label"></label>
             </favicon>
             
