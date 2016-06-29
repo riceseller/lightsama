@@ -53,7 +53,12 @@ $query50="select count(*), userid, favpic from fav where favpic=$pid";
 $result50=$conn->query($query50);
 $row50=mysqli_fetch_array($result50);
 $current_fav=$row50[0];
+$userid=$row50[1];
 
+if($user->isLoggedIn())
+{
+    $current_id=$user->data()->id;
+}
 
 ?>
         
@@ -464,6 +469,10 @@ $current_fav=$row50[0];
                         var result=a+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;
+                        <?php     //insert into database if user id is different 
+                            $query60="insert into fav(userid, favpic) values($current_id, $pid)";
+                            $conn->query($query60);  
+                        ?>
                     }
                     if(document.getElementById("checkboxG5").checked === false)
                     {
@@ -471,8 +480,29 @@ $current_fav=$row50[0];
                         var result=a+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;
+                        <?php     //delete from database if user id is different 
+                            $query90="delete from fav where userid=$current_id and favpic=$pid";
+                            $conn->query($query90);  
+                        ?>
                     }
-                }    
+                }   
+                function LogInCheck2() {
+                    if(document.getElementById("checkboxG5").checked === true)
+                    {   var a=<?php print $current_fav;?>;
+                        var result=a+'<br>favorites';
+                        result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+                        document.getElementById('ppp').innerHTML = result;                        
+                    }
+                    if(document.getElementById("checkboxG5").checked === false)
+                    {
+                        var a=<?php print $current_fav;?>;
+                        a--;
+                        var result=a+'<br>favorites';
+                        result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+                        document.getElementById('ppp').innerHTML = result;
+                    }
+                }
+                
                 function UnLogCheck(){
                     alert("please log in then you can fav that pic");
                     document.getElementById("checkboxG5").checked = false;
@@ -481,10 +511,19 @@ $current_fav=$row50[0];
             
             
             <favicon>     
-                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" 
+                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox"  
                        <?php if($user->isLoggedIn())
                             {
-                                echo "onclick='LogInCheck()'";
+                                if($current_id==$userid)  //it has been liked by the same user before, only option is unlike
+                                {
+                                    echo "checked='true'";
+                                    echo "onclick='LogInCheck2()'";
+                                }
+                                else    //it has not been liked before, option is like 
+                                {                                  
+                                    echo "autocomplete='off'";
+                                    echo "onclick='LogInCheck()'";
+                                }                               
                             }
                             else
                             {
