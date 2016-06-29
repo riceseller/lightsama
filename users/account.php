@@ -103,7 +103,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
     .well{
         display: flex;
         justify-content: flex-start;
-        width:80%;
+        width:100%;
         margin: 0 10%;
         min-height: calc(100vh - 50px - 250px - 50px);
     }
@@ -112,9 +112,9 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 30px 1% 0px 1%;
+        margin: 30px 2% 0px 2%;
         border: 2px solid #cfd6d9;
-        width: 30%;
+        width: 20%;
         height: 150px; 
     }
 </style>
