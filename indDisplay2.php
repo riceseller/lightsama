@@ -236,6 +236,11 @@ else{
             font-size: 20px;
             color: #212124;
         }
+        
+        #favorites{
+            
+        }
+        
         container2 .bot{
             display: flex;
         }
@@ -442,22 +447,32 @@ else{
         </a>
             
             <script>
-                function myFunction() {
+                function checkClick() {
                    
                     if(document.getElementById("checkboxG5").checked === true)
-                    {   //PHP code gets in here
+                    {   //PHP code gets in here, favAdd return 
                        alert("checked");
+                       favAdd();
                     }
                     if(document.getElementById("checkboxG5").checked === false)
-                    {   //PHP code gets in here
+                    {   //PHP code gets in here, favMin return
                         alert("unchecked");
                     }
                 }
+                
+                function favAdd() {
+                    
+                }
+                
+                function favMin(){
+                    
+                }
+                
             </script>
             
             
             <favicon>     
-                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" onclick="myFunction()"/>
+                <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" autocomplete="off" onclick="checkClick()"/>
                 <label for="checkboxG5" class="css-label"></label>
             </favicon>
             
@@ -559,7 +574,7 @@ else{
                     <p>10000<br>view</p>
                 </div>
                 <div id="fav">  
-                    <p>100<br>favorites</p>
+                    <p><div id="favorites">100</div><br>favorites</p>
                 </div>
                 <div id="comment">
                     <p>10<br>comments</p>
