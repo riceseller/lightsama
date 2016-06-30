@@ -106,7 +106,7 @@ if($current_fav && $user->isLoggedIn())
         #scrollb{
             order: 2;
             height: calc(100vh - 50px);
-            width: calc(100% - 100px);           
+            width: calc(100% - 100px);            
         }
         #scrollc{
             flex-shrink: 0;
@@ -140,7 +140,9 @@ if($current_fav && $user->isLoggedIn())
             height:40px;
             position: relative;           
             align-self: flex-end;
-            padding: 15px;
+            padding: 0;
+            margin-bottom: 20px;
+            margin-right: 0;
         }
         .container favicon input[type=checkbox].css-checkbox {
             position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
@@ -169,11 +171,6 @@ if($current_fav && $user->isLoggedIn())
             user-select: none;
         }
 </style>
-
-
-
-
-
 
 <style>
         container2{
