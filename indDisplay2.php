@@ -170,6 +170,7 @@ if($current_fav && $user->isLoggedIn())
         }
 </style>
 
+
 <style>
         container2{
             width: 100%;
