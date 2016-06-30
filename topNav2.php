@@ -163,7 +163,8 @@
             
             <div id='search'>
                 <form id='searchBox' action="../keyword.php" method="get">
-                    <input type="text" name="search" id="search_text" placeholder="Search"/>
+                    <?php if(empty($_GET['search'])){$sHolder="Search";}else{$sHolder=$_GET['search'];}?>
+                    <input type="text" name="search" id="search_text" placeholder=<?php print "\"".$sHolder."\"";?>/>
                     <input type="button" name="search_button" id="search_button"></a>
                 </form>
             </div>

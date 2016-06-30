@@ -78,289 +78,280 @@ if($current_fav && $user->isLoggedIn())
         }
     }
 }
-
-
-
 ?>
         
-    <style>
-        .container{
-            display: -webkit-flex; /* Safari */
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            background: #212124; 
-            height: calc(100vh - 50px);
-            justify-content: center; /* align horizontal */
-            align-items: center; /* align vertical */
-            
-        }
-        #scrolla{
-            align-items: center;
-            flex-shrink: 0;
-            width: 50px;
-            height: calc(100vh - 50px);
-            order: 1;
-            
-        }
-        #scrollb{
-            order: 2;
-            height: calc(100vh - 50px);
-            width: calc(100% - 100px);           
-        }
-        #scrollc{
-            flex-shrink: 0;
-            width: 50px;
-            height: calc(100vh - 50px);
-            order: 3;
-            display: flex;
-        }
-        .container div{
-            display: flex;
-            justify-content: center; /* align horizontal */
-            align-items: center; /* align vertical */
-            height: calc(100vh - 50px);
-        }
-        .container a{
-            display: flex;
-            justify-content: center; /* align horizontal */
-            align-items: center; /* align vertical */
-            text-decoration: none;
-        }
-        .container #scrollb a{
-            width: calc(100% - 100px);
-        }
-        .scrollbIMG{
-            object-fit: contain;
-            height: calc(90vh - 50px); /*addtional 100px margin */
-            width: calc(100% - 100px); /*addtional 100px margin */
-        }
-        .container #scrollb favicon{
-            width: 40px;
-            height:40px;
-            position: relative;           
-            align-self: flex-end;
-            padding: 15px;
-        }
-        .container favicon input[type=checkbox].css-checkbox {
-            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
-        }
-        .container favicon input[type=checkbox].css-checkbox + label.css-label {
-            padding-left:45px;
-            height:40px; 
-            display:inline-block;
-            line-height:40px;
-            background-repeat:no-repeat;
-            background-position: 0 0;
-            font-size:40px;
-            vertical-align:middle;
-            cursor:pointer;
-        }
-        .container favicon input[type=checkbox].css-checkbox:checked + label.css-label {
-            background-position: 0 -40px;
-        }
-        .container favicon label.css-label {
-            background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_019807af606f0dea9eb28a8d35a7afc6.png);
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+<style>
+    .container{
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        background: #212124; 
+        height: calc(100vh - 50px);
+        justify-content: center; /* align horizontal */
+        align-items: center; /* align vertical */
+
+    }
+    #scrolla{
+        align-items: center;
+        flex-shrink: 0;
+        width: 50px;
+        height: calc(100vh - 50px);
+        order: 1;
+
+    }
+    #scrollb{
+        order: 2;
+        height: calc(100vh - 50px);
+        width: calc(100% - 100px);           
+    }
+    #scrollc{
+        flex-shrink: 0;
+        width: 50px;
+        height: calc(100vh - 50px);
+        order: 3;
+        display: flex;
+    }
+    .container div{
+        display: flex;
+        justify-content: center; /* align horizontal */
+        align-items: center; /* align vertical */
+        height: calc(100vh - 50px);
+    }
+    .container a{
+        display: flex;
+        justify-content: center; /* align horizontal */
+        align-items: center; /* align vertical */
+        text-decoration: none;
+    }
+    .container #scrollb a{
+        width: calc(100% - 100px);
+    }
+    .scrollbIMG{
+        object-fit: contain;
+        height: calc(90vh - 50px); /*addtional 100px margin */
+        width: calc(100% - 100px); /*addtional 100px margin */
+    }
+    .container #scrollb favicon{
+        width: 40px;
+        height:40px;          
+        align-self: flex-end;
+        padding: 15px;
+    }
+    .container favicon input[type=checkbox].css-checkbox {
+        position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+    }
+    .container favicon input[type=checkbox].css-checkbox + label.css-label {
+        padding-left:45px;
+        height:40px; 
+        display:inline-block;
+        line-height:40px;
+        background-repeat:no-repeat;
+        background-position: 0 0;
+        font-size:40px;
+        vertical-align:middle;
+        cursor:pointer;
+    }
+    .container favicon input[type=checkbox].css-checkbox:checked + label.css-label {
+        background-position: 0 -40px;
+    }
+    .container favicon label.css-label {
+        background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_019807af606f0dea9eb28a8d35a7afc6.png);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 </style>
 
+<style>
+    container2{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        background: #F3F5F6;
+        justify-content: center;
+        order: 2;
+    }
+    container2 #user_info{
+        display: flex;
+        width: auto;
+        max-width: 500px;
+        min-width: 200px;
+        height: auto;
+        flex-wrap: nowrap;
+        color: #212124;
+    }
+    container2 #userPic{
+        display: flex;
+        height: auto;
+        width: 62px;
+        order: 1;
+        margin: 0px;
+        padding-right: 13px;
+    }
+    container2 #userPic img{
+        margin-top: 15px;
+        width: 52px;
+        height: 52px;
+        /* fill the container, preserving aspect ratio, and cropping to fit */
+        background-size: cover;
+        /* center the image vertically and horizontally */
+        background-position: center;
+        /* round the edges to a circle with border radius 1/2 container size */
+        border-radius: 50%;
+    }
+    container2 #userInfo_content{
+        display: flex;
+        height: auto;
+        width: auto;
+        max-width: 500px;
+        order: 2;
+        flex-direction: column;
+    }
+    container2 .spacer{
+        /*max-width:200px;
+        min-width: 5%;
+        height: 1px;*/
+        width: 150px;
 
+    }
+    container2 p{
+        margin: 0px;
+        word-wrap: break-word;
+    }
+    .user_name{
+        width: auto;
+        height: 30px;
+        text-align: left;
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 16px;
+    }
+    .title{
+        width: auto;
+        max-height: 100px;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .descript{
+        width: auto;
+        height: auto;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 400;
+    }
+    container2 .top{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 64px;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+    .top div{
+        display: flex;
+        margin-left: 10px;
+        margin-right: 10px;
+        text-align: center;
+        line-height: 18px;
+    }
+    #view, #fav, #comment{
+        font-weight: 400;
+        font-size: 20px;
+        color: #212124;
+        display: flex;
+        justify-content: flex-end;
+    }
 
+    #fav #ppp{
+        margin: 0px;
+        word-wrap: break-word;
+    }
 
-
+    container2 .bot{
+        display: flex;
+    }
+    .bot p{
+        margin: 0;
+    }
+    .bot .exif{
+        width: 225px;
+        margin-right: 30px;
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        max-height: 160px;
+    }
+    .bot .exif_other{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    #model{
+        width:225px;
+        height: 98px;
+        display:flex;
+        align-content: center;
+        align-items: center;
+        padding-bottom: 28px;
+        font-size: 14px;
+        font-weight:400;
+    }
+    .exif img{
+        margin-right: 15px;
+    }
+    #aperture{
+        height: 32px;
+        width: 110px;
+        display:flex;
+        text-align: center;
+    }
+    #focal{
+        height: 32px;
+        width: 110px;
+        display:flex;
+        text-align: center;
+    }
+    #exposure{
+        height: 32px;
+        width: 110px;
+        display:flex;
+        text-align: center;
+    }
+    #iso{
+        height: 32px;
+        width: 110px;
+        display:flex;
+        text-align: center;
+    }
+    #actualMap{
+        height: 100px;
+        width: 245px;
+    }
+</style>
 
 <style>
-        container2{
-            width: 100%;
-            height: auto;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            background: #F3F5F6;
-            justify-content: center;
-            order: 2;
-        }
-        container2 #user_info{
-            display: flex;
-            width: auto;
-            max-width: 500px;
-            min-width: 200px;
-            height: auto;
-            flex-wrap: nowrap;
-            color: #212124;
-        }
-        container2 #userPic{
-            display: flex;
-            height: auto;
-            width: 62px;
-            order: 1;
-            margin: 0px;
-            padding-right: 13px;
-        }
-        container2 #userPic img{
-            margin-top: 15px;
-            width: 52px;
-            height: 52px;
-            /* fill the container, preserving aspect ratio, and cropping to fit */
-            background-size: cover;
-            /* center the image vertically and horizontally */
-            background-position: center;
-            /* round the edges to a circle with border radius 1/2 container size */
-            border-radius: 50%;
-        }
-        container2 #userInfo_content{
-            display: flex;
-            height: auto;
-            width: auto;
-            max-width: 500px;
-            order: 2;
-            flex-direction: column;
-        }
-        container2 .spacer{
-            /*max-width:200px;
-            min-width: 5%;
-            height: 1px;*/
-            width: 150px;
-            
-        }
-        container2 p{
-            margin: 0px;
-            word-wrap: break-word;
-        }
-        .user_name{
-            width: auto;
-            height: 30px;
-            text-align: left;
-            font-size: 20px;
-            font-weight: 600;
-            margin-top: 16px;
-        }
-        .title{
-            width: auto;
-            max-height: 100px;
-            text-align: left;
-            font-size: 16px;
-            font-weight: 600;
-        }
-        .descript{
-            width: auto;
-            height: auto;
-            text-align: left;
-            font-size: 14px;
-            font-weight: 400;
-        }
-        container2 .top{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            height: 64px;
-            align-items: center;
-            padding-bottom: 20px;
-        }
-        .top div{
-            display: flex;
-            margin-left: 10px;
-            margin-right: 10px;
-            text-align: center;
-            line-height: 18px;
-        }
-        #view, #fav, #comment{
-            font-weight: 400;
-            font-size: 20px;
-            color: #212124;
-            display: flex;
-            justify-content: flex-end;
-        }
-        
-        #fav #ppp{
-            margin: 0px;
-            word-wrap: break-word;
-        }
-        
-        container2 .bot{
-            display: flex;
-        }
-        .bot p{
-            margin: 0;
-        }
-        .bot .exif{
-            width: 225px;
-            margin-right: 30px;
-            align-content: center;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            max-height: 160px;
-        }
-        .bot .exif_other{
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-        }
-        #model{
-            width:225px;
-            height: 98px;
-            display:flex;
-            align-content: center;
-            align-items: center;
-            padding-bottom: 28px;
-            font-size: 14px;
-            font-weight:400;
-        }
-        .exif img{
-            margin-right: 15px;
-        }
-        #aperture{
-            height: 32px;
-            width: 110px;
-            display:flex;
-            text-align: center;
-        }
-        #focal{
-            height: 32px;
-            width: 110px;
-            display:flex;
-            text-align: center;
-        }
-        #exposure{
-            height: 32px;
-            width: 110px;
-            display:flex;
-            text-align: center;
-        }
-        #iso{
-            height: 32px;
-            width: 110px;
-            display:flex;
-            text-align: center;
-        }
-        #actualMap{
-            height: 100px;
-            width: 245px;
-        }
-    </style>
-    
-    <style>
-        .container3{
-            justify-content: center;
-            width: 100%;
-            max-height: 50vh;
-            display: flex;
-            flex-wrap: wrap;
-            background: #F3F5F6;
-            position: relative;
-            align-items: center;
-            vertical-align: middle;
-            order: 3;
-        }
-        .container3 a{
+    .container3{
+        justify-content: center;
+        width: 100%;
+        max-height: 50vh;
+        display: flex;
+        flex-wrap: wrap;
+        background: #F3F5F6;
+        position: relative;
+        align-items: center;
+        vertical-align: middle;
+        order: 3;
+    }
+    .container3 a{
         display:block;
         padding:5px 10px;
         text-decoration:none;
@@ -369,67 +360,69 @@ if($current_fav && $user->isLoggedIn())
         color: #71767a;
         border:1px solid #b9c1c7;
         margin-top: 12px;
-        }
-        .container3 a:hover{
+        max-width: 10em;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .container3 a:hover{
         border-color: #0099e5;
         color: #0099e5;
-        }
-        .spacing{
-            width: 20px;
-        }
-    </style>
-    
-    <style>
-        .text_prompt{
-            position: relative;
-            order: 4;
-            width: 100%;
-            text-align: left;
-            align-items: center;
-            justify-content: flex-start;
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-    </style>
-       
-    <style>
-         body{
-            background: #f3f5f6;
-        }
-        .Collage{
-        /* define how much padding you want in between your images */
-            padding:5px;
-            background: #f3f5f6;
-            position: relative;
-            order: 5;
-        }
+    }
+    .spacing{
+        width: 20px;
+    }
+</style>
 
-        .Collage img{
-        /* ensures padding at the bottom of the image is correct */
-            vertical-align:bottom;
-        /* hide the images until the plugin has run. the plugin will reveal the images*/
-            opacity: 1;
-        }
-        .Image_Wrapper{
-        /* to get the fade in effect, set opacity to 0 on the first element within the gallery area */
-            opacity:0;
-            -moz-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
-            -webkit-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
-            box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
-        }
-    </style>
-    
-    
-    
-    <script src="/node_modules/jquery.min.js"></script>
-    <script src="/node_modules/jquery.collagePlus.js"></script>
-    <script src="/node_modules/jquery.removeWhitespace.js"></script>
-    <script type="text/javascript" src="http://maps.google.cn/maps/api/js?sensor=false&libraries=places"></script>
-    <script>
+<style>
+    .text_prompt{
+        position: relative;
+        order: 4;
+        width: 100%;
+        text-align: left;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+</style>
+
+<style>
+     body{
+        background: #f3f5f6;
+    }
+    .Collage{
+    /* define how much padding you want in between your images */
+        padding:5px;
+        background: #f3f5f6;
+        position: relative;
+        order: 5;
+    }
+
+    .Collage img{
+    /* ensures padding at the bottom of the image is correct */
+        vertical-align:bottom;
+    /* hide the images until the plugin has run. the plugin will reveal the images*/
+        opacity: 1;
+    }
+    .Image_Wrapper{
+    /* to get the fade in effect, set opacity to 0 on the first element within the gallery area */
+        opacity:0;
+        -moz-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+    }
+</style>
+   
+<script src="/node_modules/jquery.min.js"></script>
+<script src="/node_modules/jquery.collagePlus.js"></script>
+<script src="/node_modules/jquery.removeWhitespace.js"></script>
+<script type="text/javascript" src="http://maps.google.cn/maps/api/js?sensor=false&libraries=places"></script>
+<script>
     window.onload=function(){
         var lat = <?php echo $myLat; ?>;
         var lng = <?php echo $myLng; ?>;
@@ -445,95 +438,95 @@ if($current_fav && $user->isLoggedIn())
           map: map
         });
       }
-    </script>
+</script>
 
-    <script>
-        $(document).ready(function(){
-            collage();
-        });
-        function collage() {
-            $('.Collage').removeWhitespace().collagePlus(
-                {
-                    'fadeSpeed'     : 1000,
-                    'targetHeight'  : 400,
-                    'allowPartialLastRow' : true
-                }
-            );
-        };
-    </script>
-    
-    <script>             
-        function LogInCheck() {
-            var a=<?php print $current_id;?>;   //current user id
-            var b=<?php print $pid;?>;          //current picture pid
-            var d=<?php print $current_fav;?>;  //current people who hit like
-            if(document.getElementById("checkboxG5").checked === true)
+<script>
+    $(document).ready(function(){
+        collage();
+    });
+    function collage() {
+        $('.Collage').removeWhitespace().collagePlus(
             {
-                var c='check_like';
-                d++;
-                var result=d+'<br>favorites';
-                result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                document.getElementById('ppp').innerHTML = result;                        
-                $.ajax({
-                    type: 'GET',
-                    url: 'FavWrite.php',
-                    data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
-                    });
-                        
+                'fadeSpeed'     : 1000,
+                'targetHeight'  : 400,
+                'allowPartialLastRow' : true
             }
-            if(document.getElementById("checkboxG5").checked === false)
-            {
-                var c='uncheck_like';
-                d=<?php print $current_fav;?>;  //current people who hit like;         
-                var result=d+'<br>favorites';
-                result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                document.getElementById('ppp').innerHTML = result;                         
-                $.ajax({
-                    type: 'GET',
-                    url: 'FavWrite.php',
-                    data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
+        );
+    };
+</script>
+
+<script>             
+    function LogInCheck() {
+        var a=<?php print $current_id;?>;   //current user id
+        var b=<?php print $pid;?>;          //current picture pid
+        var d=<?php print $current_fav;?>;  //current people who hit like
+        if(document.getElementById("checkboxG5").checked === true)
+        {
+            var c='check_like';
+            d++;
+            var result=d+'<br>favorites';
+            result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+            document.getElementById('ppp').innerHTML = result;                        
+            $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
                 });
-                        
-            }
-        }                                                
-        function LogInCheck2() {
-            var a=<?php print $current_id;?>;   //current user id
-            var b=<?php print $pid;?>;          //current picture pid
-            var d=<?php print $current_fav;?>;  //current people who hit like
-            if(document.getElementById("checkboxG5").checked === true)
-            {   
-                var c='check_like';
-                d=<?php print $current_fav;?>;                        
-                var result=d+'<br>favorites';
-                result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                document.getElementById('ppp').innerHTML = result;                        
-                $.ajax({
-                    type: 'GET',
-                    url: 'FavWrite.php',
-                    data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
-                });
-                        
-            }
-            else if(document.getElementById("checkboxG5").checked === false)
-            {     
-                var c='uncheck_like';
-                d--;
-                var result=d+'<br>favorites';
-                result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                document.getElementById('ppp').innerHTML = result;
-                $.ajax({
-                    type: 'GET',
-                    url: 'FavWrite.php',
-                    data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                            
-                });
-            }
-        }                
-        function UnLogCheck(){
-            alert("please log in then you can fav that pic");
-            document.getElementById("checkboxG5").checked = false;
+
         }
-        </script>
-    <body>
+        if(document.getElementById("checkboxG5").checked === false)
+        {
+            var c='uncheck_like';
+            d=<?php print $current_fav;?>;  //current people who hit like;         
+            var result=d+'<br>favorites';
+            result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+            document.getElementById('ppp').innerHTML = result;                         
+            $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
+            });
+
+        }
+    }                                                
+    function LogInCheck2() {
+        var a=<?php print $current_id;?>;   //current user id
+        var b=<?php print $pid;?>;          //current picture pid
+        var d=<?php print $current_fav;?>;  //current people who hit like
+        if(document.getElementById("checkboxG5").checked === true)
+        {   
+            var c='check_like';
+            d=<?php print $current_fav;?>;                        
+            var result=d+'<br>favorites';
+            result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+            document.getElementById('ppp').innerHTML = result;                        
+            $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
+            });
+
+        }
+        else if(document.getElementById("checkboxG5").checked === false)
+        {     
+            var c='uncheck_like';
+            d--;
+            var result=d+'<br>favorites';
+            result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+            document.getElementById('ppp').innerHTML = result;
+            $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                            
+            });
+        }
+    }                
+    function UnLogCheck(){
+        alert("please log in then you can fav that pic");
+        document.getElementById("checkboxG5").checked = false;
+    }
+</script>
+<body>
     <div class="container">
         <div id="scrolla">
             <?php if(mysqli_num_rows($result35)>0): ?>
