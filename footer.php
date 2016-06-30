@@ -99,7 +99,7 @@
 <style>
     #abc {     
         width:100%;
-        height:200vh;
+        height:100%;
         opacity:.95;
         top:0;
         left:0;
@@ -213,7 +213,7 @@
 <style>
     #abc2 {     
         width:100%;
-        height:200vh;
+        height:100%;
         opacity:.95;
         top:0;
         left:0;
@@ -274,7 +274,7 @@
 <style>
     #abc3 {     
         width:100%;
-        height:200vh;
+        height:100%;
         opacity:.95;
         top:0;
         left:0;
@@ -390,7 +390,7 @@
     // Validating Empty Field
     
     function check_empty() {
-        if (document.getElementById('name').value == "" || document.getElementById('email').value == "" || document.getElementById('msg').value == "") {
+        if (document.getElementById('name').value === "" || document.getElementById('email').value ==="" || document.getElementById('msg').value === "") {
         alert("Fill All Fields !");
     } else {
         document.getElementById('form').submit();
@@ -399,7 +399,7 @@
     }
     
     function check_empty2() {
-        if (document.getElementById('name2').value == "" || document.getElementById('email2').value == "" || document.getElementById('msg2').value == "") {
+        if (document.getElementById('name2').value === "" || document.getElementById('email2').value ==="" || document.getElementById('msg2').value ==="") {
         alert("Fill All Fields !");
     } else {
         document.getElementById('form2').submit();
