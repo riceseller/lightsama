@@ -423,6 +423,8 @@ if($current_fav && $user->isLoggedIn())
         }
     </style>
     
+    
+    
     <script src="/node_modules/jquery.min.js"></script>
     <script src="/node_modules/jquery.collagePlus.js"></script>
     <script src="/node_modules/jquery.removeWhitespace.js"></script>
