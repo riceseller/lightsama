@@ -158,7 +158,7 @@
             </div>
                         
             <div class="logo">
-                <a  class="nav" href="http://db.luokerenz.com" >HAILOINN</a>
+                <a  class="nav" href="http://hailoinn.luokerenz.com" >HAILOINN</a>
             </div>
             
             <div id='search'>
@@ -183,8 +183,7 @@
                     <a class="nav" href="<?=$us_url_root?>users/new_login.php?category=login">LOGIN<br></a> 
                     <a class="nav" href="<?=$us_url_root?>users/new_login.php?category=signup">SIGNUP</a>
                     <?php 
-                }
-                
+                }                
                 ?>
             </div>
         </topNav>
