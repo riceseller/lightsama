@@ -48,11 +48,6 @@ else{
     $myLng = 0;
 }
 
-$query50="select count(*), userid, favpic from fav where favpic=$pid";
-$result50=$conn->query($query50);
-$row50=mysqli_fetch_array($result50);
-$current_fav=$row50[0];
-$userid=$row50[1];
 
 if($user->isLoggedIn())
 {
@@ -62,6 +57,28 @@ else
 {
     $current_id=0;
 }
+
+$query50="select count(*) from fav where favpic=$pid";
+$result50=$conn->query($query50);
+$row50=mysqli_fetch_array($result50);
+$current_fav=$row50[0];
+$userid=0;
+
+if($current_fav && $user->isLoggedIn())
+{
+    $query90="select userid from fav where favpic=$pid";
+    $result90=$conn->query($query90);
+    while($row90=$result90->fetch_assoc())
+    {
+        if($current_id==$row90['userid'])
+        {
+            $userid=$current_id;
+            break;
+        }
+    }
+}
+
+
 
 ?>
         
