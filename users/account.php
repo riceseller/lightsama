@@ -1,11 +1,31 @@
 <?php
-function displayBlock($suid,$userID,$belong){
-    if($userID!=0){
+function displayBlock($row,$mode){
+    if($mode==1){
         //display ind block using input
-        print "<div class='acc-block'><a href='../indUser.php?id=$suid'>$userID</a></div>";
+        if($row[Ubelong]=='flickr'){
+                $server = $row[extraOne];
+                $farm = $row[extraTwo];
+                $userr = $row[userID];
+                $avaStr = "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/$userr.jpg)";
+            }elseif($row[Ubelong]=='500px'){
+                $avaStr = "background-image:url($row[extraTwo])";
+            }else{
+                $avaStr = "background-image:url($grav)";
+            }
+        print "<div class='acc-block'>";
+        print "<img style=$avaStr>";
+        print "<div class='acc-userInfo'>";
+        print "<div>ID: $row[userID]</div>";
+        print "<div><a href='../indUser.php?id=$row[scrapeUserID]'>PhotoStream</a></div>";
+        print "<div><a href=#>Ablum</a></div>";
+        print "</div>";
+        print "<a style='align-self:flex-end;position:relative;right:0px;' href='ondelete.php?del=$row[userID]&be=$row[Ubelong]' onclick='return checkDelete()'>&#128465</a>";
+        print "</div>";
     }
+    if($mode==2){
     //display add block directly
-    print '<div class="acc-block"><a href="../phpFlick/auth.php" style="font-size:80px;opacity:0.5;">&#8853</a></div>';
+    print '<div class="acc-block" style="justify-content:center;"><a href="../phpFlick/auth.php" style="font-size:80px;opacity:0.5;">&#8853</a></div>';
+    }
 }
 ?>
 <?php require_once 'init.php'; ?>
@@ -27,13 +47,29 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
 <?php
     $query = "select su.*, lu.scrapeUserID from LinkUser lu join ScrapeUser su on lu.scrapeUserID=su.id where usersID=$get_info_id";
     $result=$conn->query($query);
-    $row = mysqli_fetch_array($result);
+    //$row = mysqli_fetch_array($result);
     #24380571446
     if($result->num_rows>0){
         $Umode = 1;
-        $query2 = "select urlSource from Url where id=24493854475"; //temp cover
+        $query2 = "select custom1 from users where id=$get_info_id"; //get cover photo
         $result2=$conn->query($query2);
         $row2 = mysqli_fetch_array($result2);
+        if($row2[custom1]==''){
+            //select default cover photo
+            $query3 = "select urlSource from Url where id=24493854475";
+            $result3=$conn->query($query3);
+            $row3 = mysqli_fetch_array($result3);
+            $coverPic = $row3[urlSource];
+        } else {
+            $coverPic = $row2[custom1];
+        }
+    }else{
+        //this account has no linked account
+        $Umode = 0;
+        $query3 = "select urlSource from Url where id=24493854475";
+        $result3=$conn->query($query3);
+        $row3 = mysqli_fetch_array($result3);
+        $coverPic = $row3[urlSource];
     }
 ?>
 <style>
@@ -111,33 +147,51 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
         /*border-radius: 25px;*/
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         margin: 30px 2% 0px 2%;
         border: 2px solid #cfd6d9;
+        min-width: 200px;
         width: 20%;
         height: 150px; 
     }
+    .acc-block img{
+        margin-top: 19px;
+        margin-bottom: 59px;
+        margin-left: 20px;
+        width: 72px;
+        height: 72px;
+        /* fill the container, preserving aspect ratio, and cropping to fit */
+        background-size: cover;
+        /* center the image vertically and horizontally */
+        background-position: center;
+        /* round the edges to a circle with border radius 1/2 container size */
+        border-radius: 50%;
+    }
+    .acc-userInfo{
+        margin-top: 19px;
+        margin-bottom: 19px;
+        margin-left: 15px;
+        min-width: 83px;
+        max-width: calc(100% - 92px - 15px);
+        height:112px;        
+    }
+    .acc-userInfo div{
+        padding: 3px 5px;
+        margin: 4px;
+        border: 1px solid #cfd6d9;
+        width: auto;
+    }
 </style>
 
+<script language="JavaScript" type="text/javascript">
+function checkDelete(){
+    return confirm('Are you sure?');
+}
+</script>
+
 <div id="main-content">
-<div class="user-container" style="background-image: url('<?php print $row2[urlSource];?>');background-size: cover;">
-    <img style="<?php
-                    if($row[Ubelong]=='flickr')
-                    {
-                        $server = $row[extraOne];
-                        $farm = $row[extraTwo];
-                        $userr = $row[userID];
-                        print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/$userr.jpg)";
-                    }
-                    elseif($row[Ubelong]=='500px')
-                    {
-                        print "background-image:url($row[extraTwo])";
-                    }
-                    else
-                    {
-                        print $grav;
-                    }
-                ?>">
+<div class="user-container" style="background-image: url('<?php print $coverPic;?>');background-size: cover;">    
+    <img style="background-image:url(<?=$grav;?>);">
     <div class="user-info">
         <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
         <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?=$signupdate?></a><br>
@@ -150,6 +204,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
 <li class="active"><a href="#">Your Linked Account</a></li>
 <li><a href="../phpFlick/auth.php">Add New Flickr Account</a></li>
 <li><a href="user_settings.php">Edit Account Info</a></li>
+<li><a href="#">Favorite</a></li>
 <div class="clearFloat"></div>
 </ul>
 </div>
@@ -158,12 +213,13 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
     <?php
         if($Umode==1){
             //print $row[userID]
-            displayBlock($row[scrapeUserID],$row[userID], $row[Ubelong]);
-            /*while($row = $result->fetch_assoc()) {
-                //displayBlock($row[userId], $row[Ubelong]);
-            }*/
+            //displayBlock($row[scrapeUserID],$row[userID], $row[Ubelong]);
+            while($row = mysqli_fetch_array($result)) {
+                displayBlock($row,1);
+            }
+            displayBlock($row,2);
         }else{
-            displayBlock(0,0,0);
+            displayBlock($row,2);
         }
     ?>
 </div>
