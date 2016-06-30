@@ -62,6 +62,7 @@ $query50="select count(*) from fav where favpic=$pid";
 $result50=$conn->query($query50);
 $row50=mysqli_fetch_array($result50);
 $current_fav=$row50[0];
+
 $userid=0;
 
 if($current_fav && $user->isLoggedIn())
@@ -105,8 +106,7 @@ if($current_fav && $user->isLoggedIn())
         #scrollb{
             order: 2;
             height: calc(100vh - 50px);
-            width: calc(100% - 100px);
-            border: 3px solid white;            
+            width: calc(100% - 100px);           
         }
         #scrollc{
             flex-shrink: 0;
@@ -139,7 +139,8 @@ if($current_fav && $user->isLoggedIn())
             width: 40px;
             height:40px;
             position: relative;           
-            border: 3px solid white;          
+            align-self: flex-end;
+            padding: 15px;
         }
         .container favicon input[type=checkbox].css-checkbox {
             position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
