@@ -86,6 +86,7 @@ if($user->isLoggedIn())
             order: 2;
             height: calc(100vh - 50px);
             width: calc(100% - 100px);
+            border: 3px solid white;            
         }
         #scrollc{
             flex-shrink: 0;
@@ -114,10 +115,11 @@ if($user->isLoggedIn())
             height: calc(90vh - 50px); /*addtional 100px margin */
             width: calc(100% - 100px); /*addtional 100px margin */
         }
-        .container favicon{
+        .container #scrollb favicon{
             width: 40px;
             height:40px;
-            position: relative;
+            position: relative;           
+            border: 3px solid white;          
         }
         .container favicon input[type=checkbox].css-checkbox {
             position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
