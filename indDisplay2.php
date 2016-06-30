@@ -463,46 +463,71 @@ if($user->isLoggedIn())
             
             <script>             
                  function LogInCheck() {
+                    var a=<?php print $current_id;?>;   //current user id
+                    var b=<?php print $pid;?>;          //current picture pid
+                    var d=<?php print $current_fav;?>;  //current people who hit like
                     if(document.getElementById("checkboxG5").checked === true)
-                    {   var a=<?php print $current_fav;?>;
-                        var b=<?php print $pid;?>;
-                        a++;
-                        var result=a+'<br>favorites';
+                    {
+                        var c='check_like';
+                        d++;
+                        var result=d+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                        document.getElementById('ppp').innerHTML = result;
-                        
+                        document.getElementById('ppp').innerHTML = result;                        
                         $.ajax({
                             type: 'GET',
                             url: 'FavWrite.php',
-                            data: 'current_id=' + a +'&current_pid=' + b,
-                            success: function(response) {
-                                alert(response);
-                            }
+                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,                           
+                        });
+                        
+                    }
+                    if(document.getElementById("checkboxG5").checked === false)
+                    {
+                        var c='uncheck_like';
+                        d=<?php print $current_fav;?>;  //current people who hit like;         
+                        var result=d+'<br>favorites';
+                        result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+                        document.getElementById('ppp').innerHTML = result;                         
+                        $.ajax({
+                            type: 'GET',
+                            url: 'FavWrite.php',
+                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,                           
+                        });
+                        
+                    }
+                }   
+                
+                
+                
+                function LogInCheck2() {
+                    var a=<?php print $current_id;?>;   //current user id
+                    var b=<?php print $pid;?>;          //current picture pid
+                    var d=<?php print $current_fav;?>;  //current people who hit like
+                    if(document.getElementById("checkboxG5").checked === true)
+                    {   
+                        var c='check_like';
+                        d=<?php print $current_fav;?>;                        
+                        var result=d+'<br>favorites';
+                        result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+                        document.getElementById('ppp').innerHTML = result;                        
+                        $.ajax({
+                            type: 'GET',
+                            url: 'FavWrite.php',
+                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,                           
                         });
                         
                     }
                     else if(document.getElementById("checkboxG5").checked === false)
-                    {
-                        var a=<?php print $current_fav;?>;
-                        var result=a+'<br>favorites';
-                        result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                        document.getElementById('ppp').innerHTML = result;                        
-                    }
-                }   
-                function LogInCheck2() {
-                    if(document.getElementById("checkboxG5").checked === true)
-                    {   var a=<?php print $current_fav;?>;
-                        var result=a+'<br>favorites';
-                        result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                        document.getElementById('ppp').innerHTML = result;  
-                    }
-                    else if(document.getElementById("checkboxG5").checked === false)
-                    {
-                        var a=<?php print $current_fav;?>;
-                        a--;
-                        var result=a+'<br>favorites';
+                    {     
+                        var c='uncheck_like';
+                        d--;
+                        var result=d+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;
+                        $.ajax({
+                            type: 'GET',
+                            url: 'FavWrite.php',
+                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,                            
+                        });
                     }
                 }
                 
