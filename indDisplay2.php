@@ -474,7 +474,7 @@ if($user->isLoggedIn())
                             $conn->query($query60);  
                         ?>
                     }
-                    if(document.getElementById("checkboxG5").checked === false)
+                    else if(document.getElementById("checkboxG5").checked === false)
                     {
                         var a=<?php print $current_fav;?>;
                         var result=a+'<br>favorites';
@@ -490,7 +490,7 @@ if($user->isLoggedIn())
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;                        
                     }
-                    if(document.getElementById("checkboxG5").checked === false)
+                    else if(document.getElementById("checkboxG5").checked === false)
                     {
                         var a=<?php print $current_fav;?>;
                         a--;
