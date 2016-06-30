@@ -169,6 +169,12 @@ if($current_fav && $user->isLoggedIn())
             user-select: none;
         }
 </style>
+
+
+
+
+
+
 <style>
         container2{
             width: 100%;
