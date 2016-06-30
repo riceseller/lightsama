@@ -75,12 +75,12 @@ if($user->isLoggedIn()){
     }else{
         print $conn->error;
         echo '<script type="text/javascript">alert("possible duplicate linking or this account is belong to others");</script>';
-        echo "<script>window.location = 'http://hailoinn.luokerenz.com/users/account.php'</script>";
+        echo "<script>window.location = '../users/account.php'</script>";
         //echo '<script type="text/javascript">window.close();</script>';
     }
 }
 else{
     echo '<script type="text/javascript">alert("please login first");</script>';
-    echo "<script>window.location = 'http://luokerenz.com'</script>";
+    echo "<script>window.location = '../index.php'</script>";
 }
 ?>
