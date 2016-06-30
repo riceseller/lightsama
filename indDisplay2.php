@@ -480,7 +480,10 @@ if($user->isLoggedIn())
                         var result=a+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;
-                        
+                        <?php     //insert into database if user id is different 
+                            $query70="insert into fav(userid, favpic) values(1, 9)";
+                            $conn->query($query70);  
+                        ?>
                     }
                 }   
                 function LogInCheck2() {
@@ -489,10 +492,6 @@ if($user->isLoggedIn())
                         var result=a+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;  
-                        <?php     //insert into database if user id is different 
-                            $query70="insert into fav(userid, favpic) values(1, 3)";
-                            $conn->query($query70);  
-                        ?>
                     }
                     else if(document.getElementById("checkboxG5").checked === false)
                     {
