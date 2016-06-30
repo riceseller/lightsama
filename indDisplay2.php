@@ -442,6 +442,7 @@ if($user->isLoggedIn())
                 <img src="/media/left_arrow.png" />
             </a>
         </div>
+        
         <div id="scrollb">
         <a class="scrollIMG" style="text-decoration: none;" href="<?php if($row['belong']=='500px')
                                                        {
@@ -494,10 +495,7 @@ if($user->isLoggedIn())
                         });
                         
                     }
-                }   
-                
-                
-                
+                }                                                
                 function LogInCheck2() {
                     var a=<?php print $current_id;?>;   //current user id
                     var b=<?php print $pid;?>;          //current picture pid
@@ -529,8 +527,7 @@ if($user->isLoggedIn())
                             data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,                            
                         });
                     }
-                }
-                
+                }                
                 function UnLogCheck(){
                     alert("please log in then you can fav that pic");
                     document.getElementById("checkboxG5").checked = false;
@@ -561,10 +558,8 @@ if($user->isLoggedIn())
                 />
                 <label for="checkboxG5" class="css-label"></label>
             </favicon>
-            
-            
-            
         </div>
+        
         <div id="scrollc">
             <?php if(mysqli_num_rows($result34)>0): ?>
                 <a href="<?php $prevpid = $prev[p_id]; print "/indDisplay2.php?pid=$prevpid";?> ">
@@ -573,9 +568,7 @@ if($user->isLoggedIn())
             <?php endif; ?>
                 <img src="/media/right_arrow.png" />
             </a>   
-        </div>
-        
-        
+        </div>        
     </div>
     
     <div class="container3">
