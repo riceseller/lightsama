@@ -16,9 +16,14 @@ if($user->isLoggedIn()){
         $result=$conn->query($query);
         $row = mysqli_fetch_array($result);
         $deleteSUid = $row[id];
-        $query2 = "delete lu from LinkUser lu where scrapeUserID=$deleteSUid and﻿ usersID=$get_info_id";
-        $conn->query($query2);
-        echo("<script>alert('delete success!');location.href = '../users/account.php';</script>");
+        $query2 = "delete from LinkUser where scrapeUserID='$deleteSUid' AND usersID='$get_info_id'"; //dont remove space
+        if($conn->query($query2)==TRUE){
+            echo("<script>alert('sucess! $query2');location.href = '../users/account.php';</script>");
+        }else{
+            $err = $conn->error;
+            print $err;
+            echo("<script>alert('fail!');location.href = '../users/account.php';</script>");
+        }
     }
 }else{
     //no login user, exit

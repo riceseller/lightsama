@@ -72,6 +72,7 @@ if($user->isLoggedIn()){
         print 'insert success, ready to exit';
         shell_exec('airflow trigger_dag flickr_link_script');
         //echo '<script type="text/javascript">window.close();</script>';
+        echo "<script>window.location = '../users/account.php'</script>";
     }else{
         print $conn->error;
         echo '<script type="text/javascript">alert("possible duplicate linking or this account is belong to others");</script>';
