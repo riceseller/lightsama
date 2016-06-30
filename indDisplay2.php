@@ -58,6 +58,10 @@ if($user->isLoggedIn())
 {
     $current_id=$user->data()->id;
 }
+else
+{
+    $current_id=0;
+}
 
 ?>
         
@@ -478,7 +482,7 @@ if($user->isLoggedIn())
                         $.ajax({
                             type: 'GET',
                             url: 'FavWrite.php',
-                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,                           
+                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
                         });
                         
                     }
@@ -492,7 +496,7 @@ if($user->isLoggedIn())
                         $.ajax({
                             type: 'GET',
                             url: 'FavWrite.php',
-                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,                           
+                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
                         });
                         
                     }
@@ -511,7 +515,7 @@ if($user->isLoggedIn())
                         $.ajax({
                             type: 'GET',
                             url: 'FavWrite.php',
-                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,                           
+                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
                         });
                         
                     }
@@ -525,7 +529,7 @@ if($user->isLoggedIn())
                         $.ajax({
                             type: 'GET',
                             url: 'FavWrite.php',
-                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,                            
+                            data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                            
                         });
                     }
                 }                
@@ -553,6 +557,7 @@ if($user->isLoggedIn())
                             }
                             else
                             {
+                                echo "autocomplete='off'";
                                 echo "onclick='UnLogCheck()'";
                             }
                         ?>
