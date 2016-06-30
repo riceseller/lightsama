@@ -465,21 +465,28 @@ if($user->isLoggedIn())
                  function LogInCheck() {
                     if(document.getElementById("checkboxG5").checked === true)
                     {   var a=<?php print $current_fav;?>;
+                        var b=<?php print $pid;?>;
                         a++;
                         var result=a+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
                         document.getElementById('ppp').innerHTML = result;
-                        <?php     //insert into database if user id is different 
-                            $query60="insert into fav(userid, favpic) values($current_id, $pid)";
-                            $conn->query($query60);  
-                        ?>
+                        
+                        $.ajax({
+                            type: 'GET',
+                            url: 'FavWrite.php',
+                            data: 'current_id=' + a +'&current_pid=' + b,
+                            success: function(response) {
+                                alert(response);
+                            }
+                        });
+                        
                     }
                     else if(document.getElementById("checkboxG5").checked === false)
                     {
                         var a=<?php print $current_fav;?>;
                         var result=a+'<br>favorites';
                         result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                        document.getElementById('ppp').innerHTML = result;
+                        document.getElementById('ppp').innerHTML = result;                        
                     }
                 }   
                 function LogInCheck2() {
