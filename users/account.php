@@ -15,11 +15,11 @@ function displayBlock($row,$mode){
         print "<div class='acc-block'>";
         print "<img style=$avaStr>";
         print "<div class='acc-userInfo'>";
-        print "<div>ID: $row[userID]</div>";
+        print "<div><a>ID: $row[userID]</a></div>";
         print "<div><a href='../indUser.php?id=$row[scrapeUserID]'>PhotoStream</a></div>";
         print "<div><a href=#>Ablum</a></div>";
         print "</div>";
-        print "<a style='width:11px;align-self:flex-end;position:relative;right:0px;' href='ondelete.php?del=$row[userID]&be=$row[Ubelong]' onclick='return checkDelete()'>&#128465</a>";
+        print "<a style='width:11px;align-self:flex-end;' href='ondelete.php?del=$row[userID]&be=$row[Ubelong]' onclick='return checkDelete()'>&#128465</a>";
         print "</div>";
     }
     if($mode==2){
@@ -168,16 +168,17 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
         border-radius: 50%;
     }
     .acc-userInfo{
-        margin-top: 19px;
+        margin-top: 6px;
         margin-bottom: 19px;
         margin-left: 15px;
-        min-width: calc(200px - 92px - 15px - 11px);
-        max-width: calc(100% - 92px - 15px - 11px);
+        width: calc(100% - 92px - 30px);
         height:112px;        
     }
     .acc-userInfo div{
+        margin: 13px 2px;
+    }
+    .acc-userInfo a{
         padding: 3px 5px;
-        margin: 4px;
         border: 1px solid #cfd6d9;
         width: auto;
     }

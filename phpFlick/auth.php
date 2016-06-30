@@ -28,7 +28,7 @@ if($user->isLoggedIn()){
  
     if (empty($_GET['frob'])) {
         $f->auth($permissions, false);
-        print 'read permission requested';
+        //print 'read permission requested';
     } else {
         $f->auth_getToken($_GET['frob']);
 	}
@@ -40,9 +40,9 @@ if($user->isLoggedIn()){
     }*/
     $flickr_userID = $f->test_login ();
     $flickr_userID = $flickr_userID['id'];
-    print 'user id is: '.$flickr_userID;
+    //print 'user id is: '.$flickr_userID;
     $dbUserID = $user->data()->id;
-    print 'db user id is: '.$dbUserID;
+    //print 'db user id is: '.$dbUserID;
     $query = "select id from ScrapeUser where userID = '$flickr_userID'";
     //print $query;
     $result=$conn->query($query);
@@ -69,12 +69,12 @@ if($user->isLoggedIn()){
     print $query2;
     if ($conn->query($query2) === True){
         //insert success
-        print 'insert success, ready to exit';
+        //print 'insert success, ready to exit';
         shell_exec('airflow trigger_dag flickr_link_script');
         //echo '<script type="text/javascript">window.close();</script>';
         echo "<script>window.location = '../users/account.php'</script>";
     }else{
-        print $conn->error;
+        //print $conn->error;
         echo '<script type="text/javascript">alert("possible duplicate linking or this account is belong to others");</script>';
         echo "<script>window.location = '../users/account.php'</script>";
         //echo '<script type="text/javascript">window.close();</script>';
