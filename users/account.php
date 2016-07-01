@@ -45,15 +45,15 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
  ?>
 
 <?php
+    $query2 = "select custom1,custom2 from users where id=$get_info_id"; //custom1=>cover photo custom2=>avatar
+    $result2=$conn->query($query2);
+    $row2 = mysqli_fetch_array($result2);
     $query = "select su.*, lu.scrapeUserID from LinkUser lu join ScrapeUser su on lu.scrapeUserID=su.id where usersID=$get_info_id";
     $result=$conn->query($query);
     //$row = mysqli_fetch_array($result);
     #24380571446
     if($result->num_rows>0){
         $Umode = 1;
-        $query2 = "select custom1 from users where id=$get_info_id"; //get cover photo
-        $result2=$conn->query($query2);
-        $row2 = mysqli_fetch_array($result2);
         if($row2[custom1]==''){
             //select default cover photo
             $query3 = "select urlSource from Url where id=24493854475";
@@ -62,6 +62,11 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
             $coverPic = $row3[urlSource];
         } else {
             $coverPic = $row2[custom1];
+        }
+        if($row2[custom2]==''){
+            $gravMod = $grav;
+        }else{
+            $gravMod = $row2[custom2];
         }
     }else{
         //this account has no linked account
@@ -83,9 +88,34 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
         height: 250px;
         width: 100%;
     }
-    .user-container img{
+    .uPic-container{
         margin-top: 130px;
         margin-left: 10%;
+        width: 100px;
+        height: 100px;
+    }
+    .uPic-OL{
+        font-weight: 700;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top:0;
+        right:0;
+        opacity: 0;
+        width: 100px;
+        height: 100px;
+        z-index: 3;
+    }
+    .uPic-OL:hover{
+        opacity: 0.85;
+    }
+    .uPic-container img{
+        z-index: 2;
+        position: relative;
+        top:-100px;
+        right:0;
         width: 100px;
         height: 100px;
         /* fill the container, preserving aspect ratio, and cropping to fit */
@@ -183,6 +213,10 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
         width: auto;
     }
 </style>
+<link rel="stylesheet" href="../node_modules/jquery.modal.min.css" type="text/css" media="screen" />
+
+<script src="../node_modules/jquery.min.js"></script>
+<script src="../node_modules/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
 
 <script language="JavaScript" type="text/javascript">
 function checkDelete(){
@@ -191,8 +225,11 @@ function checkDelete(){
 </script>
 
 <div id="main-content">
-<div class="user-container" style="background-image: url('<?php print $coverPic;?>');background-size: cover;">    
-    <img style="background-image:url(<?=$grav;?>);">
+<div class="user-container" style="background-image: url('<?php print $coverPic;?>');background-size: cover;">
+    <div class="uPic-container">
+        <div class="uPic-OL"><a href="avaMod.php" rel="modal:open">&#9998</a></div>
+        <img style="background-image:url(<?=$gravMod;?>);">
+    </div>
     <div class="user-info">
         <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
         <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?=$signupdate?></a><br>
