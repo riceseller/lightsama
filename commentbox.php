@@ -231,7 +231,66 @@
         margin: 60px auto 15px;
         margin-top: 0;
         width: 768px;
-        height: 100px;
+        height: auto;
+    }
+    #submission .form-style-1 {
+    margin:10px 5px auto;
+    max-width: 400px;
+    padding: 0px 12px 10px 20px;
+    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+    #submission .form-style-1 li {
+        padding: 0;
+        display: block;
+        list-style: none;
+        margin: 10px 0 0 0;
+    }
+    #submission .form-style-1 label{
+        margin:0 0 3px 0;
+        padding:0px;
+        display:block;
+        font-weight: bold;
+    }
+    #submission textarea, select{
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        border:1px solid #BEBEBE;
+        padding: 7px;
+        margin:0px;
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+        outline: none;  
+    }
+    #submission .form-style-1 textarea:focus, 
+    #submission .form-style-1 select:focus{
+        -moz-box-shadow: 0 0 8px #88D5E9;
+        -webkit-box-shadow: 0 0 8px #88D5E9;
+        box-shadow: 0 0 8px #88D5E9;
+        border: 1px solid #88D5E9;
+    }
+    #submission .form-style-1 .field-long{
+        width: 100%;
+    }
+    #submission .form-style-1 .field-textarea{
+        height: 45px;
+    }
+    #submission .form-style-1 input[type=submit], .form-style-1 input[type=button]{
+        background: #4B99AD;
+        padding: 8px 15px 8px 15px;
+        border: none;
+        color: #fff;
+    }
+    #submission .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+        background: #4691A4;
+        box-shadow:none;
+        -moz-box-shadow:none;
+        -webkit-box-shadow:none;
+    }
+    #submission .form-style-1 .required{
+        color:red;
     }
 </style>
 
@@ -261,12 +320,12 @@
 					<div class="comment-box">
 						<div class="comment-head">
 							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-							<span>see how it goes</span>
+							<span>5 minutes ago</span>
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
 						</div>
 						<div class="comment-content">
-							analysis
+							I love this picture!!!!
 						</div>
 					</div>
 				</div>
@@ -279,12 +338,12 @@
 						<div class="comment-box">
 							<div class="comment-head">
 								<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-								<span>88555555</span>
+								<span>4 minutes ago</span>
 								<i class="fa fa-reply"></i>
 								<i class="fa fa-heart"></i>
 							</div>
 							<div class="comment-content">
-								this is shit bro
+								me too!!!!
 							</div>
 						</div>
 					</li>
@@ -296,12 +355,12 @@
 						<div class="comment-box">
 							<div class="comment-head">
 								<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-								<span>88686868</span>
+								<span>3 minutes ago</span>
 								<i class="fa fa-reply"></i>
 								<i class="fa fa-heart"></i>
 							</div>
 							<div class="comment-content">
-								 i want smoke too
+								 come out for a movie tonight?
 							</div>
 						</div>
 					</li>
@@ -315,12 +374,12 @@
 					<div class="comment-box">
 						<div class="comment-head">
 							<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-							<span>22222222</span>
+							<span>2 minutes ago</span>
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
 						</div>
 						<div class="comment-content">
-							I want smoke
+							Seems like someone want hook me up!!!
 						</div>
 					</div>
 				</div>
@@ -328,9 +387,18 @@
 		</ul>
 	</div>
 
-    <!-- comment submission form goes down there -->
-    
-    <div id="submission">        
-    </div>
-    
+    <!-- comment submission form goes down there -->   
+    <div id="submission">
+        <form>
+            <ul class="form-style-1">
+                <li>
+                    <label>Comments Here</label>
+                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                </li>
+                <li>
+                    <input type="submit" value="Submit" />
+                </li>
+            </ul>
+        </form>
+    </div>   
 </div>
