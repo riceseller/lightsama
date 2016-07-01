@@ -494,11 +494,6 @@ if($current_fav && $user->isLoggedIn())
 	height: 0;
 	width: 0;
 }
-.comments-container .reply-list {
-	padding-left: 88px;
-	clear: both;
-	margin-top: 15px;
-}
 .comments-container .comments-list .comment-avatar {
 	width: 65px;
 	height: 65px;
