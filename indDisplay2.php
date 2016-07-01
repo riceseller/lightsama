@@ -180,9 +180,7 @@ if($current_fav && $user->isLoggedIn())
     }
     container2 #user_info{
         display: flex;
-        width: auto;
-        max-width: 500px;
-        min-width: 200px;
+        width: 500px;
         height: auto;
         flex-wrap: nowrap;
         color: #212124;
@@ -218,7 +216,7 @@ if($current_fav && $user->isLoggedIn())
         /*max-width:200px;
         min-width: 5%;
         height: 1px;*/
-        width: 150px;
+        width: 60px;
     }
     container2 p{
         margin: 0px;
