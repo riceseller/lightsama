@@ -1118,7 +1118,7 @@ if($current_fav && $user->isLoggedIn())
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">张三</a></h6>
 							<span>5 minutes ago</span>
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
@@ -1136,7 +1136,7 @@ if($current_fav && $user->isLoggedIn())
 						<!-- Contenedor del Comentario -->
 						<div class="comment-box">
 							<div class="comment-head">
-								<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+								<h6 class="comment-name"><a href="http://creaticode.com/blog">李四</a></h6>
 								<span>4 minutes ago</span>
 								<i class="fa fa-reply"></i>
 								<i class="fa fa-heart"></i>
@@ -1153,7 +1153,7 @@ if($current_fav && $user->isLoggedIn())
 						<!-- Contenedor del Comentario -->
 						<div class="comment-box">
 							<div class="comment-head">
-								<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+								<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">张三</a></h6>
 								<span>3 minutes ago</span>
 								<i class="fa fa-reply"></i>
 								<i class="fa fa-heart"></i>
@@ -1172,7 +1172,7 @@ if($current_fav && $user->isLoggedIn())
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+							<h6 class="comment-name"><a href="http://creaticode.com/blog">李四</a></h6>
 							<span>2 minutes ago</span>
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
