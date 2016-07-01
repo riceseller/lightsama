@@ -186,6 +186,7 @@ if($current_fav && $user->isLoggedIn())
         height: auto;
         flex-wrap: nowrap;
         color: #212124;
+        border: 3px solid green;
     }
     container2 #userPic{
         display: flex;
@@ -219,7 +220,7 @@ if($current_fav && $user->isLoggedIn())
         min-width: 5%;
         height: 1px;*/
         width: 150px;
-
+        border: 3px solid brown;
     }
     container2 p{
         margin: 0px;
@@ -277,6 +278,7 @@ if($current_fav && $user->isLoggedIn())
 
     container2 .bot{
         display: flex;
+        border: 3px solid green;
     }
     .bot p{
         margin: 0;
@@ -336,12 +338,12 @@ if($current_fav && $user->isLoggedIn())
         height: 100px;
         width: 245px;
     }
-    container2 #fdb{
+    container2 .fdb{
         border: 3px solid blue;
         display: flex;
         flex-direction: column;
         width: 50%;
-        height: 100px;
+        height: auto;
         margin-top: 30px;
         margin-bottom: 30px;
     }
@@ -810,7 +812,9 @@ if($current_fav && $user->isLoggedIn())
         </div>
          
         
-        <div id="container2"></div>
+        <div class="fdb">
+            
+        </div>
         
      </container2>
     
