@@ -1,4 +1,4 @@
-f<?php
+<?php
 require_once "topNav2.php";
 $pid = $_GET["pid"]; 
 require_once("supplyment/dbAccess.php");
