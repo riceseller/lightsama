@@ -186,7 +186,6 @@ if($current_fav && $user->isLoggedIn())
         height: auto;
         flex-wrap: nowrap;
         color: #212124;
-        border: 3px solid green;
     }
     container2 #userPic{
         display: flex;
@@ -220,7 +219,6 @@ if($current_fav && $user->isLoggedIn())
         min-width: 5%;
         height: 1px;*/
         width: 150px;
-        border: 3px solid brown;
     }
     container2 p{
         margin: 0px;
@@ -278,7 +276,6 @@ if($current_fav && $user->isLoggedIn())
 
     container2 .bot{
         display: flex;
-        border: 3px solid green;
     }
     .bot p{
         margin: 0;

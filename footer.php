@@ -99,7 +99,7 @@
 <style>
     #abc {     
         width:100%;
-        height:100%;
+        height:200%;
         opacity:.95;
         top:0;
         left:0;
@@ -468,7 +468,7 @@
     </div>
 </footer>
 
-<div id="abc">
+<div id="abc" onclick="div_hide()">
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
     <!-- Contact Us Form -->
@@ -485,7 +485,7 @@
 <!-- Popup Div Ends Here -->
 </div>
 
-<div id="abc2">
+<div id="abc2" onclick="div_hide2()">
     <div id="popupContact">
         <div id="term">
            <img id="close" src="../media/close.png" onclick ="div_hide2()">
@@ -496,7 +496,7 @@
     </div>
 </div>
 
-<div id="abc3">
+<div id="abc3" onclick="div_hide3()">
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
     <!-- Contact Us Form -->
