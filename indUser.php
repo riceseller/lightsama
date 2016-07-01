@@ -155,20 +155,20 @@ function pageCount($inputStr){
 
 <script>
 // All images need to be loaded for this plugin to work so
-    $(document).ready(function(){
-            collage();
-            //$('.Collage').collageCaption();
-    });
-    // Here we apply the actual CollagePlus plugin
-    function collage() {
-        $('.Collage').removeWhitespace().collagePlus(
-            {
-                'fadeSpeed'     : 1000,
-                'targetHeight'  : 400,
-                'allowPartialLastRow' : true
-            }
-        );
-    };
+$(document).ready(function(){
+        collage();
+        //$('.Collage').collageCaption();
+});
+// Here we apply the actual CollagePlus plugin
+function collage() {
+    $('.Collage').removeWhitespace().collagePlus(
+        {
+            'fadeSpeed'     : 1000,
+            'targetHeight'  : 400,
+            'allowPartialLastRow' : true
+        }
+    );
+};
 </script>
 
 <div class="menu">
