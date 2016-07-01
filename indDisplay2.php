@@ -1151,7 +1151,7 @@ if($current_fav && $user->isLoggedIn())
             <ul class="form-style-1">
                 <li>
                     <label>Comments Here</label>
-                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                    <textarea name="f5" id="field5" class="field-long field-textarea"></textarea>
                 </li>
                 <li>
                     <input type="submit" value="Submit" />
