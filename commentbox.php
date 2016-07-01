@@ -1,22 +1,12 @@
 <style>
-
- a {
- 	color: #03658c;
- 	text-decoration: none;
- }
-
-ul {
-	list-style-type: none;
-}
-
-body {
-	font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
-	background: #dee1e3;
-}
-
 .comments-container {
 	margin: 60px auto 15px;
+        margin-bottom: 0;
 	width: 768px;
+        border: 3px solid green;
+}
+.comments-container ul {
+        list-style-type: none;
 }
 .comments-container * {   
  	margin: 0;
@@ -25,24 +15,20 @@ body {
  	-moz-box-sizing: border-box;
  	box-sizing: border-box;
 }
-
 .comments-container h1 {
 	font-size: 36px;
 	color: #283035;
 	font-weight: 400;
 }
-
 .comments-container h1 a {
 	font-size: 18px;
 	font-weight: 700;
 }
-
-.comments-list {
+.comments-container .comments-list {
 	margin-top: 30px;
 	position: relative;
 }
-
-.comments-list:before {
+.comments-container .comments-list:before {
 	content: '';
 	width: 2px;
 	height: 100%;
@@ -51,8 +37,7 @@ body {
 	left: 32px;
 	top: 0;
 }
-
-.comments-list:after {
+.comments-container .comments-list:after {
 	content: '';
 	position: absolute;
 	background: #c7cacb;
@@ -65,9 +50,8 @@ body {
 	-moz-border-radius: 50%;
 	border-radius: 50%;
 }
-
-.reply-list:before, .reply-list:after {display: none;}
-.reply-list li:before {
+.comments-container .reply-list:before, .reply-list:after {display: none;}
+.comments-container .reply-list li:before {
 	content: '';
 	width: 60px;
 	height: 2px;
@@ -76,29 +60,24 @@ body {
 	top: 25px;
 	left: -55px;
 }
-
-
-.comments-list li {
+.comments-container .comments-list li {
 	margin-bottom: 15px;
 	display: block;
 	position: relative;
 }
-
-.comments-list li:after {
+.comments-container .comments-list li:after {
 	content: '';
 	display: block;
 	clear: both;
 	height: 0;
 	width: 0;
 }
-
-.reply-list {
+.comments-container .reply-list {
 	padding-left: 88px;
 	clear: both;
 	margin-top: 15px;
 }
-
-.comments-list .comment-avatar {
+.comments-container .comments-list .comment-avatar {
 	width: 65px;
 	height: 65px;
 	position: relative;
@@ -112,27 +91,29 @@ body {
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 	overflow: hidden;
+        border-radius: 50%;
 }
-
-.comments-list .comment-avatar img {
-	width: 100%;
-	height: 100%;
+.comments-container .comments-list .comment-avatar img {
+        width: 100%;
+        height: 100%;
+        /* fill the container, preserving aspect ratio, and cropping to fit */
+        background-size: cover;
+        /* center the image vertically and horizontally */
+        /* round the edges to a circle with border radius 1/2 container size */
+        border-radius: 50%;      
 }
-
-.reply-list .comment-avatar {
+.comments-container .reply-list .comment-avatar {
 	width: 50px;
 	height: 50px;
 }
-
-.comment-main-level:after {
+.comments-container .comment-main-level:after {
 	content: '';
 	width: 0;
 	height: 0;
 	display: block;
 	clear: both;
 }
-
-.comments-list .comment-box {
+.comments-container .comments-list .comment-box {
 	width: 680px;
 	float: right;
 	position: relative;
@@ -140,8 +121,7 @@ body {
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
-
-.comments-list .comment-box:before, .comments-list .comment-box:after {
+.comments-container .comments-list .comment-box:before, .comments-list .comment-box:after {
 	content: '';
 	height: 0;
 	width: 0;
@@ -153,17 +133,15 @@ body {
 	top: 8px;
 	left: -11px;
 }
-
-.comments-list .comment-box:before {
+.comments-container .comments-list .comment-box:before {
 	border-width: 11px 13px 11px 0;
 	border-color: transparent rgba(0,0,0,0.05);
 	left: -12px;
 }
-
-.reply-list .comment-box {
+.comments-container .reply-list .comment-box {
 	width: 610px;
 }
-.comment-box .comment-head {
+.comments-container .comment-box .comment-head {
 	background: #FCFCFC;
 	padding: 10px 12px;
 	border-bottom: 1px solid #E5E5E5;
@@ -172,8 +150,7 @@ body {
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
 }
-
-.comment-box .comment-head i {
+.comments-container .comment-box .comment-head i {
 	float: right;
 	margin-left: 14px;
 	position: relative;
@@ -184,42 +161,39 @@ body {
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
 }
-
-.comment-box .comment-head i:hover {
+.comments-container .comment-box .comment-head i:hover {
 	color: #03658c;
 }
-
-.comment-box .comment-name {
+.comments-container .comment-box .comment-name {
 	color: #283035;
 	font-size: 14px;
 	font-weight: 700;
 	float: left;
 	margin-right: 10px;
 }
-
-.comment-box .comment-name a {
+.comments-container .comment-box .comment-name a {
 	color: #283035;
+        text-decoration: none;
 }
-
-.comment-box .comment-head span {
+.comments-container .comment-box .comment-head span {
 	float: left;
 	color: #999;
 	font-size: 13px;
 	position: relative;
 	top: 1px;
 }
-
-.comment-box .comment-content {
+.comments-container .comment-box .comment-content {
 	background: #FFF;
 	padding: 12px;
-	font-size: 15px;
-	color: #595959;
+	font-size: 14px;
+        font-weight: 400;
+        word-wrap: break-word;
+	color: #717274;
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
 }
-
-.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
+.comments-container .comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
 .comment-box .comment-name.by-author:after {
 	content: 'autor';
 	background: #03658c;
@@ -231,27 +205,53 @@ body {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+        text-decoration: none;
 }
-
 @media only screen and (max-width: 766px) {
 	.comments-container {
 		width: 480px;
 	}
-
 	.comments-list .comment-box {
 		width: 390px;
 	}
-
 	.reply-list .comment-box {
 		width: 320px;
 	}
 }
 </style>
 
+<style>
+    #submission{
+        margin: 0;
+ 	padding: 0;
+ 	-webkit-box-sizing: border-box;
+ 	-moz-box-sizing: border-box;
+ 	box-sizing: border-box;
+        border: 3px solid brown;
+        margin: 60px auto 15px;
+        margin-top: 0;
+        width: 768px;
+        height: 100px;
+    }
+</style>
 
+<style>
+    #fdb{
+        border: 3px solid blue;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+	background: #f3f5f6;
+}    
+</style>
+
+<div id="fdb">
 <!-- Contenedor Principal -->
 	<div class="comments-container">
-
 		<ul id="comments-list" class="comments-list">
 			<li>
 				<div class="comment-main-level">
@@ -307,7 +307,6 @@ body {
 					</li>
 				</ul>
 			</li>
-
 			<li>
 				<div class="comment-main-level">
 					<!-- Avatar -->
@@ -329,3 +328,9 @@ body {
 		</ul>
 	</div>
 
+    <!-- comment submission form goes down there -->
+    
+    <div id="submission">        
+    </div>
+    
+</div>
