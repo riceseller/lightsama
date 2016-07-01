@@ -342,7 +342,7 @@ if($current_fav && $user->isLoggedIn())
         border: 3px solid blue;
         display: flex;
         flex-direction: column;
-        width: 50%;
+        width: 100%;
         height: auto;
         margin-top: 30px;
         margin-bottom: 30px;
