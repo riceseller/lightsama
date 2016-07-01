@@ -79,7 +79,7 @@ if($current_fav && $user->isLoggedIn())
     }
 }
 ?>
-<meta charset="UTF-8">        
+       
 <style>
     .container{
         display: -webkit-flex; /* Safari */
