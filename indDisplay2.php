@@ -1,4 +1,4 @@
-<?php
+f<?php
 require_once "topNav2.php";
 $pid = $_GET["pid"]; 
 require_once("supplyment/dbAccess.php");
@@ -335,6 +335,15 @@ if($current_fav && $user->isLoggedIn())
     #actualMap{
         height: 100px;
         width: 245px;
+    }
+    container2 #fdb{
+        border: 3px solid blue;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        height: 100px;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 </style>
 
@@ -800,6 +809,9 @@ if($current_fav && $user->isLoggedIn())
             </div>        
         </div>
          
+        
+        <div id="container2"></div>
+        
      </container2>
     
     
