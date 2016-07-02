@@ -345,6 +345,7 @@ if($current_fav && $user->isLoggedIn())
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
+        order: 1;
     }
     #fdb{
        display: flex;
@@ -640,16 +641,18 @@ if($current_fav && $user->isLoggedIn())
 
 <style>
     .container3{
-        justify-content: center;
-        width: 100%;
-        max-height: 50vh;
+        justify-content: flex-start;
+        width: 50%;
+        max-height: 150px;
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
         background: #F3F5F6;
         position: relative;
         align-items: center;
         vertical-align: middle;
-        order: 4;
+        order: 2;
+        margin-left: 10px;
     }
     .container3 a{
         display:block;
@@ -893,18 +896,6 @@ if($current_fav && $user->isLoggedIn())
         </div>        
     </div>
     
-    <div class="container3">
-            <?php
-                $sqlT = "select t.tagName from Tag t join TagRelation tr on t.id=tr.tagid where tr.pid=$pid";
-                $result3=$conn->query($sqlT);
-                while($row3=$result3->fetch_assoc())
-                {
-                    echo "<a href=tags.php?cat=$row3[tagName]>$row3[tagName]</a>";
-                    echo "<div class='spacing'></div>";
-                }
-            ?>
-    </div>
-   
     <container2>
         <div id="user_info">
             <div id="userPic"><img style="<?php
@@ -1168,6 +1159,21 @@ if($current_fav && $user->isLoggedIn())
         </form>
     </div> 
     </div>
+    
+    
+    <div class="container3">
+            <?php
+                $sqlT = "select t.tagName from Tag t join TagRelation tr on t.id=tr.tagid where tr.pid=$pid";
+                $result3=$conn->query($sqlT);
+                while($row3=$result3->fetch_assoc())
+                {
+                    echo "<a href=tags.php?cat=$row3[tagName]>$row3[tagName]</a>";
+                    echo "<div class='spacing'></div>";
+                }
+            ?>
+    </div>
+    
+    
 </div>
 
 
