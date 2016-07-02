@@ -78,6 +78,17 @@ if($current_fav && $user->isLoggedIn())
         }
     }
 }
+
+
+$query_comment="select u.username, c.* from users u, comment c where u.id=c.userid and c.compic=$pid";
+$result_comment=$conn->query($query_comment);   //comment query
+
+
+
+
+
+
+
 ?>
        
 <style>
@@ -613,7 +624,6 @@ if($current_fav && $user->isLoggedIn())
 }
 .comments-container .comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
 .comment-box .comment-name.by-author:after {
-	content: 'autor';
 	background: #03658c;
 	color: #FFF;
 	font-size: 12px;
@@ -832,11 +842,25 @@ if($current_fav && $user->isLoggedIn())
 
 <script>
 function myFunction() {
-    var old_comment=document.getElementById("comments-list").innerHTML;
-    var add_comment=document.getElementById("field5").value;    
+    var add_comment=document.getElementById("field5").value;
+    var a=<?php print $current_id;?>;   //current user id
+    var b=<?php print $pid;?>;          //current picture pid
+    var c='comment_write';
+    if(!add_comment || !a){
+        alert("you either sumbit an empty comment or you did not log in at all");
+        return;
+    }
+    
+    var old_comment=document.getElementById("comments-list").innerHTML;    
     var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6><span>5 minutes ago</span><i class="fa fa-reply"></i><i class="fa fa-heart"></i></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
     new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     document.getElementById('comments-list').innerHTML = new_comment;
+    
+    $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c +'&current_comment='+add_comment              
+            });                              
 }
 </script>
 
@@ -1110,8 +1134,13 @@ function myFunction() {
     <div class="comment-wrap">
 <!-- Contenedor Principal -->
 	<div class="comments-container">
-		<ul id="comments-list" class="comments-list">
-			
+		<ul id="comments-list" class="comments-list">			
+                    <?php
+                        while($row_comment=$result_comment->fetch_assoc())
+                        {
+                            echo "<li><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><i class='fa fa-reply'></i><i class='fa fa-heart'></i></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                        }
+                    ?>                   
 		</ul>
 	</div>
     <!-- comment submission form goes down there -->   
@@ -1146,21 +1175,10 @@ function myFunction() {
     
     
 </div>
-
-
-
-
-
-
-
-
-
-
     
         <div class="text_prompt">
             <p>similar pictures</p>
         </div>
-    
     
         <style>
             .inline {
