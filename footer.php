@@ -468,7 +468,7 @@
     </div>
 </footer>
 
-<div id="abc" onclick="div_hide()">
+<div id="abc">
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
     <!-- Contact Us Form -->
@@ -485,7 +485,7 @@
 <!-- Popup Div Ends Here -->
 </div>
 
-<div id="abc2" onclick="div_hide2()">
+<div id="abc2">
     <div id="popupContact">
         <div id="term">
            <img id="close" src="../media/close.png" onclick ="div_hide2()">
@@ -496,7 +496,7 @@
     </div>
 </div>
 
-<div id="abc3" onclick="div_hide3()">
+<div id="abc3">
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
     <!-- Contact Us Form -->
