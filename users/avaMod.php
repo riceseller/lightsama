@@ -4,14 +4,14 @@
 <?php if($user->isLoggedIn()) : ?>
     <style>
         #avaMod {
-            width: 220px;
-            margin: 1px;
+            width: 340px;
+            margin: auto;
         }
         #avaModBox{
             border-radius: 2px;
         }
         #avaMod_text{
-            width: 183px;
+            width: 300px;
             padding: 1px 0 1px 2px;
             font-size: 16px;
             border: 0 none;
@@ -57,7 +57,7 @@
     <div id='avaMod'>
         <form id='avaModBox' action="avaAdd.php" method="POST">
             <input type="text" name="avaUrl" id="avaMod_text" placeholder="Input your avatar Url"/>
-            <input type="button" name="avaMod_button" id="avaMod_button"></a>
+            <input type="submit" value=" " name="avaMod_button" id="avaMod_button"/>
         </form>
     </div>
 <?php else : ?>
