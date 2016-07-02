@@ -337,33 +337,41 @@ if($current_fav && $user->isLoggedIn())
 
 <!-- TEST PURPOSE ONLY!!!!! STARTS HERE -->
 <style>
-    #fdb{
+    .comment-wrap{
+        width: 400px;
+        height: auto;
+        margin-left: 100px;
+        padding: 0;
         display: flex;
+        justify-content: flex-start;
         flex-direction: column;
+    }
+    #fdb{
+       display: flex;
+        flex-direction: row;
         width: 100%;
         height: auto;
-        margin: 0;
-        padding: 0;
+        margin-top: 30px;
+        margin-bottom: 30px;
         font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
 	background: #f3f5f6;
+        justify-content: flex-start;
         order: 3;
 }    
 
 #submission{
-        margin: 0;
  	padding: 0;
  	-webkit-box-sizing: border-box;
  	-moz-box-sizing: border-box;
  	box-sizing: border-box;
-        margin: 0px auto 15px;
-        margin-top: 0;
-        width: 768px;
+        margin: 0;
+        width: 384px;
         height: auto;
     }
     #submission .form-style-1 {
-    margin:10px 5px auto;
-    max-width: 400px;
-    padding: 0px 12px 10px 20px;
+    margin:10px 0px auto;
+    max-width: 351px;
+    padding: 0px 1px 10px 0px;
     font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     }
     #submission .form-style-1 li {
@@ -399,7 +407,7 @@ if($current_fav && $user->isLoggedIn())
         border: 1px solid #88D5E9;
     }
     #submission .form-style-1 .field-long{
-        width: 100%;
+        width: 370px;
     }
     #submission .form-style-1 .field-textarea{
         height: 45px;
@@ -420,10 +428,11 @@ if($current_fav && $user->isLoggedIn())
         color:red;
     }
     
+    
+    
     .comments-container {
-	margin: 0px auto 15px;
-        margin-bottom: 0;
-	width: 768px;
+	margin: 0;
+	width: 370px;
 }
 .comments-container ul {
         list-style-type: none;
@@ -470,7 +479,16 @@ if($current_fav && $user->isLoggedIn())
 	-moz-border-radius: 50%;
 	border-radius: 50%;
 }
-
+.comments-container .reply-list:before, .reply-list:after {display: none;}
+.comments-container .reply-list li:before {
+	content: '';
+	width: 60px;
+	height: 2px;
+	background: #c7cacb;
+	position: absolute;
+	top: 25px;
+	left: -55px;
+}
 .comments-container .comments-list li {
 	margin-bottom: 15px;
 	display: block;
@@ -484,8 +502,8 @@ if($current_fav && $user->isLoggedIn())
 	width: 0;
 }
 .comments-container .comments-list .comment-avatar {
-	width: 65px;
-	height: 65px;
+	width: 50px;
+	height: 50px;
 	position: relative;
 	z-index: 99;
 	float: left;
@@ -508,10 +526,6 @@ if($current_fav && $user->isLoggedIn())
         /* round the edges to a circle with border radius 1/2 container size */
         border-radius: 50%;      
 }
-.comments-container .reply-list .comment-avatar {
-	width: 50px;
-	height: 50px;
-}
 .comments-container .comment-main-level:after {
 	content: '';
 	width: 0;
@@ -520,7 +534,7 @@ if($current_fav && $user->isLoggedIn())
 	clear: both;
 }
 .comments-container .comments-list .comment-box {
-	width: 680px;
+	width: 296px;
 	float: right;
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
@@ -543,9 +557,6 @@ if($current_fav && $user->isLoggedIn())
 	border-width: 11px 13px 11px 0;
 	border-color: transparent rgba(0,0,0,0.05);
 	left: -12px;
-}
-.comments-container .reply-list .comment-box {
-	width: 610px;
 }
 .comments-container .comment-box .comment-head {
 	background: #FCFCFC;
@@ -1090,9 +1101,12 @@ if($current_fav && $user->isLoggedIn())
         </div>
      </container2>
 
-    <!-- TEST PURPOSE FOR SEEING COMMENT TABLES ONLY!!!!!! STARTS HERE -->
-     <div id="fdb">
-        <!-- Contenedor Principal -->
+
+
+
+<div id="fdb">
+    <div class="comment-wrap">
+<!-- Contenedor Principal -->
 	<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
 			<li>
@@ -1102,7 +1116,7 @@ if($current_fav && $user->isLoggedIn())
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">张三</a></h6>
+							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
 							<span>5 minutes ago</span>
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
@@ -1112,7 +1126,7 @@ if($current_fav && $user->isLoggedIn())
 						</div>
 					</div>
 				</div>
-				<!-- Respuestas de los comentarios -->				
+				
 			</li>
 			<li>
 				<div class="comment-main-level">
@@ -1121,13 +1135,18 @@ if($current_fav && $user->isLoggedIn())
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name"><a href="http://creaticode.com/blog">李四</a></h6>
+							<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
 							<span>2 minutes ago</span>
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
 						</div>
 						<div class="comment-content">
-							Seems like someone want hook me up!!!
+							Seems like someone want hook me up!!!The following contents test 
+                                                        how many words the box can contain in order to stretch the comments 
+                                                        up to a level. I need to first write a hell long paragraph and see 
+                                                        how much it takes, i hope what i am speculating is 100% right, that
+                                                        it takes what ever long it could take to stretch all the way. in the 
+                                                        future, a javascript plug-in should be implemented to do a word-count. 
 						</div>
 					</div>
 				</div>
@@ -1140,16 +1159,24 @@ if($current_fav && $user->isLoggedIn())
             <ul class="form-style-1">
                 <li>
                     <label>Comments Here</label>
-                    <textarea name="f5" id="field5" class="field-long field-textarea"></textarea>
+                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
                 </li>
                 <li>
                     <input type="submit" value="Submit" />
                 </li>
             </ul>
         </form>
-    </div>   
+    </div> 
+    </div>
 </div>
-<!-- TEST PURPOSE FOR SEEING COMMENT TABLES ONLY!!!!!! ENDS HERE -->
+
+
+
+
+
+
+
+
 
 
     

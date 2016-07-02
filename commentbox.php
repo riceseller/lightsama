@@ -1,9 +1,22 @@
 <style>
+    .comment-wrap{
+        width: 400px;
+        height: auto;
+        margin-left: 100px;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+</style>
+
+
+
+
+<style>
 .comments-container {
-	margin: 60px auto 15px;
-        margin-bottom: 0;
-	width: 768px;
-        border: 3px solid green;
+	margin: 0;
+	width: 370px;
 }
 .comments-container ul {
         list-style-type: none;
@@ -72,14 +85,9 @@
 	height: 0;
 	width: 0;
 }
-.comments-container .reply-list {
-	padding-left: 88px;
-	clear: both;
-	margin-top: 15px;
-}
 .comments-container .comments-list .comment-avatar {
-	width: 65px;
-	height: 65px;
+	width: 50px;
+	height: 50px;
 	position: relative;
 	z-index: 99;
 	float: left;
@@ -102,10 +110,6 @@
         /* round the edges to a circle with border radius 1/2 container size */
         border-radius: 50%;      
 }
-.comments-container .reply-list .comment-avatar {
-	width: 50px;
-	height: 50px;
-}
 .comments-container .comment-main-level:after {
 	content: '';
 	width: 0;
@@ -114,7 +118,7 @@
 	clear: both;
 }
 .comments-container .comments-list .comment-box {
-	width: 680px;
+	width: 296px;
 	float: right;
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
@@ -137,9 +141,6 @@
 	border-width: 11px 13px 11px 0;
 	border-color: transparent rgba(0,0,0,0.05);
 	left: -12px;
-}
-.comments-container .reply-list .comment-box {
-	width: 610px;
 }
 .comments-container .comment-box .comment-head {
 	background: #FCFCFC;
@@ -222,21 +223,18 @@
 
 <style>
     #submission{
-        margin: 0;
  	padding: 0;
  	-webkit-box-sizing: border-box;
  	-moz-box-sizing: border-box;
  	box-sizing: border-box;
-        border: 3px solid brown;
-        margin: 60px auto 15px;
-        margin-top: 0;
-        width: 768px;
+        margin: 0;
+        width: 384px;
         height: auto;
     }
     #submission .form-style-1 {
-    margin:10px 5px auto;
-    max-width: 400px;
-    padding: 0px 12px 10px 20px;
+    margin:10px 0px auto;
+    max-width: 351px;
+    padding: 0px 1px 10px 0px;
     font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     }
     #submission .form-style-1 li {
@@ -272,7 +270,7 @@
         border: 1px solid #88D5E9;
     }
     #submission .form-style-1 .field-long{
-        width: 100%;
+        width: 370px;
     }
     #submission .form-style-1 .field-textarea{
         height: 45px;
@@ -296,19 +294,23 @@
 
 <style>
     #fdb{
-        border: 3px solid blue;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         height: auto;
         margin-top: 30px;
         margin-bottom: 30px;
         font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
 	background: #f3f5f6;
+        justify-content: flex-start;
+        order: 3;
 }    
 </style>
 
+
+
 <div id="fdb">
+    <div class="comment-wrap">
 <!-- Contenedor Principal -->
 	<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
@@ -329,42 +331,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- Respuestas de los comentarios -->
-				<ul class="comments-list reply-list">
-					<li>
-						<!-- Avatar -->
-						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-						<!-- Contenedor del Comentario -->
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-								<span>4 minutes ago</span>
-								<i class="fa fa-reply"></i>
-								<i class="fa fa-heart"></i>
-							</div>
-							<div class="comment-content">
-								me too!!!!
-							</div>
-						</div>
-					</li>
-
-					<li>
-						<!-- Avatar -->
-						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-						<!-- Contenedor del Comentario -->
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-								<span>3 minutes ago</span>
-								<i class="fa fa-reply"></i>
-								<i class="fa fa-heart"></i>
-							</div>
-							<div class="comment-content">
-								 come out for a movie tonight?
-							</div>
-						</div>
-					</li>
-				</ul>
+				
 			</li>
 			<li>
 				<div class="comment-main-level">
@@ -379,14 +346,18 @@
 							<i class="fa fa-heart"></i>
 						</div>
 						<div class="comment-content">
-							Seems like someone want hook me up!!!
+							Seems like someone want hook me up!!!The following contents test 
+                                                        how many words the box can contain in order to stretch the comments 
+                                                        up to a level. I need to first write a hell long paragraph and see 
+                                                        how much it takes, i hope what i am speculating is 100% right, that
+                                                        it takes what ever long it could take to stretch all the way. in the 
+                                                        future, a javascript plug-in should be implemented to do a word-count. 
 						</div>
 					</div>
 				</div>
 			</li>
 		</ul>
 	</div>
-
     <!-- comment submission form goes down there -->   
     <div id="submission">
         <form>
@@ -400,5 +371,8 @@
                 </li>
             </ul>
         </form>
-    </div>   
+    </div> 
+    </div>
 </div>
+       
+    
