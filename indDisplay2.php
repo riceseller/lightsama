@@ -57,6 +57,7 @@ if($user->isLoggedIn())
 else
 {
     $current_id=0;
+    $current_name=0;
 }
 
 $query50="select count(*) from fav where favpic=$pid";
@@ -84,8 +85,10 @@ if($current_fav && $user->isLoggedIn())
 $query_comment="select u.username, c.* from users u, comment c where u.id=c.userid and c.compic=$pid";
 $result_comment=$conn->query($query_comment);   //comment query
 
-
-
+$query_comment_count="select count(*) from comment where compic=$pid";
+$result_count=$conn->query($query_comment_count);
+$row1000=mysqli_fetch_array($result_count);
+$comment_count=$row1000[0];
 
 
 
@@ -846,15 +849,28 @@ function myFunction() {
     var add_comment=document.getElementById("field5").value;
     var a=<?php print $current_id;?>;   //current user id
     var b=<?php print $pid;?>;          //current picture pid
+    var p='<?php print $current_name;?>'; 
+    var q=<?php print $comment_count;?>;
+    q++;
     var c='comment_write';
     if(!add_comment || !a){
         alert("you either sumbit an empty comment or you did not log in at all");
         return;
     }
     var old_comment=document.getElementById("comments-list").innerHTML; 
-    var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6><span>5 minutes ago</span><i class="fa fa-reply"></i><i class="fa fa-heart"></i></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
+    var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>5 minutes ago</span><i class="fa fa-reply"></i><i class="fa fa-heart"></i></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
     new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     document.getElementById('comments-list').innerHTML = new_comment;
+    if(q>1)
+    {
+        var updated_comment='<p>'+q+'<br>comments</p>';
+    }
+    else
+    {
+        var updated_comment='<p>'+q+'<br>comment</p>';
+    }
+    updated_comment = updated_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    document.getElementById('comment').innerHTML = updated_comment;
     
     $.ajax({
                 type: 'GET',
@@ -1000,16 +1016,16 @@ function myFunction() {
                 <div id="view">
                     <p>10000<br>view</p>
                 </div>
-                
-                
+                                
                 <div id="fav">  
                     <p id="ppp"><?php echo $current_fav;?><br>favorites</p>
                 </div>
-                
-                
-                <div id="comment">
-                    <p>10<br>comments</p>
+                               
+                <div id="comment">                   
+                    <?php echo "<p>".$comment_count."<br>";?>
+                    <?php if($comment_count==1 || $comment_count==0){echo "comment</p>";} else {echo "comments</p>";}?>
                 </div>
+                
                 <div id="date">
                 <?php
                         if($row[dateR]=='0000-00-00 00:00:00')
