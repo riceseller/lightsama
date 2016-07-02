@@ -314,62 +314,19 @@
 <!-- Contenedor Principal -->
 	<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
-			<li>
-				<div class="comment-main-level">
-					<!-- Avatar -->
-					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-					<!-- Contenedor del Comentario -->
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-							<span>5 minutes ago</span>
-							<i class="fa fa-reply"></i>
-							<i class="fa fa-heart"></i>
-						</div>
-						<div class="comment-content">
-							I love this picture!!!!
-						</div>
-					</div>
-				</div>
-				
-			</li>
-			<li>
-                            <!-- START OF A NEW COMMENT BLOCK -->
-				<div class="comment-main-level">
-					<!-- Avatar -->
-					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-					<!-- Contenedor del Comentario -->
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-							<span>2 minutes ago</span>
-							<i class="fa fa-reply"></i>
-							<i class="fa fa-heart"></i>
-						</div>
-						<div class="comment-content">
-							Seems like someone want hook me up!!!The following contents test 
-                                                        how many words the box can contain in order to stretch the comments 
-                                                        up to a level. I need to first write a hell long paragraph and see 
-                                                        how much it takes, i hope what i am speculating is 100% right, that
-                                                        it takes what ever long it could take to stretch all the way. in the 
-                                                        future, a javascript plug-in should be implemented to do a word-count. 
-						</div>
-					</div>
-				</div>
-                                <!-- END OF A NEW COMMENT BLOCK -->
-			</li>
+			
 		</ul>
 	</div>
     <!-- comment submission form goes down there -->   
     <div id="submission">
-        <form onsubmit="myFunction()">
+        <form>
             <ul class="form-style-1">
                 <li>
                     <label>Comments Here</label>
                     <textarea id="field5" class="field-long field-textarea"></textarea>
                 </li>
                 <li>
-                    <input type="submit" value="Submit" />
+                    <input type="button" value="Submit" onclick="myFunction()">
                 </li>
             </ul>
         </form>
@@ -379,9 +336,31 @@
 
 <script>
 function myFunction() {
-    var p=document.getElementById("comments-list").innerHTML;
-    alert(p);
+    var old_comment=document.getElementById("comments-list").innerHTML;
+    var add_comment=document.getElementById("field5").value;    
+    var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6><span>5 minutes ago</span><i class="fa fa-reply"></i><i class="fa fa-heart"></i></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
+    new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    document.getElementById('comments-list').innerHTML = new_comment;
 }
 </script>
        
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
