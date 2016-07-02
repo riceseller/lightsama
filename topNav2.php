@@ -158,7 +158,7 @@
             </div>
                         
             <div class="logo">
-                <a  class="nav" href="http://db.luokerenz.com" >HAILOINN</a>
+                <a  class="nav" href="http://hailoinn.luokerenz.com" >HAILOINN</a>
             </div>
             
             <div id='search'>
