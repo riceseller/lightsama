@@ -472,16 +472,7 @@ if($current_fav && $user->isLoggedIn())
 	-moz-border-radius: 50%;
 	border-radius: 50%;
 }
-.comments-container .reply-list:before, .reply-list:after {display: none;}
-.comments-container .reply-list li:before {
-	content: '';
-	width: 60px;
-	height: 2px;
-	background: #c7cacb;
-	position: absolute;
-	top: 25px;
-	left: -55px;
-}
+
 .comments-container .comments-list li {
 	margin-bottom: 15px;
 	display: block;
