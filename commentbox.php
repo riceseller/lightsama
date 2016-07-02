@@ -334,6 +334,7 @@
 				
 			</li>
 			<li>
+                            <!-- START OF A NEW COMMENT BLOCK -->
 				<div class="comment-main-level">
 					<!-- Avatar -->
 					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
@@ -355,16 +356,17 @@
 						</div>
 					</div>
 				</div>
+                                <!-- END OF A NEW COMMENT BLOCK -->
 			</li>
 		</ul>
 	</div>
     <!-- comment submission form goes down there -->   
     <div id="submission">
-        <form>
+        <form onsubmit="myFunction()">
             <ul class="form-style-1">
                 <li>
                     <label>Comments Here</label>
-                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                    <textarea id="field5" class="field-long field-textarea"></textarea>
                 </li>
                 <li>
                     <input type="submit" value="Submit" />
@@ -374,5 +376,12 @@
     </div> 
     </div>
 </div>
+
+<script>
+function myFunction() {
+    var p=document.getElementById("comments-list").innerHTML;
+    alert(p);
+}
+</script>
        
     

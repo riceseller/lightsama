@@ -1116,8 +1116,7 @@ if($current_fav && $user->isLoggedIn())
 							I love this picture!!!!
 						</div>
 					</div>
-				</div>
-				
+				</div>	
 			</li>
 			<li>
 				<div class="comment-main-level">
