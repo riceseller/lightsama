@@ -15,7 +15,7 @@ function displayBlock($row,$mode){
         print "<div class='acc-block'>";
         print "<img style=$avaStr>";
         print "<div class='acc-userInfo'>";
-        print "<div><a>ID: $row[userID]</a></div>";
+        print "<div>ID: $row[userID]</div>";
         print "<div><a href='../indUser.php?id=$row[scrapeUserID]'>PhotoStream</a></div>";
         print "<div><a href=#>Ablum</a></div>";
         print "</div>";
