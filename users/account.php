@@ -240,7 +240,6 @@ function checkDelete(){
 <div class="menu">
 <ul>
 <li class="active"><a href="#">Your Linked Account</a></li>
-<li><a href="../phpFlick/auth.php">Add New Flickr Account</a></li>
 <li><a href="user_settings.php">Edit Account Info</a></li>
 <li><a href="#">Favorite</a></li>
 <div class="clearFloat"></div>
