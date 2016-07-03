@@ -1,31 +1,22 @@
 <?php
-require_once "topNav2.php";
-$pid = $_GET["pid"]; 
-require_once("supplyment/dbAccess.php");
-$come_from=$_REQUEST["come_from"];
-if(isset($come_from))
+require_once "topNav2.php";     //header bar load
+$pid = $_GET["pid"];            //get the pid of that picture upon load
+require_once("supplyment/dbAccess.php");    //database connection page load
+
+$come_from=$_REQUEST["come_from"];          //click trace-see where that picture comes from 
+if(isset($come_from))                       //click event detected, update click
 {
     $query30="update assoCorresp set click=click+1 where ppid=$come_from and cpid=$pid";
     $conn->query($query30);
-    #$query31="update assoCorresp set ranking=ranking+1 where ppid=$come_from and cpid=$pid";
-    #$conn->query($query31);
-}
-else{
-    #echo "IT IS NOT DISPLAYED BY CLICKING SIMILAR PICS";             //debug
-    #echo "<br><br><br><br><br>";     //debug
-}
+}   //click event ends
 
-$query = "select c.*, u.url, u.urlSource, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";
+$query = "select c.*, u.url, u.urlSource, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";    
 $result=$conn->query($query);
-$row = mysqli_fetch_array($result);
+$row = mysqli_fetch_array($result); //pull out picture url and associated user info on that 3 queries
 
-/*$userQuery = "";
-$resultUser = $conn->query($userQuery);
-$rowU = mysqli_fetch_array($resultUser);*/
-
-#page need to delete in future version
 $page = 1;
 
+//unknown query starts
 $date = $row[dateR];
 $userB = $row[userBelong];
 $query34 = "select p_id from Common where userBelong=\"$userB\" and dateR<\"$date\" order by dateR desc limit 1";
@@ -34,7 +25,9 @@ $prev = mysqli_fetch_array($result34);
 $query35 = "select p_id from Common where userBelong=\"$userB\" and dateR>\"$date\" order by dateR limit 1";
 $result35=$conn->query($query35);
 $next = mysqli_fetch_array($result35);
+//unknown query ends
 
+//location and coordinate info pull out
 $query11 = "select c.longitude, c.latitude from Coordinate c join CoordinateCorrespondance cc on c.id=cc.coeid where cc.pid=$pid";
 $result11=$conn->query($query11);
 if($result11->num_rows>0){
@@ -46,9 +39,9 @@ if($result11->num_rows>0){
 else{
     $myLat = 0;
     $myLng = 0;
-}
+}   //location and coordinate info pull out ends
 
-
+//current user info acquisition, set proper register to values on login/unlogin event
 if($user->isLoggedIn())
 {
     $current_id=$user->data()->id;
@@ -58,40 +51,39 @@ else
 {
     $current_id=0;
     $current_name=0;
-}
+}//user info acquisiton ends
 
+//count how many users have faved that one single picture
 $query50="select count(*) from fav where favpic=$pid";
 $result50=$conn->query($query50);
 $row50=mysqli_fetch_array($result50);
-$current_fav=$row50[0];
+$current_fav=$row50[0];//counting process ends
 
-$userid=0;
+$userid=0;  //declare userid variable, purpose is to compare with the current user id
 
-if($current_fav && $user->isLoggedIn())
+if($current_fav && $user->isLoggedIn()) //purpose is to find if this pic has been faved by the current user previously
 {
-    $query90="select userid from fav where favpic=$pid";
-    $result90=$conn->query($query90);
+    $query90="select userid from fav where favpic=$pid";    //find all users who have faved that pic previously by userid
+    $result90=$conn->query($query90);   
     while($row90=$result90->fetch_assoc())
     {
-        if($current_id==$row90['userid'])
+        if($current_id==$row90['userid'])   //current id matches record, meaning the current user faved that pic before
         {
-            $userid=$current_id;
+            $userid=$current_id;    //give value and break
             break;
         }
     }
 }
 
-
+//pull out all the comments associated with that picture
 $query_comment="select u.username, c.* from users u, comment c where u.id=c.userid and c.compic=$pid";
-$result_comment=$conn->query($query_comment);   //comment query
+$result_comment=$conn->query($query_comment);   //comment query ends 
 
+//count how many comments have been made towards this particular picture
 $query_comment_count="select count(*) from comment where compic=$pid";
 $result_count=$conn->query($query_comment_count);
 $row1000=mysqli_fetch_array($result_count);
-$comment_count=$row1000[0];
-
-
-
+$comment_count=$row1000[0]; //count query ends
 
 ?>
        
@@ -383,26 +375,26 @@ $comment_count=$row1000[0];
         margin: 0;
         width: 384px;
         height: auto;
-    }
-    #submission .form-style-1 {
-    margin:10px 0px auto;
-    max-width: 351px;
-    padding: 0px 1px 10px 0px;
-    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    }
-    #submission .form-style-1 li {
+}
+#submission .form-style-1 {
+        margin:10px 0px auto;
+        max-width: 351px;
+        padding: 0px 1px 10px 0px;
+        font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+#submission .form-style-1 li {
         padding: 0;
         display: block;
         list-style: none;
         margin: 10px 0 0 0;
-    }
-    #submission .form-style-1 label{
+}
+#submission .form-style-1 label{
         margin:0 0 3px 0;
         padding:0px;
         display:block;
         font-weight: bold;
-    }
-    #submission textarea, select{
+}
+#submission textarea, select{
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -414,39 +406,36 @@ $comment_count=$row1000[0];
         -ms-transition: all 0.30s ease-in-out;
         -o-transition: all 0.30s ease-in-out;
         outline: none;  
-    }
-    #submission .form-style-1 textarea:focus, 
+}
+#submission .form-style-1 textarea:focus, 
     #submission .form-style-1 select:focus{
         -moz-box-shadow: 0 0 8px #88D5E9;
         -webkit-box-shadow: 0 0 8px #88D5E9;
         box-shadow: 0 0 8px #88D5E9;
         border: 1px solid #88D5E9;
-    }
-    #submission .form-style-1 .field-long{
+}
+#submission .form-style-1 .field-long{
         width: 370px;
-    }
-    #submission .form-style-1 .field-textarea{
+}
+#submission .form-style-1 .field-textarea{
         height: 45px;
-    }
-    #submission .form-style-1 input[type=submit], .form-style-1 input[type=button]{
+}
+#submission .form-style-1 input[type=submit], .form-style-1 input[type=button]{
         background: #4B99AD;
         padding: 8px 15px 8px 15px;
         border: none;
         color: #fff;
-    }
-    #submission .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+}
+#submission .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
         background: #4691A4;
         box-shadow:none;
         -moz-box-shadow:none;
         -webkit-box-shadow:none;
-    }
-    #submission .form-style-1 .required{
+}
+#submission .form-style-1 .required{
         color:red;
-    }
-    
-    
-    
-    .comments-container {
+}    
+.comments-container {
 	margin: 0;
 	width: 370px;
 }
@@ -557,6 +546,7 @@ $comment_count=$row1000[0];
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
+
 .comments-container .comments-list .comment-box:before, .comments-list .comment-box:after {
 	content: '';
 	height: 0;
