@@ -647,7 +647,7 @@ $comment_count=$row1000[0]; //count query ends
     .container3{
         justify-content: flex-start;
         width: 50%;
-        max-height: 250px;
+        max-height: 270px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
