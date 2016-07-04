@@ -616,7 +616,7 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
 	}
 }
 </style>
-<!-- TEST PURPOSE ONLY!!!!! ENDS HERE -->
+<!-- COMMENT TEST PURPOSE ONLY!!!!! ENDS HERE -->
 
 <style>
     .container3{
