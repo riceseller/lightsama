@@ -1,6 +1,6 @@
 <style>
     .comment-wrap{
-        width: 400px;
+        width: 450px;
         height: auto;
         margin-left: 100px;
         padding: 0;
@@ -16,7 +16,8 @@
 <style>
 .comments-container {
 	margin: 0;
-	width: 370px;
+	width: 420px;
+        border: 3px solid black;
 }
 .comments-container ul {
         list-style-type: none;
@@ -118,7 +119,7 @@
 	clear: both;
 }
 .comments-container .comments-list .comment-box {
-	width: 296px;
+	width: 356px;
 	float: right;
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
@@ -194,20 +195,7 @@
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
 }
-.comments-container .comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
-.comment-box .comment-name.by-author:after {
-	content: 'autor';
-	background: #03658c;
-	color: #FFF;
-	font-size: 12px;
-	padding: 3px 5px;
-	font-weight: 700;
-	margin-left: 10px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-        text-decoration: none;
-}
+
 @media only screen and (max-width: 766px) {
 	.comments-container {
 		width: 480px;
@@ -314,7 +302,24 @@
 <!-- Contenedor Principal -->
 	<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
-			
+                    <li>
+                        <div class="comment-main-level">
+                            <div class="comment-avatar">
+                                <img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""/>
+                            </div>
+                            <div class="comment-box">
+                                <div class="comment-head">
+                                    <h6 class="comment-name by-author">
+                                        <a href="http://creaticode.com/blog">Agustin Ortiz</a>
+                                    </h6>
+                                    <span>5 minutes ago</span>
+                                    <i class="fa fa-reply"></i> 
+                                    <i class="fa fa-heart"></i>
+                                </div>
+                                <div class="comment-content">test reply button and delete button</div>                                    
+                            </div>                               
+                        </div>
+                    </li>
 		</ul>
 	</div>
     <!-- comment submission form goes down there -->   
