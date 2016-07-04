@@ -8,6 +8,10 @@
         justify-content: flex-start;
         flex-direction: column;
     }
+    @font-face{
+    font-family:'FontAwesome';
+    src:url('../fonts/fontawesome-webfont.eot?v=4.2.0');
+    src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),url('../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}
 </style>
 
 
@@ -17,7 +21,6 @@
 .comments-container {
 	margin: 0;
 	width: 420px;
-        border: 3px solid black;
 }
 .comments-container ul {
         list-style-type: none;
@@ -64,27 +67,10 @@
 	-moz-border-radius: 50%;
 	border-radius: 50%;
 }
-.comments-container .reply-list:before, .reply-list:after {display: none;}
-.comments-container .reply-list li:before {
-	content: '';
-	width: 60px;
-	height: 2px;
-	background: #c7cacb;
-	position: absolute;
-	top: 25px;
-	left: -55px;
-}
 .comments-container .comments-list li {
 	margin-bottom: 15px;
 	display: block;
 	position: relative;
-}
-.comments-container .comments-list li:after {
-	content: '';
-	display: block;
-	clear: both;
-	height: 0;
-	width: 0;
 }
 .comments-container .comments-list .comment-avatar {
 	width: 50px;
@@ -127,16 +113,7 @@
 	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
 .comments-container .comments-list .comment-box:before, .comments-list .comment-box:after {
-	content: '';
-	height: 0;
-	width: 0;
-	position: absolute;
-	display: block;
-	border-width: 10px 12px 10px 0;
-	border-style: solid;
-	border-color: transparent #FCFCFC;
-	top: 8px;
-	left: -11px;
+	
 }
 .comments-container .comments-list .comment-box:before {
 	border-width: 11px 13px 11px 0;
@@ -162,6 +139,19 @@
 	-webkit-transition: color 0.3s ease;
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
+}
+.fa{
+    display:inline-block;
+    font:normal normal normal 14px/1 FontAwesome;
+    font-size:inherit;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale
+}
+.fa-trash:before{
+    content:"\f014"
+}
+.fa-reply:before{
+    content:"\f064"
 }
 .comments-container .comment-box .comment-head i:hover {
 	color: #03658c;
@@ -258,7 +248,7 @@
         border: 1px solid #88D5E9;
     }
     #submission .form-style-1 .field-long{
-        width: 370px;
+        width: 420px;
     }
     #submission .form-style-1 .field-textarea{
         height: 45px;
@@ -310,11 +300,11 @@
                             <div class="comment-box">
                                 <div class="comment-head">
                                     <h6 class="comment-name by-author">
-                                        <a href="http://creaticode.com/blog">Agustin Ortiz</a>
+                                        <a>Agustin Ortiz</a>
                                     </h6>
                                     <span>5 minutes ago</span>
                                     <i class="fa fa-reply"></i> 
-                                    <i class="fa fa-heart"></i>
+                                    <i class="fa fa-trash"></i>
                                 </div>
                                 <div class="comment-content">test reply button and delete button</div>                                    
                             </div>                               

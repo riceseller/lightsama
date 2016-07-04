@@ -1,28 +1,15 @@
 <style>
+@font-face{
+    font-family:'FontAwesome';
+    src:url('../fonts/fontawesome-webfont.eot?v=4.2.0');
+    src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),url('../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}
 figcaption,figure {
     display:block;
 }
-
-*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
-.clearfix:before, .clearfix:after { display: table; content: ''; }
-.clearfix:after { clear: both; }
-
-body {
-	background: #2f3238;
-	color: #fff;
-	font-weight: 400;
-	font-size: 1em;
-	font-family: 'Raleway', Arial, sans-serif;
-        
+.grid *, .grid *:after, .grid *:before { 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box; 
 }
-
-a {
-	outline: none;
-	color: #3498db;
-	text-decoration: none;
-}
-
-
 /* Common style */
 .grid figure {
 	position: relative;
@@ -35,7 +22,6 @@ a {
 	text-align: center;
 	cursor: pointer;
 }
-
 .grid figure .comment-box{
 	position: relative;
 	display: block;
@@ -51,7 +37,6 @@ a {
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
-
 .grid figure figcaption::before,
 .grid figure figcaption::after {
 	pointer-events: none;
@@ -78,13 +63,8 @@ a {
 .grid figure p {
 	margin: 0;
 }
-
-.grid figure p {
-	letter-spacing: 1px;
-	font-size: 68.5%;
-}
 figure.reply-delete {
-	background: #fff;
+	background: #FFF94C;      
 	text-align: left;
 }
 figure.reply-delete:hover .comment-box {
@@ -123,7 +103,6 @@ figure.reply-delete figcaption::before {
 	z-index: -1;
 	height: 0;
 	background: #fff;
-	content: '';
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 	transition: opacity 0.35s, transform 0.35s;
 	-webkit-transform: translate3d(0,4em,0) scale3d(1,0.023,1) ;
@@ -136,11 +115,6 @@ figure.reply-delete:hover p {
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
 }
-figure.reply-delete:hover figcaption::before {
-	opacity: 0.7;
-	-webkit-transform: translate3d(0,5em,0) scale3d(1,1,1) ;
-	transform: translate3d(0,5em,0) scale3d(1,1,1);
-}
 .fa{
     display:inline-block;
     font:normal normal normal 14px/1 FontAwesome;
@@ -152,10 +126,10 @@ figure.reply-delete:hover figcaption::before {
     width:1.28571429em;
     text-align:center
 }
-.fa-heart:before{
-    content:"\f004"
+.fa-trash:before{
+    content:"\f014"
 }
-.fa-share:before{
+.fa-reply:before{
     content:"\f064"
 }
 </style>
@@ -167,14 +141,13 @@ figure.reply-delete:hover figcaption::before {
     </head>
 	
     <body>
-    <h2>Kira</h2>
         <div class="grid">
             <figure class="reply-delete">
                 <div class="comment-box"></div>
                 <figcaption>
                     <p>
-                        <a href="#"><i class="fa fa-fw fa-heart"></i></a>
-                        <a href="#"><i class="fa fa-fw fa-share"></i></a>
+                        <a href="#"><i class="fa fa-fw fa-trash"></i></a>
+                        <a href="#"><i class="fa fa-fw fa-reply"></i></a>
                     </p>
                 </figcaption>			
             </figure>

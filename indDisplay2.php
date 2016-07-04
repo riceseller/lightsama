@@ -169,7 +169,6 @@ $comment_count=$row1000[0]; //count query ends
         -khtml-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-        user-select: none;
     }
 </style>
 
@@ -342,31 +341,33 @@ $comment_count=$row1000[0]; //count query ends
     }
 </style>
 
-<!-- TEST PURPOSE ONLY!!!!! STARTS HERE -->
+<!-- COMMENT BOX TEST PURPOSE ONLY!!!!! STARTS HERE -->
 <style>
-    .comment-wrap{
-        width: 400px;
+@font-face{
+font-family:'FontAwesome';
+src:url('../fonts/fontawesome-webfont.eot?v=4.2.0');
+src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),url('../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}
+ .comment-wrap{
+        width: 450px;
         height: auto;
         margin-left: 100px;
         padding: 0;
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
-        order: 1;
-    }
-    #fdb{
-       display: flex;
+}
+#fdb{
+        display: flex;
         flex-direction: row;
         width: 100%;
         height: auto;
         margin-top: 30px;
         margin-bottom: 30px;
         font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
-	background: #f3f5f6;
+        background: #f3f5f6;
         justify-content: flex-start;
         order: 3;
 }    
-
 #submission{
  	padding: 0;
  	-webkit-box-sizing: border-box;
@@ -375,26 +376,26 @@ $comment_count=$row1000[0]; //count query ends
         margin: 0;
         width: 384px;
         height: auto;
-}
-#submission .form-style-1 {
-        margin:10px 0px auto;
-        max-width: 351px;
-        padding: 0px 1px 10px 0px;
-        font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-}
-#submission .form-style-1 li {
+    }
+    #submission .form-style-1 {
+    margin:10px 0px auto;
+    max-width: 351px;
+    padding: 0px 1px 10px 0px;
+    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+    #submission .form-style-1 li {
         padding: 0;
         display: block;
         list-style: none;
         margin: 10px 0 0 0;
-}
-#submission .form-style-1 label{
+    }
+    #submission .form-style-1 label{
         margin:0 0 3px 0;
         padding:0px;
         display:block;
         font-weight: bold;
-}
-#submission textarea, select{
+    }
+    #submission textarea, select{
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -406,38 +407,38 @@ $comment_count=$row1000[0]; //count query ends
         -ms-transition: all 0.30s ease-in-out;
         -o-transition: all 0.30s ease-in-out;
         outline: none;  
-}
-#submission .form-style-1 textarea:focus, 
+    }
+    #submission .form-style-1 textarea:focus, 
     #submission .form-style-1 select:focus{
         -moz-box-shadow: 0 0 8px #88D5E9;
         -webkit-box-shadow: 0 0 8px #88D5E9;
         box-shadow: 0 0 8px #88D5E9;
         border: 1px solid #88D5E9;
-}
-#submission .form-style-1 .field-long{
-        width: 370px;
-}
-#submission .form-style-1 .field-textarea{
+    }
+    #submission .form-style-1 .field-long{
+        width: 420px;
+    }
+    #submission .form-style-1 .field-textarea{
         height: 45px;
-}
-#submission .form-style-1 input[type=submit], .form-style-1 input[type=button]{
+    }
+    #submission .form-style-1 input[type=submit], .form-style-1 input[type=button]{
         background: #4B99AD;
         padding: 8px 15px 8px 15px;
         border: none;
         color: #fff;
-}
-#submission .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+    }
+    #submission .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
         background: #4691A4;
         box-shadow:none;
         -moz-box-shadow:none;
         -webkit-box-shadow:none;
-}
-#submission .form-style-1 .required{
+    }
+    #submission .form-style-1 .required{
         color:red;
-}    
+    }
 .comments-container {
 	margin: 0;
-	width: 370px;
+	width: 420px;
 }
 .comments-container ul {
         list-style-type: none;
@@ -484,27 +485,10 @@ $comment_count=$row1000[0]; //count query ends
 	-moz-border-radius: 50%;
 	border-radius: 50%;
 }
-.comments-container .reply-list:before, .reply-list:after {display: none;}
-.comments-container .reply-list li:before {
-	content: '';
-	width: 60px;
-	height: 2px;
-	background: #c7cacb;
-	position: absolute;
-	top: 25px;
-	left: -55px;
-}
 .comments-container .comments-list li {
 	margin-bottom: 15px;
 	display: block;
 	position: relative;
-}
-.comments-container .comments-list li:after {
-	content: '';
-	display: block;
-	clear: both;
-	height: 0;
-	width: 0;
 }
 .comments-container .comments-list .comment-avatar {
 	width: 50px;
@@ -539,25 +523,15 @@ $comment_count=$row1000[0]; //count query ends
 	clear: both;
 }
 .comments-container .comments-list .comment-box {
-	width: 296px;
+	width: 356px;
 	float: right;
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
-
 .comments-container .comments-list .comment-box:before, .comments-list .comment-box:after {
-	content: '';
-	height: 0;
-	width: 0;
-	position: absolute;
-	display: block;
-	border-width: 10px 12px 10px 0;
-	border-style: solid;
-	border-color: transparent #FCFCFC;
-	top: 8px;
-	left: -11px;
+	
 }
 .comments-container .comments-list .comment-box:before {
 	border-width: 11px 13px 11px 0;
@@ -583,6 +557,19 @@ $comment_count=$row1000[0]; //count query ends
 	-webkit-transition: color 0.3s ease;
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
+}
+.fa{
+    display:inline-block;
+    font:normal normal normal 14px/1 FontAwesome;
+    font-size:inherit;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale
+}
+.fa-trash:before{
+    content:"\f014"
+}
+.fa-reply:before{
+    content:"\f064"
 }
 .comments-container .comment-box .comment-head i:hover {
 	color: #03658c;
@@ -616,6 +603,7 @@ $comment_count=$row1000[0]; //count query ends
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
 }
+
 @media only screen and (max-width: 766px) {
 	.comments-container {
 		width: 480px;
@@ -835,7 +823,7 @@ function myFunction() {
         return;
     }
     var old_comment=document.getElementById("comments-list").innerHTML; 
-    var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>5 minutes ago</span><i class="fa fa-reply"></i><i class="fa fa-heart"></i></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
+    var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>5 minutes ago</span><i class="fa fa-reply"></i><i class="fa fa-trash"></i></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
     new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     document.getElementById('comments-list').innerHTML = new_comment;
     if(q>1)
@@ -1131,7 +1119,7 @@ function myFunction() {
                     <?php
                         while($row_comment=$result_comment->fetch_assoc())
                         {
-                            echo "<li><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><i class='fa fa-reply'></i><i class='fa fa-heart'></i></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                            echo "<li><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><i class='fa fa-reply'></i><i class='fa fa-trash'></i></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
                         }
                     ?>                   
 		</ul>
