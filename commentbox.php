@@ -111,14 +111,8 @@
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-}
-.comments-container .comments-list .comment-box:before, .comments-list .comment-box:after {
-	
-}
-.comments-container .comments-list .comment-box:before {
-	border-width: 11px 13px 11px 0;
-	border-color: transparent rgba(0,0,0,0.05);
-	left: -12px;
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box; 
 }
 .comments-container .comment-box .comment-head {
 	background: #FCFCFC;
@@ -302,9 +296,9 @@
                                     <h6 class="comment-name by-author">
                                         <a>Agustin Ortiz</a>
                                     </h6>
-                                    <span>5 minutes ago</span>
+                                    <span>5 minutes ago</span>                                   
                                     <i class="fa fa-reply"></i> 
-                                    <i class="fa fa-trash"></i>
+                                    <i class="fa fa-trash"></i>                                    
                                 </div>
                                 <div class="comment-content">test reply button and delete button</div>                                    
                             </div>                               

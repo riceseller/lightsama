@@ -13,14 +13,9 @@ figcaption,figure {
 /* Common style */
 .grid figure {
 	position: relative;
-	float: left;
 	overflow: hidden;
-	margin: 10px 1%;
 	width: auto;
 	height: auto;
-	background: #3085a3;
-	text-align: center;
-	cursor: pointer;
 }
 .grid figure .comment-box{
 	position: relative;
@@ -32,16 +27,8 @@ figcaption,figure {
 .grid figure figcaption {
 	padding: 2em;
 	color: #fff;
-	text-transform: uppercase;
-	font-size: 1.25em;
-	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
-.grid figure figcaption::before,
-.grid figure figcaption::after {
-	pointer-events: none;
-}
-
 .grid figure figcaption,
 .grid figure figcaption > a {
 	position: absolute;

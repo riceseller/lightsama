@@ -558,6 +558,9 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
 }
+.comments-container .comment-box .comment-head i:hover {
+	color: #03658c;
+}
 .fa{
     display:inline-block;
     font:normal normal normal 14px/1 FontAwesome;
@@ -570,9 +573,6 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
 }
 .fa-reply:before{
     content:"\f064"
-}
-.comments-container .comment-box .comment-head i:hover {
-	color: #03658c;
 }
 .comments-container .comment-box .comment-name {
 	color: #283035;
