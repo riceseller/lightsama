@@ -298,7 +298,7 @@
                                     
                                     <p>
                                         <i class="fa fa-reply"></i> 
-                                        <i class="fa fa-trash"></i> 
+                                        <i class="fa fa-trash" onclick="alerttest()"></i> 
                                     </p>
                                     
                                 </div>
@@ -308,6 +308,11 @@
                     </li>
 		</ul>
 	</div>
+<script>
+    function alerttest(){
+        alert("it works");
+    }
+</script>
     <!-- comment submission form goes down there -->   
     <div id="submission">
         <form>
