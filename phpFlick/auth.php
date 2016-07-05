@@ -61,13 +61,14 @@ if($user->isLoggedIn()){
     }
     //link between two
     $authToken = $_SESSION['phpFlickr_auth_token'];
+    print_r($authToken);
     $authToken = $authToken[0];
+    print $authToken;
     $query2 = "insert into LinkUser(scrapeUserID, usersID, needAction, authToken) values($scrape_link_id,$dbUserID,$scrapemode,'$authToken')";
     print $query2;
     if ($conn->query($query2) === True){
         //insert success
         //print 'insert success, ready to exit';
-        print $authToken;
         //shell_exec('export AIRFLOW_HOME=\"/home/luokerenz/airflow\" && airflow trigger_dag flickr_link_script');
         //echo "<script>window.location = '../users/account.php'</script>";
     }else{
