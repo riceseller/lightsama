@@ -24,9 +24,13 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         }
         else if($current_cat=='comment_write')
         {
-            echo "i am here";
             $query100="insert into comment(userid, compic, content) values($current_id, $current_pid, '$current_comment')";
             $conn->query($query100);
+        }
+        else if($current_cat=='comment_delete')
+        {
+            $query101="delete from comment where userid=$current_id and compic=$current_pid";
+            $conn->query($query101);
         }
                                                        
 }
