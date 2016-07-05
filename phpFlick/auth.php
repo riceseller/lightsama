@@ -12,17 +12,12 @@ if($user->isLoggedIn()){
     $api_key                 = "9c7e15fd3e006075c3647c94ee891bd8";
     $api_secret              = "59cd2bc5e832fe79";
     $default_redirect        = "http://db.luokerenz.com/phpFlick/example.php";
-    $permissions             = "read";
+    $permissions             = "write";
     $path_to_phpFlickr_class = "./";
 
     ob_start();
     require_once($path_to_phpFlickr_class . "phpFlickr.php");
     unset($_SESSION['phpFlickr_auth_token']);
-     
-	if ( isset($_SESSION['phpFlickr_auth_redirect']) && !empty($_SESSION['phpFlickr_auth_redirect']) ) {
-		$redirect = $_SESSION['phpFlickr_auth_redirect'];
-		unset($_SESSION['phpFlickr_auth_redirect']);
-	}
     
     $f = new phpFlickr($api_key, $api_secret);
  
@@ -31,7 +26,7 @@ if($user->isLoggedIn()){
         //print 'read permission requested';
     } else {
         $f->auth_getToken($_GET['frob']);
-	}
+    }
     
     /*if (empty($redirect)) {
 		header("Location: " . $default_redirect);
@@ -65,13 +60,14 @@ if($user->isLoggedIn()){
         $scrapemode = 1;
     }
     //link between two
-    $query2 = "insert into LinkUser(scrapeUserID, usersID, needAction) values($scrape_link_id,$dbUserID,$scrapemode)";
+    $authToken = $_SESSION['phpFlickr_auth_token'];
+    $authToken = array_values($authToken)[0];
+    $query2 = "insert into LinkUser(scrapeUserID, usersID, needAction, authToken) values($scrape_link_id,$dbUserID,$scrapemode,'$authToken')";
     print $query2;
     if ($conn->query($query2) === True){
         //insert success
         //print 'insert success, ready to exit';
         shell_exec('export AIRFLOW_HOME=\"/home/luokerenz/airflow\" && airflow trigger_dag flickr_link_script');
-        //echo '<script type="text/javascript">window.close();</script>';
         echo "<script>window.location = '../users/account.php'</script>";
     }else{
         //print $conn->error;

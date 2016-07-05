@@ -48,6 +48,11 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
     $query2 = "select custom1,custom2 from users where id=$get_info_id"; //custom1=>cover photo custom2=>avatar
     $result2=$conn->query($query2);
     $row2 = mysqli_fetch_array($result2);
+    if($row2[custom2]==''){
+        $gravMod = $grav;
+    }else{
+        $gravMod = $row2[custom2];
+    }
     $query = "select su.*, lu.scrapeUserID from LinkUser lu join ScrapeUser su on lu.scrapeUserID=su.id where usersID=$get_info_id";
     $result=$conn->query($query);
     //$row = mysqli_fetch_array($result);
@@ -62,11 +67,6 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
             $coverPic = $row3[urlSource];
         } else {
             $coverPic = $row2[custom1];
-        }
-        if($row2[custom2]==''){
-            $gravMod = $grav;
-        }else{
-            $gravMod = $row2[custom2];
         }
     }else{
         //this account has no linked account
