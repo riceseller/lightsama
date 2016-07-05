@@ -100,6 +100,7 @@
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
+        display: block;
 }
 .comments-container .comment-box .comment-head i {
 	float: right;
@@ -111,6 +112,28 @@
 	-webkit-transition: color 0.3s ease;
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
+}
+.comments-container .comment-box .comment-head i:hover {
+	color: #03658c;
+}
+.comments-container .comment-box .comment-head p{
+        opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(0,-10px,0);
+	transform: translate3d(0,-10px,0);
+}
+.comments-container .comment-box .comment-head p::before{
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(0,4em,0) scale3d(1,0.023,1) ;
+        transform: translate3d(0,4em,0) scale3d(1,0.023,1);
+	-webkit-transform-origin: 50% 0;
+	transform-origin: 50% 0;
+}
+.comments-container .comment-box .comment-head:hover p{
+        opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
 }
 .fa{
     display:inline-block;
@@ -124,9 +147,6 @@
 }
 .fa-reply:before{
     content:"\f064"
-}
-.comments-container .comment-box .comment-head i:hover {
-	color: #03658c;
 }
 .comments-container .comment-box .comment-name {
 	color: #283035;
@@ -274,9 +294,13 @@
                                     <h6 class="comment-name by-author">
                                         <a>Agustin Ortiz</a>
                                     </h6>
-                                    <span>5 minutes ago</span>                                   
-                                    <i class="fa fa-reply"></i> 
-                                    <i class="fa fa-trash"></i>                                    
+                                    <span>5 minutes ago</span>
+                                    
+                                    <p>
+                                        <i class="fa fa-reply"></i> 
+                                        <i class="fa fa-trash"></i> 
+                                    </p>
+                                    
                                 </div>
                                 <div class="comment-content">test reply button and delete button</div>                                    
                             </div>                               

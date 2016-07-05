@@ -41,7 +41,6 @@ figcaption,figure {
 /* Anchor will cover the whole item by default */
 /* For some effects it will show as a button */
 .grid figure figcaption > a {
-	z-index: 1000;
 	text-indent: 200%;
 	white-space: nowrap;
 	font-size: 0;
@@ -100,7 +99,7 @@ figure.reply-delete figcaption::before {
 figure.reply-delete:hover p {
 	opacity: 1;
 	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
+
 }
 .fa{
     display:inline-block;

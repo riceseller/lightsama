@@ -507,14 +507,8 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-}
-.comments-container .comments-list .comment-box:before, .comments-list .comment-box:after {
-	
-}
-.comments-container .comments-list .comment-box:before {
-	border-width: 11px 13px 11px 0;
-	border-color: transparent rgba(0,0,0,0.05);
-	left: -12px;
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box; 
 }
 .comments-container .comment-box .comment-head {
 	background: #FCFCFC;
@@ -524,6 +518,7 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
+        display: block;
 }
 .comments-container .comment-box .comment-head i {
 	float: right;
@@ -538,6 +533,25 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
 }
 .comments-container .comment-box .comment-head i:hover {
 	color: #03658c;
+}
+.comments-container .comment-box .comment-head p{
+        opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(0,-10px,0);
+	transform: translate3d(0,-10px,0);
+}
+.comments-container .comment-box .comment-head p::before{
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(0,4em,0) scale3d(1,0.023,1) ;
+        transform: translate3d(0,4em,0) scale3d(1,0.023,1);
+	-webkit-transform-origin: 50% 0;
+	transform-origin: 50% 0;
+}
+.comments-container .comment-box .comment-head:hover p{
+        opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
 }
 .fa{
     display:inline-block;
@@ -801,7 +815,7 @@ function myFunction() {
         return;
     }
     var old_comment=document.getElementById("comments-list").innerHTML; 
-    var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>5 minutes ago</span><i class="fa fa-reply"></i><i class="fa fa-heart"></i></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
+    var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>5 minutes ago</span><p><i class="fa fa-reply"></i><i class="fa fa-heart"></i></p></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
     new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     document.getElementById('comments-list').innerHTML = new_comment;
     if(q>1)
@@ -1097,7 +1111,7 @@ function myFunction() {
                     <?php
                         while($row_comment=$result_comment->fetch_assoc())
                         {
-                            echo "<li><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><i class='fa fa-reply'></i><i class='fa fa-heart'></i></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                            echo "<li><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><p><i class='fa fa-reply'></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
                         }
                     ?>                   
 		</ul>
