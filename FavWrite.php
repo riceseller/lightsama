@@ -1,8 +1,7 @@
 <?php
 
-if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) 
-        && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'
-    ) {
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') 
+{
         include "supplyment/dbAccess.php";
         // AJAX request
         $current_id = $_GET['current_id']; 
@@ -29,7 +28,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
             $query100="insert into comment(userid, compic, content) values($current_id, $current_pid, '$current_comment')";
             $conn->query($query100);
         }
-       
-    }
+                                                       
+}
 
 ?>
