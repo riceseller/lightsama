@@ -768,7 +768,6 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
                 url: 'FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
             });
-
         }
     }                                                
     function LogInCheck2() {
@@ -810,13 +809,14 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
 </script>
 
 <script>
+    var counter=0;
 function myFunction() {
     var add_comment=document.getElementById("field5").value;
     var a=<?php print $current_id;?>;   //current user id
     var b=<?php print $pid;?>;          //current picture pid
-    var p='<?php print $current_name;?>'; 
-    var q=<?php print $comment_count;?>;
-    q++;
+    var p='<?php print $current_name;?>';    
+    var q=<?php print $comment_count;?>+counter+1;
+    counter++;
     var c='comment_write';
     if(!add_comment || !a){
         alert("you either sumbit an empty comment or you did not log in at all");
@@ -841,7 +841,7 @@ function myFunction() {
                 type: 'GET',
                 url: 'FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c +'&current_comment='+add_comment              
-            });                              
+            });             
 }
 </script>
 
