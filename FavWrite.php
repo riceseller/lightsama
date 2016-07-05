@@ -8,6 +8,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         $current_pid=$_GET['current_pid'];
         $current_cat=$_GET['current_cat'];
         $current_comment=$_GET['current_comment'];
+        $current_cid=$_GET['current_cid'];
         
         echo $current_comment;
         
@@ -24,12 +25,12 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         }
         else if($current_cat=='comment_write')
         {
-            $query100="insert into comment(userid, compic, content) values($current_id, $current_pid, '$current_comment')";
+            $query100="insert into comment(userid, compic, content, comdate) values($current_id, $current_pid, '$current_comment', NOW())";
             $conn->query($query100);
         }
         else if($current_cat=='comment_delete')
         {
-            $query101="delete from comment where userid=$current_id and compic=$current_pid";
+            $query101="delete from comment where id=$current_cid";
             $conn->query($query101);
         }
                                                        

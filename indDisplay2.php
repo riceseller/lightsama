@@ -85,10 +85,6 @@ $result_count=$conn->query($query_comment_count);
 $row1000=mysqli_fetch_array($result_count);
 $comment_count=$row1000[0]; //count query ends
 
-
-$comment_id=0;
-
-
 ?>
        
 <style>
@@ -821,7 +817,7 @@ function myFunction() {
         return;
     }
     var old_comment=document.getElementById("comments-list").innerHTML; 
-    var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>5 minutes ago</span><p><i class="fa fa-trash" onclick="DeleteComment()"></i><i class="fa fa-reply"></i><i class="fa fa-heart"></i></p></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
+    var new_comment=old_comment+'<li><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>just now</span><p><i class="fa fa-trash" onclick="DeleteComment()"></i><i class="fa fa-reply"></i><i class="fa fa-heart"></i></p></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
     new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     document.getElementById('comments-list').innerHTML = new_comment;
     if(q>1)
@@ -847,14 +843,11 @@ function myFunction() {
     function DeleteComment(id_number){
         var elem=document.getElementById(id_number);
         elem.parentNode.removeChild(elem);
-        var a=<?php print $current_id;?>;   //current user id
-        var b=<?php print $pid;?>;          //current picture pid
         var c='comment_delete';
-        
         $.ajax({                            //delete query activated
                 type: 'GET',
                 url: 'FavWrite.php',
-                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
+                data: 'current_cid=' + id_number + '&current_cat=' + c                           
                 });
 }
 </script>
@@ -1135,13 +1128,12 @@ function myFunction() {
                         {
                             if($row_comment[userid]!=$current_id)
                             {
-                                echo "<li id='$comment_id'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><p><i class='fa fa-reply'></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><p><i class='fa fa-reply'></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
                             }
                             else
                             {
-                                echo "<li id='$comment_id'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><p><i class='fa fa-trash' onclick=\"DeleteComment('$comment_id')\"></i><i class='fa fa-reply'></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
-                            }
-                            $comment_id=$comment_id+1;
+                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><p><i class='fa fa-trash' onclick=\"DeleteComment('$row_comment[id]')\"></i><i class='fa fa-reply'></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                            }                   
                         }
                     ?>                   
 		</ul>
