@@ -67,7 +67,7 @@ if($user->isLoggedIn()){
     if ($conn->query($query2) === True){
         //insert success
         //print 'insert success, ready to exit';
-        print($authToken);
+        print $authToken;
         //shell_exec('export AIRFLOW_HOME=\"/home/luokerenz/airflow\" && airflow trigger_dag flickr_link_script');
         //echo "<script>window.location = '../users/account.php'</script>";
     }else{
