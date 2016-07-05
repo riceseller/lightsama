@@ -99,7 +99,6 @@ figure.reply-delete figcaption::before {
 figure.reply-delete:hover p {
 	opacity: 1;
 	-webkit-transform: translate3d(0,0,0);
-
 }
 .fa{
     display:inline-block;
