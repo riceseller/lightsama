@@ -97,6 +97,12 @@ $row_view=mysqli_fetch_array($result_view);
 $view=$row_view[0];
 
 
+//the code below is for testing use only, it is just a purpose for tracking ip address of people who visited 
+//our page
+$ip=$_SERVER['REMOTE_ADDR'];
+$query_ip="insert into ipaddress(pid, address) values($pid, '$ip')";
+$conn->query($query_ip);
+
 ?>
        
 <style>
