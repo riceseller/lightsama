@@ -1,5 +1,8 @@
 <?php 
 
+   $ip=$_SERVER['REMOTE_ADDR'];
+   echo "IP address= $ip";
+   echo "\n";
    date_default_timezone_set('America/New_York'); 
    
    include "../supplyment/dbAccess.php";   
