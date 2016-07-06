@@ -362,7 +362,8 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
  .comment-wrap{
         width: 450px;
         height: auto;
-        margin-left: 100px;
+        margin-left: 125px;
+        margin-right: 100px;
         padding: 0;
         display: flex;
         justify-content: flex-start;
@@ -481,8 +482,8 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
 	position: relative;
 }
 .comments-container .comments-list .comment-avatar {
-	width: 50px;
-	height: 50px;
+	width: 39px;
+	height: 39px;
 	position: relative;
 	z-index: 99;
 	float: left;
