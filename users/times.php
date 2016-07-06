@@ -1,22 +1,153 @@
-<?php
-    date_default_timezone_set('Asia/Singapore'); 
-    include "../supplyment/dbAccess.php";
-    $now=new DateTime();
+<?php 
+
+   date_default_timezone_set('America/New_York'); 
+   
+   include "../supplyment/dbAccess.php";   
+   $queryt="select comdate from comment where id=98";
+   $resultt=$conn->query($queryt);
+   $rowt=  mysqli_fetch_array($resultt);
+
+?> 
+
+<?php 
+
+   $dteStart = new DateTime(); 
+   $dteEnd   = new DateTime($rowt[0]); 
+
+?> 
+
+<?php 
+
+   $dteDiff  = $dteStart->diff($dteEnd); 
+
+?> 
+
+<?php 
+
+   print $dteDiff->format("%M");    //Months difference
+   print "\n";
+   print $dteDiff->format("%D");    //days difference 
+   print "\n";
+   print $dteDiff->format("%H");    //hours difference 
+   print "\n";
+   print $dteDiff->format("%I");    //minutes difference
+   print "\n";
+   
+   if($dteDiff->format("%M")!='00')
+   {
+       $date_print=$dteDiff->format("%M");  
+       if(substr($date_print, 0, 1)=='0')
+       {
+           $date_print=substr($date_print, 1, 1);
+           if($date_print=='1')
+           {
+               $date_print2=''.$date_print.' month ago';               
+           }
+           else
+           {
+               $date_print2=''.$date_print.' months ago';               
+           }
+       }
+       else 
+       {
+            $date_print2=''.$date_print.' months ago';            
+       }
+       
+       echo $date_print2;
+       echo "\n";
+   }
+   else if($dteDiff->format("%D")!='00')
+   {
+       $date_print=$dteDiff->format("%D");  
+       if(substr($date_print, 0, 1)=='0')
+       {
+           $date_print=substr($date_print, 1, 1);
+           if($date_print=='1')
+           {
+               $date_print2=''.$date_print.' day ago';               
+           }
+           else
+           {
+               $date_print2=''.$date_print.' days ago';               
+           }
+       }
+       else 
+       {
+            $date_print2=''.$date_print.' days ago';            
+       }
+       
+       echo $date_print2;
+       echo "\n";
+   }
+   else if($dteDiff->format("%H")!='00')
+   {
+       $date_print=$dteDiff->format("%H");  
+       if(substr($date_print, 0, 1)=='0')
+       {
+           $date_print=substr($date_print, 1, 1);
+           if($date_print=='1')
+           {
+               $date_print2=''.$date_print.' hour ago';               
+           }
+           else
+           {
+               $date_print2=''.$date_print.' hours ago';               
+           }
+       }
+       else 
+       {
+            $date_print2=''.$date_print.' hours ago';            
+       }
+       
+       echo $date_print2;
+       echo "\n";              
+   }
+   else if($dteDiff->format("%I")!='00')
+   {
+       $date_print=$dteDiff->format("%I");  
+       if(substr($date_print, 0, 1)=='0')
+       {
+           $date_print=substr($date_print, 1, 1);
+           if($date_print=='1')
+           {
+               $date_print2=''.$date_print.' minute ago';               
+           }
+           else
+           {
+               $date_print2=''.$date_print.' minutes ago';               
+           }
+       }
+       else 
+       {
+            $date_print2=''.$date_print.' minutes ago';            
+       }
+       
+       echo $date_print2;
+       echo "\n";
+   }
+   else if($dteDiff->format("%S")!='00')
+   {
+       $date_print=$dteDiff->format("%S");  
+       if(substr($date_print, 0, 1)=='0')
+       {
+           $date_print=substr($date_print, 1, 1);
+           if($date_print=='1')
+           {
+               $date_print2=''.$date_print.' second ago';               
+           }
+           else
+           {
+               $date_print2=''.$date_print.' seconds ago';               
+           }
+       }
+       else 
+       {
+            $date_print2=''.$date_print.' seconds ago';            
+       }
+       
+       echo $date_print2;
+       echo "\n";
+   }
+
+?> 
     
-    $queryt="select comdate from comment where id=90";
-    $resultt=$conn->query($queryt);
-    $rowt=mysqli_fetch_array($resultt);
-    echo $rowt[0];
-    $db_date=new DateTime($rowt[0]);
-      
-    $time_difference  = $now->diff($db_date);    
-?>
-	<div class="row text-center">
-	
-		<div class="col-xs-4">
-			<div><p>db time</p><strong class="text-success"><?php echo $db_date->format("H:I:S");?></strong></div>
-                        <div><p>current time</p><strong class="text-success"><?php echo $now->format("H:I:S");?></strong></div>
-                        <div><p>time difference</p><strong class="text-success"><?php echo $time_difference->format("%H:%I:%S");?></strong></div>
-		</div>				
-				
-	</div>

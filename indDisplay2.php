@@ -2,6 +2,7 @@
 require_once "topNav2.php";     //header bar load
 $pid = $_GET["pid"];            //get the pid of that picture upon load
 require_once("supplyment/dbAccess.php");    //database connection page load
+date_default_timezone_set('America/New_York');  //set default time zone as eastern time new york
 
 $come_from=$_REQUEST["come_from"];          //click trace-see where that picture comes from 
 if(isset($come_from))                       //click event detected, update click
@@ -828,14 +829,17 @@ function myFunction() {
     {
         var updated_comment='<p>'+q+'<br>comment</p>';
     }
-    updated_comment = updated_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-    document.getElementById('comment').innerHTML = updated_comment;
     
     $.ajax({
                 type: 'GET',
                 url: 'FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c +'&current_comment='+add_comment              
-            });             
+            });
+            
+    updated_comment = updated_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    document.getElementById('comment').innerHTML = updated_comment;
+    
+                
 }
 </script>
 
@@ -1126,13 +1130,118 @@ function myFunction() {
                     <?php
                         while($row_comment=$result_comment->fetch_assoc())
                         {
+                            $comment_date=new DateTime($row_comment[comdate]);
+                            $current_date=new DateTime();
+                            $dteDiff  = $comment_date->diff($current_date);
+                            
+                            if($dteDiff->format("%M")!='00')
+                            {
+                                $date_print=$dteDiff->format("%M");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' month ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' months ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' months ago';            
+                                }              
+                            }
+                            else if($dteDiff->format("%D")!='00')
+                            {
+                                $date_print=$dteDiff->format("%D");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' day ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' days ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' days ago';            
+                                }   
+                            }
+                            else if($dteDiff->format("%H")!='00')
+                            {
+                                $date_print=$dteDiff->format("%H");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' hour ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' hours ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' hours ago';            
+                                }                         
+                            }
+                            else if($dteDiff->format("%I")!='00')
+                            {
+                                $date_print=$dteDiff->format("%I");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' minute ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' minutes ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' minutes ago';            
+                                }              
+                            }
+                            else if($dteDiff->format("%S")!='00')
+                            {
+                                $date_print=$dteDiff->format("%S");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' second ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' seconds ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' seconds ago';            
+                                }            
+                            }
+                            
                             if($row_comment[userid]!=$current_id)
                             {
-                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><p><i class='fa fa-reply'></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-reply'></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
                             }
                             else
                             {
-                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>5 minutes ago</span><p><i class='fa fa-trash' onclick=\"DeleteComment('$row_comment[id]')\"></i><i class='fa fa-reply'></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-trash' onclick=\"DeleteComment('$row_comment[id]')\"></i><i class='fa fa-reply'></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
                             }                   
                         }
                     ?>                   
