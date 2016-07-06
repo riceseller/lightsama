@@ -4,12 +4,16 @@ $pid = $_GET["pid"];            //get the pid of that picture upon load
 require_once("supplyment/dbAccess.php");    //database connection page load
 date_default_timezone_set('America/New_York');  //set default time zone as eastern time new york
 
-$come_from=$_REQUEST["come_from"];          //click trace-see where that picture comes from 
+$come_from=$_POST["come_from"];          //click trace-see where that picture comes from 
 if(isset($come_from))                       //click event detected, update click
 {
     $query30="update assoCorresp set click=click+1 where ppid=$come_from and cpid=$pid";
     $conn->query($query30);
 }   //click event ends
+
+    $query31="update Common set view=view+1 where p_id=$pid";   //
+    $conn->query($query31);
+
 
 $query = "select c.*, u.url, u.urlSource, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";    
 $result=$conn->query($query);
@@ -85,6 +89,13 @@ $query_comment_count="select count(*) from comment where compic=$pid";
 $result_count=$conn->query($query_comment_count);
 $row1000=mysqli_fetch_array($result_count);
 $comment_count=$row1000[0]; //count query ends
+
+//get view information on this particular pid
+$query_view="select view from Common where p_id=$pid";
+$result_view=$conn->query($query_view);
+$row_view=mysqli_fetch_array($result_view);
+$view=$row_view[0];
+
 
 ?>
        
@@ -990,7 +1001,7 @@ function myFunction() {
         <div class="exif">
             <div class="top">
                 <div id="view">
-                    <p>10000<br>view</p>
+                    <p><?php echo $view;?><br><?php if($view=='1'){echo "view";} else{echo "views";}?></p>
                 </div>
                                 
                 <div id="fav">  
@@ -1128,10 +1139,10 @@ function myFunction() {
 	<div class="comments-container">
 		<ul id="comments-list" class="comments-list">			
                     <?php
+                        $current_date=new DateTime();
                         while($row_comment=$result_comment->fetch_assoc())
                         {
                             $comment_date=new DateTime($row_comment[comdate]);
-                            $current_date=new DateTime();
                             $dteDiff  = $comment_date->diff($current_date);
                             
                             if($dteDiff->format("%M")!='00')
