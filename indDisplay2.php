@@ -96,6 +96,16 @@ $result_view=$conn->query($query_view);
 $row_view=mysqli_fetch_array($result_view);
 $view=$row_view[0];
 
+$grav = get_gravatar(strtolower(trim($user->data()->email)));
+$query2 = "select custom1,custom2 from users where id=$current_id"; //custom1=>cover photo custom2=>avatar
+$result2=$conn->query($query2);
+$row2 = mysqli_fetch_array($result2);
+if($row2[custom2]==''){
+    $gravMod = $grav;
+}else{
+    $gravMod = $row2[custom2];
+}
+
 
 //the code below is for testing use only, it is just a purpose for tracking ip address of people who visited 
 //our page
@@ -646,6 +656,7 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
         vertical-align: middle;
         order: 2;
         margin-left: 10px;
+        margin-right: 40px;
     }
     .container3 a{
         display:block;
@@ -655,7 +666,7 @@ src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-open
         background-color: #fff;
         color: #71767a;
         border:1px solid #b9c1c7;
-        margin-top: 12px;
+        margin-top: 0;
         max-width: 10em;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -1276,11 +1287,11 @@ function myFunction() {
                             
                             if($row_comment[userid]!=$current_id)
                             {
-                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-reply' onclick=\"myfunction2('$row_comment[username]', '$row_comment[userid]')\"></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='$gravMod'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='#'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-reply' onclick=\"myfunction2('$row_comment[username]', '$row_comment[userid]')\"></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
                             }
                             else
                             {
-                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='http://creaticode.com/blog'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-trash' onclick=\"DeleteComment('$row_comment[id]')\"></i><i class='fa fa-reply' onclick=\"myfunction2('$row_comment[username]', '$row_comment[userid]')\"></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='$gravMod'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='#'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-trash' onclick=\"DeleteComment('$row_comment[id]')\"></i><i class='fa fa-reply' onclick=\"myfunction2('$row_comment[username]', '$row_comment[userid]')\"></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
                             }                   
                         }
                     ?>                   
