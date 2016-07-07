@@ -99,9 +99,6 @@ $view=$row_view[0];
 
 //the code below is for testing use only, it is just a purpose for tracking ip address of people who visited 
 //our page
-$ip=$_SERVER['REMOTE_ADDR'];
-$query_ip="insert into ipaddress(pid, address, times) values($pid, '$ip', NOW())";
-$conn->query($query_ip);
 
 ?>
        
