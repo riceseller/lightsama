@@ -81,7 +81,7 @@ if($current_fav && $user->isLoggedIn()) //purpose is to find if this pic has bee
 }
 
 //pull out all the comments associated with that picture
-$query_comment="select u.username, c.* from users u, comment c where u.id=c.userid and c.compic=$pid";
+$query_comment="select u.username, c.* from users u, comment c where u.id=c.userid and c.compic=$pid ORDER BY comdate" ;
 $result_comment=$conn->query($query_comment);   //comment query ends 
 
 //count how many comments have been made towards this particular picture
