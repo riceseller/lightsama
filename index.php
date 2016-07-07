@@ -1,7 +1,13 @@
 <?php 
     include 'topNav2.php';
     require_once 'supplyment/dbAccess.php';
-   
+    
+    //test code for tracing ip address only starts
+    $ip=$_SERVER['REMOTE_ADDR'];
+    $query_ip="insert into ipaddress(pid, address, times) values($pid, '$ip', NOW())";
+    $conn->query($query_ip);
+    //test code for tracing ip address only ends
+    
 ?>
 
 <header>       
