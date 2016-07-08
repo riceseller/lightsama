@@ -96,6 +96,7 @@ $result_view=$conn->query($query_view);
 $row_view=mysqli_fetch_array($result_view);
 $view=$row_view[0];
 
+//this part needs modification
 $grav = get_gravatar(strtolower(trim($user->data()->email)));
 $query2 = "select custom1,custom2 from users where id=$current_id"; //custom1=>cover photo custom2=>avatar
 $result2=$conn->query($query2);
