@@ -98,14 +98,8 @@ $view=$row_view[0];
 
 //this part needs modification
 $grav = get_gravatar(strtolower(trim($user->data()->email)));
-$query2 = "select custom1,custom2 from users where id=$current_id"; //custom1=>cover photo custom2=>avatar
-$result2=$conn->query($query2);
-$row2 = mysqli_fetch_array($result2);
-if($row2[custom2]==''){
-    $gravMod = $grav;
-}else{
-    $gravMod = $row2[custom2];
-}
+
+
 
 //the code below is for testing use only, it is just a purpose for tracking ip address of people who visited 
 //our page
@@ -1183,6 +1177,13 @@ function myFunction() {
                         {
                             $comment_date=new DateTime($row_comment[comdate]);
                             $dteDiff  = $comment_date->diff($current_date);
+                            if($row_comment[custom2]=='')
+                            {                             
+                                $gravMod = $grav;
+                            }
+                            else {                               
+                                $gravMod = $row2[custom2];
+                            }
                             
                             if($dteDiff->format("%M")!='00')
                             {
