@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 
 <html>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <navheader>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="../proxima-nova.css">
