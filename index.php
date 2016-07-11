@@ -1,10 +1,5 @@
 <?php 
     include 'topNav2.php';
-    include 'supplyment/dbAccess.php';
-    
-    $ip=$_SERVER['REMOTE_ADDR'];
-    $query_ip="insert into ipaddress(pid, address, times) values('1', '$ip', NOW())";
-    $conn->query($query_ip);
 ?>
 
 <header>       
