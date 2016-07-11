@@ -1,7 +1,5 @@
 <?php
-    include 'supplyment/dbAccess.php';
-    
-    
+    require_once 'supplyment/dbAccess.php';
 
     $step = 0;
     if(isset($_POST['distance'])) {
