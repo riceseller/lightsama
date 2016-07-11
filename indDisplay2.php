@@ -125,7 +125,7 @@ $conn->query($query_ip);
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
 <script type="text/javascript" src="http://maps.google.cn/maps/api/js?sensor=false&libraries=places"></script>
-<script type="text/javascript" src="users/css/js/indDisplay.js"></script>
+
 
 <script>
     window.onload=function(){
@@ -246,7 +246,7 @@ function myFunction() {
         return;
     }
     var old_comment=document.getElementById("comments-list").innerHTML; 
-    var new_comment=old_comment+'<li id=1000><div class="comment-main-level"><div class="comment-avatar"><img src="'+userlink+'" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>just now</span><p><i class="fa fa-trash" onclick="DeleteComment(1000)"></i><i class="fa fa-reply"></i><i class="fa fa-heart"></i></p></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
+    var new_comment=old_comment+'<li id=1000><div class="comment-main-level"><div class="comment-avatar"><img src="'+userlink+'" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>just now</span><p><i class="fa fa-trash" onclick="DeleteComment(1000)"></i><i class="fa fa-reply"></i></p></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
     new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     document.getElementById('comments-list').innerHTML = new_comment;
     if(q>1)
@@ -302,6 +302,13 @@ function myFunction() {
             var nameadd='@add '+username+' ';
             document.getElementById("field5").value=nameadd;
         }
+    }
+</script>
+
+<script>
+    function comment_like(id_number){
+        alert(id_number);
+        document.getElementById(id_number).style.color = "red";
     }
 </script>
 
@@ -693,11 +700,11 @@ function myFunction() {
                             
                             if($row_comment[userid]!=$current_id)
                             {
-                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='$gravMod'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='#'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-reply' onclick=\"myfunction2('$row_comment[username]', '$row_comment[userid]')\"></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='$gravMod'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='#'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-reply' onclick=\"myfunction2('$row_comment[username]', '$row_comment[userid]')\"></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
                             }
                             else
                             {
-                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='$gravMod'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='#'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-trash' onclick=\"DeleteComment('$row_comment[id]')\"></i><i class='fa fa-reply' onclick=\"myfunction2('$row_comment[username]', '$row_comment[userid]')\"></i><i class='fa fa-heart'></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
+                                echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='$gravMod'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='#'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-trash' onclick=\"DeleteComment('$row_comment[id]')\"></i><i class='fa fa-reply' onclick=\"myfunction2('$row_comment[username]', '$row_comment[userid]')\"></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
                             }                   
                         }
                     ?>                   

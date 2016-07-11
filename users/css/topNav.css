@@ -124,6 +124,11 @@
                 -webkit-font-smoothing:antialiased;
                 -moz-osx-font-smoothing:grayscale
             }
+            topNav i{
+                position: absolute;
+                top: 8px;
+                right: 50px;
+            }
             topNav .fa-heart:before{
                 content:"\f004"
             }

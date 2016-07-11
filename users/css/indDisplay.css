@@ -251,7 +251,7 @@ font-family:'FontAwesome';
 src:url('../../fonts/fontawesome-webfont.eot?v=4.2.0');
 src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'),url('../../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'),url('../../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),url('../../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}
  .comment-wrap{
-        width: 450px;
+        width: 30%;
         height: auto;
         margin-left: 125px;
         margin-right: 100px;
@@ -372,12 +372,16 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
 	display: block;
 	position: relative;
 }
+.comments-container .comments-list li:hover{
+        background-color: #fff;
+        
+}
 .comments-container .comments-list .comment-avatar {
 	width: 39px;
 	height: 39px;
 	position: relative;
 	z-index: 99;
-	float: left;
+	float: left;       
 	border: 3px solid #FFF;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -386,7 +390,9 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 	overflow: hidden;
-        border-radius: 50%;       
+        border-radius: 50%;
+        margin-top: 15px;
+        margin-left: 15px;
 }
 .comments-container .comments-list .comment-avatar img {
         width: 100%;
@@ -404,28 +410,18 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
 	display: block;
 	clear: both;
 }
-.comments-container .comments-list .comment-box {
-	width: 80%;
+.comments-container .comments-list .comment-box  {
+	width: 75%;
 	float: right;
+        margin-right: 5%;
 	position: relative;
-	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-        -webkit-box-sizing: border-box; 
-        box-sizing: border-box;
-        margin-right:5%;
 }
 .comments-container .comment-box .comment-head {
-	background: #FCFCFC;
 	padding: 10px 12px;
-	border-bottom: 1px solid #E5E5E5;
 	overflow: hidden;
-	-webkit-border-radius: 4px 4px 0 0;
-	-moz-border-radius: 4px 4px 0 0;
-	border-radius: 4px 4px 0 0;
         display: block;
 }
-.comments-container .comment-box .comment-head i {
+.comments-container .comment-box  i {
 	float: right;
 	margin-left: 14px;
 	position: relative;
@@ -436,17 +432,17 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
 }
-.comments-container .comment-box .comment-head i:hover {
+.comments-container .comment-box  i:hover {
 	color: #03658c;
 }
-.comments-container .comment-box .comment-head p{
+.comments-container .comment-box  p{
         opacity: 0;
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 	transition: opacity 0.35s, transform 0.35s;
 	-webkit-transform: translate3d(0,-10px,0);
 	transform: translate3d(0,-10px,0);
 }
-.comments-container .comment-box .comment-head p::before{
+.comments-container .comment-box  p::before{
         -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 	transition: opacity 0.35s, transform 0.35s;
 	-webkit-transform: translate3d(0,4em,0) scale3d(1,0.023,1) ;
@@ -454,7 +450,7 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
 	-webkit-transform-origin: 50% 0;
 	transform-origin: 50% 0;
 }
-.comments-container .comment-box .comment-head:hover p{
+.comments-container .comment-box:hover p{
         opacity: 1;
 	-webkit-transform: translate3d(0,0,0);
 }
@@ -493,15 +489,11 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
 	top: 1px;
 }
 .comments-container .comment-box .comment-content {
-	background: #FFF;
-	padding: 12px;
+	padding: 6px;
 	font-size: 14px;
         font-weight: 400;
         word-wrap: break-word;
 	color: #717274;
-	-webkit-border-radius: 0 0 4px 4px;
-	-moz-border-radius: 0 0 4px 4px;
-	border-radius: 0 0 4px 4px;
 }
 
 @media only screen and (max-width: 766px) {
