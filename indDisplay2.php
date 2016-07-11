@@ -118,7 +118,7 @@ $conn->query($query_ip);
 
 ?>
 
- <link rel="stylesheet" type="text/css" href="users/css/indDisplay.css" />
+<link rel="stylesheet" type="text/css" href="users/css/indDisplay.css" />
  
    
 <script src="/node_modules/jquery.min.js"></script>
