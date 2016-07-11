@@ -99,6 +99,15 @@ $view=$row_view[0];
 //this part needs modification
 $grav = get_gravatar(strtolower(trim($user->data()->email)));
 
+$query2 = "select custom1,custom2 from users where id=$current_id"; //custom1=>cover photo custom2=>avatar
+$result2=$conn->query($query2);
+$row2 = mysqli_fetch_array($result2);
+if($row2[custom2]==''){
+    $gravMod2 = $grav;
+}else{
+    $gravMod2 = $row2[custom2];
+}
+
 
 
 //the code below is for testing use only, it is just a purpose for tracking ip address of people who visited 
@@ -229,6 +238,7 @@ function myFunction() {
     var b=<?php print $pid;?>;          //current picture pid
     var p='<?php print $current_name;?>';    
     var q=<?php print $comment_count;?>+counter+1;
+    var userlink='<?php print $row2[custom2];?>';
     counter++;
     var c='comment_write';
     if(!add_comment || !a){
@@ -236,7 +246,7 @@ function myFunction() {
         return;
     }
     var old_comment=document.getElementById("comments-list").innerHTML; 
-    var new_comment=old_comment+'<li id=1000><div class="comment-main-level"><div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>just now</span><p><i class="fa fa-trash" onclick="DeleteComment(1000)"></i><i class="fa fa-reply"></i><i class="fa fa-heart"></i></p></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
+    var new_comment=old_comment+'<li id=1000><div class="comment-main-level"><div class="comment-avatar"><img src="'+userlink+'" alt=""></div><div class="comment-box"><div class="comment-head"><h6 class="comment-name by-author"><a href="http://creaticode.com/blog">'+p+'</a></h6><span>just now</span><p><i class="fa fa-trash" onclick="DeleteComment(1000)"></i><i class="fa fa-reply"></i><i class="fa fa-heart"></i></p></div><div class="comment-content">'+add_comment+'</div></div></div></li>';
     new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     document.getElementById('comments-list').innerHTML = new_comment;
     if(q>1)
@@ -574,10 +584,10 @@ function myFunction() {
                             $dteDiff  = $comment_date->diff($current_date);
                             if($row_comment[custom2]=='')
                             {                             
-                                $gravMod = $grav;
+                                $gravMod = $grav;                               
                             }
                             else {                               
-                                $gravMod = $row2[custom2];
+                                $gravMod = $row_comment[custom2];                                
                             }
                             
                             if($dteDiff->format("%M")!='00')
