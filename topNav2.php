@@ -37,7 +37,7 @@
                 vertical-align: middle;
                 position: absolute;
                 top: 13px;
-                left: 80px;
+                left: 40px;
             }
             .navButton {
                 width:5%;
@@ -47,7 +47,7 @@
                 vertical-align: middle;
                 position: absolute;
                 top: 13px;
-                left: 200px;
+                left: 150px;
             }
             #search {
                 width: 220px;
