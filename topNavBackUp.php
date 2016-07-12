@@ -21,7 +21,8 @@
                 z-index: 1000;
                 position: fixed;
                 top: 0;
-                left: 0;               
+                left: 0;
+                opacity: 0;
             } 
             a.nav{
                 color: white; 
@@ -176,6 +177,24 @@
                 src:url('../../fonts/fontawesome-webfont.eot?v=4.2.0');
                 src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'),url('../../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'),url('../../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),url('../../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script>
+    $(window).on("load",function() {
+        $(window).scroll(function() {
+            $(".topNav").each(function() {
+                /* Check the location of each desired element */
+                var windowBottom = $(window).scrollTop();     
+                /* If the element is completely within bounds of the window, fade it in */
+                if (windowBottom>100) { //object comes into view (scrolling down)
+                    if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+                } else { //object goes out of view (scrolling up)
+                if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+                }
+    });
+  }); $(window).scroll(); //invoke scroll-handler on page-load
+});
+</script>
 
 <!DOCTYPE html>
 <html>
