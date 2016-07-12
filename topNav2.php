@@ -18,6 +18,10 @@
                 background: black;
                 text-decoration: none;
                 display: flex;
+                z-index: 1000;
+                position: fixed;
+                top: 0;
+                left: 0;
             } 
             a.nav{
                 color: white; 
@@ -160,6 +164,7 @@
                 width: 100%;
                 font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
                 -webkit-font-smoothing: antialiased;
+                margin-top: 50px;
             } 
             .normalform{
                 
