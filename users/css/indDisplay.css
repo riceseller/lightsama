@@ -421,7 +421,7 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
 	overflow: hidden;
         display: block;
 }
-.comments-container .comment-box  i {
+.comments-container .comment-box i {
 	float: right;
 	margin-left: 14px;
 	position: relative;
@@ -432,7 +432,7 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
 }
-.comments-container .comment-box  i:hover {
+.comments-container .comment-box i:hover {
 	color: #03658c;
 }
 .comments-container .comment-box  p{
@@ -494,6 +494,7 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
         font-weight: 400;
         word-wrap: break-word;
 	color: #717274;
+        float: left;
 }
 
 @media only screen and (max-width: 766px) {
