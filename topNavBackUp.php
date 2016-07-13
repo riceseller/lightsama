@@ -24,6 +24,7 @@
                 top: 0;
                 left: 0;
                 opacity: 0;
+                font-weight: bold;
             } 
             a.nav{
                 color: white; 
@@ -44,7 +45,7 @@
                 position: absolute;
                 top: 13px;
                 left: 40px;
-                z-index: 1000;
+                z-index: 1000; 
             }
             .navButton {
                 width:5%;
@@ -194,10 +195,14 @@
                 /* Check the location of each desired element */
                 var windowBottom = $(window).scrollTop();     
                 /* If the element is completely within bounds of the window, fade it in */
-                if (windowBottom>100) { //object comes into view (scrolling down)
+                if (windowBottom>120) { //object comes into view (scrolling down)
                     if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
-                } else { //object goes out of view (scrolling up)
-                if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+                } 
+                else { //object goes out of view (scrolling up)
+                    if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+                }
+                if(windowBottom==0){
+                    $(this).fadeTo(500,0);
                 }
     });
   }); $(window).scroll(); //invoke scroll-handler on page-load

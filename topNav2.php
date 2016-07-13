@@ -23,7 +23,8 @@
                 z-index: 1000;
                 position: fixed;
                 top: 0;
-                left: 0;               
+                left: 0;
+                font-weight: bold;
             } 
             a.nav{
                 color: white; 
@@ -160,6 +161,7 @@
                 display: flex;
                 margin-left: auto;
                 margin-right: auto;
+                margin-bottom: 0;
                 padding: 0;
                 flex-direction: column;
                 -webkit-justify-content: flex-start;
