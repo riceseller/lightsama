@@ -753,14 +753,7 @@ function myFunction() {
         </div>
     
         <style>
-            .inline {
-            display: inline;
-            }
-            .link-button {
-                background: none;
-                border: none;
-                text-decoration: none;              
-            }
+           
         </style>    
     
         <section class="Collage effect-parent">

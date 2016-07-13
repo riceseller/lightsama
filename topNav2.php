@@ -1,5 +1,6 @@
 <?php
     require_once 'users/init.php';
+    require_once 'supplyment/dbAccess.php';
 ?>
 
 <style>
@@ -13,6 +14,7 @@
             .topNav{
                 justify-content: center;
                 width: 100%;
+                min-width: 1200px;
                 height: 50px;
                 align-items: center;
                 background: black;
@@ -156,12 +158,14 @@
                 position: relative;
                 display: -webkit-flex;
                 display: flex;
-                margin: 0;
+                margin-left: auto;
+                margin-right: auto;
                 padding: 0;
                 flex-direction: column;
                 -webkit-justify-content: flex-start;
                 justify-content: flex-start;
                 width: 100%;
+                min-width: 1200px;
                 font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
                 -webkit-font-smoothing: antialiased;
                 margin-top: 50px;

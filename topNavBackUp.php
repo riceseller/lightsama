@@ -13,12 +13,13 @@
             .topNav{
                 justify-content: center;
                 width: 100%;
+                min-width: 1200px;
                 height: 50px;
                 align-items: center;
                 background: black;
                 text-decoration: none;
                 display: flex;
-                z-index: 1000;
+                z-index: 500;
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -43,6 +44,7 @@
                 position: absolute;
                 top: 13px;
                 left: 40px;
+                z-index: 1000;
             }
             .navButton {
                 width:5%;
@@ -53,6 +55,7 @@
                 position: absolute;
                 top: 13px;
                 left: 150px;
+                z-index: 1000;
             }
             #search {
                 width: 220px;
@@ -60,9 +63,11 @@
                 position: absolute;
                 top: 7px;
                 right: 250px;
+                z-index: 1000;
             }
             #searchBox{
                 border-radius: 2px;
+                z-index: 1000;
             }
             #search_text{
                 width: 183px;
@@ -106,6 +111,7 @@
                 cursor: pointer;
                 border-top-right-radius: 2px;
                 border-bottom-right-radius: 2px;
+                z-index: 1000;
             }
             .button2{
                 position: absolute;
@@ -118,6 +124,7 @@
                 background-color: initial;
                 padding: initial;
                 border: initial;
+                z-index: 1000;
             }
             .user{
                 max-width: 270px;
@@ -126,6 +133,7 @@
                 position: absolute;
                 top: 8px;
                 right: 100px;
+                z-index: 1000;
             }
             .topNav .fa{               
                 display:inline-block;
@@ -138,7 +146,7 @@
                 position: absolute;
                 top: 15px;
                 right: 20px;
-                color: #fff;                 
+                color: #fff;               
             }
             .topNav .i-yes{ 
                 position: absolute;

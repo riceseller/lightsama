@@ -582,3 +582,11 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
         -webkit-border-radius: 3px;
         border-radius: 3px;
     }
+     .inline {
+            display: inline;
+     }
+     .link-button {
+                background: none;
+                border: none;
+                text-decoration: none;              
+     }
