@@ -750,11 +750,7 @@ function myFunction() {
     
         <div class="text_prompt">
             <p>similar pictures</p>
-        </div>
-    
-        <style>
-           
-        </style>    
+        </div>  
     
         <section class="Collage effect-parent">
             <?php
