@@ -53,6 +53,10 @@
 </ul>
 </div>
 
+
+
+
+
 <section class="Collage effect-parent">
     <?php
         $off = $page*20-20;
@@ -63,8 +67,8 @@
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
             echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row[id]."\">";
-            echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
-            echo "</a>";
+            echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
+            echo "</a>";                                   
             echo "</div>";
         }
     } else {
@@ -72,6 +76,10 @@
     }
     ?>
 </section>
+
+
+
+
 <div class="pagination-cont">
     <ul class="pagination">
         <?php 
