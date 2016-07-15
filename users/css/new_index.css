@@ -76,6 +76,7 @@
         height: calc(25vh);
         order: 2;
         margin-top: 5vh;
+        margin-bottom: 10vh;
     }
 
     introduction h2{
@@ -103,10 +104,6 @@
         background: #f3f5f6;
     }
     
-    
-    section{
-        margin-top: 60px;
-    }
     .Collage{
     /* define how much padding you want in between your images */
         padding:5px;
