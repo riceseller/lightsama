@@ -32,7 +32,7 @@
 	background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
 	background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
 	background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
-	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #476e9e 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
 	background-color:#7892c2;
 	-moz-border-radius:5px;
@@ -160,7 +160,7 @@
         text-align:center;
         position:relative;
         font-size:17px;
-        background:rgba(0,0,0,0.6);
+        background:rgba(0,0,0,0);
         -webkit-transform:translatey(-100px);
         -ms-transform:translatey(-100px);
         transform:translatey(-100px);
