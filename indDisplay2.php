@@ -360,7 +360,7 @@ function myFunction() {
                             else
                             {
                                 echo "autocomplete='off'";
-                                echo "onclick='UnLogCheck()'";
+                                echo "onclick='LogInCheck()'";
                             }
                         ?>
                 />
