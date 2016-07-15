@@ -23,7 +23,7 @@
                 position: fixed;
                 top: 0;
                 left: 0;               
-                background-color: rgba(0, 0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.9);
                 -webkit-transition: background-color 700ms linear;
                 -moz-transition: background-color 700ms linear;
                 -o-transition: background-color 700ms linear;
@@ -203,7 +203,7 @@
                 /* Check the location of each desired element */
                 var windowBottom = $(window).scrollTop();     
                 /* If the element is completely within bounds of the window, fade it in */
-                if (windowBottom>120) { //object comes into view (scrolling down)
+                if (windowBottom>70) { //object comes into view (scrolling down)
                     $(this).css("background-color", "black");
                 } 
                 else {

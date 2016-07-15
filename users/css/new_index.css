@@ -104,7 +104,9 @@
     }
     
     
-    
+    section{
+        margin-top: 60px;
+    }
     .Collage{
     /* define how much padding you want in between your images */
         padding:5px;

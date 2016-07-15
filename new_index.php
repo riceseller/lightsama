@@ -44,19 +44,6 @@
     to exchange resources with other sites. We make it faster</p>
 </introduction>
 
-<div class="menu">
-<ul>
-<li class="active"><a href="#">Explore All</a></li>
-<li><a href="#">Tags</a></li>
-<li><a href="#">Keyword</a></li>
-<div class="clearFloat"></div>
-</ul>
-</div>
-
-
-
-
-
 <section class="Collage effect-parent">
     <?php
         $off = $page*20-20;
