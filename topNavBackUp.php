@@ -30,7 +30,10 @@
                 -ms-transition: background-color 700ms linear;
                 transition: background-color 700ms linear;
                 font-weight: bold;
-            } 
+            }
+            .topNav:hover{
+                background-color: black !important;
+            }
             a.nav{
                 color: white; 
                 font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
