@@ -2,7 +2,7 @@
 .hovereffect {
 width:100%;
 height:100%;
-float:left;
+float:right;
 overflow:hidden;
 position:relative;
 text-align:center;
@@ -15,7 +15,7 @@ height:100%;
 position:absolute;
 overflow:hidden;
 top:0;
-left:0;
+right:0;
 opacity:0;
 background-color:rgba(0,0,0,0.5);
 -webkit-transition:all .4s ease-in-out;
@@ -98,15 +98,14 @@ transform:translatey(0);
 transition-delay:.2s;
 }
 .fuck{
-    width: 350px;
-    height: 200px;
+
 }
 </style>
 
 <html>
-    <div class="fuck">
+    <div class="fuck" style="width: 350px; height: 200px;">
     <div class="hovereffect">
-        <img class="img-responsive" src="http://placehold.it/350x200" alt="">
+        <img src="http://placehold.it/350x200" alt="">
         <div class="overlay">
            <h2>title</h2>
            <a class="info" href="#"><img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAJEAAAAJDY2ZGNlNjYzLTYyNjUtNDIyOC1iMzQ1LThhMmRmZDcyMDYwYw.jpg"/></a>
