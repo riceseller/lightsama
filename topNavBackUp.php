@@ -22,8 +22,13 @@
                 z-index: 500;
                 position: fixed;
                 top: 0;
-                left: 0;
-                opacity: 0;
+                left: 0;               
+                background-color: rgba(0, 0, 0, 0);
+                -webkit-transition: background-color 700ms linear;
+                -moz-transition: background-color 700ms linear;
+                -o-transition: background-color 700ms linear;
+                -ms-transition: background-color 700ms linear;
+                transition: background-color 700ms linear;
                 font-weight: bold;
             } 
             a.nav{
@@ -196,18 +201,19 @@
                 var windowBottom = $(window).scrollTop();     
                 /* If the element is completely within bounds of the window, fade it in */
                 if (windowBottom>120) { //object comes into view (scrolling down)
-                    if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+                    $(this).css("background-color", "black");
                 } 
-                else { //object goes out of view (scrolling up)
-                    if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+                else {
+                    $(this).css("background-color", "rgba(0,0,0,0)");
                 }
-                if(windowBottom==0){
-                    $(this).fadeTo(500,0);
-                }
+                
     });
   }); $(window).scroll(); //invoke scroll-handler on page-load
 });
 </script>
+
+
+
 
 <!DOCTYPE html>
 <html>
