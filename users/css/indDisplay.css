@@ -511,7 +511,7 @@ src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-o
  .container3{
         justify-content: flex-start;
         width: 50%;
-        max-height: 400px;
+        max-height: 450px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
