@@ -55,7 +55,7 @@
 
 <section class="Collage effect-parent">
     <?php
-        $query = "select distinct c.title, c.belong, su.*, u.id as uid, u.url, u.width, u.height from Url u , Common c, ScrapeUser su where u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
+        $query = "select distinct c.title, su.*, u.id as uid, u.url, u.width, u.height from Url u, Common c, ScrapeUser su, TagRelation tr where tr.pid=c.p_id and tr.tagid=1357 and u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
         $result=$conn->query($query);
         if ($result->num_rows > 0) {
         // output data of each row
@@ -98,15 +98,6 @@
     ?>
 </section>
 
-<script>
-    function refresh(){
-        alert("tab works");
-    }
-</script>
-
-
-
-       
 <?php
     require_once "footer.php";
 ?>
