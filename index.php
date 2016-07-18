@@ -55,7 +55,7 @@
             echo "<div class=\"Image_Wrapper\" style=\"width=\"".$row[width]."\" height=\"".$row[height]."\"\">";
                 echo "<div class=\"hovereffect\">";
                     echo "<a style=\"text-decoration:none;\" href=\"#\">";
-                        echo "<img src=\"".$row[url]."\">";                      
+                        echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
                     echo "</a>";
                     echo "<div class=\"overlay\">";
                         echo "<h2>$row[title]</h2>";
@@ -89,6 +89,37 @@
     }
     ?>
 </section>
+
+<div class="pagination-cont">
+    <ul class="pagination">
+        <?php 
+        if($page==1){
+            echo "<li class=\"disabled\"><span>&lt; First</span></li>";
+        }else{
+            echo "<li><a href=\"explore.php?page=1\"><span>&lt; First</span></a></li>";
+            if($page!=2){
+                echo "<li><a href=\"/explore.php?page=".($page-2)."\">".($page-2)."</a></li>";
+                echo "<li><a href=\"/explore.php?page=".($page-1)."\">".($page-1)."</a></li>";
+            }
+        }
+        ?>
+        <li class="current"><span><?php echo $page ?></span></li>
+        <li class="separator">&hellip;</li>
+        <li><?php
+        echo "<a href=\"/explore.php?page=".($page+6)."\">".($page+6)."</a>";
+        ?></li><li><?php
+        echo "<a href=\"/explore.php?page=".($page+7)."\">".($page+7)."</a>";
+        ?></li><li><?php
+        echo "<a href=\"/explore.php?page=".($page+8)."\">".($page+8)."</a>";
+        ?></li>
+        <li><?php echo "<a href=\"index.php?page=".($page+1)."\">Next &gt;</a>";
+        ?></li>
+    </ul>
+</div>
+
+
+
+
        
 <?php
     require_once "footer.php";
