@@ -44,10 +44,18 @@
     to exchange resources with other sites. We make it faster</p>
 </introduction>
 
+<div class="menu">
+<ul>
+<li class="active"><a href="#">Nature</a></li>
+<li><a href="#">Body Art</a></li>
+<li><a href="#">Culture</a></li>
+<div class="clearFloat"></div>
+</ul>
+</div>
+
 <section class="Collage effect-parent">
     <?php
-        $off = $page*20-20;
-        $query = "select distinct c.title, c.belong, su.*, u.id as uid, u.url, u.width, u.height from Url u , Common c, ScrapeUser su where u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20 offset $off";
+        $query = "select distinct c.title, c.belong, su.*, u.id as uid, u.url, u.width, u.height from Url u , Common c, ScrapeUser su where u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
         $result=$conn->query($query);
         if ($result->num_rows > 0) {
         // output data of each row
@@ -90,33 +98,11 @@
     ?>
 </section>
 
-<div class="pagination-cont">
-    <ul class="pagination">
-        <?php 
-        if($page==1){
-            echo "<li class=\"disabled\"><span>&lt; First</span></li>";
-        }else{
-            echo "<li><a href=\"explore.php?page=1\"><span>&lt; First</span></a></li>";
-            if($page!=2){
-                echo "<li><a href=\"/explore.php?page=".($page-2)."\">".($page-2)."</a></li>";
-                echo "<li><a href=\"/explore.php?page=".($page-1)."\">".($page-1)."</a></li>";
-            }
-        }
-        ?>
-        <li class="current"><span><?php echo $page ?></span></li>
-        <li class="separator">&hellip;</li>
-        <li><?php
-        echo "<a href=\"/explore.php?page=".($page+6)."\">".($page+6)."</a>";
-        ?></li><li><?php
-        echo "<a href=\"/explore.php?page=".($page+7)."\">".($page+7)."</a>";
-        ?></li><li><?php
-        echo "<a href=\"/explore.php?page=".($page+8)."\">".($page+8)."</a>";
-        ?></li>
-        <li><?php echo "<a href=\"index.php?page=".($page+1)."\">Next &gt;</a>";
-        ?></li>
-    </ul>
-</div>
-
+<script>
+    function refresh(){
+        alert("tab works");
+    }
+</script>
 
 
 
