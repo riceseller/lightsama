@@ -1,6 +1,7 @@
 <?php require_once 'init.php'; 
 error_reporting( error_reporting() & ~E_NOTICE );
 $category=$_GET["category"]; ?>
+
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 
@@ -326,65 +327,57 @@ else if($through=='signup')
                 if (!$form_valid && Input::exists()){
                     echo display_errors($validation->errors());
                 }   //exact copy from join.php
-            ?>
-          
-        <form action="new_login.php?through=signup" method="POST" autocomplete="off">
-            <div class="top-row">
-                <div class="field-wrap">
-                    <input type="text" placeholder="First Name" name="fname" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required autocomplete="off" />
-                </div>
+            ?>       
+            <form action="new_login.php?through=signup" method="POST" autocomplete="off">
+                <div class="top-row">
+                    <div class="field-wrap">
+                        <input type="text" placeholder="First Name" name="fname" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required autocomplete="off" />
+                    </div>
         
-                <div class="field-wrap">
-                    <input type="text" name="lname" placeholder="Last Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $lname;} ?>" required autocomplete="off"/>
+                    <div class="field-wrap">
+                        <input type="text" name="lname" placeholder="Last Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $lname;} ?>" required autocomplete="off"/>
+                    </div>
                 </div>
-            </div>
           
-            <div class="field-wrap">
-                <input type="text"required placeholder="username with minimum 5 letters no space" name="username" value="<?php if (!$form_valid && !empty($_POST)){ echo $username;} ?>" autocomplete="off"/>
-            </div>
+                <div class="field-wrap">
+                    <input type="text"required placeholder="username with minimum 5 letters no space" name="username" value="<?php if (!$form_valid && !empty($_POST)){ echo $username;} ?>" autocomplete="off"/>
+                </div>
               
-            <div class="field-wrap">
-                <input type="text" name="email" placeholder="Email Address" value="<?php if (!$form_valid && !empty($_POST)){ echo $email;} ?>" required autocomplete="off"/>
-            </div>
+                <div class="field-wrap">
+                    <input type="text" name="email" placeholder="Email Address" value="<?php if (!$form_valid && !empty($_POST)){ echo $email;} ?>" required autocomplete="off"/>
+                </div>
           
-            <div class="field-wrap">
-                <input type="password" name="password" placeholder="Password at least 6 characters" required autocomplete="off"/>
-            </div>
+                <div class="field-wrap">
+                    <input type="password" name="password" placeholder="Password at least 6 characters" required autocomplete="off"/>
+                </div>
               
-            <div class="field-wrap">
-                <input type="password" name="confirm" placeholder="Confirm Password" required autocomplete="off"/>
-            </div>
-            
-           
-            <input type="hidden" value="<?=Token::generate();?>" name="csrf">
-            <button type="submit" class="button button-block"/>Get Started</button>
-          </form>
-
+                <div class="field-wrap">
+                    <input type="password" name="confirm" placeholder="Confirm Password" required autocomplete="off"/>
+                </div>
+                     
+                <input type="hidden" value="<?=Token::generate();?>" name="csrf">
+                <button type="submit" class="button button-block"/>Get Started</button>
+            </form>
         </div>
       
-        <div id="login">
-            
-          <h1>Welcome Back to Photolib</h1>
+        <div id="login">           
+            <h1>Welcome Back to Photolib</h1>
        
-          <form action="new_login.php?through=login" method="post" autocomplete="off">
+            <form action="new_login.php?through=login" method="post" autocomplete="off">         
+                <div class="field-wrap">
+                    <input type="text" name="username" placeholder="Username/Email" value="" required autocomplete="off"/>
+                </div>
           
-            <div class="field-wrap">
-                <input type="text" name="username" placeholder="Username/Email" value="" required autocomplete="off"/>
-            </div>
+                <div class="field-wrap">
+                    <input type="password" name="password" placeholder="Password" value="" required autocomplete="off"/>
+                </div>
           
-            <div class="field-wrap">
-                <input type="password" name="password" placeholder="Password" value="" required autocomplete="off"/>
-            </div>
+                <p class="forgot"><a href="forgot_password.php">Forgot Password?</a></p>
           
-          <p class="forgot"><a href="forgot_password.php">Forgot Password?</a></p>
-          
-          <input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
-          <button class="button button-block" type="submit"/>Log In</button>
-          
-          </form>
-          
-        </div>
-        
+                <input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
+                <button class="button button-block" type="submit"/>Log In</button>         
+            </form>        
+        </div>       
       </div><!-- tab-content -->
     </div> 
        

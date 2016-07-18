@@ -104,12 +104,26 @@
         background: #f3f5f6;
     }
     
-    .Collage{
+    #nature{
+        display: auto;
+    }
+    
+    #culture{
+        display: none;
+    }
+    
+    #bodyart{
+        display: none;
+    }
+    
+    .Collage {
     /* define how much padding you want in between your images */
         padding:5px;
         background: #f3f5f6;
         order: 4;
+        
     }
+    
 
     .Collage img{
         /* ensures padding at the bottom of the image is correct */
