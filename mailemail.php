@@ -15,8 +15,8 @@ $mail->Password = 'GAOsanbaban67890';                           // SMTP password
 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;                                    // TCP port to connect to
 
-$mail->setFrom('110024089a@gmail.com', 'Mailer');
-$mail->addAddress('hicyc@163.com', 'Yichen Cheng');     // Add a recipient
+$mail->setFrom('hz4z.com', 'Mailer');
+$mail->addAddress('hicyc@163.com', 'fuck you');     // Add a recipient
 
 $mail->isHTML(true);                                  // Set email format to HTML
 
