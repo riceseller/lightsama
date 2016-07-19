@@ -69,7 +69,7 @@
 <body>
     
 <welcome>
-    <h1>Link Your Flickr To the Outside World</h1> 
+    <h1>Link Your Flickr To The Outside World</h1> 
     <a href="<?=$us_url_root?>users/new_login.php?category=login">get started</a>
 </welcome>
 
