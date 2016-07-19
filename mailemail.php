@@ -37,7 +37,7 @@ while(1){
     }
     sleep(10);
     $counter=$counter+1;
-    if(counter==10)
+    if($counter==10)
     {
         break;
     }
