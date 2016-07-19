@@ -2,6 +2,8 @@
 
 require_once 'users/init.php';
 
+date_default_timezone_set('America/New_York');  //set default time zone as eastern time new york
+
 
 $mail = new PHPMailer;
 
@@ -23,14 +25,24 @@ $mail->isHTML(true);                                  // Set email format to HTM
 $mail->Subject = 'spam attack';
 $mail->Body    = 'spam attack';
 $mail->AltBody = 'test2';
+$counter=0;
 
 
-
-if(!$mail->send()) {
+while(1){
+    if(!$mail->send()) {
     echo 'Message could not be sent.';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'Message has been sent';
+    } else {
+        echo 'Message has been sent';
+    }
+    sleep(10);
+    $counter=$counter+1;
+    if(counter==10)
+    {
+        break;
+    }
 }
+
+
 
 ?>
