@@ -11,7 +11,7 @@ if($user->isLoggedIn()){
      */
     $api_key                 = "9c7e15fd3e006075c3647c94ee891bd8";
     $api_secret              = "59cd2bc5e832fe79";
-    $default_redirect        = "http://db.luokerenz.com/phpFlick/example.php";
+    $default_redirect        = "http://hailoinn.luokerenz.com/phpFlick/example.php";
     $permissions             = "write";
     $path_to_phpFlickr_class = "./";
 
