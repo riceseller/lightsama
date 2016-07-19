@@ -20,8 +20,8 @@ $mail->addAddress('hicyc@163.com', 'Yichen Cheng');     // Add a recipient
 
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'test';
-$mail->Body    = 'test';
+$mail->Subject = 'spam attack';
+$mail->Body    = 'spam attack';
 $mail->AltBody = 'test2';
 
 
