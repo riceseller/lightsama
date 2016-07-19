@@ -8,7 +8,7 @@ $mail = new PHPMailer;
 $mail->SMTPDebug = 2;                               // Enable verbose debug output
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'smtp.live.com';  // Specify main and backup SMTP servers
+$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
 $mail->Username = '110024089a@gmail.com';                 // SMTP username
 $mail->Password = 'GAOsanbaban67890';                           // SMTP password
@@ -23,6 +23,8 @@ $mail->isHTML(true);                                  // Set email format to HTM
 $mail->Subject = 'test';
 $mail->Body    = 'test';
 $mail->AltBody = 'test2';
+
+
 
 if(!$mail->send()) {
     echo 'Message could not be sent.';
