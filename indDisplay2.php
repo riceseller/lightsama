@@ -697,8 +697,7 @@ function myFunction() {
                                     $date_print2=''.$date_print.' seconds ago';            
                                 }            
                             }
-                            
-                            
+                                                        
                             if($row_comment[userid]!=$current_id && $current_id!=0)
                             {
                                 echo "<li id='$row_comment[id]'><div class='comment-main-level'><div class='comment-avatar'><img src='$gravMod'></div><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'><a href='#'>$row_comment[username]</a></h6><span>$date_print2</span><p><i class='fa fa-reply' onclick=\"myfunction2('$row_comment[username]', '$row_comment[userid]')\"></i></p></div><div class='comment-content'>$row_comment[content]</div></div></div></li>";
