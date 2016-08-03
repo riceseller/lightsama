@@ -22,7 +22,7 @@ $mail->addAddress('hicyc@163.com', 'fuck you');     // Add a recipient
 
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'revenge';
+$mail->Subject = 'REVENGE';
 
 $mail->Body    = 'IT IS CALLED MAIL INJECTION YOU IDIOT!';
 

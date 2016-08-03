@@ -726,6 +726,9 @@ function myFunction() {
                 <li>
                     <input type="button" value="Submit" onclick="myFunction()">
                 </li>
+                <li>
+                    <input type="button" value="Sync">
+                </li>
             </ul>
         </form>
     </div> 
