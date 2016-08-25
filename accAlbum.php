@@ -239,10 +239,12 @@ function pageCount($inputStr){
         // output data of each row
         while($row7 = $result7->fetch_assoc()) {
             echo "<div class=\"Album_Wrapper\" ";
-            echo "";
+            echo "stype=\"width: 257px; height: 257px; background-image: url(\"//c3.staticflickr.com/2/1568/24644753442_89b821307d.jpg\")\" ";
             echo ">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row7[id]."\">";
-            echo "<img src=\"".$row7[url]."\" width=\"".$row7[width]."\" height=\"".$row7[height]."\">";
+            echo "<a style=\"text-decoration:none;\" href=\"/indAlbum.php?pid=".$row7[id]."\">";
+            echo "<div class=\"metadata\">";
+            echo "<h4 class=\"Album-title\">".$row7[title]."</h4>";
+            echo "</div>";
             echo "</a>";
             echo "</div>";
         }

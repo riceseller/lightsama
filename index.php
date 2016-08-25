@@ -1,7 +1,6 @@
 <?php 
     //temp fix for log problem
-    display_errors(false); 
-    log_errors(true); 
+    error_reporting(0);
     
     include("topNavBackUp.php");
     include "supplyment/dbAccess.php";
