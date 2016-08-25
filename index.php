@@ -1,4 +1,8 @@
 <?php 
+    //temp fix for log problem
+    display_errors(false); 
+    log_errors(true); 
+    
     include("topNavBackUp.php");
     include "supplyment/dbAccess.php";
     if(isset($_GET['page'])) {
