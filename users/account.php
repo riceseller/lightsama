@@ -17,7 +17,7 @@ function displayBlock($row,$mode){
         print "<div class='acc-userInfo'>";
         print "<div>ID: $row[userID]</div>";
         print "<div><a href='../indUser.php?id=$row[scrapeUserID]'>PhotoStream</a></div>";
-        print "<div><a href=#>Ablum</a></div>";
+        print "<div><a href='../accAlbum.php?id=$row[scrapeUserID]'>Ablum</a></div>";
         print "</div>";
         print "<a style='width:11px;align-self:flex-end;' href='ondelete.php?del=$row[userID]&be=$row[Ubelong]' onclick='return checkDelete()'>&#128465</a>";
         print "</div>";

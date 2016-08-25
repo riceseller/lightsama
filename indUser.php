@@ -258,7 +258,7 @@ function collage() {
 <div class="menu">
 <ul>
 <li class="active"><a>Photostream</a></li>
-<li><a href="tags.php">Album</a></li>
+<li><a href="accAlbum.php?id=<?php echo $displayID; ?>">Album</a></li>
 <li><a href="#">Keyword</a></li>
 <div class="clearFloat"></div>
 </ul>

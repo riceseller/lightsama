@@ -196,6 +196,21 @@ function pageCount($inputStr){
     .clearFloat{
         clear:both;
     }
+    .Collage-Album{
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    .Album_Wrapper{
+        margin: 2%;
+        background-size: cover;
+    }
+    h4{
+        font-size: 20px;
+        font-weight: 400;
+        color: #fff;
+    }
     </style>
 </header>
 
@@ -225,6 +240,7 @@ function pageCount($inputStr){
 
 <section class="Collage-Album">
     <?php
+        $test = "https://c3.staticflickr.com/2/1568/24644753442_89b821307d.jpg";
         $off = $page*50-50;
         $query7 =  "select id,title,belong from ScrapeAlbum where scrapeUserID=$displayID order by id desc limit 50 offset $off";
         $Pageurl = "/accAlbum.php?id=$displayID&";
@@ -239,7 +255,9 @@ function pageCount($inputStr){
         // output data of each row
         while($row7 = $result7->fetch_assoc()) {
             echo "<div class=\"Album_Wrapper\" ";
-            echo "stype=\"width: 257px; height: 257px; background-image: url(\"//c3.staticflickr.com/2/1568/24644753442_89b821307d.jpg\")\" ";
+            echo "style=\"width: 257px; height: 257px; background-image: url('";
+            echo $test;
+            echo "');\" ";
             echo ">";
             echo "<a style=\"text-decoration:none;\" href=\"/indAlbum.php?pid=".$row7[id]."\">";
             echo "<div class=\"metadata\">";
