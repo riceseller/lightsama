@@ -70,6 +70,7 @@
         }
     }
 </script>
+<title>PHOTOLIB</title>
 
 <body>
     
