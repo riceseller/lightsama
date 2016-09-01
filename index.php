@@ -1,4 +1,8 @@
+<!DOCTYPE html>
+<html>
+
 <?php 
+    error_reporting(0);
     include("topNavBackUp.php");
     include "supplyment/dbAccess.php";
     if(isset($_GET['page'])) {

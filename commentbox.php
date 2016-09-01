@@ -324,6 +324,9 @@
                 <li>
                     <input type="button" value="Submit" onclick="myFunction()">
                 </li>
+                <li>
+                    <input type="button" value="Sync" onclick="myFunction()">
+                </li>
             </ul>
         </form>
     </div> 
