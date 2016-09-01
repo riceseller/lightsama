@@ -3,7 +3,7 @@ require_once 'users/init.php';
 include("topNav2.php");
 include "supplyment/dbAccess.php";
 if(isset($_GET['page'])) {
-    // id index exists
+    // get page number for location of the album list
     $page = $_GET["page"];
 }else{
     $page = 1;
@@ -12,6 +12,7 @@ if(isset($_GET['id'])) {
     // id index exists
     $displayID = $_GET["id"];
 }else{
+    // head to temp page
     header('Location: explore.php');
 }
 function pageCount($inputStr){
@@ -23,13 +24,13 @@ function pageCount($inputStr){
     return preg_replace($regex2, $replace2, $mid);
 }
 ?>
-
 <?php
+    //temp header picture
     $query3 = "select urlSource from Url where id=24493854475";
     $result3=$conn->query($query3);
     $row3 = mysqli_fetch_array($result3);
     $coverPic = $row3[urlSource];
-        
+    //get user avatar
     $query11 = "select * from ScrapeUser where id=$displayID";
     $result11=$conn->query($query11);
     $row11 = mysqli_fetch_array($result11);
@@ -40,32 +41,10 @@ function pageCount($inputStr){
         $gravMod = "https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg";
     }
 ?>
-
 <header>
     <style>
     body{
         background: #f3f5f6;
-    }
-    .Collage{
-    /* define how much padding you want in between your images */
-    padding:5px;
-    background: #f3f5f6;
-    }
-    .Collage img{
-    /* ensures padding at the bottom of the image is correct */
-    vertical-align:bottom;
-    /* hide the images until the plugin has run. the plugin will reveal the images*/
-    opacity: 1;
-    }
-    .Image_Wrapper{
-    /* to get the fade in effect, set opacity to 0 on the first element within the gallery area */
-    opacity:0;
-    -moz-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
-    box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
     }
     div.pagination-cont {
         float: left;
@@ -217,30 +196,25 @@ function pageCount($inputStr){
     .clearFloat{
         clear:both;
     }
+    .Collage-Album{
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    .Album_Wrapper{
+        margin: 2%;
+        background-size: cover;
+    }
+    h4{
+        font-size: 20px;
+        font-weight: 400;
+        color: #fff;
+    }
     </style>
 </header>
 
 <script src="/node_modules/jquery.min.js"></script>
-<script src="/node_modules/jquery.collagePlus.js"></script>
-<script src="/node_modules/jquery.removeWhitespace.js"></script>
-
-<script>
-// All images need to be loaded for this plugin to work so
-$(document).ready(function(){
-        collage();
-        //$('.Collage').collageCaption();
-});
-// Here we apply the actual CollagePlus plugin
-function collage() {
-    $('.Collage').removeWhitespace().collagePlus(
-        {
-            'fadeSpeed'     : 1000,
-            'targetHeight'  : 400,
-            'allowPartialLastRow' : true
-        }
-    );
-};
-</script>
 
 <div id="main-content">
 <div class="user-container" style="background-image: url('<?php print $coverPic;?>');background-size: cover;">
@@ -257,18 +231,19 @@ function collage() {
     
 <div class="menu">
 <ul>
-<li class="active"><a>Photostream</a></li>
-<li><a href="accAlbum.php?id=<?php echo $displayID; ?>">Album</a></li>
+<li><a href="indUser.php?id=<?php echo $displayID;?>">Photostream</a></li>
+<li class="active"><a>Album</a></li>
 <li><a href="#">Keyword</a></li>
 <div class="clearFloat"></div>
 </ul>
 </div>
 
-<section class="Collage effect-parent">
+<section class="Collage-Album">
     <?php
+        $test = "https://c3.staticflickr.com/2/1568/24644753442_89b821307d.jpg";
         $off = $page*50-50;
-        $query7 =  "select distinct u.id, u.url, u.width, u.height from Url u join Common c on u.id=c.p_id where u.width is not null and u.height is not null and c.userBelong=$displayID order by c.dateR desc limit 50 offset $off";
-        $Pageurl = "/indUser.php?id=$displayID&";
+        $query7 =  "select id,title,belong from ScrapeAlbum where scrapeUserID=$displayID order by id desc limit 50 offset $off";
+        $Pageurl = "/accAlbum.php?id=$displayID&";
         $totalPage = pageCount($query7);
         //echo $totalPage;
         $Presult=$conn->query($totalPage);
@@ -279,9 +254,15 @@ function collage() {
         if ($result7->num_rows > 0) {
         // output data of each row
         while($row7 = $result7->fetch_assoc()) {
-            echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row7[id]."\">";
-            echo "<img src=\"".$row7[url]."\" width=\"".$row7[width]."\" height=\"".$row7[height]."\">";
+            echo "<div class=\"Album_Wrapper\" ";
+            echo "style=\"width: 257px; height: 257px; background-image: url('";
+            echo $test;
+            echo "');\" ";
+            echo ">";
+            echo "<a style=\"text-decoration:none;\" href=\"/indAlbum.php?pid=".$row7[id]."\">";
+            echo "<div class=\"metadata\">";
+            echo "<h4 class=\"Album-title\">".$row7[title]."</h4>";
+            echo "</div>";
             echo "</a>";
             echo "</div>";
         }

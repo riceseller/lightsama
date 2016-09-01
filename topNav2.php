@@ -1,4 +1,7 @@
 <?php
+header("Content-Type:text/html; charset=utf-8");
+?>
+<?php
     require_once 'users/init.php';
     require_once 'supplyment/dbAccess.php';
 ?>
@@ -188,7 +191,7 @@
 <html>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <navheader>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" href="../proxima-nova.css">
     </navheader>
     
