@@ -2,13 +2,8 @@
 <html>
 
 <?php 
-<<<<<<< HEAD
-    error_reporting(0);
-=======
-    //temp fix for log problem
     error_reporting(0);
     
->>>>>>> e4e7677e4a27817ab7cad16d3a75cee902fcf2cc
     include("topNavBackUp.php");
     include "supplyment/dbAccess.php";
     if(isset($_GET['page'])) {
