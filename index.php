@@ -14,6 +14,7 @@
     }
 ?>
 <link rel="stylesheet" type="text/css" href="users/css/new_index.css" />
+
 <script src="/node_modules/jquery.min.js"></script>
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
