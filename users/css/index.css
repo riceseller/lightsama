@@ -136,7 +136,7 @@
         margin:20px 0 0;
         padding:10px;
         text-align: center;
-        vertical-align: middle;
+        vertical-align: middle !important;
         position: relative;
     }
 
