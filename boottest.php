@@ -14,45 +14,6 @@
     }
 ?>
     
-<style>
-    .jumbotron{
-        background-image: url("https://s1.tuchong.com/welcome-image/small/27091117.jpg"); 
-        background-size: cover;
-        height: calc(80vh);
-        order: 1;
-    }
-    .jumbotron h1{
-        text-align: center;
-        -webkit-margin-start: 0px;
-        -webkit-margin-end: 0px;
-        -webkit-margin-before: 1.83em;
-        -webkit-margin-after: 0.83em;
-        color: white !important;
-        font-size: 45px !important;
-        margin-top: 23vh;
-        text-align: center;
-    }
-    .jumbotron p{
-        text-align: center;
-    }
-    .container{
-        order: 2;
-    }
-    .container h2{
-        text-align:center;
-        color: #515457;
-        font-size: 30px;
-        margin-top: 5vh;
-        order: 1;
-    }
-    .container p{
-        text-align:center;
-        color: #515457;
-        font-size: 20px;
-        order: 2;
-    }
-</style>    
-
 <script src="/node_modules/jquery.min.js"></script>
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
@@ -114,10 +75,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="users/css/index.css" />
     <title>PHOTOLIB</title>
 </head>
-
-
 
 <body>
     <div class="jumbotron">
@@ -130,6 +90,159 @@
         <p>All images are scrapped from Flickr, 500px and Pixabay. You may connect your Flickr account
     to exchange resources with other sites. We make it faster</p>
     </div>
+    
+    <div class="menu">
+        <ul>
+            <li class="active" id="linature"><a onclick="ChangeContent('nature')">Landscape</a></li>
+            <li id="liart"><a onclick="ChangeContent('bodyart')">Beauty</a></li>
+            <li id="liculture"><a onclick="ChangeContent('culture')">Skyscraper</a></li>
+            <div class="clearFloat"></div>
+        </ul>
+    </div>
+
+    <section class="Collage effect-parent" id="nature">
+        <?php
+            $query = "select distinct c.title, su.*, u.id as uid, u.url, u.width, u.height from Url u, Common c, ScrapeUser su, TagRelation tr where c.p_id!=160630813 and tr.pid=c.p_id and tr.tagid=1046 and u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
+            $result=$conn->query($query);
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "<div class=\"Image_Wrapper\" style=\"width=\"".$row[width]."\" height=\"".$row[height]."\"\">";
+                    echo "<div class=\"hovereffect\">";
+                    echo "<a style=\"text-decoration:none;\" href=\"#\">";
+                    echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
+                    echo "</a>";
+                    echo "<div class=\"overlay\">";
+                    echo "<h2>$row[title]</h2>";
+                    echo "<a class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
+                        ?>
+                    <img class="users" style="<?php
+                         if($row[Ubelong]=='flickr')
+                         {
+                                                $server = $row[extraOne];
+                                                $farm = $row[extraTwo];
+                                                $userr = $row[userID];
+                                                print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg)";
+                                            }
+                                            elseif($row[Ubelong]=='500px')
+                                            {
+                                                print "background-image:url($row[extraTwo])";
+                                            }
+                                            else
+                                            {
+                                                print "background-image:url(/media/aperture.png)"; 
+                                            }
+                                        ?>">
+                            <?php
+                            echo "</a>";
+                        echo "</div>";  
+                    echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "0 results";
+        }
+        ?>
+    </section>
+
+    <section class="Collage effect-parent" id="culture">
+        <?php
+            $query = "select distinct c.title, su.*, u.id as uid, u.url, u.width, u.height from Url u, Common c, ScrapeUser su, TagRelation tr where tr.pid=c.p_id and tr.tagid=6241 and u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
+            $result=$conn->query($query);
+            if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<div class=\"Image_Wrapper\" style=\"width=\"".$row[width]."\" height=\"".$row[height]."\"\">";
+                    echo "<div class=\"hovereffect\">";
+                        echo "<a style=\"text-decoration:none;\" href=\"#\">";
+                            echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
+                        echo "</a>";
+                        echo "<div class=\"overlay\">";
+                            echo "<h2>$row[title]</h2>";
+                            echo "<a class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
+                            ?>
+                            <img class="users" style="<?php
+                                            if($row[Ubelong]=='flickr')
+                                            {
+                                                $server = $row[extraOne];
+                                                $farm = $row[extraTwo];
+                                                $userr = $row[userID];
+                                                print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg)";
+                                            }
+                                            elseif($row[Ubelong]=='500px')
+                                            {
+                                                print "background-image:url($row[extraTwo])";
+                                            }
+                                            else
+                                            {
+                                                print "background-image:url(/media/aperture.png)"; 
+                                            }
+                                        ?>">
+                            <?php
+                            echo "</a>";
+                        echo "</div>";  
+                    echo "</div>";
+                echo "</div>";
+            }
+        } else {
+        echo "0 results";
+        }
+        ?>
+    </section>
+
+    <section class="Collage effect-parent" id="bodyart">
+        <?php
+            $query = "select distinct c.title, su.*, u.id as uid, u.url, u.width, u.height from Url u, Common c, ScrapeUser su, TagRelation tr where tr.pid=c.p_id and tr.tagid=12048 and u.id=c.p_id and c.p_id!=4181 and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
+            $result=$conn->query($query);
+            if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<div class=\"Image_Wrapper\" style=\"width=\"".$row[width]."\" height=\"".$row[height]."\"\">";
+                    echo "<div class=\"hovereffect\">";
+                        echo "<a style=\"text-decoration:none;\" href=\"#\">";
+                            echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
+                        echo "</a>";
+                        echo "<div class=\"overlay\">";
+                            echo "<h2>$row[title]</h2>";
+                            echo "<a class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
+                            ?>
+                            <img class="users" style="<?php
+                                            if($row[Ubelong]=='flickr')
+                                            {
+                                                $server = $row[extraOne];
+                                                $farm = $row[extraTwo];
+                                                $userr = $row[userID];
+                                                print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg)";
+                                            }
+                                            elseif($row[Ubelong]=='500px')
+                                            {
+                                                print "background-image:url($row[extraTwo])";
+                                            }
+                                            else
+                                            {
+                                                print "background-image:url(/media/aperture.png)"; 
+                                            }
+                                        ?>">
+                            <?php
+                            echo "</a>";
+                        echo "</div>";  
+                    echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "0 results";
+        }
+        ?>
+    </section>
+
+<?php
+    require_once "footer.php";
+?>
+</body>
+
+</html>
+    
+    
 </body>
     
     

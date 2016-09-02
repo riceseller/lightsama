@@ -11,6 +11,7 @@
         order: 20;
         clear: both;
         z-index: 10;
+        margin: 0;
     }   
     
     footer .logo{
@@ -27,13 +28,14 @@
         font-size: 25px;
         color: white;
         font-weight: bold;
-        line-height: 2.4em;
+        line-height: 2.4em !important;
         font-family: "Proxima Nova", "Helvetica Neue", HelveticaNeue, Helvetica, 
         TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
         Arial, sans-serif;
         position: relative;
         padding: 0;
         margin-left: 20px;
+        margin-top: 15px;
     }       
     footer .description{
         width: 30%;
@@ -44,6 +46,7 @@
         justify-content: center;
         align-items: center;
         text-align: left;
+        margin-top: 10px;
     } 
     footer .description p.title{
         font-size: 20px;
@@ -55,6 +58,7 @@
         TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", 
         Arial, sans-serif;
         position: relative;
+        margin-top: 15px;
     }      
     footer .description p.descript{
         font-size:14px;
