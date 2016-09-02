@@ -197,8 +197,14 @@ function pageCount($inputStr){
         clear:both;
     }
     .Collage-Album{
+        min-width: 800px;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 130px;
+        padding-right: 130px;
         display: flex;
-        justify-content: space-around;
+        justify-content: flex-start;
         align-items: flex-start;
         flex-wrap: wrap;
     }
