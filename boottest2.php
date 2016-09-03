@@ -128,13 +128,11 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse navbar-menubuilder">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="/">Home</a>
+                <li><a href="/">Landscape</a>
                 </li>
-                <li><a href="/products">Products</a>
+                <li><a href="/products">Beauty</a>
                 </li>
-                <li><a href="/about-us">About Us</a>
-                </li>
-                <li><a href="/contact">Contact Us</a>
+                <li><a href="/about-us">Skyscraper</a>
                 </li>
             </ul>
         </div>
