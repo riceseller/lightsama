@@ -4,7 +4,7 @@
 <?php 
     error_reporting(0);
     
-    include("topNavBackUp.php");
+    include("newNavBar.php");
     include "supplyment/dbAccess.php";
     if(isset($_GET['page'])) {
     // id index exists

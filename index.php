@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+    <meta charset="UTF-8">
 <?php 
     error_reporting(0);
     
