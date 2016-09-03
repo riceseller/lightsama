@@ -17,7 +17,6 @@ header("Content-Type:text/html; charset=utf-8");
             .topNav{
                 justify-content: center;
                 width: 100%;
-                min-width: 1200px;
                 height: 50px;
                 align-items: center;
                 background: black;
@@ -201,7 +200,7 @@ header("Content-Type:text/html; charset=utf-8");
             </div>
                         
             <div class="logo">
-                <a  class="nav" href="http://hailoinn.luokerenz.com" >HAILOINN</a>
+                <a  class="nav" href="http://db.luokerenz.com" >HAILOINN</a>
             </div>
             
             <div id='search'>
