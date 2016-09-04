@@ -18,7 +18,6 @@
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
 
-<customhead>
     <style>
         .jumbotron{
             background-image: url("https://s1.tuchong.com/welcome-image/small/27091117.jpg"); 
@@ -59,60 +58,8 @@
             margin-top: 3vh;
         }
         
-        
-        
-        
-        #custom-bootstrap-menu.navbar-default .navbar-brand {
-            color: rgba(119, 119, 119, 1);
-        }
-        #custom-bootstrap-menu.navbar-default {
-            font-size: 14px;
-            background-color: rgba(248, 248, 248, 1);
-            border-width: 1px;
-            border-radius: 4px;
-            order:3;
-        }
-        #custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
-            color: rgba(119, 119, 119, 1);
-            background-color: rgba(248, 248, 248, 0);
-        }
-        #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
-        #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
-            color: rgba(51, 51, 51, 1);
-            background-color: rgba(248, 248, 248, 0);
-        }
-        #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
-        #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
-        #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
-            color: rgba(85, 85, 85, 1);
-            background-color: rgba(231, 231, 231, 1);
-        }
-        #custom-bootstrap-menu.navbar-default .navbar-toggle {
-            border-color: #ddd;
-        }
-        
-        #custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
-        #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
-            background-color: #ddd;
-        }
-        #custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
-            background-color: #888;
-        }
-        #custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
-        #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
-            background-color: #888;
-        }
-        
-        .navbar-left {
-            margin-left:38%;
-        }
-
-
-
-        
     </style>
     <title>PHOTOLIB</title>
-</customhead>
     
     <div class="jumbotron">
         <h1>Link Your Flickr To The Outside World</h1>
