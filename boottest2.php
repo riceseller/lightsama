@@ -65,12 +65,25 @@
         }
         .shield .btn{
             margin:2px;
-        }
-        footer{
-            order:4;
+        }       
+        .wrapper{
+            background-color: black;
         }
         .container .fifth{
-            
+            order:5;
+        }
+        .wrapper h3{
+            display: inline-block;
+            color: white;
+            font-size: 30px;
+            margin-top: 3vh;
+        }
+        .wrapper p{
+            display: inline-block;
+            color: white;
+            font-size: 25px;
+            margin-top: 3vh;
+            margin-left: 5vh;
         }
     </style>
     <title>PHOTOLIB</title>
@@ -94,12 +107,13 @@
             <br><br>      
         </div>
     </div>
+    
+    <?php 
+        include "footer.php";
+    ?>
         
-    <footer class="footer">
-    <div class="container">
-        <span class="text-muted">this is the place to hold new footer</span>
-    </div>
-    </footer>
+   
+    
 </body>
 
 </html>
