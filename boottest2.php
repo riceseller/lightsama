@@ -72,24 +72,6 @@
     to exchange resources with other sites. We make it faster</p>
     </div>
     
-    <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse navbar-menubuilder">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="/">Landscape</a>
-                </li>
-                <li><a href="/products">Beauty</a>
-                </li>
-                <li><a href="/about-us">Skyscraper</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    </div>
-    
-    
-    
-    
 </body>
 
 </html>
