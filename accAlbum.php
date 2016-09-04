@@ -1,6 +1,6 @@
 <?php
 require_once 'users/init.php';
-include("topNav2.php");
+include("newNavBar.php");
 include "supplyment/dbAccess.php";
 if(isset($_GET['page'])) {
     // get page number for location of the album list
