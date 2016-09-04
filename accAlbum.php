@@ -41,9 +41,47 @@ function pageCount($inputStr){
         .card-img{
             width:100%;
             height:auto;
-          }
+        }
+        #userAvatar{
+            z-index: 1;
+            height: 100px;
+            width: 100px;
+            /* fill the container, preserving aspect ratio, and cropping to fit */
+            background-size: cover;
+            /* center the image vertically and horizontally */
+            background-position: center;
+            /* round the edges to a circle with border radius 1/2 container size */
+            border-radius: 50%;
+        }
+        #userAvatar a{
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: 700;
+            color: #FFF;
+        }
+        #userAvatar:hover a{
+            opacity: 0.85;
+        }
     </style>
 </customheader>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);">
+        <a id="avatarHover" href="avaMod.php" style="text-decoration:none;">&#9998</a>
+    </div>
+    <div class="user-info">
+        <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
+        <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?=$signupdate?></a><br>
+        <a style="font-size:16px;font-weight:600;">Number of Logins: <?=$user->data()->logins?></a>
+    </div>
+  </div>
+</div>
 <div class="container">
     <div class="card-columns">
         <?php
