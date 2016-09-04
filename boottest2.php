@@ -57,10 +57,14 @@
             margin-top: 3vh;
         }
         .container .second{
-            order: 3;
+            order: 3;            
         }
         .shield{
-            margin-left:30%;
+           display:flex;
+           justify-content: center;
+        }
+        .shield .btn{
+            margin:2px;
         }
     </style>
     <title>PHOTOLIB</title>
@@ -78,9 +82,9 @@
     
     <div class="container second">
         <div class="shield">
-            <button type="button" class="btn btn-outline-primary">Primary</button>
-            <button type="button" class="btn btn-outline-secondary">Secondary</button>
-            <button type="button" class="btn btn-outline-success">Success</button>
+            <button type="button" class="btn btn-outline-primary">Landscape</button>
+            <button type="button" class="btn btn-outline-secondary">Beauty</button>
+            <button type="button" class="btn btn-outline-success">Skyscraper</button>
             <br><br>      
         </div>
     </div>
