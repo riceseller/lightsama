@@ -1,4 +1,7 @@
-<?php require_once 'users/init.php'; ?>
+<?php
+    require_once 'users/init.php';
+    require_once 'supplyment/dbAccess.php';
+?>
 
 <header>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
@@ -39,7 +42,7 @@
 <body>
 <nav class="navbar navbar-dark bg-inverse">
     
-  <a class="navbar-brand" href="#">PicShell</a>
+  <a class="navbar-brand" href="db.luokerenz.com">PicShell</a>
   
   <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
     &#9776;
@@ -48,17 +51,38 @@
     <div class="bg-inverse"> 
     <ul class="nav navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="#">Explore</a>
+            <a class="nav-link" href="explore.php">Explore</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">MapView</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Login/Register</a>
+        
+            <?php
+                if($user->isLoggedIn()){
+                    echo "<li class=\"nav-item\">";
+                    echo "<a class='nav-link' href='../users/account.php' style=\"color:#5cb85c;\">WELCOME ".$user->data()->fname."</a>";
+                    echo "</li>"
+           ?>
+                    <li class="nav-item">
+                    <a class="nav-link" href="<?=$us_url_root?>users/logout.php">LOGOUT</a>
+                    </li>
+            <?php
+                }else{
+            ?>
+                    <li class="nav-item">
+                    <a class="nav-link" style="color:#5cb85c;" href="<?=$us_url_root?>users/new_login.php?category=login">Login</a> 
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="<?=$us_url_root?>users/new_login.php?category=signup">Signup</a> 
+                    </li>
+            <?php 
+                }    
+            ?>  
         </li>
     </ul>
-    <form class="form-inline">
-        <input class="form-control" type="text" placeholder="Search">
+    <form class="form-inline" action="../keyword.php" method="get">
+        <?php if(empty($_GET['search'])){$sHolder="Search";}else{$sHolder=$_GET['search'];}?>
+        <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     </div>
