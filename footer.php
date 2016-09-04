@@ -1,19 +1,22 @@
 <style>
         .wrapper{
-            background-color: black;
+            background-color: black; 
+            height: 200px;
         }
         .container .fifth{
             order:5;
+            margin: 0;
         }
-        .wrapper h3{
+        .wrapper .logo{
             display: inline-block;
+        }
+        .wrapper h3{           
             color: white;
             font-size: 30px;
-            margin-top: 3vh;
         }
         .wrapper .despwrap{
             display: inline-block;
-            margin-top: 3vh;
+            margin-top: 1vh;
             margin-left: 5vh;
         }
         .wrapper .despwrap h4{
@@ -25,14 +28,32 @@
             font-size: 20px;
             margin-left: 0;
         }
+        .wrapper .formwrap{
+            display: inline-block;
+            margin-top: 1vh;
+            margin-bottom: 6vh;
+            margin-left: 60vh;
+        }
+        .wrapper .formwrap a{
+            color: white;
+            font-size: 15px;
+            margin-right: 0;
+        }
 </style>
 
 <div class="wrapper">
         <div class="container fifth">
-            <h3>HAILOINN</h3>
+            <div class="logo">
+                <h3>HAILOINN</h3>
+            </div>
             <div class="despwrap">
                 <h4>About</h4>
                 <p>Hailoinn is a website for picture indexing only</p>
-            </div>            
+            </div> 
+            <div class="formwrap">
+                <a href="#">term/privacy</a><br><br>
+                <a href="#">report a problem</a><br><br>
+                <a href="#">contact us</a>           
+            </div>
         </div> 
 </div>
