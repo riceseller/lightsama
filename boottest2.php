@@ -40,8 +40,7 @@
             text-align: center;
         }
         .container .first{
-            order: 2;
-            margin-bottom: 10vh;
+            order: 2;          
         }
         .container h2{
             text-align:center;
@@ -58,7 +57,10 @@
             margin-top: 3vh;
         }
         .container .second{
-            order:3;        
+            order: 3;
+        }
+        .shield{
+            margin-left:30%;
         }
     </style>
     <title>PHOTOLIB</title>
@@ -71,11 +73,16 @@
     <div class="container first">
         <h2>an indexing of high quality images</h2>
         <p>All images are scrapped from Flickr, 500px and Pixabay. You may connect your Flickr account
-    to exchange resources with other sites. We make it faster</p>
+            to exchange resources with other sites. We make it faster<br><br><br></p>
     </div>
     
     <div class="container second">
-        
+        <div class="shield">
+            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <button type="button" class="btn btn-outline-secondary">Secondary</button>
+            <button type="button" class="btn btn-outline-success">Success</button>
+            <br><br>      
+        </div>
     </div>
         
     

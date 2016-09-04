@@ -1,7 +1,6 @@
 <?php
     require_once 'users/init.php';
 ?>
-<<<<<<< HEAD
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +17,7 @@
 <style>
     .navbar{
         border-radius: 0;
+        height: 50px;
     }
     .pull-xs-left{
         margin-left:5%;
