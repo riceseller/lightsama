@@ -25,39 +25,49 @@
     body{
         background: #f3f5f6;
     }
-    .collapse navbar-toggleable-xs .navbar-toggleable-xs #exCollexCollapsingNavbar2{
+    .navbar-toggleable-xs {
         width:500px !important;
-        margin-right:0;
+        margin:0;
+        padding:0;
     }
+    
 </style>
 </header>
 
-
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+<nav class="navbar navbar-dark bg-inverse">
+    
+  <a class="navbar-brand" href="#">Navbar</a>
+  
   <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
     &#9776;
   </button>
-  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-      
-    <a class="navbar-brand" href="#">Responsive navbar</a>
+  
+  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">  
     <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+        </li>
+    </ul>     
   </div>
-    <form class="form-inline pull-xs-right">
-        <input class="form-control" type="text" placeholder="Search Pic Keywords">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form> 
+  
+  <form class="form-inline pull-xs-right">
+    <input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+      
 </nav>
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">this is the place to hold new footer</span>
+    </div>
+</footer>

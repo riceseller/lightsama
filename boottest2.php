@@ -66,6 +66,12 @@
         .shield .btn{
             margin:2px;
         }
+        footer{
+            order:4;
+        }
+        .container .fifth{
+            
+        }
     </style>
     <title>PHOTOLIB</title>
     
@@ -89,7 +95,11 @@
         </div>
     </div>
         
-    
+    <footer class="footer">
+    <div class="container">
+        <span class="text-muted">this is the place to hold new footer</span>
+    </div>
+    </footer>
 </body>
 
 </html>
