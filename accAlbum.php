@@ -1,7 +1,7 @@
 <?php
-require_once 'users/init.php';
-include("newNavBar.php");
-include "supplyment/dbAccess.php";
+require_once "users/init.php";
+require_once "newNavBar.php";
+require_once "supplyment/dbAccess.php";
 if(isset($_GET['page'])) {
     // get page number for location of the album list
     $page = $_GET["page"];
@@ -25,6 +25,10 @@ function pageCount($inputStr){
 }
 ?>
 <?php
+    //get user sign up date
+    $get_info_id = $user->data()->id;
+    $raw = date_parse($user->data()->join_date);
+    $signupdate = $raw['month']."/".$raw['day']."/".$raw['year'];
     //get user avatar
     $query11 = "select * from ScrapeUser where id=$displayID";
     $result11=$conn->query($query11);
@@ -77,7 +81,7 @@ function pageCount($inputStr){
     </div>
     <div class="user-info">
         <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
-        <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?=$signupdate?></a><br>
+        <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?php echo $signupdate;?></a><br>
         <a style="font-size:16px;font-weight:600;">Number of Logins: <?=$user->data()->logins?></a>
     </div>
   </div>
