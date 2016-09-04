@@ -135,5 +135,3 @@ function pageCount($inputStr){
 
 <?php mysqli_close($conn); ?>
 <?php require_once 'footer.php'; ?>
-</body>
-</html>

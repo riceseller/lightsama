@@ -1,11 +1,5 @@
-<?php
-    require_once 'users/init.php';
-?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<?php require_once 'users/init.php'; ?>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
 <header>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 <!-- Latest compiled and minified CSS -->
@@ -15,59 +9,59 @@
 
 <style>
     .navbar{
-        border-radius: 0;
         height: 50px;
-        padding-top:0.4em;
-    }
-    .pull-xs-left{
-        margin-left:5%;
     }
     body{
         background: #f3f5f6;
     }
-    .navbar-toggleable-xs {
-        width:500px !important;
-        margin:0;
-        padding:0;
+    .nav{
+        padding-left: 20px;
     }
-    
+    .form-control{
+        max-width:50%;
+        display: inline;
+        margin-right: 5px;
+    }
+    form{
+        display: inline;
+    }
+    .form-inline{
+        display:flex;
+        padding-left: 20px;
+    }
+    .navbar{
+        padding: 6px 1rem;
+        border-radius: 0;
+    }
 </style>
 </header>
 
+<body>
 <nav class="navbar navbar-dark bg-inverse">
     
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">PicShell</a>
   
   <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
     &#9776;
   </button>
-  
-  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">  
+  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+    <div class="bg-inverse"> 
     <ul class="nav navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Explore</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#">MapView</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="#">Login/Register</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-        </li>
-    </ul>     
-  </div>
-  
-  <form class="form-inline pull-xs-right">
-    <input class="form-control" type="text" placeholder="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
-      
-</nav>
-
-<footer class="footer">
-    <div class="container">
-        <span class="text-muted">this is the place to hold new footer</span>
+    </ul>
+    <form class="form-inline">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
     </div>
-</footer>
+  </div>
+
+</nav>
