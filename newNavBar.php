@@ -17,7 +17,8 @@
 <style>
     .navbar{
         border-radius: 0;
-        height: 55px;
+        height: 50px;
+        padding-top:0.4em;
     }
     .pull-xs-left{
         margin-left:5%;
