@@ -66,8 +66,3 @@
       
 </nav>
 
-<footer class="footer">
-    <div class="container">
-        <span class="text-muted">this is the place to hold new footer</span>
-    </div>
-</footer>
