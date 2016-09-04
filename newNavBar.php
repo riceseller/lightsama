@@ -13,6 +13,9 @@
 <style>
     .navbar-default{
         background-color: black;
+        border-radius:0;
+        margin:0;
+        padding:0;
     }
     .navbar-default .navbar-brand {
         color: white;

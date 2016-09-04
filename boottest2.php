@@ -90,6 +90,7 @@
         #custom-bootstrap-menu.navbar-default .navbar-toggle {
             border-color: #ddd;
         }
+        
         #custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
         #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
             background-color: #ddd;
@@ -102,7 +103,9 @@
             background-color: #888;
         }
         
-
+        .navbar-left {
+            margin-left:38%;
+        }
 
 
 
