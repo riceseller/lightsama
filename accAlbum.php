@@ -39,12 +39,26 @@ function pageCount($inputStr){
         $userr = $row11[userID];
         $gravMod = "https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg";
     }
+    //get jumbo background img
+    $query12 = "select u.url from Url u join Common c on u.id=c.p_id join ScrapeAlbum sa on c.albumBelong = sa.id where sa.scrapeUserID = $displayID order by rand() limit 1";
+    $result12=$conn->query($query12);
+    $row12 = mysqli_fetch_array($result12);
+    $jumboBackground = $row12[url];
 ?>
 <customheader>
     <style>
         .card-img{
             width:100%;
             height:auto;
+        }
+        .card-img-overlay{
+            padding: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 93%,rgba(0,0,0,0.5) 100%,rgba(0,0,0,0.5) 100%);
+        }
+        .card-title{
+            bottom: 0;
+            position: absolute;
+            padding-left: 5%;
         }
         #userAvatar{
             z-index: 1;
@@ -72,9 +86,12 @@ function pageCount($inputStr){
         #userAvatar:hover a{
             opacity: 0.85;
         }
+        .user-info{
+            color: #fff;
+        }
     </style>
 </customheader>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;">
   <div class="container">
     <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);">
         <a id="avatarHover" href="avaMod.php" style="text-decoration:none;">&#9998</a>
@@ -102,7 +119,7 @@ function pageCount($inputStr){
             if ($result7->num_rows > 0) {
             // output data of each row
             while($row7 = $result7->fetch_assoc()) {
-                echo "<div class=\"card\">";
+                echo "<div class=\"card card-inverse\">";
                 echo "<img class=\"card-img\" src=\"".$row7[coverphoto]."\" alt=\"Card image\">";
                 echo "<div class=\"card-img-overlay\">";
                 echo "<h4 class=\"card-title\">".$row7[title]."</h4>";
