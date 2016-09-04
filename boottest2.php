@@ -39,7 +39,7 @@
         .jumbotron p{
             text-align: center;
         }
-        .container{
+        .container .first{
             order: 2;
             margin-bottom: 10vh;
         }
@@ -57,7 +57,9 @@
             order: 2;
             margin-top: 3vh;
         }
-        
+        .container .second{
+            order:3;        
+        }
     </style>
     <title>PHOTOLIB</title>
     
@@ -66,11 +68,16 @@
         <p><a class="btn btn-primary btn-lg" href="<?=$us_url_root?>users/new_login.php?category=login" role="button">Get Started</a></p>
     </div>
     
-    <div class="container">
+    <div class="container first">
         <h2>an indexing of high quality images</h2>
         <p>All images are scrapped from Flickr, 500px and Pixabay. You may connect your Flickr account
     to exchange resources with other sites. We make it faster</p>
     </div>
+    
+    <div class="container second">
+        
+    </div>
+        
     
 </body>
 
