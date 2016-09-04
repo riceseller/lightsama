@@ -18,7 +18,7 @@
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
 
-<head>
+<customhead>
     <style>
         .jumbotron{
             background-image: url("https://s1.tuchong.com/welcome-image/small/27091117.jpg"); 
@@ -112,9 +112,7 @@
         
     </style>
     <title>PHOTOLIB</title>
-</head>
-
-<body>  
+</customhead>
     
     <div class="jumbotron">
         <h1>Link Your Flickr To The Outside World</h1>
