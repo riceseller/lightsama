@@ -39,6 +39,17 @@
         }
 </style>
 
+<script>
+    function LoadRequest(value){
+        alert(value);
+        $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_request=' + value                            
+            });
+    }
+</script>
+
 <div class="wrapper">
         <div class="fifth">
             <div class="logo">
@@ -49,9 +60,9 @@
                 <p>Hailoinn is a website for picture indexing only</p>
             </div> 
             <div class="formwrap">
-                <a href="#">term/privacy</a><br><br>
-                <a href="#">report a problem</a><br><br>
-                <a href="#">contact us</a>           
+                <a href="#" onclick="LoadRequest('term')">term/privacy</a><br><br>
+                <a href="#" onclick="LoadRequest('problem')">report a problem</a><br><br>
+                <a href="#" onclick="LoadRequest('contact')">contact us</a>           
             </div>
         </div> 
 </div>

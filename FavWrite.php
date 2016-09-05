@@ -9,6 +9,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         $current_cat=$_GET['current_cat'];
         $current_comment=$_GET['current_comment'];
         $current_cid=$_GET['current_cid'];
+        $current_request=$_GET['current_request'];
         
         echo $current_comment;
         
