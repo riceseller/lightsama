@@ -89,6 +89,11 @@ function pageCount($inputStr){
         .user-info{
             color: #fff;
         }
+        .card-title{
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
     </style>
 </customheader>
 <div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;">
