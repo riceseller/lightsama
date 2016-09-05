@@ -2,25 +2,27 @@
         .wrapper{
             background-color: black; 
         }
-        .container .fifth{
+        .fifth{
             order:5;
-            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            flex-flow: row wrap;
+            min-height: 150px;
         }
         .wrapper .logo{
-            display: inline-block;
+            margin:auto;
         }
         .wrapper h3{           
             color: white;
             font-size: 30px;
         }
         .wrapper .despwrap{
-            display: inline-block;
-            margin-top: 1vh;
-            margin-left: 5vh;
+            margin:auto;
         }
         .wrapper .despwrap h4{
             color: white;
             font-size: 25px;
+            text-align: center;
         }
         .wrapper .despwrap p{
             color: white;
@@ -28,11 +30,7 @@
             margin-left: 0;
         }
         .wrapper .formwrap{
-            display: inline-block;
-            margin-top: 1vh;
-            margin-bottom: 6vh;
-            float:right;
-            margin-left: 10vh;
+            margin:auto;           
         }
         .wrapper .formwrap a{
             color: white;
@@ -42,7 +40,7 @@
 </style>
 
 <div class="wrapper">
-        <div class="container fifth">
+        <div class="fifth">
             <div class="logo">
                 <h3>HAILOINN</h3>
             </div>
