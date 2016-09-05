@@ -67,8 +67,7 @@ cursor:default; }
                 type: 'GET',
                 url: 'FavWrite.php',
                 data: 'current_request=' + value,
-                success: function() {
-                
+                success: function() {               
           }
           
             });
