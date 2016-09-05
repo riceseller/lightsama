@@ -39,13 +39,38 @@
         }
 </style>
 
+
+<style>
+    #status {
+position:fixed;
+top:50%;
+left:50%;
+z-index:100000;
+width:150px;
+height:150px;
+margin:-75px 0 0 -75px;
+background-color:rgba(0,0,0,0.7);
+border-radius:150px;
+font-size:30px;
+line-height:150px;
+font-weight:700;
+color:#fff;
+text-align:center;
+cursor:default; }
+
+</style>
+
 <script>
     function LoadRequest(value){
         alert(value);
         $.ajax({
                 type: 'GET',
                 url: 'FavWrite.php',
-                data: 'current_request=' + value                            
+                data: 'current_request=' + value,
+                success: function() {
+                
+          }
+          
             });
     }
 </script>
