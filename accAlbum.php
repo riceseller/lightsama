@@ -55,10 +55,17 @@ function pageCount($inputStr){
             padding: 0;
             background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 83%,rgba(0,0,0,0.5) 100%,rgba(0,0,0,0.5) 100%);
         }
-        .card-title{
+        .albumTool{
+            display: inline;
+            width:100%;
             bottom: 0;
             position: absolute;
             padding-left: 5%;
+            padding-bottom: 2%;
+        }
+        .toolBut{
+            color: #fff!important;
+            font-size: 1.5rem;
         }
         #userAvatar{
             z-index: 1;
@@ -83,24 +90,26 @@ function pageCount($inputStr){
             font-weight: 700;
             color: #FFF;
         }
-        #userAvatar:hover a{
-            opacity: 0.85;
-        }
         .user-info{
             color: #fff;
         }
-        .card-title{
-            width: 100%;
+        .cusTitle{
+            display: inline-flex;
+            width: 70%;
             text-overflow: ellipsis;
             overflow: hidden;
         }
+        .card-title a{
+            color:#fff;
+        }
     </style>
+    <link rel="stylesheet" href="../node_modules/jquery.modal.min.css" type="text/css" media="screen"/>
+    <script src="../node_modules/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
 </customheader>
+
 <div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;">
   <div class="container">
-    <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);">
-        <a id="avatarHover" href="/users/avaMod.php" style="text-decoration:none;">&#9998</a>
-    </div>
+    <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);"></div>
     <div class="user-info">
         <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
         <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?php echo $signupdate;?></a><br>
@@ -127,7 +136,10 @@ function pageCount($inputStr){
                 echo "<div class=\"card card-inverse\">";
                 echo "<img class=\"card-img\" src=\"".$row7[coverphoto]."\" alt=\"Card image\">";
                 echo "<div class=\"card-img-overlay\">";
-                echo "<h4 class=\"card-title\">".$row7[title]."</h4>";
+                echo "<div class=\"container albumTool\">";
+                echo "<h4 class=\"card-title cusTitle\">".$row7[title]."</h4>";
+                echo "<h4 class=\"card-title pull-xs-right\"><a href=\"/users/albumModInfo.php?albumID=".$row7[id]."\" rel=\"modal:open\">&#9998</a></h4>";
+                echo "</div>";
                 echo "</div>";
                 echo "</div>";
             }

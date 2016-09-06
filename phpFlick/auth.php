@@ -61,7 +61,7 @@ if($user->isLoggedIn()){
     }
     //link between two
     $authToken = $_SESSION['phpFlickr_auth_token'];
-    $authToken = array_values($authToken)[0];
+    $authToken = $authToken;
     $query2 = "insert into LinkUser(scrapeUserID, usersID, needAction, authToken) values($scrape_link_id,$dbUserID,$scrapemode,'$authToken')";
     print $query2;
     if ($conn->query($query2) === True){

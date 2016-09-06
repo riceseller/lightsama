@@ -1,5 +1,7 @@
-<?php require_once 'init.php'; 
-      require_once '../supplyment/dbAccess.php'; ?>
+<?php 
+    require_once 'init.php'; 
+    require_once '../supplyment/dbAccess.php'; 
+?>
 
 <?php if($user->isLoggedIn()) : ?>
     <style>
