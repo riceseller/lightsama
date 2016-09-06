@@ -285,12 +285,12 @@ if ( !class_exists('phpFlickr') ) {
 			$args = array_merge(array("method" => $command, "format" => "json", "nojsoncallback" => "1", "api_key" => $this->api_key), $args);
 			if (!empty($this->token)) {
 				$args = array_merge($args, array("auth_token" => $this->token));
-                                echo 'this token method';
+                                //echo 'this token method';
                                 //print_r($this->token);
 			} elseif (!empty($_SESSION['phpFlickr_auth_token'])) {
                                 $auth_token_correct = $_SESSION['phpFlickr_auth_token'];
 				$args = array_merge($args, array("auth_token" => array_values($auth_token_correct)[0]));
-                                echo 'session method';
+                                //echo 'session method';
                                 //print_r($_SESSION['phpFlickr_auth_token']);
 			}
 			ksort($args);
@@ -323,6 +323,7 @@ if ( !class_exists('phpFlickr') ) {
 			$this->parsed_response = json_decode($this->response, TRUE);
 /* 			$this->parsed_response = $this->clean_text_nodes(json_decode($this->response, TRUE)); */
 			if ($this->parsed_response['stat'] == 'fail') {
+                                echo "The Flickr API returned the following error: #{$this->parsed_response['code']} - {$this->parsed_response['message']}";
 				if ($this->die_on_error) die("The Flickr API returned the following error: #{$this->parsed_response['code']} - {$this->parsed_response['message']}");
 				else {
 					$this->error_code = $this->parsed_response['code'];
