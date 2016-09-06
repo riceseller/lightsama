@@ -334,16 +334,14 @@
 
 
 <script>
-    var outcome;
     function FormLoad(value){
         $.ajax({
                 type: 'GET',
                 url: 'FavWrite.php',
                 data: 'current_request=' + value,
                 success: function(result){
-                    result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                    outcome = result;
-                    document.getElementById('topwrap').innerHTML+=outcome;
+                    result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");               
+                    document.getElementById('topwrap').innerHTML+=result;
                 }
             });
     }
