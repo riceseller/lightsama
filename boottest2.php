@@ -88,6 +88,10 @@
     </style>
     <title>PHOTOLIB</title>
     
+    
+    
+    
+    
     <div class="jumbotron">
         <h1>Link Your Flickr To The Outside World</h1>
         <p><a class="btn btn-primary btn-lg" href="<?=$us_url_root?>users/new_login.php?category=login" role="button">Get Started</a></p>
@@ -112,7 +116,7 @@
         include "footer.php";
     ?>
         
-   
+</div>   
     
 </body>
 

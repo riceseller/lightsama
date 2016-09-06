@@ -1,43 +1,3 @@
-<style>
-        .wrapper{
-            background-color: black; 
-        }
-        .fifth{
-            order:5;
-            display: flex;
-            justify-content: space-around;
-            flex-flow: row wrap;
-            min-height: 150px;
-        }
-        .wrapper .logo{
-            margin:auto;
-        }
-        .wrapper h3{           
-            color: white;
-            font-size: 30px;
-        }
-        .wrapper .despwrap{
-            margin:auto;
-        }
-        .wrapper .despwrap h4{
-            color: white;
-            font-size: 25px;
-            text-align: center;
-        }
-        .wrapper .despwrap p{
-            color: white;
-            font-size: 20px;
-            margin-left: 0;
-        }
-        .wrapper .formwrap{
-            margin:auto;           
-        }
-        .wrapper .formwrap a{
-            color: white;
-            font-size: 15px;
-            margin-right: 0;
-        }
-</style>
 
 <style>
     #abc {     
@@ -153,33 +113,19 @@
     } 
 </style>
 
-<script>
-    function FormLoad(value){
-        $.ajax({
-                type: 'GET',
-                url: 'FavWrite.php',
-                data: 'current_request=' + value,
-                success: function(result){
-                    result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-                    document.getElementById('topwrap').innerHTML = result;
-                }
-            });
-    }
-</script>
-
-<div class="wrapper">
-        <div class="fifth">
-            <div class="logo">
-                <h3>HAILOINN</h3>
-            </div>
-            <div class="despwrap">
-                <h4>About</h4>
-                <p>Hailoinn is a website for picture indexing only</p>
-            </div> 
-            <div class="formwrap">
-                <a href="#" onclick="FormLoad('term')">term/privacy</a><br><br>
-                <a href="#">report a problem</a><br><br>
-                <a href="#">contact us</a>           
-            </div>
-        </div> 
+<div id="abc">
+    <!-- Popup Div Starts Here -->
+    <div id="popupContact">
+    <!-- Contact Us Form -->
+        <form action="<?=$us_url_root?>emailresponse.php?purpose=bug" id="form" method="post" name="form">
+            <img id="close" src="../media/close.png" onclick ="div_hide()">
+            <h2>Report Problem</h2>
+            <hr>
+            <input id="name" name="name" placeholder="Name" type="text">
+            <input id="email" name="email" placeholder="Email" type="text">
+            <textarea id="msg" name="message" placeholder="Describe Your Problem"></textarea>
+            <a href="javascript:%20check_empty()" id="submit">Send</a>
+        </form>
+    </div>
+<!-- Popup Div Ends Here -->
 </div>

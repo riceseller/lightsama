@@ -34,6 +34,24 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $query101="delete from comment where id=$current_cid";
             $conn->query($query101);
         }
+        else if($current_request=='term')
+        {
+            $content="<div id=\"abc\">
+                        <div id=\"popupContact\">
+                            <form action=\"<?=$us_url_root?>emailresponse.php?purpose=bug\" id=\"form\" method=\"post\" name=\"form\">
+                                <img id=\"close\" src=\"../media/close.png\" onclick =\"div_hide()\">
+                                <h2>Report Problem</h2>
+                                <hr>
+                                <input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\">
+                                <input id=\"email\" name=\"email\" placeholder=\"Email\" type=\"text\">
+                                <textarea id=\"msg\" name=\"message\" placeholder=\"Describe Your Problem\"></textarea>
+                                <a href=\"javascript:%20check_empty()\" id=\"submit\">Send</a>
+                            </form>
+                        </div>
+                    </div>";
+            echo $content;
+            
+        }
                                                        
 }
 
