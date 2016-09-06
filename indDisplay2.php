@@ -262,12 +262,9 @@ function myFunction() {
                 type: 'GET',
                 url: 'FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c +'&current_comment='+add_comment              
-            });
-            
+            });            
     updated_comment = updated_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-    document.getElementById('comment').innerHTML = updated_comment;
-    
-                
+    document.getElementById('comment').innerHTML = updated_comment;                
 }
 </script>
 
