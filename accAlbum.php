@@ -53,7 +53,7 @@ function pageCount($inputStr){
         }
         .card-img-overlay{
             padding: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 93%,rgba(0,0,0,0.5) 100%,rgba(0,0,0,0.5) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 83%,rgba(0,0,0,0.5) 100%,rgba(0,0,0,0.5) 100%);
         }
         .card-title{
             bottom: 0;
@@ -99,7 +99,7 @@ function pageCount($inputStr){
 <div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;">
   <div class="container">
     <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);">
-        <a id="avatarHover" href="avaMod.php" style="text-decoration:none;">&#9998</a>
+        <a id="avatarHover" href="/users/avaMod.php" style="text-decoration:none;">&#9998</a>
     </div>
     <div class="user-info">
         <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
