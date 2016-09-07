@@ -41,7 +41,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                             <form action=\"<?=$us_url_root?>emailresponse.php?purpose=bug\" id=\"form\" method=\"post\" name=\"form\">
                                 <img id=\"close\" src=\"../media/close.png\" onclick =\"div_hide()\">
                                 <h2>Report Problem</h2>
-                                <hr>
                                 <input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\">
                                 <input id=\"email\" name=\"email\" placeholder=\"Email\" type=\"text\">
                                 <textarea id=\"msg\" name=\"message\" placeholder=\"Describe Your Problem\"></textarea>
@@ -59,7 +58,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                             <div id=\"term\">
                                 <img id=\"close\" src=\"../media/close.png\" onclick =\"div_hide2()\">
                                 <h2>Term & Privacy</h2>
-                                <hr>
                                 <textarea>legal rights preserved</textarea>
                             </div>
                         </div>
@@ -72,8 +70,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                         <div id=\"popupContact\">   
                             <form action=\"<?=$us_url_root?>emailresponse.php?purpose=contact\" id=\"form2\" method=\"post\" name=\"form2\">
                                 <img id=\"close\" src=\"../media/close.png\" onclick = \"div_hide3()\">
-                                <h2>Contact Us</h2>
-                                <hr>
+                                <h2>Contact Us</h2>                              
                                 <input id=\"name2\" name=\"name\" placeholder=\"Name\" type=\"text\">
                                 <input id=\"email2\" name=\"email\" placeholder=\"Email\" type=\"text\">
                                 <textarea id=\"msg2\" name=\"message\" placeholder=\"leave your feedback\"></textarea>
