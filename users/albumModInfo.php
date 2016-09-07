@@ -1,4 +1,7 @@
-<?php 
+<?php
+    // this page will display the form for edit title and description of 
+    // the desired album -> and feed these info to submitAlbumMeta.php
+    // which does the actual flickr api editing request
     require_once 'init.php'; 
     require_once '../supplyment/dbAccess.php';
     require_once '../phpFlick/phpFlickr.php';
@@ -50,13 +53,9 @@
 </script>
 
 <?php if($user->isLoggedIn() and $pass==1): ?>
-    <style>
-        #avaMod {
-            max-width: 500px;
-            margin: auto;
-        }
-    </style>
-    <div id='avaMod'>
+    <div id='albumModModal' class='modal fade'>
+    <div class="modal-dialog">
+    <div class="modal-content">
         <form id="modAlbum">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -70,6 +69,8 @@
             <input type="hidden" name="flickr_albumID" id="flickr_albumID" value="<?=$row2[albumID]?>" />
             <button id="submitMeta" type="submit" class="btn btn-primary">Submit</button>
         </form>
+    </div>
+    </div>
     </div>
 <?php else : ?>
     <a href='account.php'>Please login to modify your album!</a>

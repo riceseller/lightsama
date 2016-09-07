@@ -103,8 +103,14 @@ function pageCount($inputStr){
             color:#fff;
         }
     </style>
-    <link rel="stylesheet" href="../node_modules/jquery.modal.min.css" type="text/css" media="screen"/>
-    <script src="../node_modules/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--<link rel="stylesheet" href="../node_modules/jquery.modal.min.css" type="text/css" media="screen"/>
+    <script src="../node_modules/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>-->
+    <script>
+        $('.openModal').on('click', function(){
+            event.preventDefault();
+            $('#albumModModal').modal('show').find('.modal-content').load($(this).attr('href'));
+        }); 
+    </script>
 </customheader>
 
 <div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;">
@@ -138,7 +144,7 @@ function pageCount($inputStr){
                 echo "<div class=\"card-img-overlay\">";
                 echo "<div class=\"container albumTool\">";
                 echo "<h4 class=\"card-title cusTitle\">".$row7[title]."</h4>";
-                echo "<h4 class=\"card-title pull-xs-right\"><a href=\"/users/albumModInfo.php?albumID=".$row7[id]."\" rel=\"modal:open\">&#9998</a></h4>";
+                echo "<h4 class=\"card-title pull-xs-right\"><a class=\"openModal\" href=\"/users/albumModInfo.php?albumID=".$row7[id]."\">&#9998</a></h4>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";
