@@ -32,6 +32,23 @@
     //print_r($requestAlbum);
 ?>
 
+<script type="text/javascript">
+    $("#submitMeta").click(function(event){
+        event.preventDefault();
+        var url = "../users/submitAlbumMeta.php"; // the script where you handle the form input.
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: $("#modAlbum").serialize() // serializes the form's elements.
+               success: function (data) {
+                   alert("Update success!");
+               }
+             });
+
+        return false; // avoid to execute the actual submit of the form.
+    });
+</script>
+
 <?php if($user->isLoggedIn() and $pass==1): ?>
     <style>
         #avaMod {
@@ -40,16 +57,18 @@
         }
     </style>
     <div id='avaMod'>
-        <form>
+        <form id="modAlbum">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input class="form-control" type="text" value="<?= $requestAlbum[title][_content]?>" id="example-text-input">
+                <input class="form-control" type="text" name="Atitle" id="Atitle" value="<?= $requestAlbum[title][_content]?>" id="example-text-input">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <input class="form-control" type="text" value="<?= $requestAlbum[description][_content]?>" id="example-text-input">
+                <input class="form-control" type="text" name="Adescription" id="Adescription" value="<?= $requestAlbum[description][_content]?>" id="example-text-input">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="hidden" name="albumID" id="albumID" value="<?=$albumID?>" />
+            <input type="hidden" name="flickr_albumID" id="flickr_albumID" value="<?=$row2[albumID]?>" />
+            <button id="submitMeta" type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 <?php else : ?>
