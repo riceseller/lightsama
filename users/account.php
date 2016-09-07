@@ -213,9 +213,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
         width: auto;
     }
 </style>
-<link rel="stylesheet" href="../node_modules/jquery.modal.min.css" type="text/css" media="screen" />
-
-<script src="../node_modules/jquery.min.js"></script>
+<link rel="stylesheet" href="../node_modules/jquery.modal.min.css" type="text/css" media="screen"/>
 <script src="../node_modules/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
 
 <script language="JavaScript" type="text/javascript">
