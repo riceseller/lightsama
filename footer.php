@@ -1,6 +1,8 @@
 <style>
         .wrapper{
             background-color: black; 
+            margin: 0;
+            padding: 0;
         }
         .fifth{
             order:5;
