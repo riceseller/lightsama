@@ -106,10 +106,25 @@ function pageCount($inputStr){
     <!--<link rel="stylesheet" href="../node_modules/jquery.modal.min.css" type="text/css" media="screen"/>
     <script src="../node_modules/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>-->
     <script>
-        $('.openModal').on('click', function(){
+        // load remote page via jquery
+        $(document).on('click','#Gmodal',function(event) {
             event.preventDefault();
-            $('#albumModModal').modal('show').find('.modal-content').load($(this).attr('href'));
-        }); 
+            var modal = $('#modal').modal();
+            modal.find('.modal-body').load($(this).attr('href'), function () {
+                    modal.show();
+                });
+        });
+        // clear loaded dom page
+        $(document).on('hidden.bs.modal', function (e) {
+            var target = $(e.target);
+            //console.log('clear via hidden.bs.modal');
+            target.removeData('bs.modal').find(".modal-body").html('<p>Loading...</p>');
+        });
+        $(document).on('hide.bs.modal', function (e) {
+            var target = $(e.target);
+            //console.log('clear via hide.bs.modal');
+            target.removeData('bs.modal').find(".modal-body").html('<p>Loading...</p>');
+        });
     </script>
 </customheader>
 
@@ -144,7 +159,7 @@ function pageCount($inputStr){
                 echo "<div class=\"card-img-overlay\">";
                 echo "<div class=\"container albumTool\">";
                 echo "<h4 class=\"card-title cusTitle\">".$row7[title]."</h4>";
-                echo "<h4 class=\"card-title pull-xs-right\"><a class=\"openModal\" href=\"/users/albumModInfo.php?albumID=".$row7[id]."\">&#9998</a></h4>";
+                echo "<h4 class=\"card-title pull-xs-right\"><a href=\"/users/albumModInfo.php?albumID=".$row7[id]."\" id=\"Gmodal\">&#9998</a></h4>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";
@@ -153,6 +168,22 @@ function pageCount($inputStr){
             echo "0 results";
         }
         ?>
+    </div>
+</div>
+
+<div id="modal" class="modal fade" 
+     tabindex="-1" role="dialog" aria-labelledby="plan-info" aria-hidden="true">
+    <div class="modal-dialog modal-full-screen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <p>Loading ...</p>
+            </div>
+        </div>
     </div>
 </div>
 

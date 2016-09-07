@@ -36,26 +36,26 @@
 ?>
 
 <script type="text/javascript">
-    $("#submitMeta").click(function(event){
-        event.preventDefault();
+    function metaSubmitClick(){
+    //$(document).on('click','#submitMeta',function(event){
+        //event.preventDefault();
         var url = "../users/submitAlbumMeta.php"; // the script where you handle the form input.
         $.ajax({
                type: "POST",
                url: url,
-               data: $("#modAlbum").serialize() // serializes the form's elements.
-               success: function (data) {
-                   alert("Update success!");
+               data: $("#modAlbum").serialize(), // serializes the form's elements.
+               success: function(){
+                   //console.log('hide fired via ajax success');
+                   $('.modal').modal('hide');
                }
              });
 
         return false; // avoid to execute the actual submit of the form.
-    });
+    }//});
 </script>
 
 <?php if($user->isLoggedIn() and $pass==1): ?>
-    <div id='albumModModal' class='modal fade'>
-    <div class="modal-dialog">
-    <div class="modal-content">
+    <div id='albumModModal'>
         <form id="modAlbum">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -67,10 +67,8 @@
             </div>
             <input type="hidden" name="albumID" id="albumID" value="<?=$albumID?>" />
             <input type="hidden" name="flickr_albumID" id="flickr_albumID" value="<?=$row2[albumID]?>" />
-            <button id="submitMeta" type="submit" class="btn btn-primary">Submit</button>
+            <button id="submitMeta" onclick="this.disabled=true;metaSubmitClick();" type="button" class="btn btn-primary">Submit</button>
         </form>
-    </div>
-    </div>
     </div>
 <?php else : ?>
     <a href='account.php'>Please login to modify your album!</a>

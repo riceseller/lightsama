@@ -15,10 +15,8 @@
         $f->setToken($row2[authToken]);
         $f->auth("write");
         $f->photosets_editMeta($_POST['flickr_albumID'],$title,$description);
-        echo '<script type="text/javascript">alert("flickr api executed");</script>';
         $query1 = "update ScrapeAlbum set title = $title, description = $description where id=$albumID";
         $result1=$conn->query($query1);
-        echo '<script type="text/javascript">alert("database update executed");</script>';
     }else{
         echo '<script type="text/javascript">alert("error, not enough parameter");</script>';
     }
