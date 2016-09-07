@@ -47,8 +47,9 @@
 </style>
 </header>
 
-<body>    
+<body>
     
+<div id="topwrap">   
 <nav class="navbar navbar-dark bg-inverse" style="z-index: 99;">
     
   <a class="navbar-brand" href="db.luokerenz.com">PicShell</a>
