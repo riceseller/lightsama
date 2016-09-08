@@ -35,12 +35,12 @@
         }
         .wrapper .formwrap{
             margin:auto;
+            text-align: center;
         }
         .wrapper .formwrap a{
             color: white;
             font-size: 15px;
-            margin-right: 0;
-            float: right;
+            margin-right: 0;           
         }
 </style>
 
