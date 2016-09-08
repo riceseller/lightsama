@@ -11,8 +11,16 @@ $purpose=$_GET["iden"];
     //$(document).on('click','#submitMeta',function(event){
         //event.preventDefault();
         $('button[id^="formButton"]').prop('disabled', true); //disable all button
-        document.getElementById(action).submit();
-        $('.modal').modal('hide');
+        var url="<?=$us_url_root?>emailresponse.php?purpose="+action;
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: $(action).serialize(), // serializes the form's elements.
+               success: function(){
+                   //console.log('hide fired via ajax success');
+                   $('.modal').modal('hide');
+               }
+             });
 
         
     }//});
@@ -20,7 +28,7 @@ $purpose=$_GET["iden"];
 
 <?php if($purpose=='problem'):?>
 <div id="albumModModal">
-        <form id="problemSubmit" action="<?=$us_url_root?>emailresponse.php?purpose=contact" method="post">
+        <form id="problemSubmit">
             <div class="form-group">
                 <label for="title">Your Name</label>
                 <input class="form-control" type="text" name="name" id="Atitle" id="example-text-input" placeholder="Enter Your Name">
