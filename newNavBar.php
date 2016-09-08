@@ -16,6 +16,7 @@
 <style>
     .navbar{
         height: 50px;
+        border-radius: 0;
     }
     body{
         background: #f3f5f6;
