@@ -1,4 +1,7 @@
 <?php
+
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') 
+{    
 require_once 'users/init.php';
 //include 'supplyment/dbAccess.php';
 $purpose=$_GET["purpose"];
@@ -61,10 +64,8 @@ else
     echo "you come here from a wrong place";
 }
 
-
-header("Location: ../index.php"); 
 exit();
-
+}
 
 
 
