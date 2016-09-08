@@ -118,12 +118,12 @@ function pageCount($inputStr){
         $(document).on('hidden.bs.modal', function (e) {
             var target = $(e.target);
             //console.log('clear via hidden.bs.modal');
-            target.removeData('bs.modal').find(".modal-body").html('<p>Loading...</p>');
+            target.removeData('bs.modal').find(".modal-body").html('<center class="loader m-x-auto"> </center>');
         });
         $(document).on('hide.bs.modal', function (e) {
             var target = $(e.target);
             //console.log('clear via hide.bs.modal');
-            target.removeData('bs.modal').find(".modal-body").html('<p>Loading...</p>');
+            target.removeData('bs.modal').find(".modal-body").html('<center class="loader m-x-auto"> </center>');
         });
     </script>
 </customheader>
@@ -181,7 +181,7 @@ function pageCount($inputStr){
         </button>
             </div>
             <div class="modal-body">
-                <p>Loading ...</p>
+                <center class="loader m-x-auto"> </center>
             </div>
         </div>
     </div>

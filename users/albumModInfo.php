@@ -39,6 +39,7 @@
     function metaSubmitClick(){
     //$(document).on('click','#submitMeta',function(event){
         //event.preventDefault();
+        $('button[id^="formButton"]').prop('disabled', true); //disable all button
         var url = "../users/submitAlbumMeta.php"; // the script where you handle the form input.
         $.ajax({
                type: "POST",
@@ -52,6 +53,19 @@
 
         return false; // avoid to execute the actual submit of the form.
     }//});
+    function syncAlbumMeta(){
+        //$.get("");
+        $.ajax({
+            type: 'POST',
+            url: '../users/refreshAlbumMeta.php',
+            data: {albumID: <?php echo $albumID;?>},
+            success: function() {
+                console.log('sucess sync');
+                $('.modal').modal('hide');
+            }
+        });
+        return false;
+    }
 </script>
 
 <?php if($user->isLoggedIn() and $pass==1): ?>
@@ -67,7 +81,8 @@
             </div>
             <input type="hidden" name="albumID" id="albumID" value="<?=$albumID?>" />
             <input type="hidden" name="flickr_albumID" id="flickr_albumID" value="<?=$row2[albumID]?>" />
-            <button id="submitMeta" onclick="this.disabled=true;metaSubmitClick();" type="button" class="btn btn-primary">Submit</button>
+            <button id="formButton" onclick="metaSubmitClick();" type="button" class="btn btn-primary">Submit</button>
+            <button id="formButton" onclick="syncAlbumMeta();" type="button" class="btn btn-primary">Sync</button>
         </form>
     </div>
 <?php else : ?>
