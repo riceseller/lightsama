@@ -51,16 +51,16 @@ $purpose=$_GET["iden"];
         <form id="contactSubmit">
             <div class="form-group">
                 <label for="title">Your Name</label>
-                <input class="form-control" type="text" name="Atitle" id="Atitle" id="example-text-input" placeholder="Enter Your Name">
+                <input class="form-control" type="text" name="name" id="Atitle" id="example-text-input" placeholder="Enter Your Name">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Email">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Email" name="email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="exampleTextarea">Please leave your message below</label>
-                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Leave a Comment Here"></textarea>
+                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Leave a Comment Here" name="message"></textarea>
             </div>
             <button id="formButton" onclick="metaSubmitClick('contact', 'contactSubmit');" type="button" class="btn btn-primary">Submit</button>            
         </form>
