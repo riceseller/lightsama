@@ -10,6 +10,7 @@ $purpose=$_GET["iden"];
     function metaSubmitClick(action){
     //$(document).on('click','#submitMeta',function(event){
         //event.preventDefault();
+        alert("email has been sent");
         $('button[id^="formButton"]').prop('disabled', true); //disable all button 
         document.getElementById(action).submit();             //submit the form to emailresponse
 
