@@ -55,6 +55,7 @@
     }//});
     function syncAlbumMeta(){
         //$.get("");
+        $('button[id^="formButton"]').prop('disabled', true); //disable all button
         $.ajax({
             type: 'POST',
             url: '../users/refreshAlbumMeta.php',
