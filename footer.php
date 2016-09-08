@@ -335,34 +335,33 @@
     } 
 </style>
 
-
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
 
 <script>
-    function FormLoad(value){
-        $.ajax({
-                type: 'GET',
-                url: 'FavWrite.php',
-                data: 'current_request=' + value,
-                success: function(result){
-                    result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");               
-                    document.getElementById('topwrap').innerHTML+=result;
-                }
-            });
-    }
-    function div_hide(){
-        var element = document.getElementById("abc");
-        element.parentNode.removeChild(element);
-    }
-    function div_hide2(){
-        var element = document.getElementById("abc2");
-        element.parentNode.removeChild(element);
-    }
-    function div_hide3(){
-        var element = document.getElementById("abc3");
-        element.parentNode.removeChild(element);
-    }
+        // load remote page via jquery
+        $(document).on('click','.formload',function(event) {
+            event.preventDefault();
+            var modal = $('#modal').modal();
+            modal.find('.modal-body').load($(this).attr('href'), function () {
+                    modal.show();
+                });
+        });
+        // clear loaded dom page  //great reference for future reference 
+        $(document).on('hidden.bs.modal', function (e) {
+            var target = $(e.target);
+            //console.log('clear via hidden.bs.modal');
+            target.removeData('bs.modal').find(".modal-body").html('<center class="loader m-x-auto"> </center>');
+        });
+        $(document).on('hide.bs.modal', function (e) {
+            var target = $(e.target);
+            //console.log('clear via hide.bs.modal');
+            target.removeData('bs.modal').find(".modal-body").html('<center class="loader m-x-auto"> </center>');
+        });
 </script>
+
+
+
 
 <div class="wrapper">
         <div class="fifth">
@@ -374,9 +373,25 @@
                 <p>Hailoinn is a website for picture indexing only</p>
             </div> 
             <div class="formwrap">
-                <a href="#" onclick="FormLoad('term')">term/privacy</a><br><br>
-                <a href="#" onclick="FormLoad('problem')">report a problem</a><br><br>
-                <a href="#" onclick="FormLoad('contact')">contact us</a>           
+                <a href="formloadterm.php?iden=term" class="formload">term/privacy</a><br><br>
+                <a href="formloadterm.php?iden=problem" class="formload">report a problem</a><br><br>
+                <a href="formloadterm.php?iden=contact" class="formload">contact us</a>           
             </div>
         </div> 
+</div>
+
+<div id="modal" class="modal fade" 
+     tabindex="-1" role="dialog" aria-labelledby="plan-info" aria-hidden="true">
+    <div class="modal-dialog modal-full-screen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <center class="loader m-x-auto"> </center>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
 <?php
     require_once 'users/init.php';
     require_once 'supplyment/dbAccess.php';
@@ -58,8 +61,7 @@
 </header>
 
 <body>
-    
-<div id="topwrap">   
+      
 <nav class="navbar navbar-dark bg-inverse" style="z-index: 99;">
     
   <a class="navbar-brand" href="db.luokerenz.com">PicShell</a>

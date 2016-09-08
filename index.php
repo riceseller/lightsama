@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <meta charset="UTF-8">
+
 <?php 
     error_reporting(0);
     
@@ -119,7 +117,7 @@
 </section>
 
 <?php
-    require_once "footer.php";
+    include "footer.php";
 ?>
 </body>
 
