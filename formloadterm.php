@@ -10,7 +10,6 @@ $purpose=$_GET["iden"];
     function metaSubmitClick(action){
     //$(document).on('click','#submitMeta',function(event){
         //event.preventDefault();
-        alert("email has been sent");
         $('button[id^="formButton"]').prop('disabled', true); //disable all button 
         document.getElementById(action).submit();             //submit the form to emailresponse
 
@@ -45,16 +44,16 @@ $purpose=$_GET["iden"];
         <form id="modAlbum">
             <div class="form-group">
                 <label for="title">Your Name</label>
-                <input class="form-control" type="text" name="Atitle" id="Atitle" id="example-text-input">
+                <input class="form-control" type="text" name="Atitle" id="Atitle" id="example-text-input" placeholder="Enter Your Name">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="exampleTextarea">Please leave your message below</label>
-                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Leave a Comment Here"></textarea>
             </div>
             <button id="formButton" onclick="metaSubmitClick('contactSubmit');" type="button" class="btn btn-primary">Submit</button>            
         </form>
