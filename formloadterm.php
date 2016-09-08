@@ -47,8 +47,8 @@ $purpose=$_GET["iden"];
 </div>
 
 <?php elseif($purpose=='contact'): ?>
-<div id="contactSubmit">
-        <form id="modAlbum">
+<div id="albumModModal">
+        <form id="contactSubmit">
             <div class="form-group">
                 <label for="title">Your Name</label>
                 <input class="form-control" type="text" name="Atitle" id="Atitle" id="example-text-input" placeholder="Enter Your Name">
