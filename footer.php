@@ -5,11 +5,13 @@
             padding: 0;
         }
         .fifth{
-            order:5;
+            order:10;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-flow: row wrap;
-            min-height: 150px;
+            margin: 0 auto;
+            padding: 20px 0;
+            word-wrap: break-word;
         }
         .wrapper .logo{
             margin:auto;
@@ -32,12 +34,13 @@
             margin-left: 0;
         }
         .wrapper .formwrap{
-            margin:auto;           
+            margin:auto;
         }
         .wrapper .formwrap a{
             color: white;
             font-size: 15px;
             margin-right: 0;
+            float: right;
         }
 </style>
 
