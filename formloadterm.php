@@ -10,15 +10,10 @@ $purpose=$_GET["iden"];
     function metaSubmitClick(action){
     //$(document).on('click','#submitMeta',function(event){
         //event.preventDefault();
-        $('button[id^="formButton"]').prop('disabled', true); //disable all button         
-        $.ajax({
-               type: "POST",
-               url: "<?=$us_url_root?>emailresponse.php?purpose="+action,
-               data: $("#"+action).serialize(), // serializes the form's elements.
-               success: function(){                 
-                   $('.modal').modal('hide');
-               }
-             });
+        $('button[id^="formButton"]').prop('disabled', true); //disable all button
+        document.getElementById(action).submit();
+        $('.modal').modal('hide');
+
         
     }//});
 </script>
