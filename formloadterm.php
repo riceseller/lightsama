@@ -15,7 +15,7 @@ $purpose=$_GET["iden"];
         $.ajax({
                type: "POST",
                url: url,
-               data: $(action).serialize(), // serializes the form's elements.
+               data: $("#"+action).serialize(), // serializes the form's elements.
                success: function(){
                    //console.log('hide fired via ajax success');
                    $('.modal').modal('hide');
