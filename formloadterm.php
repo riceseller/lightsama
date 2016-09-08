@@ -7,11 +7,11 @@ $purpose=$_GET["iden"];
 
 
 <script>
-    function metaSubmitClick(action){
+    function metaSubmitClick(purpose, action){
     //$(document).on('click','#submitMeta',function(event){
         //event.preventDefault();
         $('button[id^="formButton"]').prop('disabled', true); //disable all button
-        var url="<?=$us_url_root?>emailresponse.php?purpose="+action;
+        var url="<?=$us_url_root?>emailresponse.php?purpose="+purpose;
         $.ajax({
                type: "POST",
                url: url,
@@ -42,7 +42,7 @@ $purpose=$_GET["iden"];
                 <label for="exampleTextarea">Describe your problem</label>
                 <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Type the Problem Encountered" name="message"></textarea>
             </div>
-            <button id="formButton" onclick="metaSubmitClick('problemSubmit');" type="button" class="btn btn-primary">Submit</button>            
+            <button id="formButton" onclick="metaSubmitClick('bug','problemSubmit');" type="button" class="btn btn-primary">Submit</button>            
         </form>
 </div>
 
