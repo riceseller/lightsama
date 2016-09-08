@@ -47,7 +47,7 @@ $purpose=$_GET["iden"];
 </div>
 
 <?php elseif($purpose=='contact'): ?>
-<div id="contactSubmit" action="<?=$us_url_root?>emailresponse.php?purpose=contact">
+<div id="contactSubmit">
         <form id="modAlbum">
             <div class="form-group">
                 <label for="title">Your Name</label>
@@ -62,7 +62,7 @@ $purpose=$_GET["iden"];
                 <label for="exampleTextarea">Please leave your message below</label>
                 <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Leave a Comment Here"></textarea>
             </div>
-            <button id="formButton" onclick="metaSubmitClick('contactSubmit');" type="button" class="btn btn-primary">Submit</button>            
+            <button id="formButton" onclick="metaSubmitClick('contact', 'contactSubmit');" type="button" class="btn btn-primary">Submit</button>            
         </form>
 </div>
 
