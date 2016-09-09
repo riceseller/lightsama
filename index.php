@@ -43,7 +43,9 @@ function changeContent(classActive, sectionActive){
         
         //test code
         //$('.preLoadClass').empty();
-        //$('.preLoadClass').load('sectionLoad.php #beautySection');
+        $('.preLoadClass').load("sectionLoad.php", function(){
+            alert( "Load was performed." );
+        });
         
         if(classActive==='#landscape')
         {
@@ -80,7 +82,7 @@ function changeContent(classActive, sectionActive){
 </div>
 
 <div class="container second">
-        <div class="shield">
+            
               <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link active" href="#" id="landscape" onclick="changeContent('#landscape', '#landscapeSection');">Landscape</a>
@@ -91,8 +93,8 @@ function changeContent(classActive, sectionActive){
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="skyscraper" onclick="changeContent('#skyscraper', '#skyscraperSection');">Skyscraper</a>
                 </li>
-              </ul>                    
-        </div>
+              </ul>
+      
 </div>
 
 <div class="preLoadClass">

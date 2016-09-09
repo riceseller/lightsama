@@ -38,14 +38,8 @@
             margin-top: 3vh;
         }
         .container .second{
-            order: 3;            
-        }
-        .shield{
-           display:flex;
-           justify-content: center;
-        }
-        .shield .btn{
-            margin:2px;
+            order: 3;
+            text-align:center;
         }
         body{
             background: #f3f5f6;
