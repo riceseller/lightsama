@@ -3,7 +3,7 @@
             background-size: cover;
             height: calc(80vh);
             order: 1;
-            border-radius: 0 !important;
+            border-radius: 0px !important;
         }
         .jumbotron h1{
             text-align: center;
