@@ -3,6 +3,11 @@ require_once "../newNavBar.php";
 error_reporting( error_reporting() & ~E_NOTICE );
 $category=$_GET["category"]; ?>
 
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+
+?>
+
 
 
 
