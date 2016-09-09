@@ -56,17 +56,6 @@
                     modal.show();
                 });
         });
-        // clear loaded dom page  //great reference for future reference 
-        $(document).on('hidden.bs.modal', function (e) {
-            var target = $(e.target);
-            //console.log('clear via hidden.bs.modal');
-            target.removeData('bs.modal').find(".modal-body").html('<center class="loader m-x-auto"> </center>');
-        });
-        $(document).on('hide.bs.modal', function (e) {
-            var target = $(e.target);
-            //console.log('clear via hide.bs.modal');
-            target.removeData('bs.modal').find(".modal-body").html('<center class="loader m-x-auto"> </center>');
-        });
 </script>
 
 
