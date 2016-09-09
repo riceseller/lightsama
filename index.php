@@ -54,9 +54,17 @@
 
 <div class="container second">
         <div class="shield">
-            <button type="button" class="btn btn-outline-primary" onclick="ChangeContent('landscape')">Landscape</button>
-            <button type="button" class="btn btn-outline-secondary" onclick="ChangeContent('beauty')">Beauty</button>
-            <button type="button" class="btn btn-outline-success" onclick="ChangeContent('skyscraper')">Skyscraper</button>                      
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Landscape</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Beauty</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Skyscraper</a>
+                </li>
+              </ul>                    
         </div>
 </div>
 
