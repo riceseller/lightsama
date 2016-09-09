@@ -58,6 +58,14 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+    .alert-fixed {
+        position:fixed; 
+        top: 0px; 
+        left: 0px; 
+        width: 100%;
+        z-index:999; 
+        border-radius:0px
+    }
 </style>
 </header>
 
@@ -65,7 +73,7 @@
       
 <nav class="navbar navbar-dark bg-inverse" style="z-index: 99;">
     
-  <a class="navbar-brand" href="db.luokerenz.com">PicShell</a>
+  <a class="navbar-brand" href="../index.php">PicShell</a>
   
   <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
     &#9776;
@@ -109,6 +117,13 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     </div>
+  </div>
+  
+  <div id="universalSuccess" class="alert alert-fixed alert-warning alert-dismissible fade in" role="alert" style="display:none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Well done!</strong> You operation is successfully executed!.
   </div>
 
 </nav>

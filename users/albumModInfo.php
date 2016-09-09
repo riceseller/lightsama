@@ -40,6 +40,7 @@
     //$(document).on('click','#submitMeta',function(event){
         //event.preventDefault();
         $('button[id^="formButton"]').prop('disabled', true); //disable all button
+        $("#formProgress").css("display","block");
         var url = "../users/submitAlbumMeta.php"; // the script where you handle the form input.
         $.ajax({
                type: "POST",
@@ -47,6 +48,7 @@
                data: $("#modAlbum").serialize(), // serializes the form's elements.
                success: function(){
                    //console.log('hide fired via ajax success');
+                   $("#universalSuccess").show();
                    $('.modal').modal('hide');
                }
              });
@@ -56,12 +58,14 @@
     function syncAlbumMeta(){
         //$.get("");
         $('button[id^="formButton"]').prop('disabled', true); //disable all button
+        $("#formProgress").css("display","block");
         $.ajax({
             type: 'POST',
             url: '../users/refreshAlbumMeta.php',
             data: {albumID: <?php echo $albumID;?>},
             success: function() {
-                console.log('sucess sync');
+                //console.log('sucess sync');
+                $("#universalSuccess").show();
                 $('.modal').modal('hide');
             }
         });
@@ -84,6 +88,7 @@
             <input type="hidden" name="flickr_albumID" id="flickr_albumID" value="<?=$row2[albumID]?>" />
             <button id="formButton" onclick="metaSubmitClick();" type="button" class="btn btn-primary">Submit</button>
             <button id="formButton" onclick="syncAlbumMeta();" type="button" class="btn btn-primary">Sync</button>
+            <p class="loader" id="formProgress" style="display:none;padding-top:10px;"> </p>
         </form>
     </div>
 <?php else : ?>
