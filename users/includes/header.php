@@ -59,7 +59,7 @@ if($settings->track_guest == 1){
 	<title>Photolib</title>
 
 	<?php
-            require_once "../topNav2.php";
+            require_once "../newNavBar.php";
         ?>
 </head>
 
