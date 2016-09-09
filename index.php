@@ -35,17 +35,6 @@
     };
     function ChangeContent(iden){
        
-        $.ajax({
-                type: 'GET',
-                url: 'FavWrite.php',
-                data: 'current_request=' + iden,
-                success: function(result){
-                    result = result.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");               
-                    document.getElementById('topwrap').innerHTML+=result;
-                }
-            });
-        
-               
     }
 </script>
 
