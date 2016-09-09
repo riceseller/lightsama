@@ -140,6 +140,7 @@
         filter:alpha(opacity=0);
         -webkit-transition:all .2s ease-in-out;
         transition:all .2s ease-in-out;
+        margin-top:30px;
         text-align: center;
         vertical-align: middle;
         position: relative;
@@ -153,6 +154,7 @@
         vertical-align: middle;
         display: inline-block;
         position: relative;
+        margin-top: 0;
     }
 
     .Image_Wrapper .hovereffect a.info:hover {
