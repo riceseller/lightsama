@@ -2,7 +2,11 @@
 $purpose=$_GET["iden"];
 ?>
 
-
+<style>
+    .form-control{
+        display: block !important;
+    }
+</style>
 
 
 
