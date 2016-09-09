@@ -33,9 +33,37 @@
             }
         );
     };
-    function ChangeContent(iden){
-       
-    }
+</script>
+
+<script>
+function changeContent(classActive, sectionActive){
+        $(document).on('click',classActive,function(e) {
+        e.preventDefault();
+        $(classActive).addClass("active");
+    });
+        
+        //test code
+        //$('.preLoadClass').empty();
+        //$('.preLoadClass').load('sectionLoad.php #beautySection');
+        
+        if(classActive==='#landscape')
+        {
+            document.getElementById('beauty').className="nav-link";
+            document.getElementById('skyscraper').className="nav-link";
+        }
+        else if(classActive==='#beauty')
+        {
+            document.getElementById('landscape').className="nav-link";
+            document.getElementById('skyscraper').className="nav-link";
+            //$(sectionActive).load('sectionLoad.php #cssmenu');
+        }
+        else
+        {
+            document.getElementById('beauty').className="nav-link";
+            document.getElementById('landscape').className="nav-link";
+            //$(sectionActive).load('sectionLoad.php #cssmenu');
+        }
+}    
 </script>
 
 <title>PHOTOLIB</title>
@@ -56,19 +84,20 @@
         <div class="shield">
               <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Landscape</a>
+                    <a class="nav-link active" href="#" id="landscape" onclick="changeContent('#landscape', '#landscapeSection');">Landscape</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Beauty</a>
+                    <a class="nav-link" href="#" id="beauty" onclick="changeContent('#beauty', '#beautySection');">Beauty</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Skyscraper</a>
+                    <a class="nav-link" href="#" id="skyscraper" onclick="changeContent('#skyscraper', '#skyscraperSection');">Skyscraper</a>
                 </li>
               </ul>                    
         </div>
 </div>
 
-<section class="Collage effect-parent" id="nature">
+<div class="preLoadClass">
+<section class="Collage effect-parent" id="landscapeSection">
     <?php
         $query = "select distinct c.title, su.*, u.id as uid, u.url, u.width, u.height from Url u, Common c, ScrapeUser su, TagRelation tr where c.p_id!=160630813 and tr.pid=c.p_id and tr.tagid=1046 and u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
         $result=$conn->query($query);
@@ -112,7 +141,8 @@
     }
     ?>
 </section>
-
+</div>
+    
 <?php
     include "footer.php";
 ?>
