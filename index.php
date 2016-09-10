@@ -40,12 +40,12 @@ function changeContent(classActive){
         $(classActive).addClass("active");
     });
         
-        
+                                
         if(classActive==='#landscape')
         {
             document.getElementById('beauty').className="nav-link";
             document.getElementById('skyscraper').className="nav-link";
-            $('.preLoadClass').load("sectionLoad.php #landscapeSection", function(){
+            $('.preLoadClass').load("sectionLoad.php?tabClick=landscape #landscapeSection", function(){
                 collage();            
             });
         }
@@ -53,7 +53,7 @@ function changeContent(classActive){
         {
             document.getElementById('landscape').className="nav-link";
             document.getElementById('skyscraper').className="nav-link";
-            $('.preLoadClass').load("sectionLoad.php #beautySection", function(){
+            $('.preLoadClass').load("sectionLoad.php?tabClick=beauty #beautySection", function(){
                 collage();            
             });
         }
@@ -61,7 +61,7 @@ function changeContent(classActive){
         {
             document.getElementById('beauty').className="nav-link";
             document.getElementById('landscape').className="nav-link";
-            $('.preLoadClass').load("sectionLoad.php #skyscraperSection", function(){
+            $('.preLoadClass').load("sectionLoad.php?tabClick=skyscraper #skyscraperSection", function(){
                 collage();            
             });
         }
@@ -83,10 +83,10 @@ function changeContent(classActive){
             to exchange resources with other sites. We make it faster<br><br><br></p>
 </div>
 
-<div class="container second">
+<div class="container second" style="text-align: center;">
             
-              <ul class="nav nav-tabs">
-                <li class="nav-item">
+              <ul class="nav nav-tabs" style="display:inline-block;">
+                <li class="nav-item" style="display: inline;">
                     <a class="nav-link active" href="#" id="landscape" onclick="changeContent('#landscape');">Landscape</a>
                 </li>
                 <li class="nav-item">
@@ -107,14 +107,14 @@ function changeContent(classActive){
         if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            echo "<div class=\"Image_Wrapper\" style=\"width=\"".$row[width]."\" height=\"".$row[height]."\"\">";
+            echo "<div class=\"Image_Wrapper\" style=\"width=\"".$row[width]."\" height=\"".$row[height]."\"\">";        
                 echo "<div class=\"hovereffect\">";
                     echo "<a style=\"text-decoration:none;\" href=\"#\">";
                         echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
-                    echo "</a>";
-                    echo "<div class=\"overlay\">";
+                    echo "</a>";                   
+                    echo "<a class=\"overlay\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";
                         echo "<h2>$row[title]</h2>";
-                        echo "<a class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
+                        echo "<div class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
                         ?>
                         <img class="users" style="<?php
                                             if($row[Ubelong]=='flickr')
@@ -132,10 +132,10 @@ function changeContent(classActive){
                                             {
                                                 print "background-image:url(/media/aperture.png)"; 
                                             }
-                                        ?>">
+                                        ?>"/>
                         <?php
-                        echo "</a>";
-                    echo "</div>";  
+                        echo "</div>";
+                    echo "</a>";                    
                 echo "</div>";
             echo "</div>";
         }
