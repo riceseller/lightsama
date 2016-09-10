@@ -150,6 +150,7 @@
         display: inline-block;
         position: relative;
         margin-top: 0;
+        border-style: none !important;
     }
 
     .Image_Wrapper .hovereffect a.info:hover {

@@ -12,7 +12,6 @@
     }
 ?>
 <link rel="stylesheet" type="text/css" href="users/css/new_index.css" />
-
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
 
@@ -35,35 +34,38 @@
 </script>
 
 <script>
-function changeContent(classActive, sectionActive){
+function changeContent(classActive){
         $(document).on('click',classActive,function(e) {
         e.preventDefault();
         $(classActive).addClass("active");
     });
         
-        //test code
-        //$('.preLoadClass').empty();
-        $('.preLoadClass').load("sectionLoad.php", function(){
-            alert( "Load was performed." );
-        });
         
         if(classActive==='#landscape')
         {
             document.getElementById('beauty').className="nav-link";
             document.getElementById('skyscraper').className="nav-link";
+            $('.preLoadClass').load("sectionLoad.php #landscapeSection", function(){
+                collage();            
+            });
         }
         else if(classActive==='#beauty')
         {
             document.getElementById('landscape').className="nav-link";
             document.getElementById('skyscraper').className="nav-link";
-            //$(sectionActive).load('sectionLoad.php #cssmenu');
+            $('.preLoadClass').load("sectionLoad.php #beautySection", function(){
+                collage();            
+            });
         }
         else
         {
             document.getElementById('beauty').className="nav-link";
             document.getElementById('landscape').className="nav-link";
-            //$(sectionActive).load('sectionLoad.php #cssmenu');
+            $('.preLoadClass').load("sectionLoad.php #skyscraperSection", function(){
+                collage();            
+            });
         }
+        
 }    
 </script>
 
@@ -85,13 +87,13 @@ function changeContent(classActive, sectionActive){
             
               <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" id="landscape" onclick="changeContent('#landscape', '#landscapeSection');">Landscape</a>
+                    <a class="nav-link active" href="#" id="landscape" onclick="changeContent('#landscape');">Landscape</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="beauty" onclick="changeContent('#beauty', '#beautySection');">Beauty</a>
+                    <a class="nav-link" href="#" id="beauty" onclick="changeContent('#beauty');">Beauty</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="skyscraper" onclick="changeContent('#skyscraper', '#skyscraperSection');">Skyscraper</a>
+                    <a class="nav-link" href="#" id="skyscraper" onclick="changeContent('#skyscraper');">Skyscraper</a>
                 </li>
               </ul>
       
