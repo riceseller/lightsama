@@ -120,6 +120,7 @@
         transform:translatey(-100px);
         -webkit-transition:all .2s ease-in-out;
         transition:all .2s ease-in-out;
+        margin-top: 30px;
         padding:10px;
     }
      .Image_Wrapper .hovereffect .info {
@@ -127,7 +128,7 @@
         display:inline-block;
         text-transform:uppercase;
         color:#fff;
-        border-radius: 50%;
+        border-radius: 0;
         width: 55px;
         height: 55px;
         background-color:transparent;
@@ -135,17 +136,17 @@
         filter:alpha(opacity=0);
         -webkit-transition:all .2s ease-in-out;
         transition:all .2s ease-in-out;
-        margin-top:30px;
+        margin-top:10%;
         text-align: center;
         vertical-align: middle;
         position: relative;
     }
 
-    .Image_Wrapper .hovereffect .info img.users {
+    .Image_Wrapper .hovereffect .info .users {
         width: 55px !important;
         height: 55px !important;
         background-size: cover;
-        border-radius: 50%;
+        border-radius: 0;
         vertical-align: middle;
         display: inline-block;
         position: relative;
@@ -172,71 +173,3 @@
         -webkit-transition-delay:.2s;
         transition-delay:.2s;
     }
-    
-    
-    
-    
-    
-    div.pagination-cont {
-        float: left;
-        width: 100%;
-        /*overflow: hidden;*/
-        position: relative;
-        margin: 15px 0;
-        border-top: 1px solid #d1d1d3;
-        padding-bottom: 2px;
-        background-color: #e4e4e6;
-        order: 5;
-    }
-    div.pagination-cont ul.pagination {
-        clear: left;
-        float: left;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        position: relative;
-        left: 50%;
-        text-align: center;
-    }
-    ul.pagination li {
-        display: block;
-        float: left;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        right: 50%;
-        font-size: 110%;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-    ul.pagination li.disabled span,
-    ul.pagination li.separator {
-        color: #bbb;
-        text-shadow: 1px 1px 0 #f2f2f2;
-        padding: 10px 20px;
-        display: block;
-    }
-    ul.pagination li.separator {
-        border-left: 1px solid #d1d1d3
-    }
-    ul.pagination li a {
-        display: block;
-        padding: 10px 20px;
-        color: #004276;
-        text-decoration: none;
-        border-left: 1px solid #d1d1d3;
-        margin-bottom: 1px
-    }
-    ul.pagination li.current span {
-        display: block;
-        padding: 10px 20px;
-        border-left: 1px solid #d1d1d3;
-        background-color: #fff;
-        color: #999;
-        border-bottom: 1px solid #d1d1d3;
-        top:-1px;
-
-    }
-   
-
