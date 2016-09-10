@@ -99,7 +99,7 @@
         top:0;
         left:0;
         opacity:0;
-        background-color:rgba(0,0,0,0.5);
+        background-color:rgba(0,0,0,0.1);
         -webkit-transition:all .4s ease-in-out;
         transition:all .4s ease-in-out
     }
@@ -157,7 +157,7 @@
         box-shadow:0 0 5px #fff;
     }
 
-    .Image_Wrapper .hovereffect:hover .overlay {
+    .Image_Wrapper .hovereffect:hover a.overlay {
         opacity:1;
         filter:alpha(opacity=100);
     }
