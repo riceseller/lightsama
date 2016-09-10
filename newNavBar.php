@@ -66,6 +66,14 @@
         z-index:999; 
         border-radius:0px
     }
+    /*for pagination*/
+    .pagination{
+        width:auto;
+    }
+    .container-page{
+        display:flex;
+        justify-content: center;
+    }
 </style>
 </header>
 

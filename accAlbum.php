@@ -103,8 +103,7 @@ function pageCount($inputStr){
             color:#fff;
         }
     </style>
-    <!--<link rel="stylesheet" href="../node_modules/jquery.modal.min.css" type="text/css" media="screen"/>
-    <script src="../node_modules/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>-->
+
     <script>
         // load remote page via jquery
         $(document).on('click','#Gmodal',function(event) {
@@ -128,7 +127,7 @@ function pageCount($inputStr){
     </script>
 </customheader>
 
-<div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;">
+<div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
   <div class="container">
     <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);"></div>
     <div class="user-info">
@@ -138,6 +137,21 @@ function pageCount($inputStr){
     </div>
   </div>
 </div>
+
+<div class="container" style="padding-top:8px;padding-bottom:8px;">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+          <a class="nav-link" href="indUser.php?id=<?=$displayID?>">Photostream</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link active" href="#">Album</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">Favorite</a>
+      </li>
+    </ul>                    
+</div>
+
 <div class="container">
     <div class="card-columns">
         <?php
