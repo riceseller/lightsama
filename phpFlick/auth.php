@@ -68,7 +68,7 @@ if($user->isLoggedIn()){
         //insert success
         //print 'insert success, ready to exit';
         //shell_exec('export AIRFLOW_HOME=\"/home/luokerenz/airflow\" && airflow trigger_dag flickr_link_script');
-        shell_exec('airflow trigger_dag flickr_link_script');
+        //shell_exec('airflow trigger_dag flickr_link_script');
         echo "<script>window.location = '../users/account.php'</script>";
     }else{
         //print $conn->error;
