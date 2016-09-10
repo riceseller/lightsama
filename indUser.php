@@ -163,7 +163,7 @@ function pageCount($inputStr){
 </div>
 
 <div class="container-page">
-    <ul class="pagination pagination-lg">
+    <ul class="pagination">
       <?php 
         if($page==1){
             //already at first page disable this buttom
