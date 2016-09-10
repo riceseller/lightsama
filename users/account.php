@@ -1,4 +1,8 @@
 <?php
+require_once "../users/init.php";
+require_once "../newNavBar.php";
+require_once "../supplyment/dbAccess.php";
+
 function displayBlock($row,$mode){
     if($mode==1){
         //display ind block using input
@@ -12,39 +16,35 @@ function displayBlock($row,$mode){
             }else{
                 $avaStr = "background-image:url($grav)";
             }
-        print "<div class='acc-block'>";
-        print "<img style=$avaStr>";
-        print "<div class='acc-userInfo'>";
-        print "<div>ID: $row[userID]</div>";
-        print "<div><a href='../indUser.php?id=$row[scrapeUserID]'>PhotoStream</a></div>";
-        print "<div><a href='../accAlbum.php?id=$row[scrapeUserID]'>Ablum</a></div>";
+        print "<div class='card accCardCenter'>";
+        print "<div class='card-block'>";
+        print "<img class='card-userAvatar' style=$avaStr>";
+        print "<h4 class='card-title'>ID: $row[userID]</h4>";
+        print "<a href='../indUser.php?id=$row[scrapeUserID]' class='btn btn-primary card-btn'>PhotoStream</a>";
+        print "<a href='../accAlbum.php?id=$row[scrapeUserID]' class='btn btn-primary card-btn'>Ablum</a>";
+        print "<a class='btn btn-danger card-btn' href='ondelete.php?del=$row[userID]&be=$row[Ubelong]' onclick='return checkDelete()'>&#128465</a>";
         print "</div>";
-        print "<a style='width:11px;align-self:flex-end;' href='ondelete.php?del=$row[userID]&be=$row[Ubelong]' onclick='return checkDelete()'>&#128465</a>";
         print "</div>";
     }
     if($mode==2){
     //display add block directly
-    print '<div class="acc-block" style="justify-content:center;"><a href="../phpFlick/auth.php" style="font-size:80px;opacity:0.5;">&#8853</a></div>';
+    print '<div class="card accCardCenter"><div class="card-block">'
+            . '<h4> </h4>'
+            . '<a href="../phpFlick/auth.php" style="font-size:80px;opacity:0.5;">&#8853</a>'
+            . '<h4> </h4>'
+            . '</div></div>';
     }
 }
 ?>
-<?php require_once 'init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
-<?php require_once "../supplyment/dbAccess.php"; ?>
-
-<?php if (!securePage($_SERVER['PHP_SELF'])){die();}
- if ($settings->site_offline==1){die("The site is currently offline.");}?>
-<?php
-$grav = get_gravatar(strtolower(trim($user->data()->email)));
-$get_info_id = $user->data()->id;
-// $groupname = ucfirst($loggedInUser->title);
-$raw = date_parse($user->data()->join_date);
-$signupdate = $raw['month']."/".$raw['day']."/".$raw['year'];
-$userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
- ?>
 
 <?php
+    $grav = get_gravatar(strtolower(trim($user->data()->email)));
+    $get_info_id = $user->data()->id;
+    // $groupname = ucfirst($loggedInUser->title);
+    $raw = date_parse($user->data()->join_date);
+    $signupdate = $raw['month']."/".$raw['day']."/".$raw['year'];
+    $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
+
     $query2 = "select custom1,custom2 from users where id=$get_info_id"; //custom1=>cover photo custom2=>avatar
     $result2=$conn->query($query2);
     $row2 = mysqli_fetch_array($result2);
@@ -64,9 +64,9 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
             $query3 = "select urlSource from Url where id=24493854475";
             $result3=$conn->query($query3);
             $row3 = mysqli_fetch_array($result3);
-            $coverPic = $row3[urlSource];
+            $jumboBackground = $row3[urlSource];
         } else {
-            $coverPic = $row2[custom1];
+            $jumboBackground = $row2[custom1];
         }
     }else{
         //this account has no linked account
@@ -74,195 +74,107 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
         $query3 = "select urlSource from Url where id=24493854475";
         $result3=$conn->query($query3);
         $row3 = mysqli_fetch_array($result3);
-        $coverPic = $row3[urlSource];
+        $jumboBackground = $row3[urlSource];
     }
 ?>
+<customHeader>
 <style>
-    #main-content{
-        min-height: calc(100vh - 50px);
-        width: 100%;
-    }
-    .user-container{
-        display: flex;
-        flex-wrap: nowrap;
-        height: 250px;
-        width: 100%;
-    }
-    .uPic-container{
-        margin-top: 130px;
-        margin-left: 10%;
-        width: 100px;
+    #userAvatar{
+        z-index: 1;
         height: 100px;
+        width: 100px;
+        /* fill the container, preserving aspect ratio, and cropping to fit */
+        background-size: cover;
+        /* center the image vertically and horizontally */
+        background-position: center;
+        /* round the edges to a circle with border radius 1/2 container size */
+        border-radius: 50%;
     }
-    .uPic-OL{
-        font-weight: 700;
-        font-size: 30px;
+    #userAvatar a{
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 2;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
-        top:0;
-        right:0;
-        opacity: 0;
-        width: 100px;
-        height: 100px;
-        z-index: 3;
+        font-size: 30px;
+        font-weight: 700;
+        color: #FFF;
     }
-    .uPic-OL:hover{
-        opacity: 0.85;
-    }
-    .uPic-container img{
-        z-index: 2;
-        position: relative;
-        top:-100px;
-        right:0;
-        width: 100px;
+    .card-userAvatar{
+        z-index: 1;
         height: 100px;
+        width: 100px;
         /* fill the container, preserving aspect ratio, and cropping to fit */
         background-size: cover;
         /* center the image vertically and horizontally */
         background-position: center;
         /* round the edges to a circle with border radius 1/2 container size */
         border-radius: 50%;
-    }
-    .user-container a{
-        color: #fff;
+        margin-bottom: 0.75rem;
     }
     .user-info{
-        margin-top: 140px;
-        margin-left: 15px;
-        max-width: 40%;
+        color: #fff;
     }
-    .menu{
-        font-weight: 600;
-        width:100%;
-        height: 49px;
-        border-bottom: 1px solid #dcdcdc;
+    .card-btn{
+        margin-right:5px;
+        margin-bottom: 5px;
     }
-    .menu ul{
-        list-style:none;
-        background:#ffffff;
-        margin:0;
-        padding:0;
-    }
-    .menu li{
-        display:inline-block;
-        float:left;
-        margin-left:1%;
-    }
-    .menu li:first-child{
-        margin-left:10%;
-    }
-    .menu a{
-        display:block;
-        padding: 12px 20px;
-        text-decoration:none;
-        color:#000000;
-        border-top:3px solid transparent;
-    }
-    .menu a:hover,
-    .menu li.active a{
-        background:#ffffff;
-        color:#000000;
-        border-bottom: 3px solid #0091dc;
-    }
-    .well{
-        display: flex;
-        justify-content: flex-start;
-        width:100%;
-        margin: 0 10%;
-        min-height: calc(100vh - 50px - 250px - 50px);
-    }
-    .acc-block {
-        /*border-radius: 25px;*/
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        margin: 30px 2% 0px 2%;
-        border: 2px solid #cfd6d9;
-        min-width: 200px;
-        width: 20%;
-        height: 150px; 
-    }
-    .acc-block img{
-        margin-top: 19px;
-        margin-bottom: 59px;
-        margin-left: 20px;
-        width: 72px;
-        height: 72px;
-        /* fill the container, preserving aspect ratio, and cropping to fit */
-        background-size: cover;
-        /* center the image vertically and horizontally */
-        background-position: center;
-        /* round the edges to a circle with border radius 1/2 container size */
-        border-radius: 50%;
-    }
-    .acc-userInfo{
-        margin-top: 6px;
-        margin-bottom: 19px;
-        margin-left: 15px;
-        width: calc(100% - 92px - 30px);
-        height:112px;        
-    }
-    .acc-userInfo div{
-        margin: 13px 2px;
-    }
-    .acc-userInfo a{
-        padding: 3px 5px;
-        border: 1px solid #cfd6d9;
-        width: auto;
+    .accCardCenter{
+        vertical-align:middle!important;
+        text-align:center;
     }
 </style>
-<link rel="stylesheet" href="../node_modules/jquery.modal.min.css" type="text/css" media="screen"/>
-<script src="../node_modules/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
 
 <script language="JavaScript" type="text/javascript">
-function checkDelete(){
-    return confirm('Are you sure?');
-}
+    function checkDelete(){
+        return confirm('Are you sure?');
+    }
 </script>
+</customHeader>
 
-<div id="main-content">
-<div class="user-container" style="background-image: url('<?php print $coverPic;?>');background-size: cover;">
-    <div class="uPic-container">
-        <div class="uPic-OL"><a href="avaMod.php" rel="modal:open">&#9998</a></div>
-        <img style="background-image:url(<?=$gravMod;?>);">
-    </div>
+<div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
+  <div class="container">
+    <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);"></div>
     <div class="user-info">
         <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
-        <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?=$signupdate?></a><br>
+        <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?php echo $signupdate;?></a><br>
         <a style="font-size:16px;font-weight:600;">Number of Logins: <?=$user->data()->logins?></a>
     </div>
+  </div>
 </div>
-    
-<div class="menu">
-<ul>
-<li class="active"><a href="#">Your Linked Account</a></li>
-<li><a href="user_settings.php">Edit Account Info</a></li>
-<li><a href="#">Favorite</a></li>
-<div class="clearFloat"></div>
-</ul>
+
+<div class="container" style="padding-top:8px;padding-bottom:8px;">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+          <a class="nav-link active">Your Linked Account</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="../users/user_settings.php">Edit Account Info</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">Favorite</a>
+      </li>
+    </ul>                    
 </div>
-    
-<div class="well">
-    <?php
-        if($Umode==1){
-            //print $row[userID]
-            //displayBlock($row[scrapeUserID],$row[userID], $row[Ubelong]);
-            while($row = mysqli_fetch_array($result)) {
-                displayBlock($row,1);
+
+<div class="container">
+    <div class="card-deck-wrapper">
+        <div class="card-deck">
+        <?php
+            if($Umode==1){
+                //print $row[userID]
+                //displayBlock($row[scrapeUserID],$row[userID], $row[Ubelong]);
+                while($row = mysqli_fetch_array($result)) {
+                    displayBlock($row,1);
+                }
             }
             displayBlock($row,2);
-        }else{
-            displayBlock($row,2);
-        }
-    ?>
+        ?>
+        </div>
+    </div>
 </div>
 
-</div> <!-- /#main-content -->
-<!-- footers -->
-<?php require_once '../footer.php' //require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
-
-<!-- Place any per-page javascript here -->
-
-<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php mysqli_close($conn); ?>
+<?php require_once '../footer.php'; ?>

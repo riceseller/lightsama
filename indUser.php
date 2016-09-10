@@ -33,14 +33,17 @@ function pageCount($inputStr){
     $query11 = "select * from ScrapeUser where id=$displayID";
     $result11=$conn->query($query11);
     $row11 = mysqli_fetch_array($result11);
+    $scrapeUserName = $row11[displayName];
     if($row11[Ubelong]=='flickr'){
         $server = $row11[extraOne];
         $farm = $row11[extraTwo];
         $userr = $row11[userID];
         $gravMod = "https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg";
+    }elseif($row11[Ubelong]=='500px'){
+        $gravMod = $row11[extraTwo];
     }
     //get jumbo background img
-    $query12 = "select u.url from Url u join Common c on u.id=c.p_id join ScrapeAlbum sa on c.albumBelong = sa.id where sa.scrapeUserID = $displayID order by rand() limit 1";
+    $query12 = "select u.url from Url u join Common c on u.id=c.p_id join ScrapeUser su on c.userBelong = su.id where su.id = $displayID order by rand() limit 1";
     $result12=$conn->query($query12);
     $row12 = mysqli_fetch_array($result12);
     $jumboBackground = $row12[url];
@@ -112,9 +115,7 @@ function pageCount($inputStr){
   <div class="container">
     <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);"></div>
     <div class="user-info">
-        <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
-        <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?php echo $signupdate;?></a><br>
-        <a style="font-size:16px;font-weight:600;">Number of Logins: <?=$user->data()->logins?></a>
+        <a id="user-name" style="font-size:36px;font-weight:700;"><?=$scrapeUserName?></a><br>
     </div>
   </div>
 </div>
@@ -192,7 +193,7 @@ function pageCount($inputStr){
         }
         if(($page+1)<=$totalPageNum){
             echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=".($page+1)."\">Next &gt;</a></li>";}
-            else{echo "<li class=\"disabled page-item\"><span>Next &gt;</span></li>";}
+            else{echo "<li class=\"disabled page-item\"><a class=\"page-link\">Next</a></li>";}
         ?>
     </ul>
 </div>
