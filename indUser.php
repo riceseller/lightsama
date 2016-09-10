@@ -46,7 +46,7 @@ function pageCount($inputStr){
     $jumboBackground = $row12[url];
 ?>
 
-<customheader>
+<customHeader>
     <style>
         #userAvatar{
             z-index: 1;
@@ -106,7 +106,7 @@ function pageCount($inputStr){
         );
     };
     </script>
-</customheader>
+</customHeader>
 
 <div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
   <div class="container">
