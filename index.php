@@ -36,33 +36,39 @@
 <script>
 function changeContent(classActive){
         $(document).on('click',classActive,function(e) {
-        e.preventDefault();
-        $(classActive).addClass("active");
+            
+        document.getElementById('beauty').className="nav-link disabled";
+        document.getElementById('skyscraper').className="nav-link disabled";
+        document.getElementById('landscape').className="nav-link disabled";            
+        e.preventDefault();       
     });
         
                                 
         if(classActive==='#landscape')
         {
-            document.getElementById('beauty').className="nav-link";
-            document.getElementById('skyscraper').className="nav-link";
             $('.preLoadClass').load("sectionLoad.php?tabClick=landscape #landscapeSection", function(){
-                collage();            
+                collage();
+                document.getElementById('beauty').className="nav-link";
+                document.getElementById('skyscraper').className="nav-link";
+                document.getElementById('landscape').className="nav-link active";
             });
         }
         else if(classActive==='#beauty')
         {
-            document.getElementById('landscape').className="nav-link";
-            document.getElementById('skyscraper').className="nav-link";
             $('.preLoadClass').load("sectionLoad.php?tabClick=beauty #beautySection", function(){
-                collage();            
+                collage();
+                document.getElementById('beauty').className="nav-link active";
+                document.getElementById('skyscraper').className="nav-link";
+                document.getElementById('landscape').className="nav-link";
             });
         }
         else
         {
-            document.getElementById('beauty').className="nav-link";
-            document.getElementById('landscape').className="nav-link";
             $('.preLoadClass').load("sectionLoad.php?tabClick=skyscraper #skyscraperSection", function(){
-                collage();            
+                collage();
+                document.getElementById('beauty').className="nav-link";
+                document.getElementById('skyscraper').className="nav-link active";
+                document.getElementById('landscape').className="nav-link";
             });
         }
         
