@@ -73,6 +73,7 @@
     .container-page{
         display:flex;
         justify-content: center;
+        width: 100%;
     }
 </style>
 </header>
