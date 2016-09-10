@@ -179,6 +179,7 @@ function pageCount($inputStr){
         }
         ?>
         <li class="page-item active"><a class="page-link"><?=$page?></a></li>
+        <li class="page-item"><a class="page-link">...</a></li>
         <?php
         if(($page+6)<=$totalPageNum){
         echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=".($page+6)."\">".($page+6)."</a></li>";
