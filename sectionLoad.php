@@ -22,7 +22,7 @@
                         echo "<h2>$row[title]</h2>";
                         echo "<div class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
                         ?>
-                        <img class="users" style="<?php
+                        <div class="users" style="<?php
                                             if($row[Ubelong]=='flickr')
                                             {
                                                 $server = $row[extraOne];
@@ -38,7 +38,7 @@
                                             {
                                                 print "background-image:url(/media/aperture.png)"; 
                                             }
-                                        ?>"/>
+                                            ?>"></div>
                         <?php
                         echo "</div>";
                     echo "</a>";                    
@@ -66,9 +66,9 @@
                     echo "</a>";                   
                     echo "<a class=\"overlay\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";
                         echo "<h2>$row[title]</h2>";
-                        //echo "<div class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
+                        echo "<div class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
                         ?>
-                        <img class="users" style="<?php
+                        <div class="users" style="<?php
                                             if($row[Ubelong]=='flickr')
                                             {
                                                 $server = $row[extraOne];
@@ -84,7 +84,7 @@
                                             {
                                                 print "background-image:url(/media/aperture.png)"; 
                                             }
-                                        ?>"/>
+                                            ?>"></div>
                         <?php
                         echo "</div>";
                     echo "</a>";                    
@@ -114,7 +114,7 @@
                         echo "<h2>$row[title]</h2>";
                         echo "<div class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
                         ?>
-                        <img class="users" style="<?php
+                        <div class="users" style="<?php
                                             if($row[Ubelong]=='flickr')
                                             {
                                                 $server = $row[extraOne];
@@ -130,7 +130,7 @@
                                             {
                                                 print "background-image:url(/media/aperture.png)"; 
                                             }
-                                        ?>"/>
+                                            ?>"></div>
                         <?php
                         echo "</div>";
                     echo "</a>";                    
