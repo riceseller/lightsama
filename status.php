@@ -1,70 +1,78 @@
 <?php
-include('topNav.php');
-include('supplyment/dbAccess.php');
+require_once "users/init.php";
+require_once "newNavBar.php";
+require_once "supplyment/dbAccess.php";
 
-if(isset($_GET['interval'])) {
-    // id index exists
-    $interval = $_GET["interval"];
-}else{
-    $interval = 1;
-}
-$conn->query("SET @x := 0;");
-$query = "SELECT * FROM (SELECT (@x:=@x+1) AS x, mt.* FROM DbStatic mt ) t "
-        . "WHERE x MOD $interval = 0;";
-#echo $query;
+$query = "SELECT * FROM DbStatic;";
 $result=$conn->query($query);
+$xAxis[] = 'x';
+$oCommon[] = 'Common';
+$oProcessed[] = 'Processed';
+$oCoordinate[] = 'Coordinate';
+$oLocation[] = 'Location';
+$oTag[] = 'Tag';
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        #echo "time: " . $row["time"]. " - Common: " . $row["Common"]. " - Processed " . $row["Processed"]. "<br>";
-        $out[] = array($row["time"],intval($row["Common"]),intval($row["Processed"]),intval($row["Coordinate"]),intval($row["Location"]),intval($row["Tag"]));
+        $xAxis[] = $row["time"];
+        $oCommon[] = intval($row["Common"]);
+        $oProcessed[] = intval($row["Processed"]);
+        $oCoordinate[] = intval($row["Coordinate"]);
+        $oLocation[] = intval($row["Location"]);
+        $oTag[] = intval($row["Tag"]);
     }
 } else {
     echo "0 results";
 }
 $conn->close();
-
 ?>
-<head>
-<style>
-    #chart_div{
-        height: 90vh;
-        width: 100%;
-    }
-</style>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>
-google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawTrendlines);
 
-function drawTrendlines() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Time');
-      data.addColumn('number', 'Common');
-      data.addColumn('number', 'Processed');
-      data.addColumn('number', 'Coordinate');
-      data.addColumn('number', 'Location');
-      data.addColumn('number', 'Tag');
+<div id="chart"></div>
 
-      data.addRows(<?php echo json_encode( $out ) ?>
-      );
-
-      var options = {
-        hAxis: {
-          title: 'Database Statistics'
-        },
-        vAxis: {
-          title: 'Number'
-        },
-        colors: ['#AB0D06', '#007329', '#40FF00', '#2E2EFE', '#FE2EC8'],
-      };
-
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
-    }
-</script>
-</head>
-<a>use "?interval=" to adjust time interval</a>
-<div id="chart_div"></div>
+<customHeader>
+    <style>
+        #chart{
+            height: calc(100vh - 50px);
+            width: 100%;
+        }
+    </style>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet" />   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+    
+    <script type="text/javascript">
+        var chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                x: 'x',
+                xFormat: '%Y_%m_%d_%H',
+                columns: [
+                    <?php echo json_encode($xAxis);?>,
+                    <?php echo json_encode($oCommon);?>,
+                    <?php echo json_encode($oProcessed);?>,
+                    <?php echo json_encode($oCoordinate);?>,
+                    <?php echo json_encode($oLocation);?>,
+                    <?php echo json_encode($oTag);?>
+                ]
+            },
+            axis: {
+                x: {
+                    type: 'timeseries',
+                    tick: {
+                        format: '%Y-%m-%d-%H'
+                    }
+                }
+            },
+            zoom: {
+                enabled: true
+            },
+            points: {
+                show: false
+            }
+        });
+    </script>
+        
+</customHeader>
 
 </body>
 </html>
