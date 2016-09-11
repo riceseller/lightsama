@@ -73,6 +73,9 @@
         display:flex;
         justify-content: center;
     }
+    .footerPusher{
+        height: calc(100vh - 50px);
+    }
 </style>
 </header>
 

@@ -134,6 +134,7 @@ function displayBlock($row,$mode){
 </script>
 </customHeader>
 
+<div class="footerPusher">
 <div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
   <div class="container">
     <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);"></div>
@@ -175,6 +176,7 @@ function displayBlock($row,$mode){
         </div>
     </div>
 </div>
-
+</div>
+    
 <?php mysqli_close($conn); ?>
 <?php require_once '../footer.php'; ?>

@@ -336,6 +336,7 @@ else if($through=='signup')
     </script>
 </customHeader>
 
+<div class="footerPusher">
 <div class="container" style="padding: 0.75rem;display:flex;">
     <div class="card login-card m-x-auto">
         <div class="card-header">
@@ -383,6 +384,7 @@ else if($through=='signup')
         </div><!--card-block-->
     </div><!--card-->
 </div>
-
+</div>
+    
 <?php mysqli_close($conn); ?>
 <?php require_once '../footer.php'; ?>
