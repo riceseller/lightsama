@@ -92,10 +92,10 @@
     <div class="bg-inverse"> 
     <ul class="nav navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="explore.php">Explore</a>
+            <a class="nav-link" href="../explore.php">Explore</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">MapView</a>
+            <a class="nav-link" href="../mapExplore.php">MapView</a>
         </li>
         
             <?php
