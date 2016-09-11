@@ -358,7 +358,7 @@ else if($through=='signup')
                                 <input type="checkbox" value="remember-me"> Remember me
                             </label>
                         </div>
-                        <input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
+                        <input type="hidden" name="csrf" value="<?=TOken::generate();?>">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                     </form>
                 </div>
@@ -376,7 +376,6 @@ else if($through=='signup')
                         <input name="password" type="password" id="inputPassword" class="form-control reg-form" placeholder="Password" required>
                         <label for="inputPassword">Confirm Your Password</label>
                         <input name="confirm" type="password" id="inputPassword" class="form-control reg-form" placeholder="Password" required>
-                        <input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
                         <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:10px;">Register</button>
                     </form>
                 </div><!--sectionB-->
