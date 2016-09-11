@@ -1,16 +1,15 @@
-<?php
-require_once "../users/init.php";
+<?php require_once 'init.php'; 
 require_once "../newNavBar.php";
-require_once "../supplyment/dbAccess.php";
-if(isset($_GET['category'])&&$_GET['category']=='register') {
-    $category = 1; //1 for register
-}else{
-    $category = 2; //2 for login
-}
-//error_reporting(error_reporting() & ~E_NOTICE);
-?>
+error_reporting( error_reporting() & ~E_NOTICE );
+$category=$_GET["category"]; ?>
+
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+
+
+
+
+
 
 <?php
 //this section of php code handles existing user to login to the page. It includes php code 
@@ -18,6 +17,14 @@ if(isset($_GET['category'])&&$_GET['category']=='register') {
 ini_set("allow_url_fopen", 1);       //for controling initial display use
 $through=$_GET["through"];          //for controling form submission use
 ?>
+
+<script>
+    function passwordwrong() {
+    alert("login failed, please type in the correct username and password!");
+}
+</script>
+
+
 
 <?php       //login handling set down here
     if($through=='login')
@@ -93,6 +100,10 @@ $through=$_GET["through"];          //for controling form submission use
         }
     }
 }
+
+
+
+
 else if($through=='signup')
 {
     $category='signup';
@@ -285,105 +296,123 @@ else if($through=='signup')
 }
 ?>
 
-<customHeader> 
-    <style>
-        .card-header{
-            padding: 0;
-        }
-        .form-signin {
-            max-width: 330px;
-            margin: 0 auto;
-        }
-        .form-signin .form-signin-heading,
-        .form-signin .checkbox {
-            margin-bottom: 10px;
-        }
-        .form-signin .checkbox {
-            font-weight: normal;
-        }
-        .form-signin .form-control {
-            position: relative;
-            height: auto;
-            -webkit-box-sizing: border-box;
-                    box-sizing: border-box;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .form-signin .form-control:focus {
-            z-index: 2;
-        }
-        .form-control{
-            /* remove rounded edges */
-            border-radius: 0;
-        }
-        .login-page{
-            /* fix conflict with newNavBar styling*/
-            max-width: 100%;
-        }
-        .login-card{
-            /* fix conflict with newNavBar styling*/
-            display:inline-block;
-            margin-top: 0.75rem;
-        }
-        .reg-form{
-            min-width:500px;
-        }
-    </style>
-    <script>
-        function passwordwrong() {
-            alert("login failed, please type in the correct username and password!");
-        }
-    </script>
-</customHeader>
+<style>
+    #pagewrapper{
+        width: 100%;
+        min-height: 75vh;
+    }
+</style>
 
-<div class="container" style="padding: 0.75rem;display:flex;">
-    <div class="card login-card m-x-auto">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item"><a class="nav-link <?php if($category==2){echo 'active';}?>" id='signInTab' data-toggle="tab" href="#sectionA">Sign In</a></li>
-                <li class="nav-item"><a class="nav-link <?php if($category==1){echo 'active';}?>" id='regTab' data-toggle="tab" href="#sectionB">Join us!</a></li>
-            </ul>
-        </div>
-        <div class="card-block">
-            <div class="tab-content">
-                <div id="sectionA" class="tab-pane <?php if($category==2){echo 'active';}?> text-xs-center">
-                    <form class="form-signin" action="new_login.php?through=login" method="post">
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input name="username" type="text" id="inputEmail" class="form-control login-page" placeholder="Username" required autofocus>
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input name="password" type="password" id="inputPassword" class="form-control login-page" placeholder="Password" required>
-                        <a href="forgot_password">Forgot Password?</a>
-                        <div class="checkbox" style="display:none">
-                            <label>
-                                <input type="checkbox" value="remember-me"> Remember me
-                            </label>
-                        </div>
-                        <input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                    </form>
+
+
+
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    
+<link rel="stylesheet" href="css/reg/css/normalize.css">
+
+<link rel="stylesheet" href="css/reg/css/style.css">
+
+
+<body>
+    
+    <div id="pagewrapper">
+    <div class="form3">
+
+      <ul class="tab-group">
+        <li <?php if($category=='signup'){print "class=\"tab active\"";}else{print "class=\"tab\"";}?>>
+            <a id='sup' href="#signup">Sign Up</a></li>
+        <li <?php if($category=='login'){print "class=\"tab active\"";}else{print "class=\"tab\"";}?>>
+            <a id='log' href="#login">Log In</a></li>
+      </ul>
+      
+      <div class="tab-content">
+        <div id="signup">   
+            <?php 
+                if (!$form_valid && Input::exists()){
+                    echo display_errors($validation->errors());
+                }   //exact copy from join.php
+            ?>       
+            <form action="new_login.php?through=signup" method="POST" autocomplete="off">
+                <div class="top-row">
+                    <div class="field-wrap">
+                        <input type="text" placeholder="First Name" name="fname" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required autocomplete="off" />
+                    </div>
+        
+                    <div class="field-wrap">
+                        <input type="text" name="lname" placeholder="Last Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $lname;} ?>" required autocomplete="off"/>
+                    </div>
                 </div>
-                <div id="sectionB" class="tab-pane <?php if($category==1){echo 'active';}?>">
-                    <form class="form-signin" action="new_login.php?through=signup" method="post" autocomplete="off" style="display:flex;flex-direction:column;max-width:100%;">
-                        <label for="firstName">First Name</label>
-                        <input type="text" placeholder="First Name" name="fname" class="form-control reg-form" required>
-                        <label for="lastName">Last Name</label>
-                        <input type="text" placeholder="Last Name" name="lname" class="form-control reg-form" required>
-                        <label for="inputEmail">Username</label>
-                        <input name="username" type="text" id="inputEmail" class="form-control reg-form" placeholder="Username" required>
-                        <label for="inputEmail">Email Address</label>
-                        <input name="email" type="email" id="inputEmail" class="form-control reg-form" placeholder="Email Address" required>
-                        <label for="inputPassword">Password</label>
-                        <input name="password" type="password" id="inputPassword" class="form-control reg-form" placeholder="Password" required>
-                        <label for="inputPassword">Confirm Your Password</label>
-                        <input name="confirm" type="password" id="inputPassword" class="form-control reg-form" placeholder="Password" required>
-                        <input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
-                        <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:10px;">Register</button>
-                    </form>
-                </div><!--sectionB-->
-            </div><!--tab-content-->
-        </div><!--card-block-->
-    </div><!--card-->
-</div>
+          
+                <div class="field-wrap">
+                    <input type="text"required placeholder="username with minimum 5 letters no space" name="username" value="<?php if (!$form_valid && !empty($_POST)){ echo $username;} ?>" autocomplete="off"/>
+                </div>
+              
+                <div class="field-wrap">
+                    <input type="text" name="email" placeholder="Email Address" value="<?php if (!$form_valid && !empty($_POST)){ echo $email;} ?>" required autocomplete="off"/>
+                </div>
+          
+                <div class="field-wrap">
+                    <input type="password" name="password" placeholder="Password at least 6 characters" required autocomplete="off"/>
+                </div>
+              
+                <div class="field-wrap">
+                    <input type="password" name="confirm" placeholder="Confirm Password" required autocomplete="off"/>
+                </div>
+                     
+                <input type="hidden" value="<?=Token::generate();?>" name="csrf">
+                <button type="submit" class="button button-block"/>Get Started</button>
+            </form>
+        </div>
+      
+        <div id="login">           
+            <h1>Welcome Back to Photolib</h1>
+       
+            <form action="new_login.php?through=login" method="post" autocomplete="off">         
+                <div class="field-wrap">
+                    <input type="text" name="username" placeholder="Username/Email" value="" required autocomplete="off"/>
+                </div>
+          
+                <div class="field-wrap">
+                    <input type="password" name="password" placeholder="Password" value="" required autocomplete="off"/>
+                </div>
+          
+                <p class="forgot"><a href="forgot_password.php">Forgot Password?</a></p>
+          
+                <input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
+                <button class="button button-block" type="submit"/>Log In</button>         
+            </form>        
+        </div>       
+      </div><!-- tab-content -->
+    </div> 
+       
+    </div>
+    
+    
+    
+    
+      
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript" src="css/reg/js/index.js"></script>
 
-<?php mysqli_close($conn); ?>
-<?php require_once '../footer.php'; ?>
+<script>
+    var mode = '<?php print $category; ?>';
+    $( document ).ready(function(){
+    if(mode==='login'){
+        $('#log').click();  //jump to log css
+    }else{
+        $('#sup').click();  //
+    }
+});
+</script>
+
+<script>
+     document.getElementById('login').reset();
+</script>
+
+<?php
+    include "../footer.php";
+?>
+
+</body>
+
+</html>

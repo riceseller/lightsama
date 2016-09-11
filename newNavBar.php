@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-    <meta charset="UTF-8">
 <?php
     require_once 'users/init.php';
     require_once 'supplyment/dbAccess.php';
