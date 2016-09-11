@@ -105,6 +105,10 @@ function changeContent(classActive){
       
 </div>
 
+
+
+
+
 <div class="preLoadClass">
 <section class="Collage effect-parent" id="landscapeSection">
     <?php
@@ -120,7 +124,7 @@ function changeContent(classActive){
                     echo "</a>";                   
                     echo "<a class=\"overlay\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";
                         echo "<h2>$row[title]</h2>";
-                        echo "<div class=\"info\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";                       
+                        echo "<div class=\"info\" onclick=\"jumpLink()\">";                       
                         ?>
                         <div class="users" style="<?php
                                             if($row[Ubelong]=='flickr')
