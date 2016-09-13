@@ -105,9 +105,11 @@ function changeContent(classActive){
       
 </div>
 
-
-
-
+<script>
+    function jumpLink(userId){
+        window.location = "/indUser.php?id="+userId;
+    }
+</script>
 
 <div class="preLoadClass">
 <section class="Collage effect-parent" id="landscapeSection">
@@ -121,12 +123,16 @@ function changeContent(classActive){
                 echo "<div class=\"hovereffect\">";
                     echo "<a style=\"text-decoration:none;\" href=\"#\">";
                         echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
-                    echo "</a>";                   
+                    echo "</a>"; 
+                    
                     echo "<a class=\"overlay\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";
-                        echo "<h2>$row[title]</h2>";
-                        echo "<div class=\"info\" onclick=\"jumpLink()\">";                       
+                    echo "</a>";
+                    
+                    echo "<div class=\"overlay_shadow\">";
+                    echo "<h2>$row[title]</h2>";
+                        echo "<div class=\"info\">";                       
                         ?>
-                        <div class="users" style="<?php
+                        <div class="users" onclick="jumpLink(<?php echo $row[id]?>)" style="<?php
                                             if($row[Ubelong]=='flickr')
                                             {
                                                 $server = $row[extraOne];
@@ -145,7 +151,8 @@ function changeContent(classActive){
                                         ?>"></div>
                         <?php
                         echo "</div>";
-                    echo "</a>";                    
+                    echo "</div>";    
+                    
                 echo "</div>";
             echo "</div>";
         }

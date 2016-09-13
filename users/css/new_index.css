@@ -101,7 +101,21 @@
         opacity:0;
         background-color:rgba(0,0,0,0.1);
         -webkit-transition:all .4s ease-in-out;
-        transition:all .4s ease-in-out
+        transition:all .4s ease-in-out;
+        z-index: 99;
+    }
+    .Image_Wrapper .hovereffect .overlay_shadow{
+        width:100%;
+        height:100%;
+        position:absolute;
+        overflow:hidden;
+        top:0;
+        left:0;
+        opacity:0;
+        background-color:rgba(0,0,0,0.1);
+        -webkit-transition:all .4s ease-in-out;
+        transition:all .4s ease-in-out;
+        
     }
     .Image_Wrapper .hovereffecrt img {
         display:block;
@@ -120,8 +134,8 @@
         transform:translatey(-100px);
         -webkit-transition:all .2s ease-in-out;
         transition:all .2s ease-in-out;
-        margin-top: 30px;
-        padding:10px;
+        margin-top: 5px;
+        padding:5px;
     }
      .Image_Wrapper .hovereffect .info {
         text-decoration:none;
@@ -152,15 +166,23 @@
         position: relative;
         margin-top: 0;
         border-style: none !important;
+        z-index: 500;
     }
 
     .Image_Wrapper .hovereffect .info:hover {
         box-shadow:0 0 100px #fff;
+        
     }
 
     .Image_Wrapper .hovereffect:hover .overlay {
         opacity:1;
         filter:alpha(opacity=100);
+        
+    }
+    .Image_Wrapper .hovereffect:hover .overlay_shadow{
+        opacity:1;
+        filter:alpha(opacity=100);
+        
     }
     .Image_Wrapper .hovereffect:hover h2,.hovereffect:hover .info {
         opacity:1;
@@ -168,8 +190,10 @@
         -ms-transform:translatey(0);
         -webkit-transform:translatey(0);
         transform:translatey(0);
+        
     }
     .Image_Wrapper .hovereffect:hover .info {
         -webkit-transition-delay:.2s;
         transition-delay:.2s;
+        z-index: 500;
     }
