@@ -81,7 +81,7 @@
 
 <body>
       
-<nav class="navbar navbar-dark bg-inverse" style="z-index: 99;">
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse" style="z-index: 999;">
     
   <a class="navbar-brand" href="../index.php">PicShell</a>
   
