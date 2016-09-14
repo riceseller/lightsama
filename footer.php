@@ -62,11 +62,11 @@
 <div class="wrapper">
         <div class="fifth">
             <div class="logo">
-                <h3>HAILOINN</h3>
+                <h3>PicShell</h3>
             </div>
             <div class="despwrap">
                 <h4>About</h4>
-                <p>Hailoinn is a website for picture indexing only</p>
+                <p>PicShell is a website for picture indexing only</p>
             </div> 
             <div class="formwrap">
                 <a href="formloadterm.php?iden=term" class="formload">term/privacy</a><br><br>
