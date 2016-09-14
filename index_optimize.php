@@ -110,6 +110,10 @@ function changeContent(classActive){
         alert(userId);
         window.location = "/indUser.php?id="+userId;
     }
+    function jumpPic(picId){
+        alert(picId);
+        window.locaiton = "/indDisplay2.php?pid="+picId;
+    }
 </script>
 
 <div class="preLoadClass">
@@ -126,7 +130,7 @@ function changeContent(classActive){
                         echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
                     echo "</a>"; 
                     
-                    echo "<a class=\"overlay\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";
+                    echo "<div class=\"overlay\" onclick=\"jumpPic('$row[id]')\">";
                     
                     
                     
@@ -152,7 +156,7 @@ function changeContent(classActive){
                                         ?>"></div>
                         <?php
                         echo "</div>";
-                    echo "</a>";  
+                    echo "</div>";  
                     
                 echo "</div>";
             echo "</div>";
