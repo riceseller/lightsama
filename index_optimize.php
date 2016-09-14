@@ -130,7 +130,7 @@ function changeContent(classActive){
                         echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
                     echo "</a>"; 
                     
-                    echo "<div class=\"overlay\" onclick=\"jumpPic('$row[id]')\">";
+                    echo "<div class=\"overlay\" onclick=\"jumpPic('$row[uid]')\">";
                     
                     
                     
