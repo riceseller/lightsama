@@ -1,5 +1,5 @@
 <?php
-require_once "topNav2.php";     //header bar load
+include "newNavBar.php";     //header bar load
 $pid = $_GET["pid"];            //get the pid of that picture upon load
 require_once("supplyment/dbAccess.php");    //database connection page load
 date_default_timezone_set('America/New_York');  //set default time zone as eastern time new york
