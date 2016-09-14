@@ -70,5 +70,9 @@ $purpose=$_GET["iden"];
         </form>
 </div>
 
+<?php else:?>
+<div id="albumModModal">
+    <p>let me see if there is something printed on the form</p>
+</div>
 
 <?php endif; ?>
