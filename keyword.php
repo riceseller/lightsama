@@ -1,5 +1,6 @@
 <?php
-include("topNav2.php");
+error_reporting(0);
+include("newNavBar.php");
 include "supplyment/dbAccess.php";
 if(isset($_GET['page'])) {
     // id index exists
@@ -23,132 +24,13 @@ function pageCount($inputStr){
 }
 ?>
 
-<header>
     <style>
-    body{
-        background: #f3f5f6;
-    }
-    .Collage{
-    /* define how much padding you want in between your images */
-    padding:5px;
-    background: #f3f5f6;
-    }
-
-    .Collage img{
-    /* ensures padding at the bottom of the image is correct */
-    vertical-align:bottom;
-    /* hide the images until the plugin has run. the plugin will reveal the images*/
-    opacity: 1;
-    }
-    .Image_Wrapper{
-    /* to get the fade in effect, set opacity to 0 on the first element within the gallery area */
-    opacity:0;
-    -moz-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
-    box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    }
-    div.pagination-cont {
-        float: left;
-        width: 100%;
-        /*overflow: hidden;*/
-        position: relative;
-        margin: 15px 0;
-        border-top: 1px solid #d1d1d3;
-        padding-bottom: 2px;
-        background-color: #e4e4e6;
-    }
-    div.pagination-cont ul.pagination {
-        clear: left;
-        float: left;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        position: relative;
-        left: 50%;
-        text-align: center;
-    }
-    ul.pagination li {
-        display: block;
-        float: left;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        right: 50%;
-        font-size: 100%;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-    ul.pagination li.disabled span,
-    ul.pagination li.separator {
-        color: #bbb;
-        text-shadow: 1px 1px 0 #f2f2f2;
-        padding: 10px 20px;
-        display: block;
-    }
-    ul.pagination li.separator {
-        border-left: 1px solid #d1d1d3
-    }
-    ul.pagination li a {
-        display: block;
-        padding: 10px 20px;
-        color: #004276;
-        text-decoration: none;
-        border-left: 1px solid #d1d1d3;
-        margin-bottom: 1px
-    }
-    ul.pagination li.current span {
-        display: block;
-        padding: 10px 20px;
-        border-left: 1px solid #d1d1d3;
-        background-color: #fff;
-        color: #999;
-        border-bottom: 1px solid #d1d1d3;
-        top:-1px;
-
-    }
     .menu{
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:20px;
-        width:100%;
-        border-bottom: 1px solid #dcdcdc;
-    }
-    .menu ul{
-        list-style:none;
-        background:#ffffff;
-        margin:0;
-        padding:0;
-    }
-    .menu li{
-        display:inline-block;
-        float:left;
-        margin-left:1%;
-    }
-    .menu li:first-child{
-        margin-left:20%;
-    }
-    .menu a{
-        display:block;
-        padding:10px;
-        text-decoration:none;
-        color:#000000;
-        border-top:2px solid transparent;
-    }
-    .menu a:hover,
-    .menu li.active a{
-        background:#ffffff;
-        color:#000000;
-        border-bottom: 2px solid #0091dc;
-    }
-    .clearFloat{
-        clear:both;
+        order: 2;
     }
     </style>
-</header>
 
+<link rel="stylesheet" type="text/css" href="users/css/new_index.css" />
 <script src="/node_modules/jquery.min.js"></script>
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
@@ -171,15 +53,21 @@ function pageCount($inputStr){
     };
 </script>
 
-<div class="menu">
-<ul>
-<li><a href="explore.php">Explore All</a></li>
-<li><a href="tags.php">Tags</a></li>
-<li  class="active"><a>Keyword</a></li>
-<div class="clearFloat"></div>
-</ul>
+<div class="container" style="margin-top: 50px; text-align: center;">
+    <ul class="nav nav-tabs" style="display: inline-block">
+        <li class="nav-item">
+            <a class="nav-link" href="explore.php">Explore</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tags.php">Tags</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="keyword.php">Keyword</a>
+        </li>
+    </ul>
 </div>
 
+<div class="container-Collage" style="padding:0;">
 <section class="Collage effect-parent">
     <?php
         $off = $page*20-20;
@@ -211,42 +99,46 @@ function pageCount($inputStr){
     }
     ?>
 </section>
-<div class="pagination-cont">
+</div>
+
+<div class="container-page">
     <ul class="pagination">
-        <?php 
+      <?php 
         if($page==1){
             //already at first page disable this buttom
-            echo "<li class=\"disabled\"><span>&lt; First</span></li>";
+            echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"#\">&lt; First</a></li>";
         }else{
             //not first page could have 1st page
-            echo "<li><a href=\"".$Pageurl."page=1\"><span>&lt; First</span></a></li>";
+            echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=1\"><span>&lt; First</span></a></li>";
             if($page!=2 && $page<=$totalPageNum){
                 //this is for 3rd page and above
-                echo "<li><a href=\"".$Pageurl."page=".($page-2)."\">".($page-2)."</a></li>";
-                echo "<li><a href=\"".$Pageurl."page=".($page-1)."\">".($page-1)."</a></li>";
+                echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=".($page-2)."\">".($page-2)."</a></li>";
+                echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=".($page-1)."\">".($page-1)."</a></li>";
             }
         }
         ?>
-        <li class="current"><span><?php echo $page ?></span></li>
-        <li class="separator">&hellip;</li>
+        <li class="page-item active"><a class="page-link"><?=$page?></a></li>
+        <li class="page-item"><a class="page-link">...</a></li>
         <?php
         if(($page+6)<=$totalPageNum){
-        echo "<li><a href=\"".$Pageurl."page=".($page+6)."\">".($page+6)."</a></li>";
+        echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=".($page+6)."\">".($page+6)."</a></li>";
         if(($page+7)<=$totalPageNum){
-        echo "<li><a href=\"".$Pageurl."page=".($page+7)."\">".($page+7)."</a></li>";
+        echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=".($page+7)."\">".($page+7)."</a></li>";
         if(($page+8)<=$totalPageNum){
-        echo "<li><a href=\"".$Pageurl."page=".($page+8)."\">".($page+8)."</a></li>";
+        echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=".($page+8)."\">".($page+8)."</a></li>";
         }
         }
         }
         if(($page+1)<=$totalPageNum){
-            echo "<li><a href=\"".$Pageurl."page=".($page+1)."\">Next &gt;</a></li>";}
-            else{echo "<li class=\"disabled\"><span>Next &gt;</span></li>";}
+            echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=".($page+1)."\">Next &gt;</a></li>";}
+            else{echo "<li class=\"disabled page-item\"><span>Next &gt;</span></li>";}
         ?>
     </ul>
 </div>
+
 <?php
-    mysqli_close($conn);
+    include "footer.php";
+    
 ?>
 
 </body>

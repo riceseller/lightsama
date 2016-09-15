@@ -53,7 +53,7 @@ function pageCount($inputStr){
 </style>
 </customheader>
 
-<div class="container" style="padding-top:8px;padding-bottom:8px;">
+<div class="container" style="padding-top:8px;padding-bottom:8px; margin-top: 50px;">
     <ul class="nav nav-tabs">
       <li class="nav-item">
           <a class="nav-link active">Explore All</a>

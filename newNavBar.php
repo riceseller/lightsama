@@ -16,9 +16,11 @@
     .navbar{
         height: 50px;
         border-radius: 0 !important;
+        order: 1;
     }
     body{
         background: #f3f5f6;
+       
     }
     .nav{
         padding-left: 20px;
