@@ -23,8 +23,8 @@ require_once $abs_us_root.$us_url_root.'users/helpers/helpers.php';
 
 // Set config
 $GLOBALS['config'] = array(
-	'mysql'      => array('host'         => '188.166.182.177',
-'username'     => 'dboutuser',
+	'mysql'      => array('host'         => 'localhost',
+'username'     => 'dbinuser',
 'password'     => 'hahahaha',
 'db'           => 'photolib',
 ),
