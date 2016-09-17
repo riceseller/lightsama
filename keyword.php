@@ -53,6 +53,9 @@ function pageCount($inputStr){
     };
 </script>
 
+
+
+
 <div class="container" style="margin-top: 50px; text-align: center;">
     <ul class="nav nav-tabs" style="display: inline-block">
         <li class="nav-item">
@@ -136,10 +139,15 @@ function pageCount($inputStr){
     </ul>
 </div>
 
+
+
+
 <?php
     include "footer.php";
     
 ?>
 
 </body>
+
+
 </html>
