@@ -75,8 +75,8 @@ function pageCount($inputStr){
     <?php
         $off = $page*20-20;
         $query =  "select distinct u.id, u.url, u.width, u.height from Url u, Common c "
-                . "WHERE (c.descript like '%".$keyword."%' "
-                . "or c.title like '%".$keyword."%') "
+                . "WHERE (MATCH(c.descript) AGAINST ('".$keyword."') "
+                . "or MATCH(c.title) AGAINST('".$keyword."')) "
                 . "AND c.p_id=u.id "
                 . "and c.nsfw=0 and u.width is not null and u.height is not null "
                 . "limit 20 offset $off";

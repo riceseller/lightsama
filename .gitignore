@@ -13,3 +13,5 @@ github.php
 github.php
 
 .DS_Store
+
+users/init.php
