@@ -139,7 +139,7 @@ function pageCount($inputStr){
         }
         if(($page+1)<=$totalPageNum){
             echo "<li class=\"page-item\"><a class=\"page-link\" href=\"".$Pageurl."page=".($page+1)."\">Next &gt;</a></li>";}
-            else{echo "<li class=\"disabled page-item\"><span>Next &gt;</span></li>";}
+            else{echo "<li class=\"page-item disabled\"><span class=\"page-link\">Next &gt;</span></li>";}
         ?>
     </ul>
 </div>
