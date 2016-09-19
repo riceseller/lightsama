@@ -31,9 +31,10 @@ function pageCount($inputStr){
     </style>
 
 <link rel="stylesheet" type="text/css" href="users/css/new_index.css" />
-<script src="/node_modules/jquery.min.js"></script>
+<script>//if writing the previous code twice it will prevent modal from loading</script>
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
+
 
 <script>
 // All images need to be loaded for this plugin to work so
@@ -51,6 +52,18 @@ function pageCount($inputStr){
             }
         );
     };
+</script>
+
+<script>
+        // load remote page via jquery
+        $(document).on('click','.picLoad',function(event) {
+            event.preventDefault();            
+            
+            var modal = $('#modal').modal();
+            modal.find('.modal-body').load($(this).attr('href'), function () {
+                    modal.show();
+                });
+        });
 </script>
 
 
@@ -97,7 +110,7 @@ function pageCount($inputStr){
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row[id]."\">";
+            echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay3.php?pid=".$row[id]."\">";
             echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
             echo "</a>";
             echo "</div>";
@@ -151,6 +164,23 @@ function pageCount($inputStr){
     include "footer.php";
     
 ?>
+
+<div id="modal" class="modal fade" 
+     tabindex="-1" role="dialog" aria-labelledby="plan-info" aria-hidden="true">
+    <div class="modal-dialog modal-full-screen">
+        <div class="modal-content">
+            <div class="modal-header">               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="ttt">Default</h4>
+            </div>
+            <div class="modal-body">
+                <center class="loader m-x-auto"> </center>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 
