@@ -66,17 +66,17 @@ if($user->isLoggedIn()){
     print $query2;
     if ($conn->query($query2) === True){
         //insert success
-        //print 'insert success, ready to exit';
-        //echo "<script>window.location = '../users/account.php'</script>";
+        print 'insert success, ready to exit';
+        echo "<script>window.location = '../users/account.php'</script>";
     }else{
-        //print $conn->error;
-        //echo '<script type="text/javascript">alert("possible duplicate linking or this account is belong to others");</script>';
-        //echo "<script>window.location = '../users/account.php'</script>";
+        print $conn->error;
+        echo '<script type="text/javascript">alert("possible duplicate linking or this account is belong to others");</script>';
+        echo "<script>window.location = '../users/account.php'</script>";
         //echo '<script type="text/javascript">window.close();</script>';
     }
 }
 else{
-    //echo '<script type="text/javascript">alert("please login first");</script>';
-    //echo "<script>window.location = '../index.php'</script>";
+    echo '<script type="text/javascript">alert("please login first");</script>';
+    echo "<script>window.location = '../index.php'</script>";
 }
 ?>

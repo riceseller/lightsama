@@ -27,7 +27,7 @@
                 $result2=$conn->query($query2);
                 $row2 = mysqli_fetch_array($result2);
                 $f->setToken($row2[authToken]);
-                $f->auth("write");
+                $f->auth("write", "http://db.luokerenz.com/users/flickrUpload.php");
                 $status = $f->async_upload($newpath, $_POST["name"]);
                 if(!$status) {
                     $error = 2;
