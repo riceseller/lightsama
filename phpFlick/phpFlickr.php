@@ -518,13 +518,16 @@ if ( !class_exists('phpFlickr') ) {
 				$rsp = explode("\n", $response);
 				foreach ($rsp as $line) {
 					if (preg_match('/<err code="([0-9]+)" msg="(.*)"/', $line, $match)) {
-						if ($this->die_on_error)
-							die("The Flickr API returned the following error: #{$match[1]} - {$match[2]}");
+						if ($this->die_on_error){
+                                                        return "The Flickr API returned the following error: #{$match[1]} - {$match[2]}";
+                                                        die("The Flickr API returned the following error: #{$match[1]} - {$match[2]}");
+                                                }		
 						else {
 							$this->error_code = $match[1];
 							$this->error_msg = $match[2];
 							$this->parsed_response = false;
-							return false;
+                                                        return $match[2];
+							//return false;
 						}
 					} elseif (preg_match("/<ticketid>(.*)</", $line, $match)) {
 						$this->error_code = false;
@@ -533,7 +536,8 @@ if ( !class_exists('phpFlickr') ) {
 					}
 				}
 			} else {
-				die("Sorry, your server must support CURL in order to upload files");
+                                return 'server dont support curl';
+				die("Sorry, your server must support CURL in order to upload files");   
 			}
 		}
 
