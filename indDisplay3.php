@@ -11,26 +11,18 @@ $pid=$_GET["pid"];
 
 
 <script>
-    function metaSubmitClick(purpose, action){
-    //$(document).on('click','#submitMeta',function(event){
-        //event.preventDefault();
-        $('button[id^="formButton"]').prop('disabled', true); //disable all button
-        var url="<?=$us_url_root?>emailresponse.php?purpose="+purpose;
-        $.ajax({
-               type: "POST",
-               url: url,
-               data: $("#"+action).serialize(), // serializes the form's elements.
-               success: function(){
-                   //console.log('hide fired via ajax success');
-                   $('.modal').modal('hide');
-               }
-             });
-
-        
-    }//});
+    
+ 
 </script>
 
-<div id="albumModModal">
-    <p>let me see if there is something printed on the form</p>
-</div>
+    <div class="modal-header">               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="ttt">Default</h4>
+    </div>
+    <div class="container-fluid">
+        <img class="img-fluid" src="https://s1.tuchong.com/welcome-image/small/25265288.jpg"/>
+    </div>
+
 

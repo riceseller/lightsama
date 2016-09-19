@@ -59,8 +59,8 @@ function pageCount($inputStr){
         $(document).on('click','.picLoad',function(event) {
             event.preventDefault();            
             
-            var modal = $('#modal').modal();
-            modal.find('.modal-body').load($(this).attr('href'), function () {
+            var modal = $('#gridSystemModal').modal();
+            modal.find('.modal-content').load($(this).attr('href'), function () {
                     modal.show();
                 });
         });
@@ -165,22 +165,21 @@ function pageCount($inputStr){
     
 ?>
 
-<div id="modal" class="modal fade" 
-     tabindex="-1" role="dialog" aria-labelledby="plan-info" aria-hidden="true">
-    <div class="modal-dialog modal-full-screen">
-        <div class="modal-content">
-            <div class="modal-header">               
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="ttt">Default</h4>
-            </div>
-            <div class="modal-body">
-                <center class="loader m-x-auto"> </center>
-            </div>
-        </div>
+
+
+
+
+<div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      
     </div>
+  </div>
 </div>
+
+
+
+
 
 </body>
 
