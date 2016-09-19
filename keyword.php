@@ -71,12 +71,17 @@ function pageCount($inputStr){
 <section class="Collage effect-parent">
     <?php
         $off = $page*20-20;
-        $query =  "select distinct u.id, u.url, u.width, u.height from Url u, Common c "
+        /*$query =  "select distinct u.id, u.url, u.width, u.height from Url u, Common c "
                 . "WHERE (MATCH(c.descript) AGAINST ('".$keyword."') "
                 . "or MATCH(c.title) AGAINST('".$keyword."')) "
                 . "AND c.p_id=u.id "
                 . "and c.nsfw=0 and u.width is not null and u.height is not null "
-                . "limit 20 offset $off";
+                . "limit 20 offset $off";*/
+        $query = "SELECT DISTINCT u.id, u.url, u.width, u.height "
+                . "FROM Url u JOIN Common c ON c.p_id=u.id "
+                . "WHERE (MATCH(c.descript) AGAINST ('$keyword')) or (MATCH(c.title) AGAINST('$keyword')) "
+                . "AND c.nsfw=0 AND u.width is not null AND u.height is not null "
+                . "LIMIT 20 OFFSET $off";
         $Pageurl = "/keyword.php?search=$keyword&";
         $totalPage = pageCount($query);
         //echo $totalPage;
