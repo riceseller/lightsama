@@ -61,7 +61,8 @@ function pageCount($inputStr){
             
             var modal = $('#gridSystemModal').modal();
             modal.find('.modal-content').load($(this).attr('href'), function () {
-                    modal.show();
+                    $('.modal-content').css('height',$( window ).height());
+                    modal.show();                   
                 });
         });
 </script>
@@ -165,7 +166,12 @@ function pageCount($inputStr){
     
 ?>
 
-
+<style>
+    .modal-dialog{
+        min-width: 100%;
+        min-height: 100%;
+    }
+</style>
 
 
 
@@ -176,9 +182,6 @@ function pageCount($inputStr){
     </div>
   </div>
 </div>
-
-
-
 
 
 </body>
