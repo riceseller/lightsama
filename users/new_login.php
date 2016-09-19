@@ -2,7 +2,7 @@
 require_once "../users/init.php";
 require_once "../newNavBar.php";
 require_once "../supplyment/dbAccess.php";
-if(isset($_GET['category'])&&$_GET['category']=='register') {
+if(isset($_GET['category'])&&$_GET['category']=='login') {
     $category = 1; //1 for register
 }else{
     $category = 2; //2 for login
@@ -287,6 +287,9 @@ else if($through=='signup')
 
 <customHeader> 
     <style>
+        .footerPusher{
+            margin-top: 50px;
+        }
         .card-header{
             padding: 0;
         }
@@ -341,13 +344,13 @@ else if($through=='signup')
     <div class="card login-card m-x-auto">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item"><a class="nav-link <?php if($category==2){echo 'active';}?>" id='signInTab' data-toggle="tab" href="#sectionA">Sign In</a></li>
-                <li class="nav-item"><a class="nav-link <?php if($category==1){echo 'active';}?>" id='regTab' data-toggle="tab" href="#sectionB">Join us!</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($category==1){echo 'active';}?>" id='signInTab' data-toggle="tab" href="#sectionA">Sign In</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($category==2){echo 'active';}?>" id='regTab' data-toggle="tab" href="#sectionB">Join us!</a></li>
             </ul>
         </div>
         <div class="card-block">
             <div class="tab-content">
-                <div id="sectionA" class="tab-pane <?php if($category==2){echo 'active';}?> text-xs-center">
+                <div id="sectionA" class="tab-pane <?php if($category==1){echo 'active';}?> text-xs-center">
                     <form class="form-signin" action="new_login.php?through=login" method="post">
                         <label for="inputEmail" class="sr-only">Email address</label>
                         <input name="username" type="text" id="inputEmail" class="form-control login-page" placeholder="Username" required autofocus>
@@ -363,7 +366,7 @@ else if($through=='signup')
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                     </form>
                 </div>
-                <div id="sectionB" class="tab-pane <?php if($category==1){echo 'active';}?>">
+                <div id="sectionB" class="tab-pane <?php if($category==2){echo 'active';}?>">
                     <form class="form-signin" action="new_login.php?through=signup" method="post" autocomplete="off" style="display:flex;flex-direction:column;max-width:100%;">
                         <label for="firstName">First Name</label>
                         <input type="text" placeholder="First Name" name="fname" class="form-control reg-form" required>
