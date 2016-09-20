@@ -119,11 +119,20 @@
         </li>
         <?php
             }
+            if($url=='/mapExplore.php'){
+        ?>
+        <li class="nav-item active">
+            <a class="nav-link" href="../mapExplore.php">MapView</a>
+        </li>
+        <?php
+            }else{
         ?>
         <li class="nav-item">
             <a class="nav-link" href="../mapExplore.php">MapView</a>
         </li>
-        
+        <?php
+            }
+        ?>
         <?php
                 if($user->isLoggedIn()){
                     echo "<li class=\"nav-item\">";
