@@ -78,7 +78,7 @@
     .footerPusher{
         height: calc(100vh - 50px);
     }
-    /*for sign in and sign up*/
+    /*for sign in and sign up
     .logpart{
         float: right;
         padding: 6px;
@@ -88,6 +88,7 @@
         float: right;
         padding: 6px;
     }
+    */
 </style>
 </header>
 
@@ -110,12 +111,7 @@
             <a class="nav-link" href="../mapExplore.php">MapView</a>
         </li>
     </ul>
-    <form class="form-inline" action="../keyword.php" method="get">
-        <?php if(empty($_GET['search'])){$sHolder="Search";}else{$sHolder=$_GET['search'];}?>
-        <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <ul class="nav navbar-nav login-ul">
+    <ul class="nav navbar-nav">
         <?php
                 if($user->isLoggedIn()){
                     echo "<li class=\"nav-item\">";
@@ -138,6 +134,11 @@
                 }    
             ?>  
     </ul>
+    <form class="form-inline" action="../keyword.php" method="get">
+        <?php if(empty($_GET['search'])){$sHolder="Search";}else{$sHolder=$_GET['search'];}?>
+        <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
     </div>
   </div>
   
