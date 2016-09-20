@@ -111,7 +111,7 @@
             <a class="nav-link" href="../mapExplore.php">MapView</a>
         </li>
     </ul>
-    <ul class="nav navbar-nav">
+        
         <?php
                 if($user->isLoggedIn()){
                     echo "<li class=\"nav-item\">";
@@ -133,7 +133,7 @@
             <?php 
                 }    
             ?>  
-    </ul>
+                    
     <form class="form-inline" action="../keyword.php" method="get">
         <?php if(empty($_GET['search'])){$sHolder="Search";}else{$sHolder=$_GET['search'];}?>
         <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
