@@ -34,7 +34,7 @@
         display: inline;
     }
     .form-inline{
-        //display:flex;
+        display:flex;
         padding-left: 20px;
     }
     .navbar{
@@ -139,7 +139,7 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
         
-    <button type="button" class="btn btn-link">Sign in</button>
+    <button type="button" class="btn btn-link form">Sign in</button>
     </div>
   </div>
   
