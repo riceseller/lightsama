@@ -139,7 +139,7 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
         
-    <button type="button" class="btn btn-link form">Sign in</button>
+    <button type="button" class="btn btn-link pull-right">Sign in</button>
     </div>
   </div>
   
