@@ -75,7 +75,7 @@ function changeContent(classActive){
 }    
 </script>
 
-<title>zhao</title>
+<title>PicShell</title>
 
   
 <div class="jumbotron">
