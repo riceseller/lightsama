@@ -104,9 +104,22 @@
   <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
     <div class="bg-inverse"> 
     <ul class="nav navbar-nav">
+        <?php
+            $url = $_SERVER['PHP_SELF'];
+            if($url=='/explore.php'){
+        ?>
+        <li class="nav-item active">
+            <a class="nav-link" href="../explore.php">Explore</a>
+        </li>
+        <?php
+            }else{
+        ?>
         <li class="nav-item">
             <a class="nav-link" href="../explore.php">Explore</a>
         </li>
+        <?php
+            }
+        ?>
         <li class="nav-item">
             <a class="nav-link" href="../mapExplore.php">MapView</a>
         </li>
