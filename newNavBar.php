@@ -110,7 +110,7 @@
         <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-    <ul>
+    <ul class="nav navbar-nav">
         <?php
                 if($user->isLoggedIn()){
                     echo "<li class=\"nav-item logpart\">";
