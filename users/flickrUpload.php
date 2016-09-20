@@ -4,6 +4,7 @@
     require_once '../phpFlick/phpFlickr.php';
     
     if($user->isLoggedIn()){
+        $useriid = $user->data()->id;
         unset($_SESSION['phpFlickr_auth_token']);
         $api_key                 = "9c7e15fd3e006075c3647c94ee891bd8";
         $api_secret              = "59cd2bc5e832fe79";
@@ -25,7 +26,7 @@
                     $newpath=$dir."/".$_FILES["file"]["name"];
                     rename($_FILES["file"]["tmp_name"],$newpath);
                     //Instantiate phpFlickr
-                    $query2 = "select authToken from LinkUser where usersID=20";
+                    $query2 = "select authToken from LinkUser where usersID=$useriid";
                     $result2=$conn->query($query2);
                     $row2 = mysqli_fetch_array($result2);
                     $f->setToken($row2[authToken]);
