@@ -61,7 +61,7 @@ function pageCount($inputStr){
             
             var modal = $('#gridSystemModal').modal();
             modal.find('.modal-content').load($(this).attr('href'), function () {
-                    $('.modal-content').css('height',$( window ).height());
+                    //$('.modal-content').css('height',$( window ).height());
                     modal.show();                   
                 });
         });
@@ -111,7 +111,7 @@ function pageCount($inputStr){
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay3.php?pid=".$row[id]."\">";
+            echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay3.php?url=".$row[url]."\">";
             echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
             echo "</a>";
             echo "</div>";
@@ -162,15 +162,48 @@ function pageCount($inputStr){
 
 
 <?php
-    include "footer.php";
-    
+    include "footer.php";    
 ?>
 
+<style>
+   .modal-dialog {
+  width: 100% !important;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: inherit !important;
+}
 
+.modal-content {
+  height: auto;
+  min-height: 100%;
+  border-radius: 0;
+}
+.container-fluid{
+    display: inline-block;
+    text-align: center;
+}
+.col-md-9{
+    border: 1px solid red;
+} 
+.col-md-3{
+    border: 1px solid red;
+}
+.col-md-4{
+    border: 1px solid black;
+}
+.row{
+    border: 1px solid yellow;
+ 
+}
+.col-md-6{
+    border: 1px solid red;
+}
+</style>
 
 
 <div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog">
     <div class="modal-content">
       
     </div>
