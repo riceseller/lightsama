@@ -78,6 +78,11 @@
     .footerPusher{
         height: calc(100vh - 50px);
     }
+    /*for sign in and sign up*/
+    .logpart{
+        float: right;
+        padding: 6px;
+    }
 </style>
 </header>
 
@@ -99,35 +104,35 @@
         <li class="nav-item">
             <a class="nav-link" href="../mapExplore.php">MapView</a>
         </li>
-        
-            <?php
-                if($user->isLoggedIn()){
-                    echo "<li class=\"nav-item\">";
-                    echo "<a class='nav-link' href='../users/account.php' style=\"color:#5cb85c;\">WELCOME ".$user->data()->fname."</a>";
-                    echo "</li>"
-           ?>
-                    <li class="nav-item">
-                    <a class="nav-link" href="<?=$us_url_root?>users/logout.php">LOGOUT</a>
-                    </li>
-            <?php
-                }else{
-            ?>
-                    <li class="nav-item">
-                    <a class="nav-link" style="color:#5cb85c;" href="<?=$us_url_root?>users/new_login.php?category=login">Login</a> 
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="<?=$us_url_root?>users/new_login.php?category=signup">Signup</a> 
-                    </li>
-            <?php 
-                }    
-            ?>  
-        </li>
     </ul>
     <form class="form-inline" action="../keyword.php" method="get">
         <?php if(empty($_GET['search'])){$sHolder="Search";}else{$sHolder=$_GET['search'];}?>
         <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
+    <ul>
+        <?php
+                if($user->isLoggedIn()){
+                    echo "<li class=\"nav-item logpart\">";
+                    echo "<a class='nav-link' href='../users/account.php' style=\"color:#5cb85c;\">WELCOME ".$user->data()->fname."</a>";
+                    echo "</li>"
+           ?>
+                    <li class="nav-item logpart">
+                    <a class="nav-link" href="<?=$us_url_root?>users/logout.php">LOGOUT</a>
+                    </li>
+            <?php
+                }else{
+            ?>
+                    <li class="nav-item logpart">
+                    <a class="nav-link" style="color:#5cb85c;" href="<?=$us_url_root?>users/new_login.php?category=login">Login</a> 
+                    </li>
+                    <li class="nav-item logpart">
+                    <a class="nav-link" href="<?=$us_url_root?>users/new_login.php?category=signup">Signup</a> 
+                    </li>
+            <?php 
+                }    
+            ?>  
+    </ul>
     </div>
   </div>
   
