@@ -111,7 +111,7 @@ function pageCount($inputStr){
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay3.php?url=".$row[url]."\">";
+            echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay3.php?pid=".$row[id]."&url=".$row[url]."\">";
             echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
             echo "</a>";
             echo "</div>";
@@ -178,26 +178,68 @@ function pageCount($inputStr){
   height: auto;
   min-height: 100%;
   border-radius: 0;
+  background-color: #f3f5f6;
 }
 .container-fluid{
     display: inline-block;
     text-align: center;
 }
+.picDisplay{
+    max-height: 85vh;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+.img-fluid{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    height: auto; 
+    max-height: 85vh;
+    object-fit: contain;
+}
+#userInfoPic{
+    margin-top: 15px;
+}
+#userInfo #userInfoPic img{
+        width: 70px;
+        height: 70px;
+        /* fill the container, preserving aspect ratio, and cropping to fit */
+        background-size: cover;
+        /* center the image vertically and horizontally */
+        background-position: center;
+        
+}
+#userNameD p{
+    word-wrap: break-word;
+}
+#takenTime p{
+    word-wrap: break-word;
+}
+.exifFirstLine img{
+    width: 98px;
+    height: 97px;
+    object-fit: contain;
+}
+.exifFirstLine #cameraType{
+    margin-top: 30px;
+}
 .col-md-9{
-    border: 1px solid red;
+    
 } 
 .col-md-3{
-    border: 1px solid red;
+   
 }
 .col-md-4{
-    border: 1px solid black;
+    
 }
 .row{
-    border: 1px solid yellow;
+    
  
 }
 .col-md-6{
-    border: 1px solid red;
+  
 }
 </style>
 
