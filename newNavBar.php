@@ -34,7 +34,7 @@
         display: inline;
     }
     .form-inline{
-        display:flex;
+        //display:flex;
         padding-left: 20px;
     }
     .navbar{
