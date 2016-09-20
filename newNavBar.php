@@ -83,8 +83,10 @@
         float: right;
         padding: 6px;
     }
-    .login-div{
+    .login-ul{
         display: inline-block;
+        float: right;
+        padding: 6px;
     }
 </style>
 </header>
@@ -113,7 +115,7 @@
         <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav login-ul">
         <?php
                 if($user->isLoggedIn()){
                     echo "<li class=\"nav-item\">";
