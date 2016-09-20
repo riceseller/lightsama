@@ -99,7 +99,7 @@
     &#9776;
   </button>
   <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-    <div class="bg-inverse login-div"> 
+    <div class="bg-inverse"> 
     <ul class="nav navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="../explore.php">Explore</a>
@@ -116,20 +116,20 @@
     <ul class="nav navbar-nav">
         <?php
                 if($user->isLoggedIn()){
-                    echo "<li class=\"nav-item logpart\">";
+                    echo "<li class=\"nav-item\">";
                     echo "<a class='nav-link' href='../users/account.php' style=\"color:#5cb85c;\">WELCOME ".$user->data()->fname."</a>";
                     echo "</li>"
            ?>
-                    <li class="nav-item logpart">
+                    <li class="nav-item">
                     <a class="nav-link" href="<?=$us_url_root?>users/logout.php">LOGOUT</a>
                     </li>
             <?php
                 }else{
             ?>
-                    <li class="nav-item logpart">
+                    <li class="nav-item">
                     <a class="nav-link" style="color:#5cb85c;" href="<?=$us_url_root?>users/new_login.php?category=login">Login</a> 
                     </li>
-                    <li class="nav-item logpart">
+                    <li class="nav-item">
                     <a class="nav-link" href="<?=$us_url_root?>users/new_login.php?category=signup">Signup</a> 
                     </li>
             <?php 
