@@ -138,6 +138,8 @@
         <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
+        
+    <button type="button" class="btn btn-link">Sign in</button>
     </div>
   </div>
   
