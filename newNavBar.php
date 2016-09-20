@@ -83,7 +83,7 @@
         float: right;
         padding: 6px;
     }
-    .login-ul{
+    .login-div{
         display: inline-block;
     }
 </style>
@@ -99,8 +99,8 @@
     &#9776;
   </button>
   <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-    <div class="bg-inverse"> 
-    <ul class="nav navbar-nav login-ul">
+    <div class="bg-inverse login-div"> 
+    <ul class="nav navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="../explore.php">Explore</a>
         </li>
@@ -113,7 +113,7 @@
         <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-    <ul class="nav navbar-nav login-ul">
+    <ul class="nav navbar-nav">
         <?php
                 if($user->isLoggedIn()){
                     echo "<li class=\"nav-item logpart\">";
