@@ -1,5 +1,5 @@
 <?php 
-    include 'topNav2.php';
+    include 'newNavBar.php';
 ?>
 
 <header>       
