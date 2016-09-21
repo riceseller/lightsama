@@ -1,7 +1,6 @@
 <?php
-include "newNavBar.php";     //header bar load
+require_once "newNavBar.php";     //header bar load
 $pid = $_GET["pid"];            //get the pid of that picture upon load
-require_once("supplyment/dbAccess.php");    //database connection page load
 date_default_timezone_set('America/New_York');  //set default time zone as eastern time new york
 
 $come_from=$_POST["come_from"];          //click trace-see where that picture comes from 
@@ -322,13 +321,13 @@ function myFunction() {
         </div>
         
         <div id="scrollb">
-        <a class="scrollIMG" style="text-decoration: none;" href="<?php if($row['Ubelong']=='500px')
+        <a class="scrollIMG" style="text-decoration: none;" href="<?php if($row['belong']=='500px')
                                                        {
                                                             $link="https://500px.com/photo/";
                                                             $link=$link . $pid;
                                                             print $link;
                                                         }
-                                                        elseif($row['Ubelong']=='Flickr')
+                                                        elseif($row['belong']=='Flickr')
                                                         {
                                                             $userID = $row['userID'];
                                                             print "https://www.flickr.com/photos/$userID/$pid";
@@ -379,19 +378,20 @@ function myFunction() {
     <container2>
         <div id="user_info">
             <div id="userPic"><img style="<?php
-                                            if($row[Ubelong]=='flickr')
+                                            if($row[belong]=='Flickr')
                                             {
                                                 $server = $row[extraOne];
                                                 $farm = $row[extraTwo];
                                                 $userr = $row[userID];
                                                 print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg)";
                                             }
-                                            elseif($row[Ubelong]=='500px')
+                                            elseif($row[belong]=='500px')
                                             {
                                                 print "background-image:url($row[extraTwo])";
                                             }
                                             else
                                             {
+                                                print $row[belong];
                                                 print "background-image:url(/media/aperture.png)"; 
                                             }
                                         ?>"></div>
