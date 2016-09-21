@@ -211,11 +211,15 @@ function pageCount($inputStr){
         background-position: center;
         
 }
-#userNameD p{
+#userNameD{
     word-wrap: break-word;
+    margin-top: 15px;
 }
 #takenTime p{
     word-wrap: break-word;
+}
+.picViewerInfo{
+    margin-top: 15px;
 }
 .exifFirstLine img{
     width: 98px;
@@ -228,18 +232,38 @@ function pageCount($inputStr){
 .col-md-9{
     
 } 
-.col-md-3{
+.col-xs-3{
    
 }
 .col-md-4{
     
 }
-.row{
-    
- 
+#allIconDisplay{
+    border: 1px solid blue;
 }
 .col-md-6{
-  
+
+}
+@font-face{
+font-family:'FontAwesome';
+src:url('../../fonts/fontawesome-webfont.eot?v=4.2.0');
+src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'),url('../../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'),url('../../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),url('../../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal
+}
+.fa{
+    display:inline-block;
+    font:normal normal normal 14px/1 FontAwesome;
+    font-size:inherit;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale
+}
+.fa-heart:before{
+    content:"\f004"
+}
+.fa-reply:before{
+    content:"\f064"
+}
+.fa-trash:before{
+    content:"\f014"
 }
 </style>
 

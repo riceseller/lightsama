@@ -25,21 +25,33 @@
     $comment_count=$row1000[0]; //count query ends
 ?>
 
-
-    <div class="modal-header">               
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-        <h4 class="modal-title" id="picTitle" style="text-align:center;"><p><?php echo $row[title];?></p></h4>
-    </div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding: 0;">
+        <div class="row" id="allIconDisplay">
+            <div class="col-md-9" style="background-color: #000; min-height: 50px; padding: 0;"></div>
+            <div class="col-md-3">
+                <div class="col-xs-3 subIconDisplay">
+                    <p><i class="fa fa-heart"></i></p>
+                </div>
+                <div class="col-xs-3 subIconDisplay">
+                    <p><i class="fa fa-heart"></i></p>
+                </div>
+                <div class="col-xs-3 subIconDisplay">
+                    <p><i class="fa fa-heart"></i></p>
+                </div>
+                <div class="col-xs-3 buttonClose">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="col-md-9 picDisplay">
             <img class="img-fluid" src="<?php echo $url; ?>" />
         </div>
-        <div class="col-md-3">
+           <div class="col-md-3">
             <div class="row" id="userInfo">
-                <div class="col-xs-4" id="userInfoPic">
-                    <img class="img-fluid img-circle" style="<?php
+                <div class="col-md-4" id="userInfoPic">
+                    <img class="img-fluid" style="<?php
                                             if($row[Ubelong]=='flickr')
                                             {
                                                 $server = $row[extraOne];
@@ -57,8 +69,8 @@
                                             }
                                         ?>"/>
                 </div>
-                <div class="col-xs-8"id="userNameD">
-                    
+                <div class="col-md-8">
+                    <div class="row" id="userNameD">
                         <?php
                         if($row[userBelong]<=1)
                         {
@@ -66,36 +78,35 @@
                         }
                         elseif($row['displayName'])
                         {
-                            echo "<p style=\"margin:0\"><a href=\"../indUser.php?id=$row[id]\">$row[displayName]</a></p>";
+                            echo "<p><a href=\"../indUser.php?id=$row[id]\">$row[displayName]</a></p>";
                             //echo "<font size=12> ".$row2[model]."</font>";
                         }else{
-                            echo "<p style=\"margin:0\">\null displayName </p>";
+                            echo "<p> null displayName </p>";
                         }                           
                         ?>
-                        
-                  
-                    
+                    </div>
+                    <div class="row" id="takenTime">
                         <?php
                         if($row[dateR]=='0000-00-00 00:00:00')
                         {
-                            echo "<p style=\"margin:0\">\"some time in the universe\"</p>";
+                            echo "<p>\"some time in the universe\"</p>";
                         }
                         else
                         {
-                            echo "<p style=\"margin:0\">Taken on ".$row[dateR]."</p>";
+                            echo "<p>Taken on ".$row[dateR]."</p>";
                         }
                         ?>
-                    
+                    </div>
                 </div>
             </div>
             <div class="row picViewerInfo">
-                <div class="col-xs-4">
+                <div class="col-md-4">
                     <p><?php echo $view;?><br><?php if($view=='1'){echo "view";} else{echo "views";}?></p>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-md-4">
                     <p id="favIncrement"><?php echo $current_fav;?><br>favorites</p>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-md-4">
                     <?php echo "<p>".$comment_count."<br>";?>
                     <?php if($comment_count==1 || $comment_count==0){echo "comment</p>";} else {echo "comments</p>";}?>
                 </div>
@@ -104,10 +115,10 @@
                 <p>this is a whole portion that puts comments as ul lists including comment submission and comment sync button</p>
             </div>           
             <div class="row exifFirstLine">
-                <div class="col-xs-6">
+                <div class="col-md-6">
                     <img class="img-fluid" src="/media/camera.png" height="97px" width="98px">
                 </div>
-                <div class="col-xs-6" id="cameraType">
+                <div class="col-md-6" id="cameraType">
                     <?php
                             if($row[model]==None)
                             {
@@ -129,11 +140,11 @@
                 </div>
             </div>
             <div class="row exifSecondLine">
-                <div class="col-xs-6">
-                    <div class="col-xs-6">
+                <div class="col-md-6">
+                    <div class="col-md-6">
                         <img class="img-fluid" src="/media/aperture.png" height="22" width="22">
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-md-6">
                         <?php
                             if($row[aperture]==None)
                             {
@@ -146,11 +157,11 @@
                         ?>
                     </div>                   
                 </div>
-                <div class="col-xs-6">
-                    <div class="col-xs-6">
+                <div class="col-md-6">
+                    <div class="col-md-6">
                         <img class="img-fluid" src="/media/exposure.png" height="22" width="22">
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-md-6">
                         <?php
                                 if($row[exposure]==None)
                                 {
@@ -165,11 +176,11 @@
                 </div>
             </div>
             <div class="row exifThirdLine">
-                <div class="col-xs-6">
-                    <div class="col-xs-6">
+                <div class="col-md-6">
+                    <div class="col-md-6">
                         <img class="img-fluid" src="/media/focal.png" height="22" width="22">
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-md-6">
                         <?php
                                 if($row[focal]==None or $row[focal]<=0)
                                 {
@@ -182,11 +193,11 @@
                         ?>
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <div class="col-xs-6">
+                <div class="col-md-6">
+                    <div class="col-md-6">
                         <img class="img-fluid" src="/media/iso.png" height="22" width="22">
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-md-6">
                         <?php
                                 if($row[iso_speed]==None or $row[iso_speed]<=0)
                                 {
@@ -200,6 +211,9 @@
                     </div>
                 </div>
             </div>           
+        
         </div>
     </div>
+
+
 
