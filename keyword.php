@@ -187,11 +187,11 @@ function pageCount($inputStr){
     width: 100%;
 }
 .picDisplay img{
-    max-height: 85vh;
+    max-height: 100vh;
     margin: 0;
     padding: 0;
     width: 900px;
-    object-fit: cover;
+    object-fit: contain;
 }
 #userInfoPic{
     margin-top: 15px;
@@ -224,7 +224,7 @@ function pageCount($inputStr){
 .exifFirstLine img{
     width: 98px;
     height: 97px;
-    object-fit: contain;
+    object-fit: cover;
 }
 .exifFirstLine #cameraType{
     margin-top: 30px;
@@ -269,11 +269,13 @@ function pageCount($inputStr){
 .col-xs-3{
     padding: 0;
 }
-.imgDisplay{
-    
+.infoDisplay{
+    background-color: #2b2b2b;
+    min-height: 100vh;
+    overflow: scroll;
 }
 .imgDisplay img{
-    height: 90vh;
+    height: 100vh;
     margin: 0;
     padding: 0;    
     width: 100%;
@@ -281,22 +283,20 @@ function pageCount($inputStr){
     
 }
 .imgSpacer{   
-    min-height: 0vh !important;
+    min-height: 49px;
 }
-.iconDisplay{
+.iconsShow{
     background-color: #3e3e3e;
     min-height: 43px;
     border: 1px solid #222;
-}
-.iconsShow{
-    margin: 0;
+    margin: 0 !important;
     padding: 0;
 }
 .iconShow a i{
     display: inline-block;
 }
 p.iconDisplayText{
-    font-size: 15px;
+    font-size: 22.5px;
     display: inline-block !important;
     margin-left: 3px;
     color: white !important;
@@ -329,6 +329,22 @@ p.iconDisplayText{
 }
 .userNameDisplay p a{
     color: white !important;
+}
+.titleAndDesCription{
+    margin: 0;
+    padding: 10px;
+}
+.titleAndDesCription p{
+    color: white;
+    word-wrap: break-word;
+    text-align: left;
+    margin: 0;
+}
+p.titleDisplay{
+    font-size: 30px;
+}
+p.descriptDisplay{
+    font-size: 13px;
 }
 </style>
 

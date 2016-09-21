@@ -26,32 +26,29 @@
 ?>
 
     <div class="container-fluid" style="padding: 0;">
-        <div class="col-xs-9">
-            <div class="imgSpacer"></div>
-        </div>
-        <div class="col-xs-3 iconDisplay">
-            <div class="row iconsShow">
-                <div class="col-xs-3">
-                    <a href="#"><i class="fa fa-heart" style="color: white;"></i></a>
-                    <p class="iconDisplayText"><?php echo $current_fav;?></p>
-                </div>
-                <div class="col-xs-3">
-                    <a href="#"><i class="fa fa-eye" style="color: white;"></i></a>
-                    <p class="iconDisplayText"><?php echo $view;?></p>
-                </div>
-                <div class="col-xs-3">
-                    <a href="#"><i class="fa fa-comments" style="color: white;"></i></a>
-                    <p class="iconDisplayText"><?php echo $view;?></p>
-                </div>
-                <div class="col-xs-3">
-                    <a href="#"><i class="fa fa-close" style="color: white;" data-dismiss="modal"></i></a>
-                </div>
-            </div>
-        </div>
+        
         <div class="col-md-9 imgDisplay">
             <img class="img-fluid" src="<?php echo $url; ?>" />
         </div>
-        <div class="col-md-3 infoDisplay" style="background-color: #222222;">
+        
+        <div class="col-md-3 infoDisplay">
+            <div class="row iconShow iconDisplay">
+                <div class="col-xs-3" style="margin-top: 10px;">
+                    <a href="#"><i class="fa fa-heart" style="color: white;"></i></a>
+                    <p class="iconDisplayText"><?php echo $current_fav;?></p>
+                </div>
+                <div class="col-xs-3" style="margin-top: 10px;">
+                    <a href="#"><i class="fa fa-eye" style="color: white;"></i></a>
+                    <p class="iconDisplayText"><?php echo $view;?></p>
+                </div>
+                <div class="col-xs-3" style="margin-top: 10px;">
+                    <a href="#"><i class="fa fa-comments" style="color: white;"></i></a>
+                    <p class="iconDisplayText"><?php echo $comment_count;?></p>
+                </div>
+                <div class="col-xs-3" style="margin-top: 10px;">
+                    <a href="#"><i class="fa fa-close" style="color: white;" data-dismiss="modal"></i></a>
+                </div>                
+            </div>
             <div class="row userNameAndPic">
                 <div class="col-xs-12" style="padding: 0; text-align: left">                    
                         <div class="userPicImg userNameDisplay">
@@ -89,8 +86,26 @@
                     
                 </div>
             </div>
+            <div class="row titleAndDesCription">
+                <p class="titleDisplay"><?php echo $row[title];?></p>
+                <br>
+                <?php
+                        if($row[descript]==None)
+                        {
+                            echo "<p class=\"descriptDisplay\">This picure does not have a description</p>";
+                        }
+                        else
+                        {
+                            echo "<p class=\"descriptDisplay\"> ".$row[descript]." </p>";
+                        }
+                    ?>
+            </div>
         </div>
+        
     </div>
+        
+        
+       
 
 
 
