@@ -149,13 +149,16 @@ function displayBlock($row,$mode){
 <div class="container" style="padding-top:8px;padding-bottom:8px;">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-          <a class="nav-link active">Your Linked Account</a>
+          <a class="nav-link active">Linked Account</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="../users/user_settings.php">Edit Account Info</a>
+          <a class="nav-link" href="../users/user_settings.php">Edit Info</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="#">Favorite</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="../users/flickrUpload.php">Upload</a>
       </li>
     </ul>                    
 </div>

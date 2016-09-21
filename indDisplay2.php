@@ -322,13 +322,13 @@ function myFunction() {
         </div>
         
         <div id="scrollb">
-        <a class="scrollIMG" style="text-decoration: none;" href="<?php if($row['belong']=='500px')
+        <a class="scrollIMG" style="text-decoration: none;" href="<?php if($row['Ubelong']=='500px')
                                                        {
                                                             $link="https://500px.com/photo/";
                                                             $link=$link . $pid;
                                                             print $link;
                                                         }
-                                                        elseif($row['belong']=='Flickr')
+                                                        elseif($row['Ubelong']=='Flickr')
                                                         {
                                                             $userID = $row['userID'];
                                                             print "https://www.flickr.com/photos/$userID/$pid";

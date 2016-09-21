@@ -12,15 +12,15 @@
 
         $error=0;
         if($_POST){
-            if(!$_POST['name'] || !$_FILES["file"]["name"]){
+            if(!$_POST['description'] || !$_POST['name'] || !$_FILES["file"]["name"]){
                 $error=1;
             }else{
                 if ($_FILES["file"]["error"] > 0){
-                    echo "Error: " . $_FILES["file"]["error"] . "<br />";
+                    echo '<script type="text/javascript">alert("Post error occurs!");</script>';
                 }else if($_FILES["file"]["type"] != "image/jpg" && $_FILES["file"]["type"] != "image/jpeg" && $_FILES["file"]["type"] != "image/png" && $_FILES["file"]["type"] != "image/gif"){
-                    $error = 3;
+                    echo '<script type="text/javascript">alert("File format incorrect!");</script>';
                 }else if(intval($_FILES["file"]["size"]) > 525000){
-                    $error = 4;
+                    echo '<script type="text/javascript">alert("File size is over 512KB!");</script>';
                 }else{
                     $dir= dirname($_FILES["file"]["tmp_name"]);
                     $newpath=$dir."/".$_FILES["file"]["name"];
@@ -31,8 +31,11 @@
                     $row2 = mysqli_fetch_array($result2);
                     $f->setToken($row2[authToken]);
                     $f->auth("write");
-                    $status = $f->async_upload($newpath, $_POST["name"]);
-                    if(!$status) { $error = 2;}
+                    $status = $f->sync_upload($newpath, $_POST["name"], $_POST['description']);
+                    if(!$status) { echo '<script type="text/javascript">alert("Error occurs while uploading");</script>';;}
+                    else{
+                    echo "<script type=\"text/javascript\">alert(\"Upload successful!\");</script>";}
+                    
                  }
              }
         }
@@ -42,29 +45,12 @@
 <body>
     <div class="container">
         <h1>Photo Uploader Using Flickr</h1>
-    <?php
-
-    if (isset($_POST['name']) && $error==0) {
-        echo "  <h2>Your file has been uploaded to photo stream</a></h2>";
-    }else {
-        if($error == 1){
-            echo "  <font color='red'>Please provide both name and a file</font>";
-        }else if($error == 2) {
-            echo "  <font color='red'>Unable to upload your photo, please try again</font>";
-        }else if($error == 3){
-            echo "  <font color='red'>Please upload JPG, JPEG, PNG or GIF image ONLY</font>";
-        }else if($error == 4){
-            echo "  <font color='red'>Image size greater than 512KB, Please upload an image under 512KB</font>";
-        }
-    ?>
         <h2>Upload your Pic!</h2>
         <form  method="post" accept-charset="utf-8" enctype='multipart/form-data'>
             <p>Name: &nbsp; <input type="text" name="name" value="" ></p>
+            <p>Description: &nbsp; <input type="text" name="description" value="" ></p>
             <p>Picture: <input type="file" name="file"/></p>
             <p><input type="submit" value="Submit"></p>
         </form>
-    <?php
-    }
-    ?>
     </div>
  </body>
