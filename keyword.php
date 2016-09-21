@@ -111,7 +111,7 @@ function pageCount($inputStr){
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay3.php?pid=".$row[id]."&url=".$row[url]."\">";
+            echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay4.php?pid=".$row[id]."&url=".$row[url]."\">";
             echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
             echo "</a>";
             echo "</div>";
@@ -166,50 +166,50 @@ function pageCount($inputStr){
 ?>
 
 <style>
-   .modal-dialog {
+.modal-dialog {
   width: 100% !important;
   height: 100%;
   margin: 0;
   padding: 0;
   max-width: inherit !important;
 }
-
 .modal-content {
   height: auto;
   min-height: 100%;
   border-radius: 0;
-  background-color: #f3f5f6;
+  background-color: #000;
+  border: 0;
 }
 .container-fluid{
     display: inline-block;
     text-align: center;
+    padding: 0;
+    width: 100%;
 }
-.picDisplay{
+.picDisplay img{
     max-height: 85vh;
     margin: 0;
     padding: 0;
-    vertical-align: middle;
-}
-.img-fluid{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%; 
-    height: auto; 
-    max-height: 85vh;
-    object-fit: contain;
+    width: 900px;
+    object-fit: cover;
 }
 #userInfoPic{
     margin-top: 15px;
 }
 #userInfo #userInfoPic img{
         width: 70px;
-        height: 70px;
+        height: 70px !important;
         /* fill the container, preserving aspect ratio, and cropping to fit */
         background-size: cover;
         /* center the image vertically and horizontally */
         background-position: center;
-        
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%; 
+        height: auto; 
+        max-height: 85vh;
+        object-fit: contain;      
 }
 #userNameD{
     word-wrap: break-word;
@@ -230,40 +230,105 @@ function pageCount($inputStr){
     margin-top: 30px;
 }
 .col-md-9{
-    
-} 
-.col-xs-3{
-   
+    padding: 0;
 }
+.col-md-3{
+    padding: 0;
+}
+.col-xs-2{
+    padding: 0;
+}
+.col-xs-6{
+   padding: 0;
+}
+
 .col-md-4{
-    
-}
-#allIconDisplay{
-    border: 1px solid blue;
+    padding: 0;
 }
 .col-md-6{
+    padding: 0;
+}
+</style>
 
+<style>
+.col-xs-9{
+    padding: 0;
 }
-@font-face{
-font-family:'FontAwesome';
-src:url('../../fonts/fontawesome-webfont.eot?v=4.2.0');
-src:url('../../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'),url('../../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'),url('../../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),url('../../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal
+.col-xs-8{
+    padding: 0;
 }
-.fa{
-    display:inline-block;
-    font:normal normal normal 14px/1 FontAwesome;
-    font-size:inherit;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale
+.col-xs-4{
+    padding: 0;
 }
-.fa-heart:before{
-    content:"\f004"
+.col-md-8{
+    padding: 0;
 }
-.fa-reply:before{
-    content:"\f064"
+.col-md-4{
+    padding: 0;
 }
-.fa-trash:before{
-    content:"\f014"
+.col-xs-3{
+    padding: 0;
+}
+.imgDisplay{
+    
+}
+.imgDisplay img{
+    height: 90vh;
+    margin: 0;
+    padding: 0;    
+    width: 100%;
+    object-fit: contain;
+    
+}
+.imgSpacer{   
+    min-height: 0vh !important;
+}
+.iconDisplay{
+    background-color: #3e3e3e;
+    min-height: 43px;
+    border: 1px solid #222;
+}
+.iconsShow{
+    margin: 0;
+    padding: 0;
+}
+.iconShow a i{
+    display: inline-block;
+}
+p.iconDisplayText{
+    font-size: 15px;
+    display: inline-block !important;
+    margin-left: 3px;
+    color: white !important;
+}
+.userNameAndPic{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.userPicImg{
+    margin: 0;
+}
+.userPicImg img{
+    width:  35px !important;
+    height: 35px !important;
+    /* fill the container, preserving aspect ratio, and cropping to fit */
+    background-size: cover;
+    /* center the image vertically and horizontally */
+    background-position: center;
+    margin-left: 0;
+    margin-right: 0;
+    display: inline-block;
+}
+.userNameDisplay{
+    padding: 0;
+}
+.userNameDisplay p {
+    font-size: 15px;
+    display: inline-block;
+    margin-left: 3px;
+}
+.userNameDisplay p a{
+    color: white !important;
 }
 </style>
 

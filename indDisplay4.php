@@ -26,32 +26,36 @@
 ?>
 
     <div class="container-fluid" style="padding: 0;">
-        <div class="row" id="allIconDisplay">
-            <div class="col-md-9" style="background-color: #000; min-height: 50px; padding: 0;"></div>
-            <div class="col-md-3">
-                <div class="col-xs-3 subIconDisplay">
-                    <p><i class="fa fa-heart"></i></p>
+        <div class="col-xs-9">
+            <div class="imgSpacer"></div>
+        </div>
+        <div class="col-xs-3 iconDisplay">
+            <div class="row iconsShow">
+                <div class="col-xs-3">
+                    <a href="#"><i class="fa fa-heart" style="color: white;"></i></a>
+                    <p class="iconDisplayText"><?php echo $current_fav;?></p>
                 </div>
-                <div class="col-xs-3 subIconDisplay">
-                    <p><i class="fa fa-heart"></i></p>
+                <div class="col-xs-3">
+                    <a href="#"><i class="fa fa-eye" style="color: white;"></i></a>
+                    <p class="iconDisplayText"><?php echo $view;?></p>
                 </div>
-                <div class="col-xs-3 subIconDisplay">
-                    <p><i class="fa fa-heart"></i></p>
+                <div class="col-xs-3">
+                    <a href="#"><i class="fa fa-comments" style="color: white;"></i></a>
+                    <p class="iconDisplayText"><?php echo $view;?></p>
                 </div>
-                <div class="col-xs-3 buttonClose">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="col-xs-3">
+                    <a href="#"><i class="fa fa-close" style="color: white;" data-dismiss="modal"></i></a>
                 </div>
             </div>
         </div>
-        <div class="col-md-9 picDisplay">
+        <div class="col-md-9 imgDisplay">
             <img class="img-fluid" src="<?php echo $url; ?>" />
         </div>
-           <div class="col-md-3">
-            <div class="row" id="userInfo">
-                <div class="col-md-4" id="userInfoPic">
-                    <img class="img-fluid" style="<?php
+        <div class="col-md-3 infoDisplay" style="background-color: #222222;">
+            <div class="row userNameAndPic">
+                <div class="col-xs-12" style="padding: 0; text-align: left">                    
+                        <div class="userPicImg userNameDisplay">
+                            <img class="img-fluid img-circle" style="<?php
                                             if($row[Ubelong]=='flickr')
                                             {
                                                 $server = $row[extraOne];
@@ -68,150 +72,23 @@
                                                 print "background-image:url(/media/aperture.png)"; 
                                             }
                                         ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <div class="row" id="userNameD">
-                        <?php
-                        if($row[userBelong]<=1)
-                        {
-                            echo "<p> Need Scrape </p>";
-                        }
-                        elseif($row['displayName'])
-                        {
-                            echo "<p><a href=\"../indUser.php?id=$row[id]\">$row[displayName]</a></p>";
-                            //echo "<font size=12> ".$row2[model]."</font>";
-                        }else{
-                            echo "<p> null displayName </p>";
-                        }                           
-                        ?>
-                    </div>
-                    <div class="row" id="takenTime">
-                        <?php
-                        if($row[dateR]=='0000-00-00 00:00:00')
-                        {
-                            echo "<p>\"some time in the universe\"</p>";
-                        }
-                        else
-                        {
-                            echo "<p>Taken on ".$row[dateR]."</p>";
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <div class="row picViewerInfo">
-                <div class="col-md-4">
-                    <p><?php echo $view;?><br><?php if($view=='1'){echo "view";} else{echo "views";}?></p>
-                </div>
-                <div class="col-md-4">
-                    <p id="favIncrement"><?php echo $current_fav;?><br>favorites</p>
-                </div>
-                <div class="col-md-4">
-                    <?php echo "<p>".$comment_count."<br>";?>
-                    <?php if($comment_count==1 || $comment_count==0){echo "comment</p>";} else {echo "comments</p>";}?>
-                </div>
-            </div>
-            <div class="row commentDisplay">
-                <p>this is a whole portion that puts comments as ul lists including comment submission and comment sync button</p>
-            </div>           
-            <div class="row exifFirstLine">
-                <div class="col-md-6">
-                    <img class="img-fluid" src="/media/camera.png" height="97px" width="98px">
-                </div>
-                <div class="col-md-6" id="cameraType">
-                    <?php
-                            if($row[model]==None)
+                            <?php
+                            if($row[userBelong]<=1)
                             {
-                                echo "<p>no camera info</br>";
+                                echo "<p> Need Scrape </p>";
                             }
-                            else
+                            elseif($row['displayName'])
                             {
-                                echo "<p>".$row[model]." </br>";                                
-                            }
-                            if($row[lens]==None)
-                            {
-                                echo "no lens info</p>";
-                            }
-                            else
-                            {
-                                echo " ".$row[lens]." </p>";
-                            }
-                    ?>
-                </div>
-            </div>
-            <div class="row exifSecondLine">
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <img class="img-fluid" src="/media/aperture.png" height="22" width="22">
-                    </div>
-                    <div class="col-md-6">
-                        <?php
-                            if($row[aperture]==None)
-                            {
-                                echo "<p style=\"font-size: 13px; padding-top: 5px;\"> f/ - </p>";
-                            }
-                            else
-                            {
-                                echo "<p style=\"font-size: 13px; padding-top: 5px;\"> f/".$row[aperture]." </p>";                                    
-                            }
-                        ?>
-                    </div>                   
-                </div>
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <img class="img-fluid" src="/media/exposure.png" height="22" width="22">
-                    </div>
-                    <div class="col-md-6">
-                        <?php
-                                if($row[exposure]==None)
-                                {
-                                    echo "<p style=\"font-size: 13px; padding-top: 5px;\"> - </p>";
-                                }
-                                else
-                                {
-                                    echo "<p style=\"font-size: 13px; padding-top: 5px;\"> ".$row[exposure]." </p>";
-                                }
+                                echo "<p style=\"margin:0\"><a style=\"text-decoration: none;\"; href=\"../indUser.php?id=$row[id]\">$row[displayName]</a></p>";
+                                //echo "<font size=12> ".$row2[model]."</font>";
+                            }else{
+                                echo "<p style=\"margin:0\">\null displayName </p>";
+                            }                           
                             ?>
-                    </div>
+                        </div>
+                    
                 </div>
             </div>
-            <div class="row exifThirdLine">
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <img class="img-fluid" src="/media/focal.png" height="22" width="22">
-                    </div>
-                    <div class="col-md-6">
-                        <?php
-                                if($row[focal]==None or $row[focal]<=0)
-                                {
-                                    echo "<p style=\"font-size: 13px; padding-top: 5px;\"> - mm </p>";
-                                }
-                                else
-                                {
-                                    echo "<p style=\"font-size: 13px; padding-top: 5px;\"> ".$row[focal]." mm </p>";
-                                }
-                        ?>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <img class="img-fluid" src="/media/iso.png" height="22" width="22">
-                    </div>
-                    <div class="col-md-6">
-                        <?php
-                                if($row[iso_speed]==None or $row[iso_speed]<=0)
-                                {
-                                    echo "<p style=\"font-size: 13px; padding-top: 5px;\"> - </p>";
-                                }
-                                else
-                                {
-                                    echo "<p style=\"font-size: 13px; padding-top: 5px;\"> ".$row[iso_speed]." </p>";
-                                }
-                        ?>
-                    </div>
-                </div>
-            </div>           
-        
         </div>
     </div>
 

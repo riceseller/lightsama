@@ -66,10 +66,10 @@
                         }
                         elseif($row['displayName'])
                         {
-                            echo "<p style=\"margin:0\"><a href=\"../indUser.php?id=$row[id]\">$row[displayName]</a></p>";
+                            echo "<p><a href=\"../indUser.php?id=$row[id]\">$row[displayName]</a></p>";
                             //echo "<font size=12> ".$row2[model]."</font>";
                         }else{
-                            echo "<p style=\"margin:0\">\null displayName </p>";
+                            echo "<p> null displayName </p>";
                         }                           
                         ?>
                         
@@ -82,7 +82,7 @@
                         }
                         else
                         {
-                            echo "<p style=\"margin:0\">Taken on ".$row[dateR]."</p>";
+                            echo "<p>Taken on ".$row[dateR]."</p>";
                         }
                         ?>
                     
