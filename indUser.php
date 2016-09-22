@@ -34,7 +34,7 @@ function pageCount($inputStr){
     $result11=$conn->query($query11);
     $row11 = mysqli_fetch_array($result11);
     $scrapeUserName = $row11[displayName];
-    if($row11[Ubelong]=='flickr'){
+    if($row11[Ubelong]=='flickr' or $row11[Ubelong]=='Flickr'){
         $server = $row11[extraOne];
         $farm = $row11[extraTwo];
         $userr = $row11[userID];
