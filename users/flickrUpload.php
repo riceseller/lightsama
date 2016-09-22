@@ -34,8 +34,9 @@
                     $status = $f->sync_upload($newpath, $_POST["name"], $_POST['description']);
                     if(!$status) { echo '<script type="text/javascript">alert("Error occurs while uploading");</script>';;}
                     else{
+                    $test = shell_exec("python /home/luokerenz/realtime/flickr_refresh_RT.py $status 2>&1");
+                    //echo "<script type=\"text/javascript\">alert(\"Return: ".$test."\");</script>";}
                     echo "<script type=\"text/javascript\">alert(\"Upload successful!\");</script>";}
-                    
                  }
              }
         }
@@ -46,6 +47,7 @@
     <div class="container">
         <h1>Photo Uploader Using Flickr</h1>
         <h2>Upload your Pic!</h2>
+        <h2><?=$test?></h2>
         <form  method="post" accept-charset="utf-8" enctype='multipart/form-data'>
             <p>Name: &nbsp; <input type="text" name="name" value="" ></p>
             <p>Description: &nbsp; <input type="text" name="description" value="" ></p>
@@ -53,4 +55,4 @@
             <p><input type="submit" value="Submit"></p>
         </form>
     </div>
- </body>
+</body>
