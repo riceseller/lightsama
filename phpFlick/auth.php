@@ -65,8 +65,9 @@ if($user->isLoggedIn()){
     $query2 = "insert into LinkUser(scrapeUserID, usersID, needAction, authToken) values($scrape_link_id,$dbUserID,$scrapemode,'$authToken')";
     print $query2;
     if ($conn->query($query2) === True){
-        //insert success
-        print 'insert success, ready to exit';
+        //insert success, run python code
+        $test = shell_exec("python /home/luokerenz/realtime/flickr_refresh_RT.py $flickr_userID -u $scrape_link_id 2>&1");
+        echo '<script type="text/javascript">alert("insert success, ready to exit");</script>';
         echo "<script>window.location = '../users/account.php'</script>";
     }else{
         print $conn->error;
