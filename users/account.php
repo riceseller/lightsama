@@ -6,7 +6,7 @@ require_once "../supplyment/dbAccess.php";
 function displayBlock($row,$mode){
     if($mode==1){
         //display ind block using input
-        if($row[Ubelong]=='flickr'){
+        if($row[Ubelong]=='flickr' or $row[Ubelong]=='Flickr'){
                 $server = $row[extraOne];
                 $farm = $row[extraTwo];
                 $userr = $row[userID];
