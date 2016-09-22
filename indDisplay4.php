@@ -135,7 +135,7 @@
     overflow: scroll;
 }
 .iconDisplay{
-    background-color: #2b2b2b;
+    background-color: #222222;
 }
 .imgDisplay img{
     height: 100vh;
