@@ -110,6 +110,18 @@ function changeContent(classActive){
         window.location = "/indUser.php?id="+userId;
     }
 </script>
+<script>
+        // load remote page via jquery
+        $(document).on('click','.overlay',function(event) {
+            event.preventDefault();            
+            
+            var modal = $('#gridSystemModal').modal();
+            modal.find('.modal-content').load($(this).attr('href'), function () {
+                    //$('.modal-content').css('height',$( window ).height());
+                    modal.show();                   
+                });
+        });
+</script>
 
 <div class="preLoadClass">
 <section class="Collage effect-parent" id="landscapeSection">
@@ -125,7 +137,7 @@ function changeContent(classActive){
                         echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
                     echo "</a>"; 
                     
-                    echo "<a class=\"overlay\" href=\"/indDisplay2.php?pid=".$row[uid]."\">";
+                    echo "<a class=\"overlay\" href=\"/indDisplay4.php?pid=".$row[uid]."&url=".$row[url]."\">";
                     echo "</a>";
                     
                     echo "<div class=\"overlay_shadow\">";
@@ -166,6 +178,15 @@ function changeContent(classActive){
 <?php
     include "footer.php";
 ?>
+
+<div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+    </div>
+  </div>
+</div>
+
 </body>
 
 </html>
