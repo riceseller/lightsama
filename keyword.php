@@ -270,9 +270,12 @@ function pageCount($inputStr){
     padding: 0;
 }
 .infoDisplay{
-    background-color: #2b2b2b;
+    background-color: #333333;
     min-height: 100vh;
     overflow: scroll;
+}
+.iconDisplay{
+    background-color: #2b2b2b;
 }
 .imgDisplay img{
     height: 100vh;
@@ -296,7 +299,7 @@ function pageCount($inputStr){
     display: inline-block;
 }
 p.iconDisplayText{
-    font-size: 22.5px;
+    font-size: 15px;
     display: inline-block !important;
     margin-left: 3px;
     color: white !important;
@@ -345,6 +348,45 @@ p.titleDisplay{
 }
 p.descriptDisplay{
     font-size: 13px;
+}
+.tagOrientation{
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    vertical-align: middle;
+}
+.tagOrientation a{
+    display: block;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 2px 6px;
+    font-size: 12px;
+    line-height: 1em;
+    color: #FFF !important;
+    border-radius: 2px;
+    background-color: #999;
+    text-decoration: none;
+}
+.picEquipInfo{
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    text-align: left;
+    height: auto;
+}
+.picEquipInfo i{
+    display: inline-block;
+}
+p.picEquipInfoText{
+    font-size: 13px;
+    display: inline-block !important;
+    margin-left: 3px;
+    color: white !important;
+    margin-bottom: 3px;
 }
 </style>
 

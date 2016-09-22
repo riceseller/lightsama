@@ -100,6 +100,74 @@
                         }
                     ?>
             </div>
+            <div class="row tagOrientation">
+                <?php
+                    $sqlT = "select t.tagName from Tag t join TagRelation tr on t.id=tr.tagid where tr.pid=$pid";
+                    $result3=$conn->query($sqlT);
+                    while($row3=$result3->fetch_assoc())
+                    {
+                        echo "<a href=tags.php?cat=$row3[tagName]>$row3[tagName]</a>";
+                        echo "<div class='spacing'></div>";
+                    }
+                ?>
+            </div>
+            <div class="row picEquipInfo">
+                <i class="fa fa-camera" style="color: white;"></i>
+                <p class="picEquipInfoText"><?php
+                            if($row[model]==None)
+                            {
+                                echo "no camera info";
+                            }
+                            else
+                            {
+                                echo $row[model];
+                            }?></p>
+            </div>
+            <div class="row picEquipInfo">
+                <i class="fa fa-life-ring" style="color: white;"></i>
+                <p class="picEquipInfoText" style="margin-left: 4.2px;">
+                    <?php
+                            if($row[lens]==None)
+                            {
+                                echo "no lens info";
+                            }
+                            else
+                            {
+                                echo $row[lens];
+                            }
+                        ?>
+                </p>                
+            </div>
+            <div class="row picEquipInfo">
+                <i class="fa fa-eye-slash" style="color: white;"></i>
+                <p class="picEquipInfoText">
+                     <?php
+                                if($row[iso_speed]==None or $row[iso_speed]<=0)
+                                {
+                                    echo " - ";
+                                }
+                                else
+                                {
+                                    echo "$row[iso_speed]";
+                                }
+                        ?>
+                </p>
+            </div>
+            <div class="row picEquipInfo">
+                <i class="fa fa-calendar" style="color: white;"></i>
+                <p class="picEquipInfoText">
+                    <?php
+                        if($row[dateR]=='0000-00-00 00:00:00')
+                        {
+                            echo "some time in the universe";
+                        }
+                        else
+                        {
+                            echo "Taken on ".$row[dateR]."";
+                        }
+                        ?>
+                </p>
+            </div>
         </div>
         
     </div>
