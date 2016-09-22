@@ -198,6 +198,7 @@ p.iconDisplayText{
     padding: 10px;
 }
 .titleAndDesCription p{
+    display: block;
     color: white;
     word-wrap: break-word;
     text-align: left;
@@ -312,8 +313,7 @@ p.picEquipInfoText{
                 </div>
             </div>
             <div class="row titleAndDesCription">
-                <p class="titleDisplay"><?php echo $row[title];?></p>
-                <br>
+                <p class="titleDisplay"><?php echo $row[title];?></p>                
                 <?php
                         if($row[descript]==None)
                         {
