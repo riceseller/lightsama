@@ -21,7 +21,6 @@
     }
     body{
         background: #f3f5f6;
-        min-width: 1200px;
        
     }
     .nav{

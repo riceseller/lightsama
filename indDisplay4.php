@@ -131,19 +131,21 @@
 }
 .infoDisplay{
     background-color: #333333;
-    min-height: 100vh;
-    overflow: scroll;
+    height: 100vh;
+    overflow: auto;
+    overflow-x: hidden;
 }
 .iconDisplay{
     background-color: #222222;
+}
+.imgDisplay{
 }
 .imgDisplay img{
     height: 100vh;
     margin: 0;
     padding: 0;    
     width: 100%;
-    object-fit: contain;
-    
+    object-fit: contain;    
 }
 .imgSpacer{   
     min-height: 49px;
@@ -248,6 +250,53 @@ p.picEquipInfoText{
     margin-left: 3px;
     color: white !important;
     margin-bottom: 3px;
+}
+#commentAdd{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.form-reply {
+    padding: 6px 8px 6px 48px;
+    clear: both;
+    display: block;
+    margin-top: 0em;  
+}
+.site-icon{
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    display: block;
+}
+.site-icon img{
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-image: url(http://www.thestar.com.my/~/media/online/2016/03/13/23/00/visitor-face-scan.ashx/?w=620&h=413&crop=1&hash=76D7EC812EB694D31CB9C062E03131CEBEF7742C);
+}
+.reply-content{
+    height: 35px;
+    padding-top: 6px;
+    background-color: #333;
+}
+textarea, input[type=text], input[type=password] {
+    border: 1px solid #ccc;
+}
+.form-reply textarea {
+    width: 100%;
+    color: #9a9a9a;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 10px;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    flex-direction: column;
+    resize: auto;
+    cursor: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.form-position{
+    width: 95%;
 }
 </style>
 
@@ -393,6 +442,18 @@ p.picEquipInfoText{
                         ?>
                 </p>
             </div>
+            <div class="row userNameAndPic form-position">
+                <div class="col-xs-12" style="padding: 0; text-align: left">                    
+                    <form class="form-reply collapsed">
+                        <div class="site-icon">
+                            <img class="img-fluid" style="object-fit: contain;"/>
+                        </div>
+                        <textarea class="reply-content" placeholder="leave comments please"></textarea>
+                    </form>
+                </div>                
+            </div>
+            
+            
         </div>
         
     </div>
