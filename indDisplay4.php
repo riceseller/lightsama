@@ -259,9 +259,10 @@ p.picEquipInfoText{
     padding: 6px 8px 6px 48px;
     clear: both;
     display: block;
-    margin-top: 0em;  
+    margin-top: 0em;
+    border-top: 1px solid #222;
 }
-.site-icon{
+.form-reply .site-icon{
     position: absolute;
     top: 6px;
     left: 0px;
@@ -297,6 +298,54 @@ textarea, input[type=text], input[type=password] {
 }
 .form-position{
     width: 95%;
+}
+.comments-position{
+    width: 95%;
+}
+.list-of-comments{
+    background-color: #333333;
+    border-top: 1px solid #222;
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+    box-sizing: border-box;
+    display: block;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.list-of-comments li {
+    display: list-item;
+    border-top: 1px solid #313131;
+    color: #eee;
+    position: relative;
+    padding: 0;
+    min-height: 36px;
+    margin: 0;
+    text-align: left;
+    margin-bottom: 2px;
+}
+.list-of-comments li img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-size: cover;
+    /* center the image vertically and horizontally */
+    background-position: center;
+    margin-left: 2px;
+    margin-top: 5px;
+    display: inline-block;
+    background-image: url(http://www.thestar.com.my/~/media/online/2016/03/13/23/00/visitor-face-scan.ashx/?w=620&h=413&crop=1&hash=76D7EC812EB694D31CB9C062E03131CEBEF7742C);
+}
+.list-of-comments li p{
+    font-size: 13px;
+    display: inline-block;
+    margin-left: 3px;
+    color: white !important;
+    margin-bottom: 0;
+    margin-top: -5px;
+}
+.comments-position{
+    margin-top: 0;
 }
 </style>
 
@@ -357,8 +406,7 @@ textarea, input[type=text], input[type=password] {
                                 echo "<p style=\"margin:0\">\null displayName </p>";
                             }                           
                             ?>
-                        </div>
-                    
+                        </div>              
                 </div>
             </div>
             <div class="row titleAndDesCription">
@@ -452,7 +500,18 @@ textarea, input[type=text], input[type=password] {
                     </form>
                 </div>                
             </div>
-            
+            <div class="row userNameAndPic comments-position">
+                <ul class="list-of-comments">
+                    <li>
+                        <img class="img-fluid img-circle" />
+                        <p>username1</p>
+                    </li>
+                    <li>
+                        <img class="img-fluid img-circle" />
+                        <p>username2</p>
+                    </li>
+                </ul>
+            </div>
             
         </div>
         
