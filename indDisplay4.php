@@ -1,5 +1,7 @@
 <?php
+    error_reporting(0);
     include "supplyment/dbAccess.php";
+    require_once 'users/init.php';
     $pid=$_GET["pid"];
     $url=$_GET["url"];
     $query = "select c.*, u.urlSource, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";    
@@ -23,6 +25,59 @@
     $result_count=$conn->query($query_comment_count);
     $row1000=mysqli_fetch_array($result_count);
     $comment_count=$row1000[0]; //count query ends
+    
+    //once clicked, it has been viewed, so increment view counter with 1
+    $query31="update Common set view=view+1 where p_id=$pid";   
+    $conn->query($query31);
+    
+    //current user info acquisition, set proper register to values on login/unlogin event
+    if($user->isLoggedIn())
+    {
+        $current_id=$user->data()->id;
+        $current_name=$user->data()->username;
+    }
+    else
+    {
+        $current_id=0;
+        $current_name=0;
+    }//user info acquisiton ends
+    
+    $userid=0;  //declare userid variable, purpose is to compare with the current user id
+    if($current_fav && $user->isLoggedIn()) //purpose is to find if this pic has been faved by the current user previously
+    {
+        $query90="select userid from fav where favpic=$pid";    //find all users who have faved that pic previously by userid
+        $result90=$conn->query($query90);   
+        while($row90=$result90->fetch_assoc())
+        {
+            if($current_id==$row90['userid'])   //current id matches record, meaning the current user faved that pic before
+            {
+                $userid=$current_id;    //give value and break
+                break;
+            }
+        }
+    }
+    
+    //pull out all the comments associated with that picture
+    $query_comment="select u.custom1, u.custom2, u.username, c.* from users u, comment c where u.id=c.userid and c.compic=$pid ORDER BY comdate" ;
+    $result_comment=$conn->query($query_comment);   //comment query ends 
+
+    //this part needs modification
+    $grav = get_gravatar(strtolower(trim($user->data()->email)));
+
+    $query2 = "select custom1,custom2 from users where id=$current_id"; //custom1=>cover photo custom2=>avatar
+    $result2=$conn->query($query2);
+    $row2 = mysqli_fetch_array($result2);
+    if($row2[custom2]==''){
+        $gravMod2 = $grav;
+    }else{
+        $gravMod2 = $row2[custom2];
+    }
+    
+    //the code below is for testing use only, it is just a purpose for tracking ip address of people who visited 
+    //our page
+    $ip=$_SERVER['REMOTE_ADDR'];
+    $query_ip="insert into ipaddress(pid, address, times) values($pid, '$ip', NOW())";
+    $conn->query($query_ip);    
 ?>
 
 <style>
@@ -339,7 +394,27 @@ p.reply-content{
 .comments-position{
     margin-top: 0;
 }
+.iconShow .iconDisplay a{
+    color: white;
+}
+.iconShow .iconDisplay a:hover{
+    color: red;
+}
 </style>
+
+<script>
+    function LogInCheck2(){
+        
+}
+    function LogInCheck(){
+        
+}
+    function UnLogCheck(){
+        var d=<?php print $current_fav;?>;  //current people who hit like
+        d++;
+        document.getElementById("howManyFavs").innerHTML = d;
+}
+</script>
 
     <div class="container-fluid" style="padding: 0;">
         
@@ -350,8 +425,23 @@ p.reply-content{
         <div class="col-md-3 infoDisplay">
             <div class="row iconShow iconDisplay">
                 <div class="col-xs-3" style="margin-top: 10px;">
-                    <a href="#"><i class="fa fa-heart" style="color: white;"></i></a>
-                    <p class="iconDisplayText"><?php echo $current_fav;?></p>
+                    <a id="checkboxG5" href="#" <?php if($user->isLoggedIn())
+                            {
+                                if($current_id==$userid)  //it has been liked by the same user before, only option is unlike
+                                {
+                                    echo "onclick='LogInCheck2()'";
+                                }
+                                else    //it has not been liked before, option is like 
+                                {                                  
+                                    echo "onclick='LogInCheck()'";
+                                }                               
+                            }
+                            else
+                            {
+                                echo "onclick='UnLogCheck()'";
+                            }
+                        ?>><i class="fa fa-heart" style="color: white;"></i></a>
+                    <p id="howManyFavs" class="iconDisplayText"><?php echo $current_fav;?></p>
                 </div>
                 <div class="col-xs-3" style="margin-top: 10px;">
                     <a href="#"><i class="fa fa-eye" style="color: white;"></i></a>
@@ -509,8 +599,7 @@ p.reply-content{
                         </div>                       
                     </li>
                 </ul>
-            </div>
-            
+            </div>            
         </div>
         
     </div>

@@ -10,7 +10,7 @@ if(isset($come_from))                       //click event detected, update click
     $conn->query($query30);
 }   //click event ends
 
-    $query31="update Common set view=view+1 where p_id=$pid";   //
+    $query31="update Common set view=view+1 where p_id=$pid";   
     $conn->query($query31);
 
 
