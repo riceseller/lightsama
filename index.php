@@ -176,7 +176,7 @@ function changeContent(classActive){
 </div>
     
 <?php
-    include "footer.php";
+    include "footer2.php";
 ?>
 
 <div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

@@ -6,6 +6,36 @@ $purpose=$_GET["iden"];
     .form-control{
         display: block !important;
     }
+    
+    .developper-div{
+        height: 150px;
+        width: auto;
+    }
+    
+    .developper-img{
+        height: auto;
+        float: left;
+    }
+    
+    .circle-img{
+        width: 70px;
+        height: 70px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    
+    .circle-img img{
+        display: inline;
+        margin-left: auto;
+        margin-right: 0;
+        height: 100%;
+        width: auto;
+    }
+    
+    .developper-p p{
+        text-align: left;
+    }
 </style>
 
 
@@ -30,7 +60,7 @@ $purpose=$_GET["iden"];
     }//});
 </script>
 
-<?php if($purpose=='problem'):?>
+<?php if($purpose=='reportbug'||$purpose=='recomm'):?>
 <div id="albumModModal">
         <form id="problemSubmit">
             <div class="form-group">
@@ -43,8 +73,13 @@ $purpose=$_GET["iden"];
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="exampleTextarea">Describe your problem</label>
-                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Type the Problem Encountered" name="message"></textarea>
+                <?php if($purpose=='reportbug'):?>
+                <label for="exampleTextarea">Report the bug</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Describe the bug that you find" name="message"></textarea>
+                <?php else:?>
+                <label for="exampleTextarea">Give us your advice</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Type the advice here" name="message"></textarea>
+                <?php endif;?>
             </div>
             <button id="formButton" onclick="metaSubmitClick('bug','problemSubmit');" type="button" class="btn btn-primary">Submit</button>            
         </form>
@@ -64,10 +99,64 @@ $purpose=$_GET["iden"];
             </div>
             <div class="form-group">
                 <label for="exampleTextarea">Please leave your message below</label>
-                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Leave a Comment Here" name="message"></textarea>
+                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Leave a Comment Here and we will reply you ASAP" name="message"></textarea>
             </div>
             <button id="formButton" onclick="metaSubmitClick('contact', 'contactSubmit');" type="button" class="btn btn-primary">Submit</button>            
         </form>
+</div>
+
+<?php elseif($purpose=='picshell'): ?>
+<div id="albumModModal">
+    <p>Captain Yu can write something here!</p>
+</div>
+
+<?php elseif($purpose=='developers'): ?>
+<div id="albumModModal">
+    <div class="container">
+        <div class="row">
+        <div class="developper-img col-sm-2">
+            <div class="circle-img">
+                <img src="media/icon.png" alt="Bowei Yu" />
+            </div>
+        </div>
+        <div class="developper-p col-sm-10">
+            <p>
+                blablablaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            </p>
+            <br>
+        </div>
+        </div>
+        <div class="row">
+        <div class="developper-img col-sm-2">
+            <div class="circle-img">
+                <img src="media/icon.png" alt="Yichen cheng" />
+            </div>
+        </div>
+        <div class="developper-p col-sm-10">
+            <p>
+                blablablaaaa<br>
+                aaaaaaaaa<br>
+                aaaaaaaaaa<br>
+                aaaaaaaaa
+            </p>
+            <br>
+        </div>
+        </div>
+        <div class="row">
+        <div class="developper-img col-sm-2">
+            <div class="circle-img">
+                <img src="media/icon.png" alt="Wenqian Zhao" />
+            </div>
+        </div>
+        <div class="developper-p col-sm-10">
+            <p>
+                blablablaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            </p>
+            <br>
+        </div>
+        </div>
+    </div>
+    
 </div>
 
 <?php else:?>
