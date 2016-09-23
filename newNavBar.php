@@ -21,7 +21,7 @@
     }
     body{
         background: #f3f5f6;
-       
+        margin-top: 50px;       
     }
     .nav{
         padding-left: 20px;
@@ -95,7 +95,7 @@
 
 <body>
       
-<nav class="navbar navbar-dark bg-inverse" style="z-index: 999;">
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse" style="z-index: 999;">
     
   <a class="navbar-brand" href="../index.php">PicShell</a>
   
