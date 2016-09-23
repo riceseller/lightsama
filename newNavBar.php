@@ -21,7 +21,9 @@
     }
     body{
         background: #f3f5f6;
-        margin-top: 50px;       
+        margin: 0;
+        padding: 0;
+        margin-top: 50px;
     }
     .nav{
         padding-left: 20px;

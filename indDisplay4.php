@@ -26,69 +26,6 @@
 ?>
 
 <style>
-.modal-dialog {
-  width: 100% !important;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  max-width: inherit !important;
-}
-.modal-content {
-  height: auto;
-  min-height: 100%;
-  border-radius: 0;
-  background-color: #000;
-  border: 0;
-}
-.container-fluid{
-    display: inline-block;
-    text-align: center;
-    padding: 0;
-    width: 100%;
-}
-.picDisplay img{
-    max-height: 100vh;
-    margin: 0;
-    padding: 0;
-    width: 900px;
-    object-fit: contain;
-}
-#userInfoPic{
-    margin-top: 15px;
-}
-#userInfo #userInfoPic img{
-        width: 70px;
-        height: 70px !important;
-        /* fill the container, preserving aspect ratio, and cropping to fit */
-        background-size: cover;
-        /* center the image vertically and horizontally */
-        background-position: center;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 100%; 
-        height: auto; 
-        max-height: 85vh;
-        object-fit: contain;      
-}
-#userNameD{
-    word-wrap: break-word;
-    margin-top: 15px;
-}
-#takenTime p{
-    word-wrap: break-word;
-}
-.picViewerInfo{
-    margin-top: 15px;
-}
-.exifFirstLine img{
-    width: 98px;
-    height: 97px;
-    object-fit: cover;
-}
-.exifFirstLine #cameraType{
-    margin-top: 30px;
-}
 .col-md-9{
     padding: 0;
 }
@@ -101,16 +38,12 @@
 .col-xs-6{
    padding: 0;
 }
-
 .col-md-4{
     padding: 0;
 }
 .col-md-6{
     padding: 0;
 }
-</style>
-
-<style>
 .col-xs-9{
     padding: 0;
 }
@@ -128,6 +61,32 @@
 }
 .col-xs-3{
     padding: 0;
+}
+.col-xs-10{
+    padding: 0;
+}
+.modal-dialog {
+    width: 100% !important;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: inherit !important;
+}
+.modal-content {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
+    background-color: #000;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+.container-fluid{
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 .infoDisplay{
     background-color: #333333;
@@ -169,6 +128,7 @@ p.iconDisplayText{
 .userNameAndPic{
     margin-top: 10px;
     margin-left: 10px;
+    width: 95%;
 }
 .userPicImg{
     margin: 0;
@@ -198,29 +158,35 @@ p.iconDisplayText{
 .titleAndDesCription{
     margin: 0;
     padding: 10px;
+    padding-left: 10px;
+    width: 95%;
 }
 .titleAndDesCription p{
     display: block;
     color: white;
     word-wrap: break-word;
     text-align: left;
-    margin: 0;
 }
 p.titleDisplay{
-    font-size: 30px;
+    font-size: 22px;
+    margin-bottom: 5px;
 }
 p.descriptDisplay{
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 110%;
+    margin-bottom: 5px;
 }
 .tagOrientation{
     margin: 0;
     padding: 10px;
+    padding-top: 0;
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     vertical-align: middle;
+    width: 95%;
 }
 .tagOrientation a{
     display: block;
@@ -240,6 +206,7 @@ p.descriptDisplay{
     margin-left: 10px;
     text-align: left;
     height: auto;
+    width: 95%;
 }
 .picEquipInfo i{
     display: inline-block;
@@ -287,7 +254,7 @@ textarea, input[type=text], input[type=password] {
     color: #9a9a9a;
     font-family: inherit;
     font-size: 13px;
-    line-height: 10px;
+    line-height: 110%;
     -webkit-rtl-ordering: logical;
     -webkit-user-select: text;
     flex-direction: column;
@@ -313,8 +280,15 @@ textarea, input[type=text], input[type=password] {
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
 }
+.comments-display{
+    padding: 6px 8px 6px 48px;
+    clear: both;
+    display: block;
+    margin-top: 0em;
+    border-top: 1px solid #222;
+}
 .list-of-comments li {
-    display: list-item;
+    display: block;
     border-top: 1px solid #313131;
     color: #eee;
     position: relative;
@@ -335,14 +309,32 @@ textarea, input[type=text], input[type=password] {
     margin-top: 5px;
     display: inline-block;
     background-image: url(http://www.thestar.com.my/~/media/online/2016/03/13/23/00/visitor-face-scan.ashx/?w=620&h=413&crop=1&hash=76D7EC812EB694D31CB9C062E03131CEBEF7742C);
+    position: absolute;
+    top: 6px;
+    left: 0px;   
+}
+.list-of-comments li .list-description{
+    display: inline-block;
+    margin-top: 0;
+    padding-left: 45px;
+    height: 100%;
 }
 .list-of-comments li p{
-    font-size: 13px;
-    display: inline-block;
     margin-left: 3px;
     color: white !important;
     margin-bottom: 0;
-    margin-top: -5px;
+    margin-top: 0;
+    display: block;
+}
+.list-of-comments li p .reply-title{
+    font-size: 16px;
+}
+.list-of-comments li p .reply-time{
+    font-size: 12px;
+    color: #919191;
+}
+p.reply-content{
+    font-size: 13px;
 }
 .comments-position{
     margin-top: 0;
@@ -433,7 +425,7 @@ textarea, input[type=text], input[type=password] {
                     }
                 ?>
             </div>
-            <div class="row picEquipInfo">
+            <div class="row picEquipInfo" style="border-top: 1px solid #222222;">
                 <i class="fa fa-camera" style="color: white;"></i>
                 <p class="picEquipInfoText"><?php
                             if($row[model]==None)
@@ -502,13 +494,19 @@ textarea, input[type=text], input[type=password] {
             </div>
             <div class="row userNameAndPic comments-position">
                 <ul class="list-of-comments">
-                    <li>
-                        <img class="img-fluid img-circle" />
-                        <p>username1</p>
+                    <li class="comments-display">                       
+                        <img class="img-fluid" />                        
+                        <div class="list-description">
+                            <p><span class="reply-title">username1 </span><span class="reply-time">just now</span></p>
+                            <p class="reply-content">this is the first comment</p>                            
+                        </div>                       
                     </li>
-                    <li>
-                        <img class="img-fluid img-circle" />
-                        <p>username2</p>
+                    <li class="comments-display">                       
+                        <img class="img-fluid" />                        
+                        <div class="list-description">
+                            <p><span class="reply-title">username2 </span><span class="reply-time">just now</span></p>
+                            <p class="reply-content">this is the second comment</p>                            
+                        </div>                       
                     </li>
                 </ul>
             </div>
