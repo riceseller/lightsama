@@ -403,16 +403,18 @@ p.reply-content{
 </style>
 
 <script>
-    function LogInCheck2(){
-        
-}
-    function LogInCheck(){
-        
-}
     function UnLogCheck(){
-        var d=<?php print $current_fav;?>;  //current people who hit like
+        var a=<?php print $current_id;?>;   //current user id
+        var b=<?php print $pid;?>;          //current picture pid
+        var d=<?php print $current_fav;?>;  //current people who hit likee
+        var c='check_like';
         d++;
         document.getElementById("howManyFavs").innerHTML = d;
+        $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
+                });
 }
 </script>
 
