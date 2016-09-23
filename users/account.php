@@ -37,7 +37,7 @@ function displayBlock($row,$mode){
 }
 ?>
 
-<?php
+<?php 
     $grav = get_gravatar(strtolower(trim($user->data()->email)));
     $get_info_id = $user->data()->id;
     // $groupname = ucfirst($loggedInUser->title);
@@ -134,6 +134,7 @@ function displayBlock($row,$mode){
 </script>
 </customHeader>
 
+<?php if($user->isLoggedIn()){ ?>
 <div class="footerPusher">
 <div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
   <div class="container">
@@ -181,5 +182,9 @@ function displayBlock($row,$mode){
 </div>
 </div>
     
-<?php mysqli_close($conn); ?>
 <?php require_once '../footer.php'; ?>
+<?php }else{
+    echo '<script type="text/javascript">alert("please sign in first!");</script>';
+    echo "<script>window.location = '../users/new_login.php'</script>";
+}?>
+<?php mysqli_close($conn); ?>
