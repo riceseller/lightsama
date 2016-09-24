@@ -8,9 +8,24 @@ if(isset($_GET['page'])) {
 }else{
     $page = 1;
 }
-if(isset($_GET['id'])) {
-    // id index exists
+$off = $page*50-50;
+
+if(isset($_GET['id']) and isset($_GET['albumid'])) {
+    // both user id and album id inputs exist, show only specific album pics
     $displayID = $_GET["id"];
+    $albumID = $_GET["albumid"];
+    $Pageurl = "/indUser.php?id=$displayID&albumid=$albumID&";
+    $query7 =  "select distinct u.id, u.url, u.width, u.height from Url u join Common c on u.id=c.p_id where u.width is not null and u.height is not null and c.userBelong=$displayID and albumBelong=$albumID order by c.dateR desc limit 50 offset $off";
+    $q_album_name = "select title from ScrapeAlbum where id=$albumID";
+    $result_q_a_n=$conn->query($q_album_name);
+    $row_q_a_n = mysqli_fetch_array($result_q_a_n);
+    $albumName = '->'.$row_q_a_n['title'];
+}elseif(isset($_GET['id']) and empty($_GET['albumid'])){
+    // show all pic for userID
+    $displayID = $_GET["id"];
+    $Pageurl = "/indUser.php?id=$displayID&";
+    $query7 =  "select distinct u.id, u.url, u.width, u.height from Url u join Common c on u.id=c.p_id where u.width is not null and u.height is not null and c.userBelong=$displayID order by c.dateR desc limit 50 offset $off";
+    $albumName = '';    
 }else{
     // head to temp page
     header('Location: explore.php');
@@ -33,20 +48,20 @@ function pageCount($inputStr){
     $query11 = "select * from ScrapeUser where id=$displayID";
     $result11=$conn->query($query11);
     $row11 = mysqli_fetch_array($result11);
-    $scrapeUserName = $row11[displayName];
-    if($row11[Ubelong]=='flickr' or $row11[Ubelong]=='Flickr'){
-        $server = $row11[extraOne];
-        $farm = $row11[extraTwo];
-        $userr = $row11[userID];
+    $scrapeUserName = $row11['displayName'];
+    if($row11['Ubelong']=='flickr' or $row11['Ubelong']=='Flickr'){
+        $server = $row11['extraOne'];
+        $farm = $row11['extraTwo'];
+        $userr = $row11['userID'];
         $gravMod = "https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg";
     }elseif($row11[Ubelong]=='500px'){
-        $gravMod = $row11[extraTwo];
+        $gravMod = $row11['extraTwo'];
     }
     //get jumbo background img
     $query12 = "select u.url from Url u join Common c on u.id=c.p_id join ScrapeUser su on c.userBelong = su.id where su.id = $displayID order by rand() limit 1";
     $result12=$conn->query($query12);
     $row12 = mysqli_fetch_array($result12);
-    $jumboBackground = $row12[url];
+    $jumboBackground = $row12['url'];
 ?>
 
 <customHeader>
@@ -123,13 +138,10 @@ function pageCount($inputStr){
 <div class="container" style="padding-top:8px;padding-bottom:8px;">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-          <a class="nav-link active" href="#">Photostream</a>
+          <a class="nav-link active">Photostream<?=$albumName?></a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="../accAlbum.php?id=<?=$displayID?>">Album</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="#">Favorite</a>
       </li>
     </ul>                    
 </div>
@@ -137,11 +149,7 @@ function pageCount($inputStr){
 <div class="container-Collage" style="padding:0;">
 <section class="Collage effect-parent">
     <?php
-        $off = $page*50-50;
-        $query7 =  "select distinct u.id, u.url, u.width, u.height from Url u join Common c on u.id=c.p_id where u.width is not null and u.height is not null and c.userBelong=$displayID order by c.dateR desc limit 50 offset $off";
-        $Pageurl = "/indUser.php?id=$displayID&";
         $totalPage = pageCount($query7);
-        //echo $totalPage;
         $Presult=$conn->query($totalPage);
         $Prow = $Presult->fetch_assoc();
         $totalPageNum = floor($Prow['count(*)']/50)+1;
@@ -151,8 +159,8 @@ function pageCount($inputStr){
         // output data of each row
         while($row7 = $result7->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row7[id]."\">";
-            echo "<img src=\"".$row7[url]."\" width=\"".$row7[width]."\" height=\"".$row7[height]."\">";
+            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row7['id']."\">";
+            echo "<img src=\"".$row7['url']."\" width=\"".$row7['width']."\" height=\"".$row7['height']."\">";
             echo "</a>";
             echo "</div>";
         }

@@ -31,7 +31,8 @@
                     $row2 = mysqli_fetch_array($result2);
                     $f->setToken($row2[authToken]);
                     $f->auth("write");
-                    $status = $f->sync_upload($newpath, $_POST["name"], $_POST['description']);
+                    if (isset($_POST['tags'])){$status = $f->sync_upload($newpath, $_POST["name"], $_POST['description'],$_POST['tags']);
+                    }else{$status = $f->sync_upload($newpath, $_POST["name"], $_POST['description']);}
                     if(!$status) { echo '<script type="text/javascript">alert("Error occurs while uploading");</script>';;}
                     else{
                     $test = shell_exec("python /home/luokerenz/realtime/flickr_refresh_RT.py $status 2>&1");
@@ -51,6 +52,7 @@
         <form  method="post" accept-charset="utf-8" enctype='multipart/form-data'>
             <p>Name: &nbsp; <input type="text" name="name" value="" ></p>
             <p>Description: &nbsp; <input type="text" name="description" value="" ></p>
+            <p>Tags seperated with space strictly: &nbsp; <input type="text" name="tags" value="" ></p>
             <p>Picture: <input type="file" name="file"/></p>
             <p><input type="submit" value="Submit"></p>
         </form>

@@ -33,17 +33,17 @@ function pageCount($inputStr){
     $query11 = "select * from ScrapeUser where id=$displayID";
     $result11=$conn->query($query11);
     $row11 = mysqli_fetch_array($result11);
-    if($row11[Ubelong]=='flickr'){
-        $server = $row11[extraOne];
-        $farm = $row11[extraTwo];
-        $userr = $row11[userID];
+    if($row11['Ubelong']=='flickr'){
+        $server = $row11['extraOne'];
+        $farm = $row11['extraTwo'];
+        $userr = $row11['userID'];
         $gravMod = "https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg";
     }
     //get jumbo background img
     $query12 = "select u.url from Url u join Common c on u.id=c.p_id join ScrapeAlbum sa on c.albumBelong = sa.id where sa.scrapeUserID = $displayID order by rand() limit 1";
     $result12=$conn->query($query12);
     $row12 = mysqli_fetch_array($result12);
-    $jumboBackground = $row12[url];
+    $jumboBackground = $row12['url'];
 ?>
 <customheader>
     <style>
@@ -144,10 +144,7 @@ function pageCount($inputStr){
           <a class="nav-link" href="indUser.php?id=<?=$displayID?>">Photostream</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link active" href="#">Album</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="#">Favorite</a>
+          <a class="nav-link active">Album</a>
       </li>
     </ul>                    
 </div>
@@ -169,11 +166,12 @@ function pageCount($inputStr){
             // output data of each row
             while($row7 = $result7->fetch_assoc()) {
                 echo "<div class=\"card card-inverse\">";
-                echo "<img class=\"card-img\" src=\"".$row7[coverphoto]."\" alt=\"Card image\">";
+                echo "<img class=\"card-img\" src=\"".$row7['coverphoto']."\" alt=\"Card image\">";
                 echo "<div class=\"card-img-overlay\">";
                 echo "<div class=\"container albumTool\">";
-                echo "<h4 class=\"card-title cusTitle\">".$row7[title]."</h4>";
-                echo "<h4 class=\"card-title pull-xs-right\"><a href=\"/users/albumModInfo.php?albumID=".$row7[id]."\" id=\"Gmodal\">&#9998</a></h4>";
+                echo "<a href='indUser.php?id=$displayID&albumid=".$row7['id']."'>";
+                echo "<h4 class=\"card-title cusTitle\">".$row7['title']."</h4></a>";
+                echo "<h4 class=\"card-title pull-xs-right\"><a href=\"/users/albumModInfo.php?albumID=".$row7['id']."\" id=\"Gmodal\">&#9998</a></h4>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";
