@@ -1,7 +1,7 @@
         .jumbotron{
             background-image: url("https://s1.tuchong.com/welcome-image/small/27091117.jpg"); 
             background-size: cover;
-            height: calc(80vh);
+            min-height: calc(80vh);
             order: 1;
             border-radius: 0px !important;
         }
