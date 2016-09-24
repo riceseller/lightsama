@@ -16,7 +16,9 @@ if(isset($_GET['category'])&&$_GET['category']=='login') {
 //this section of php code handles existing user to login to the page. It includes php code 
 //for future management. 
 ini_set("allow_url_fopen", 1);       //for controling initial display use
-$through=$_GET["through"];          //for controling form submission use
+if (isset($_GET["through"])){
+$through=$_GET["through"];}          //for controling form submission use
+else{ $through = '';}
 ?>
 
 <?php       //login handling set down here
@@ -80,8 +82,8 @@ $through=$_GET["through"];          //for controling form submission use
                 } //end of the validation code
                 else {
                     $error_message .= 'Log in failed. Please check your username and password and try again.';
-                    echo "<script>passwordwrong()</script>";
-                    $category='login';
+                    echo "<script>alert(\"Wrong username or password!\");</script>";
+                    $category=1;
                 }
             } else{
                 $error_message .= '<ul>';

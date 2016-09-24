@@ -83,8 +83,8 @@ function pageCount($inputStr){
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row[id]."\">";
-            echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
+            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row['id']."\">";
+            echo "<img src=\"".$row['url']."\" width=\"".$row['width']."\" height=\"".$row['height']."\">";
             echo "</a>";
             echo "</div>";
         }
