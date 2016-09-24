@@ -38,7 +38,7 @@
     }
     else
     {
-        $current_id=0;
+        $current_id=-5;
         $current_name=0;
     }//user info acquisiton ends
     
@@ -403,19 +403,76 @@ p.reply-content{
 </style>
 
 <script>
-    function UnLogCheck(){
+    function LogInCheck() {
         var a=<?php print $current_id;?>;   //current user id
         var b=<?php print $pid;?>;          //current picture pid
-        var d=<?php print $current_fav;?>;  //current people who hit likee
-        var c='check_like';
-        d++;
-        document.getElementById("howManyFavs").innerHTML = d;
-        $.ajax({
+        var d=<?php print $current_fav;?>;  //current people who hit like
+        if(document.getElementById("activateMyHeart").style.color === "white")
+        {
+            var c='check_like';
+            d++;
+            document.getElementById('howManyFavs').innerHTML = d;                        
+            $.ajax({
                 type: 'GET',
                 url: 'FavWrite.php',
-                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c                           
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,
+                success: function(){
+                    document.getElementById("activateMyHeart").style.color = "red";
+                }
                 });
-}
+        }
+        if(document.getElementById("activateMyHeart").style.color === "red")
+        {
+            var c='uncheck_like';
+            d=<?php print $current_fav;?>;  //current people who hit like;         
+            document.getElementById('howManyFavs').innerHTML = d;                         
+            $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,
+                success: function(){
+                    document.getElementById("activateMyHeart").style.color = "white";
+                }
+            });
+        }
+    }                                                
+    function LogInCheck2() {
+        var a=<?php print $current_id;?>;   //current user id
+        var b=<?php print $pid;?>;          //current picture pid
+        var d=<?php print $current_fav;?>;  //current people who hit like
+        if(document.getElementById("activateMyHeart").style.color === "white")
+        {   
+            var c='check_like';
+            d=<?php print $current_fav;?>;                        
+            document.getElementById('howManyFavs').innerHTML = d;                        
+            $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,
+                success: function(){
+                    document.getElementById("activateMyHeart").style.color = "red";
+                }
+            });
+
+        }
+        else if(document.getElementById("activateMyHeart").style.color === "red")
+        {     
+            var c='uncheck_like';
+            d--;
+            document.getElementById('howManyFavs').innerHTML = d;
+            $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,
+                success: function(){
+                    document.getElementById("activateMyHeart").style.color = "white";
+                }
+            });
+        }
+    }
+    function UnLogCheck(){
+        alert("I know you like it, but please log in first then you can do everything you want");
+    }
 </script>
 
     <div class="container-fluid" style="padding: 0;">
@@ -434,7 +491,7 @@ p.reply-content{
                                     echo "onclick='LogInCheck2()'";
                                 }
                                 else    //it has not been liked before, option is like 
-                                {                                  
+                                {                                                                
                                     echo "onclick='LogInCheck()'";
                                 }                               
                             }
@@ -442,7 +499,7 @@ p.reply-content{
                             {
                                 echo "onclick='UnLogCheck()'";
                             }
-                        ?>><i class="fa fa-heart" style="color: white;"></i></a>
+                        ?>><i id="activateMyHeart" class="fa fa-heart" style="<?php if($current_id==$userid){echo "color: red";} else{echo "color: white";}?>"></i></a>
                     <p id="howManyFavs" class="iconDisplayText"><?php echo $current_fav;?></p>
                 </div>
                 <div class="col-xs-3" style="margin-top: 10px;">
