@@ -1,41 +1,18 @@
-<?php
-require_once "../newNavBar.php";
-
-function displayBlock($row,$mode){
-    if($mode==1){
-        //display ind block using input
-        if($row['Ubelong']=='flickr' or $row['Ubelong']=='Flickr'){
-                $server = $row['extraOne'];
-                $farm = $row['extraTwo'];
-                $userr = $row['userID'];
-                $avaStr = "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/$userr.jpg)";
-            }elseif($row[Ubelong]=='500px'){
-                $usrr = $row['extraTwo'];
-                $avaStr = "background-image:url($usrr)";
-            }else{
-                $avaStr = "background-image:url($grav)";
-            }
-        $printID = $row['userID'];
-        $printScrapUID = $row['scrapeUserID'];
-        $printBelong = $row['Ubelong'];
-        print "<div class='card accCardCenter'>";
-        print "<div class='card-block'>";
-        print "<img class='card-userAvatar' style=$avaStr>";
-        print "<h4 class='card-title'>ID: $printID</h4>";
-        print "<a href='../indUser.php?id=$printScrapUID' class='btn btn-primary card-btn'>PhotoStream</a>";
-        print "<a href='../accAlbum.php?id=$printScrapUID' class='btn btn-primary card-btn'>Ablum</a>";
-        print "<a class='btn btn-danger card-btn' href='ondelete.php?del=$printID&be=$printBelong' onclick='return checkDelete()'>&#128465</a>";
-        print "</div>";
-        print "</div>";
-    }
-    if($mode==2){
-    //display add block directly
-    print '<div class="card accCardCenter"><div class="card-block">'
-            . '<h4> </h4>'
-            . '<a href="../phpFlick/auth.php" style="font-size:80px;opacity:0.5;">&#8853</a>'
-            . '<h4> </h4>'
-            . '</div></div>';
-    }
+<?php require_once "../newNavBar.php"; ?>
+<?php 
+if(isset($_GET['page'])) {
+    // get page number for location of the album list
+    $page = $_GET["page"];
+}else{
+    $page = 1;
+}
+function pageCount($inputStr){
+    $replace = 'select count(*) from ';
+    $replace2 = ' ';
+    $regex = '/select(.*)from/';
+    $regex2 = '/limit(.*)/';
+    $mid = preg_replace($regex, $replace, $inputStr);
+    return preg_replace($regex2, $replace2, $mid);
 }
 ?>
 
@@ -128,12 +105,6 @@ function displayBlock($row,$mode){
         text-align:center;
     }
 </style>
-
-<script language="JavaScript" type="text/javascript">
-    function checkDelete(){
-        return confirm('Are you sure?');
-    }
-</script>
 </customHeader>
 
 <?php if($user->isLoggedIn()){ ?>
@@ -152,13 +123,13 @@ function displayBlock($row,$mode){
 <div class="container" style="padding-top:8px;padding-bottom:8px;">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-          <a class="nav-link active">Linked Account</a>
+          <a class="nav-link" href="../users/account.php">Linked Account</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="../users/user_settings.php">Edit Info</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="../users/accountFav.php">Favorite</a>
+          <a class="nav-link active">Favorite</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="../users/flickrUpload.php">Upload</a>
@@ -166,22 +137,32 @@ function displayBlock($row,$mode){
     </ul>                    
 </div>
 
-<div class="container">
-    <div class="card-deck-wrapper">
-        <div class="card-deck">
-        <?php
-            if($Umode==1){
-                //print $row[userID]
-                //displayBlock($row[scrapeUserID],$row[userID], $row[Ubelong]);
-                while($row = mysqli_fetch_array($result)) {
-                    displayBlock($row,1);
-                }
-            }
-            displayBlock($row,2);
-        ?>
-        </div>
-    </div>
-</div>
+<div class="container-Collage" style="padding:0;">
+<section class="Collage effect-parent">
+    <?php
+        $off = $page*40-40;
+        $queryCo = "select distinct u.id, u.url, u.width, u.height from Url u join Common c on u.id=c.p_id join fav f on c.p_id=f.favpic where f.userid=$get_info_id and u.width is not null and u.height is not null order by c.dateR desc limit 40 offset $off";
+        $Pageurl = "../users/accountFav.php?";
+        $totalPage = pageCount($queryCo);
+        //echo $totalPage;
+        $Presult=$conn->query($totalPage);
+        $Prow = $Presult->fetch_assoc();
+        $totalPageNum = floor($Prow['count(*)']/40)+1;
+        $result=$conn->query($queryCo);
+        if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "<div class=\"Image_Wrapper\">";
+            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row['id']."\">";
+            echo "<img src=\"".$row['url']."\" width=\"".$row['width']."\" height=\"".$row['height']."\">";
+            echo "</a>";
+            echo "</div>";
+        }
+    } else {
+        echo "0 results";
+    }
+    ?>
+</section>
 </div>
     
 <?php require_once '../footer.php'; ?>
