@@ -1,5 +1,6 @@
 <?php
     error_reporting(0);
+    date_default_timezone_set('America/New_York');  //set default time zone as eastern time new york
     include "supplyment/dbAccess.php";
     require_once 'users/init.php';
     $pid=$_GET["pid"];
@@ -122,14 +123,14 @@
 }
 .modal-dialog {
     width: 100% !important;
-    height: 100%;
+    min-height: 95%;
     margin: 0;
     padding: 0;
     max-width: inherit !important;
 }
 .modal-content {
     height: auto;
-    min-height: 100%;
+    min-height: 95%;
     border-radius: 0;
     background-color: #000;
     border: 0;
@@ -290,14 +291,35 @@ p.picEquipInfoText{
     left: 0px;
     display: block;
 }
+.form-reply .button-position{
+    position: absolute;
+    top: 45px;
+    left: 39px;
+    display: block;
+}
+.form-reply .button-position input[type=button]{
+    width: 40px;
+    height: 30px;
+    background: #4B99AD !important;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+}
+.form-reply .button-position input[type=button]:hover{
+    background: #4691A4;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
 .site-icon img{
     border-radius: 50%;
     width: 35px;
     height: 35px;
-    background-image: url(http://www.thestar.com.my/~/media/online/2016/03/13/23/00/visitor-face-scan.ashx/?w=620&h=413&crop=1&hash=76D7EC812EB694D31CB9C062E03131CEBEF7742C);
 }
 .reply-content{
-    height: 35px;
+    height: 45px;
     padding-top: 6px;
     background-color: #333;
 }
@@ -363,10 +385,19 @@ textarea, input[type=text], input[type=password] {
     margin-left: 2px;
     margin-top: 5px;
     display: inline-block;
-    background-image: url(http://www.thestar.com.my/~/media/online/2016/03/13/23/00/visitor-face-scan.ashx/?w=620&h=413&crop=1&hash=76D7EC812EB694D31CB9C062E03131CEBEF7742C);
     position: absolute;
     top: 6px;
     left: 0px;   
+}
+.list-of-comments li i{
+    cursor: pointer;
+    -webkit-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+    color: white; 
+    position: absolute; 
+    top: 3px; 
+    right: 5px;
 }
 .list-of-comments li .list-description{
     display: inline-block;
@@ -475,6 +506,35 @@ p.reply-content{
     }
 </script>
 
+<script>
+function myFunction() {
+    var add_comment=document.getElementById("field5").value;
+    var a=<?php print $current_id;?>;   //current user id
+    var b=<?php print $pid;?>;          //current picture pid
+    var p='<?php print $current_name;?>';    
+    var q=<?php print $comment_count;?>;
+    var userlink='<?php print $row2[custom2];?>';
+    q++;
+    var c='comment_write';
+    if(!add_comment || !a){
+        alert("you either sumbit an empty comment or you did not log in at all");
+        return;
+    }
+    var old_comment=document.getElementById("comments-list").innerHTML; 
+    var new_comment=old_comment+'<li id="1000"><div class=" "><img src="'+userlink+'"/><div class="list-description"><p><span class="reply-title">'+p+' '+'<span class="reply-time">just now</span></p><p class="reply-content">'+add_comment+'</p></div></li>';
+    new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    document.getElementById('comments-list').innerHTML = new_comment;
+    
+    $.ajax({
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c +'&current_comment='+add_comment              
+            });            
+    updated_comment = updated_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    document.getElementById('commentCount').innerHTML = q;                
+}
+</script>
+
     <div class="container-fluid" style="padding: 0;">
         
         <div class="col-md-9 imgDisplay">
@@ -508,7 +568,7 @@ p.reply-content{
                 </div>
                 <div class="col-xs-3" style="margin-top: 10px;">
                     <a href="#"><i class="fa fa-comments" style="color: white;"></i></a>
-                    <p class="iconDisplayText"><?php echo $comment_count;?></p>
+                    <p class="iconDisplayText" id="commentCount"><?php echo $comment_count;?></p>
                 </div>
                 <div class="col-xs-3" style="margin-top: 10px;">
                     <a href="#"><i class="fa fa-close" style="color: white;" data-dismiss="modal"></i></a>
@@ -635,28 +695,144 @@ p.reply-content{
                 <div class="col-xs-12" style="padding: 0; text-align: left">                    
                     <form class="form-reply collapsed">
                         <div class="site-icon">
-                            <img class="img-fluid" style="object-fit: contain;"/>
+                            <img class="img-fluid" style="object-fit: contain;" <?php if($current_id!=-5){echo "src='$gravMod2'";} ?>/>
                         </div>
-                        <textarea class="reply-content" placeholder="leave comments please"></textarea>
+                        <textarea id="field5" class="reply-content" placeholder="leave comments please"></textarea>
+                        <input type="button" value="Submit" onclick="myFunction()" style="background-color: #0090e3; border: none; font-size: 13px;">
                     </form>
                 </div>                
             </div>
             <div class="row userNameAndPic comments-position">
-                <ul class="list-of-comments">
-                    <li class="comments-display">                       
-                        <img class="img-fluid" />                        
-                        <div class="list-description">
-                            <p><span class="reply-title">username1 </span><span class="reply-time">just now</span></p>
-                            <p class="reply-content">this is the first comment</p>                            
-                        </div>                       
-                    </li>
-                    <li class="comments-display">                       
-                        <img class="img-fluid" />                        
-                        <div class="list-description">
-                            <p><span class="reply-title">username2 </span><span class="reply-time">just now</span></p>
-                            <p class="reply-content">this is the second comment</p>                            
-                        </div>                       
-                    </li>
+                <ul class="list-of-comments" id="comments-list">
+                    <?php
+                        $current_date=new DateTime();
+                        while($row_comment=$result_comment->fetch_assoc())
+                        {
+                            $comment_date=new DateTime($row_comment[comdate]);
+                            $dteDiff  = $comment_date->diff($current_date);
+                            if($row_comment[custom2]=='')
+                            {                             
+                                $gravMod = $grav;                               
+                            }
+                            else {                               
+                                $gravMod = $row_comment[custom2];                                
+                            }
+                            
+                            if($dteDiff->format("%M")!='00')
+                            {
+                                $date_print=$dteDiff->format("%M");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' month ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' months ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' months ago';            
+                                }              
+                            }
+                            else if($dteDiff->format("%D")!='00')
+                            {
+                                $date_print=$dteDiff->format("%D");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' day ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' days ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' days ago';            
+                                }   
+                            }
+                            else if($dteDiff->format("%H")!='00')
+                            {
+                                $date_print=$dteDiff->format("%H");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' hour ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' hours ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' hours ago';            
+                                }                         
+                            }
+                            else if($dteDiff->format("%I")!='00')
+                            {
+                                $date_print=$dteDiff->format("%I");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' minute ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' minutes ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' minutes ago';            
+                                }              
+                            }
+                            else if($dteDiff->format("%S")!='00')
+                            {
+                                $date_print=$dteDiff->format("%S");  
+                                if(substr($date_print, 0, 1)=='0')
+                                {
+                                    $date_print=substr($date_print, 1, 1);
+                                    if($date_print=='1')
+                                    {
+                                        $date_print2=''.$date_print.' second ago';               
+                                    }
+                                    else
+                                    {
+                                        $date_print2=''.$date_print.' seconds ago';               
+                                    }
+                                }
+                                else 
+                                {
+                                    $date_print2=''.$date_print.' seconds ago';            
+                                }            
+                            }
+                                                        
+                            if($row_comment[userid]!=$current_id && $current_id!=-5) //logged in, not your picture
+                            {
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\"/><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i class=\"fa fa-eye\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                            }
+                            else if($current_id==-5) //not logged in, not your picture
+                            {
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i class=\"fa fa-eye\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                            }
+                            else //logged in, your picture
+                            {
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i class=\"fa fa-eye\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                            }                   
+                        }
+                    ?>
                 </ul>
             </div>            
         </div>
