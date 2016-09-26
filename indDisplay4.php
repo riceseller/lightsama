@@ -391,7 +391,8 @@ textarea, input[type=text], input[type=password] {
 }
 .list-of-comments li i{
     float: right;
-    margin-left: 14px;
+    margin-left: 34px;
+    margin-top: 5px;
     position: relative;
     top: 2px;
     color: #A6A6A6;
