@@ -846,15 +846,15 @@ function myFunction() {
                                                         
                             if($row_comment[userid]!=$current_id && $current_id!=-5) //logged in, not your picture
                             {
-                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\"/><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\"/><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\"></i><i id=\"replyIcon\" class=\"fa fa-reply\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
                             }
                             else if($current_id==-5) //not logged in, not your picture
                             {
-                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\"></i><i id=\"trashCan\" class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
                             }
                             else //logged in, your picture
                             {
-                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\"></i><i id=\"trashCan\" class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
                             }                   
                         }
                     ?>
