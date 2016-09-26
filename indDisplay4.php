@@ -397,9 +397,23 @@ textarea, input[type=text], input[type=password] {
     top: 2px;
     color: #A6A6A6;
     cursor: pointer;
-    -webkit-transition: color 0.3s ease;
-    -o-transition: color 0.3s ease;
-    transition: color 0.3s ease;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0,-10px,0);
+    transform: translate3d(0,-10px,0);
+}
+.list-of-comments li i::before{
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0,4em,0) scale3d(1,0.023,1) ;
+    transform: translate3d(0,4em,0) scale3d(1,0.023,1);
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+}
+.list-of-comments li:hover i{
+    opacity: 1;
+    -webkit-transform: translate3d(0,0,0);
 }
 .list-of-comments li .list-description{
     display: inline-block;
