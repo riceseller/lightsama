@@ -390,11 +390,6 @@ textarea, input[type=text], input[type=password] {
     left: 0px;   
 }
 .list-of-comments li i{
-    float: right;
-    margin-left: 65px;
-    margin-top: 5px;
-    position: relative;
-    top: 2px;
     color: #A6A6A6;
     cursor: pointer;
     opacity: 0;
@@ -402,6 +397,13 @@ textarea, input[type=text], input[type=password] {
     transition: opacity 0.35s, transform 0.35s;
     -webkit-transform: translate3d(0,-10px,0);
     transform: translate3d(0,-10px,0);
+}
+.list-of-comments li i .fa-trash{
+    float: right;
+    margin-left: 65px;
+    margin-top: 5px;
+    position: relative;
+    top: 2px;
 }
 .list-of-comments li i::before{
     -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
@@ -837,15 +839,15 @@ function myFunction() {
                                                         
                             if($row_comment[userid]!=$current_id && $current_id!=-5) //logged in, not your picture
                             {
-                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\"/><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i class=\"fa fa-eye\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\"/><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
                             }
                             else if($current_id==-5) //not logged in, not your picture
                             {
-                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i class=\"fa fa-eye\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
                             }
                             else //logged in, your picture
                             {
-                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i class=\"fa fa-eye\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
                             }                   
                         }
                     ?>
