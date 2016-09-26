@@ -390,6 +390,7 @@ textarea, input[type=text], input[type=password] {
     left: 0px;   
 }
 .list-of-comments li i{
+    display: inline-block;
     color: #A6A6A6;
     cursor: pointer;
     opacity: 0;
@@ -400,14 +401,14 @@ textarea, input[type=text], input[type=password] {
 }
 #trashCan{
     float: right;
-    margin-left: 65px;
+    margin-left: 55px;
     margin-top: 5px;
     position: relative;
     top: 2px;
 }
 #replyIcon{
     float: right;
-    margin-left: 75px;
+    margin-left: 65px;
     margin-top: 5px;
     position: relative;
     top: 2px;
