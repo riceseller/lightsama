@@ -390,14 +390,15 @@ textarea, input[type=text], input[type=password] {
     left: 0px;   
 }
 .list-of-comments li i{
+    float: right;
+    margin-left: 14px;
+    position: relative;
+    top: 2px;
+    color: #A6A6A6;
     cursor: pointer;
     -webkit-transition: color 0.3s ease;
     -o-transition: color 0.3s ease;
     transition: color 0.3s ease;
-    color: white; 
-    position: absolute; 
-    top: 3px; 
-    right: 5px;
 }
 .list-of-comments li .list-description{
     display: inline-block;
