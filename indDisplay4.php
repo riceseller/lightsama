@@ -398,7 +398,7 @@ textarea, input[type=text], input[type=password] {
     -webkit-transform: translate3d(0,-10px,0);
     transform: translate3d(0,-10px,0);
 }
-.list-of-comments li i .fa-trash{
+.list-of-comments li i .fa .fa-trash{
     float: right;
     margin-left: 65px;
     margin-top: 5px;
