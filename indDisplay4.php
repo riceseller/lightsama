@@ -405,6 +405,13 @@ textarea, input[type=text], input[type=password] {
     position: relative;
     top: 2px;
 }
+#replyIcon{
+    float: right;
+    margin-left: 75px;
+    margin-top: 5px;
+    position: relative;
+    top: 2px;
+}
 .list-of-comments li i::before{
     -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, transform 0.35s;
