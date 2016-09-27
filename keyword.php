@@ -11,16 +11,10 @@ if(isset($_GET['page'])) {
 if(isset($_GET['search'])) {
     // id index exists
     $keyword = $_GET["search"];
+    #$keywordS = '+'.str_replace(' ',' +',$keyword); #less accurate mode
+    $keywordS = '\"'.$keyword.'\"'; #exact mode
 }else{
     header('Location: explore.php');
-}
-function pageCount($inputStr){
-    $replace = 'select count(*) from ';
-    $replace2 = ' ';
-    $regex = '/select(.*)from/';
-    $regex2 = '/limit(.*)/';
-    $mid = preg_replace($regex, $replace, $inputStr);
-    return preg_replace($regex2, $replace2, $mid);
 }
 ?>
 
@@ -94,19 +88,15 @@ function pageCount($inputStr){
                 . "AND c.p_id=u.id "
                 . "and c.nsfw=0 and u.width is not null and u.height is not null "
                 . "limit 20 offset $off";*/
-        $query = "SELECT DISTINCT u.id, u.url, u.width, u.height "
-                . "FROM Url u JOIN Common c ON c.p_id=u.id "
-                . "WHERE (MATCH(c.descript) AGAINST ('$keyword')) or (MATCH(c.title) AGAINST('$keyword')) "
-                . "AND c.nsfw=0 AND u.width is not null AND u.height is not null "
-                . "LIMIT 20 OFFSET $off";
+        $queryBody =    "from Url u JOIN Common c ON c.p_id=u.id "
+                . "WHERE (MATCH(c.title,c.descript) AGAINST ('$keywordS' IN BOOLEAN MODE)) "
+                . "AND c.nsfw=0 AND u.width is not null AND u.height is not null ";
         $Pageurl = "/keyword.php?search=$keyword&";
-        $totalPage = pageCount($query);
-        //echo $totalPage;
-        $Presult=$conn->query($totalPage);
+        $Presult=$conn->query("select count(*) ".$queryBody);
         $Prow = $Presult->fetch_assoc();
         $totalPageNum = floor($Prow['count(*)']/20)+1;
         //echo $totalPageNum;
-        $result=$conn->query($query);
+        $result=$conn->query("select DISTINCT u.id, u.url, u.width, u.height, (MATCH(c.title,c.descript) AGAINST ('$keywordS' IN BOOLEAN MODE)) AS score ".$queryBody." order by score DESC limit 20 OFFSET $off");
         if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
