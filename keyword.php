@@ -12,7 +12,7 @@ if(isset($_GET['search'])) {
     // id index exists
     $keyword = $_GET["search"];
     #$keywordS = '+'.str_replace(' ',' +',$keyword); #less accurate mode
-    $keywordS = '\"'.$keyword.'\"'; #exact mode
+    $keywordS = '"'.$keyword.'"'; #exact mode
 }else{
     header('Location: explore.php');
 }
@@ -82,33 +82,41 @@ if(isset($_GET['search'])) {
 <section class="Collage effect-parent">
     <?php
         $off = $page*20-20;
-        /*$query =  "select distinct u.id, u.url, u.width, u.height from Url u, Common c "
-                . "WHERE (MATCH(c.descript) AGAINST ('".$keyword."') "
-                . "or MATCH(c.title) AGAINST('".$keyword."')) "
-                . "AND c.p_id=u.id "
-                . "and c.nsfw=0 and u.width is not null and u.height is not null "
-                . "limit 20 offset $off";*/
+        $Pageurl = "/keyword.php?search=$keyword&";
         $queryBody =    "from Url u JOIN Common c ON c.p_id=u.id "
                 . "WHERE (MATCH(c.title,c.descript) AGAINST ('$keywordS' IN BOOLEAN MODE)) "
                 . "AND c.nsfw=0 AND u.width is not null AND u.height is not null ";
-        $Pageurl = "/keyword.php?search=$keyword&";
+        
+        $result=$conn->query("select DISTINCT u.id, u.url, u.width, u.height, (MATCH(c.title,c.descript) AGAINST ('$keywordS' IN BOOLEAN MODE)) AS score ".$queryBody." order by score DESC limit 20 OFFSET $off");
+        if ($result->num_rows >= 20) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<div class=\"Image_Wrapper\">";
+                echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay4.php?pid=".$row[id]."&url=".$row[url]."\">";
+                echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
+                echo "</a>";
+                echo "</div>";
+                }
+        } else {
+            //for chinese/japanese search
+            $queryBody =    "from Url u JOIN Common c ON c.p_id=u.id "
+                . "WHERE title like '%$keyword%' or descript like '%$keyword%' "
+                . "AND c.nsfw=0 AND u.width is not null AND u.height is not null ";
+            $result=$conn->query("select DISTINCT u.id, u.url, u.width, u.height ".$queryBody." limit 20 OFFSET $off");
+            if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<div class=\"Image_Wrapper\">";
+                echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay4.php?pid=".$row[id]."&url=".$row[url]."\">";
+                echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
+                echo "</a>";
+                echo "</div>";
+                }
+            }
+            else{echo "0 results";}
+        }
         $Presult=$conn->query("select count(*) ".$queryBody);
         $Prow = $Presult->fetch_assoc();
         $totalPageNum = floor($Prow['count(*)']/20)+1;
-        //echo $totalPageNum;
-        $result=$conn->query("select DISTINCT u.id, u.url, u.width, u.height, (MATCH(c.title,c.descript) AGAINST ('$keywordS' IN BOOLEAN MODE)) AS score ".$queryBody." order by score DESC limit 20 OFFSET $off");
-        if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" class=\"picLoad\" href=\"/indDisplay4.php?pid=".$row[id]."&url=".$row[url]."\">";
-            echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
-            echo "</a>";
-            echo "</div>";
-        }
-    } else {
-        echo "0 results";
-    }
     ?>
 </section>
 </div>
