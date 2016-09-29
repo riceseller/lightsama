@@ -121,17 +121,17 @@
 .col-xs-10{
     padding: 0;
 }
-
 #modalDialogID{
     width: 100% !important;
-    min-height: 95%;
+    height: auto;
+    min-height: 100%;
     margin: 0;
     padding: 0;
     max-width: inherit !important;
 }
 #modalContentID{
     height: auto;
-    min-height: 95%;
+    min-height: 100%;
     border-radius: 0;
     background-color: #000;
     border: 0;
@@ -139,11 +139,13 @@
     padding: 0;
 }
 .container-fluid{
-    display: inline-block;
+    display: block;
     text-align: center;
     margin: 0;
     padding: 0;
     width: 100%;
+    height: auto;
+    min-height: 100%
 }
 .infoDisplay{
     background-color: #333333;
