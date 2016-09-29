@@ -59,7 +59,7 @@
     }
     
     //pull out all the comments associated with that picture
-    $query_comment="select u.custom1, u.custom2, u.username, c.* from users u, comment c where u.id=c.userid and c.compic=$pid ORDER BY comdate" ;
+    $query_comment="select u.custom1, u.custom2, u.username, c.* from users u, comment c where u.id=c.userid and c.compic=$pid ORDER BY comdate DESC" ;
     $result_comment=$conn->query($query_comment);   //comment query ends 
 
     //this part needs modification
@@ -121,14 +121,14 @@
 .col-xs-10{
     padding: 0;
 }
-.modal-dialog {
+#modalDialogID{
     width: 100% !important;
     min-height: 95%;
     margin: 0;
     padding: 0;
     max-width: inherit !important;
 }
-.modal-content {
+#modalContentID{
     height: auto;
     min-height: 95%;
     border-radius: 0;
@@ -278,7 +278,7 @@ p.picEquipInfoText{
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.form-reply {
+.form-reply{
     padding: 6px 8px 6px 48px;
     clear: both;
     display: block;
@@ -400,14 +400,14 @@ textarea, input[type=text], input[type=password] {
 }
 #trashCan{
     float: right;
-    margin-left: 45px;
+    margin-right: 10px;
     margin-top: 5px;
     position: relative;
     top: 2px;
 }
 #replyIcon{
     float: right;
-    margin-left: 55px;
+    margin-right: 10px;
     margin-top: 5px;
     position: relative;
     top: 2px;
@@ -429,6 +429,7 @@ textarea, input[type=text], input[type=password] {
     margin-top: 0;
     padding-left: 45px;
     height: 100%;
+    width: 100%;
 }
 .list-of-comments li p{
     margin-left: 3px;
@@ -532,12 +533,12 @@ p.reply-content{
 </script>
 
 <script>
-function myFunction() {
+function addComment() {
     var add_comment=document.getElementById("field5").value;
     var a=<?php print $current_id;?>;   //current user id
     var b=<?php print $pid;?>;          //current picture pid
     var p='<?php print $current_name;?>';    
-    var q=<?php print $comment_count;?>;
+    var q=document.getElementById('commentCount').innerHTML;
     var userlink='<?php print $row2[custom2];?>';
     q++;
     var c='comment_write';
@@ -546,7 +547,7 @@ function myFunction() {
         return;
     }
     var old_comment=document.getElementById("comments-list").innerHTML; 
-    var new_comment=old_comment+'<li id="1000"><div class=" "><img src="'+userlink+'"/><div class="list-description"><p><span class="reply-title">'+p+' '+'<span class="reply-time">just now</span></p><p class="reply-content">'+add_comment+'</p></div></li>';
+    var new_comment='<li id="1000"><div class=" "><img src="'+userlink+'"/><div class="list-description"><p><span class="reply-title">'+p+' '+'<span class="reply-time">just now</span><span><i id=\"trashCan\" class=\"fa fa-trash\" onclick=\"deleteComment(1000)"></i></span></p><p class="reply-content">'+add_comment+'</p></div></li>'+old_comment;
     new_comment = new_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     document.getElementById('comments-list').innerHTML = new_comment;
     
@@ -555,9 +556,43 @@ function myFunction() {
                 url: 'FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c +'&current_comment='+add_comment              
             });            
-    updated_comment = updated_comment.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     document.getElementById('commentCount').innerHTML = q;                
 }
+</script>
+<script>
+    function deleteComment(id_number){
+        var elem=document.getElementById(id_number);
+        elem.parentNode.removeChild(elem);
+        var q=document.getElementById('commentCount').innerHTML;
+        q--;
+        var c='comment_delete';
+        $.ajax({                            //delete query activated
+                type: 'GET',
+                url: 'FavWrite.php',
+                data: 'current_cid=' + id_number + '&current_cat=' + c                           
+                });
+        document.getElementById('commentCount').innerHTML = q; 
+}
+</script>
+<script>
+    function followUp(username, userid)
+    {   
+        var current_id=<?php print $current_id;?>;
+        if(current_id===0)
+        {
+            alert("you have to login first then reply");
+            return;
+        }
+        if(userid==current_id)
+        {
+            alert("it is not suggested to reply to a comment made by yourself");
+        }
+        else
+        {
+            var nameadd='@add '+username+' ';
+            document.getElementById("field5").value=nameadd;
+        }
+    }
 </script>
 
     <div class="container-fluid" style="padding: 0;">
@@ -723,7 +758,7 @@ function myFunction() {
                             <img class="img-fluid" style="object-fit: contain;" <?php if($current_id!=-5){echo "src='$gravMod2'";} ?>/>
                         </div>
                         <textarea id="field5" class="reply-content" placeholder="leave comments please"></textarea>
-                        <input type="button" value="Submit" onclick="myFunction()" style="background-color: #0090e3; border: none; font-size: 13px;">
+                        <input type="button" value="Submit" onclick="addComment()" style="background-color: #0090e3; border: none; font-size: 13px;">
                     </form>
                 </div>                
             </div>
@@ -846,15 +881,15 @@ function myFunction() {
                                                         
                             if($row_comment[userid]!=$current_id && $current_id!=-5) //logged in, not your picture
                             {
-                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\"/><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\"/><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"replyIcon\" class=\"fa fa-reply\" onclick=\"followUp('$row_comment[username]', '$row_comment[userid]')\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
                             }
                             else if($current_id==-5) //not logged in, not your picture
                             {
-                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
                             }
                             else //logged in, your picture
                             {
-                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
+                                echo "<li id='$row_comment[id]' class=\"comments-display\"><img src='$gravMod' class=\"img-fluid\" /><div class=\"list-description\"><p class=\"reply-total\"><span class=\"reply-title\">$row_comment[username] </span><span class=\"reply-time\">$date_print2</span><span><i id=\"trashCan\" class=\"fa fa-trash\" onclick=\"deleteComment('$row_comment[id]')\"></i></span></p><p class=\"reply-content\">$row_comment[content]</p></div></li>";
                             }                   
                         }
                     ?>

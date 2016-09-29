@@ -38,6 +38,18 @@ function pageCount($inputStr){
         );
     };
 </script>
+<script>
+        // load remote page via jquery
+        $(document).on('click','.overlay',function(event) {
+            event.preventDefault();            
+            
+            var modal = $('#gridSystemModal').modal();
+            modal.find('.modal-content').load($(this).attr('href'), function () {
+                    //$('.modal-content').css('height',$( window ).height());
+                    modal.show();                   
+                });
+        });
+</script>
 <style>
     .Collage{
         /* define how much padding you want in between your images */
@@ -83,7 +95,7 @@ function pageCount($inputStr){
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row['id']."\">";
+            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay4.php?pid=".$row[id]."&url=".$row[url]."\">";
             echo "<img src=\"".$row['url']."\" width=\"".$row['width']."\" height=\"".$row['height']."\">";
             echo "</a>";
             echo "</div>";
@@ -129,5 +141,12 @@ function pageCount($inputStr){
         ?>
     </ul>
 </div>
-<?php mysqli_close($conn); ?>
 <?php require_once 'footer.php'; ?>
+
+<div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modalDialogID">
+    <div class="modal-content" id="modalContentID">
+      
+    </div>
+  </div>
+</div>
