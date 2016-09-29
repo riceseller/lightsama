@@ -121,6 +121,7 @@
 .col-xs-10{
     padding: 0;
 }
+
 #modalDialogID{
     width: 100% !important;
     min-height: 95%;
