@@ -1,5 +1,22 @@
 <?php
     require_once 'supplyment/dbAccess.php';
+    ?>
+
+<script>
+        // load remote page via jquery
+        $(document).on('click','#mapImgLoad',function(event) {
+            event.preventDefault();            
+            
+            var modal = $('#gridSystemModal').modal();
+            modal.find('.modal-content').load($(this).attr('href'), function () {
+                    //$('.modal-content').css('height',$( window ).height());
+                    modal.show();                   
+                });
+        });
+</script>
+
+<?php
+
 
     $step = 0;
     if(isset($_POST['distance'])) {
@@ -18,7 +35,7 @@
     if($result->num_rows>0){
         while($row=$result->fetch_assoc()){
         //$location[]= array("lat"=>$row['latitude'], "long"=>$row['longitude'], "info" => "random");
-            $infoData = '<li><a style="text-decoration:none;" href=/indDisplay2.php?pid='.$row['pid'].'>'
+            $infoData = '<li><a id=\"mapImgLoad\" style="text-decoration:none;" href=/indDisplay4.php?pid='.$row['pid'].'&url='.$row['urlSmall'].'>'
                     . '<img id=scroll'.$step.' src=\''.$row['urlSmall'].'\' style="max-width:150px">'
                     . '</a></li>';
             $lat = $row['latitude'];
@@ -46,3 +63,11 @@
      * SELECT id,(3959*acos(cos(radians(78.3232))*cos(radians(latitude))*cos(radians(longitude)-radians(65.3234))+sin(radians(78.3232))*sin(radians(latitude)))) AS distance FROM Coordinate HAVING distance < 3000 ORDER BY distance LIMIT 0,20;
      */
 ?>
+
+<div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modalDialogID">
+    <div class="modal-content" id="modalContentID">
+      
+    </div>
+  </div>
+</div>

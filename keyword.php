@@ -25,7 +25,6 @@ if(isset($_GET['search'])) {
     </style>
 
 <link rel="stylesheet" type="text/css" href="users/css/new_index.css" />
-<script>//if writing the previous code twice it will prevent modal from loading</script>
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
 

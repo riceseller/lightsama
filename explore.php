@@ -18,6 +18,7 @@ function pageCount($inputStr){
 }
 ?>
 <customHeader>
+<link rel="stylesheet" type="text/css" href="users/css/new_index.css" />
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
 
@@ -40,7 +41,7 @@ function pageCount($inputStr){
 </script>
 <script>
         // load remote page via jquery
-        $(document).on('click','.overlay',function(event) {
+        $(document).on('click','#loadPicsHere',function(event) {
             event.preventDefault();            
             
             var modal = $('#gridSystemModal').modal();
@@ -95,7 +96,7 @@ function pageCount($inputStr){
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay4.php?pid=".$row[id]."&url=".$row[url]."\">";
+            echo "<a id=\"loadPicsHere\"style=\"text-decoration:none;\" href=\"/indDisplay4.php?pid=".$row[id]."&url=".$row[url]."\">";
             echo "<img src=\"".$row['url']."\" width=\"".$row['width']."\" height=\"".$row['height']."\">";
             echo "</a>";
             echo "</div>";

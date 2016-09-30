@@ -114,6 +114,18 @@ function pageCount($inputStr){
             );
         };
     </script>
+    <script>
+        // load remote page via jquery
+        $(document).on('click','#finallyFindBugs',function(event) {
+            event.preventDefault();            
+            
+            var modal = $('#gridSystemModal').modal();
+            modal.find('.modal-content').load($(this).attr('href'), function () {
+                    //$('.4-content').css('height',$( window ).height());
+                    modal.show();                   
+                });
+        });
+    </script>
 </customHeader>
 
 <div class="container" style="padding-top:8px;padding-bottom:8px; margin-top: 50px;">
@@ -153,7 +165,7 @@ function pageCount($inputStr){
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row[id]."\">";
+            echo "<a id=\"finallyFindBugs\" style=\"text-decoration:none;\" href=\"/indDisplay4.php?pid=".$row[id]."&url=".$row[url]."\">";
             echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";
             echo "</a>";
             echo "</div>";
@@ -200,4 +212,11 @@ function pageCount($inputStr){
     </ul>
 </div>
 <?php require_once 'footer.php'; ?>
-<?php mysqli_close($conn); ?>
+
+<div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modalDialogID">
+    <div class="modal-content" id="modalContentID">
+      
+    </div>
+  </div>
+</div>
