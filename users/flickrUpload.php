@@ -44,17 +44,61 @@
     }
 ?>
 
-<body>
-    <div class="container">
-        <h1>Photo Uploader Using Flickr</h1>
-        <h2>Upload your Pic!</h2>
-        <h2><?=$test?></h2>
-        <form  method="post" accept-charset="utf-8" enctype='multipart/form-data'>
-            <p>Name: &nbsp; <input type="text" name="name" value="" ></p>
-            <p>Description: &nbsp; <input type="text" name="description" value="" ></p>
-            <p>Tags seperated with space strictly: &nbsp; <input type="text" name="tags" value="" ></p>
-            <p>Picture: <input type="file" name="file"/></p>
-            <p><input type="submit" value="Submit"></p>
+
+<style>
+    .form-control{
+        display: block !important;
+    }
+    
+    .developper-div{
+        height: 150px;
+        width: auto;
+    }
+    
+    .developper-img{
+        height: auto;
+        float: left;
+    }
+    
+    .circle-img{
+        width: 70px;
+        height: 70px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    
+    .circle-img img{
+        display: inline;
+        margin-left: auto;
+        margin-right: 0;
+        height: 100%;
+        width: auto;
+    }
+    
+    .developper-p p{
+        text-align: left;
+    }
+</style>
+
+
+<div id="albumModModal">
+        <form method="post" accept-charset="utf-8" enctype='multipart/form-data'>
+            <div class="form-group">
+                <label for="title">Your Name</label>
+                <input class="form-control" type="text" name="name" id="example-text-input" placeholder="Enter your username">
+            </div>
+            <div class="form-group">               
+                <label for="exampleTextarea">Picture Description</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="give some discription about the picture" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="tags">Tags Specification</label>
+                <input class="form-control" type="text" name="tags" id="example-text-input" placeholder="enter tags with spaces">
+            </div>
+            <div class="form-group">
+                <label for="file">Upload File: </label>
+                <input type="file" name="file">
+            <button id="formButton" type="submit" class="btn btn-primary">Submit</button>            
         </form>
-    </div>
-</body>
+</div>
