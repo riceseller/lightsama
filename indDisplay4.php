@@ -1,6 +1,6 @@
 <?php
     error_reporting(0);
-    date_default_timezone_set('America/New_York');  //set default time zone as eastern time new york
+    date_default_timezone_set('Atlantic/Reykjavik');  //set default time zone as eastern time new york
     include "supplyment/dbAccess.php";
     require_once 'users/init.php';
     $pid=$_GET["pid"];

@@ -179,6 +179,12 @@ function changeContent(classActive){
     include "footer2.php";
 ?>
 
+<script>
+    document.body.addEventListener('touchstart', function(e){ 
+        e.preventDefault(); 
+    });
+</script>
+
 <div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog" id="modalDialogID">
     <div class="modal-content" id="modalContentID">
