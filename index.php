@@ -1,7 +1,6 @@
 
 <?php 
-    error_reporting(0);
-    
+    error_reporting(0);    
     include("newNavBar.php");
     include "supplyment/dbAccess.php";
     if(isset($_GET['page'])) {

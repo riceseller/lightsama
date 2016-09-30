@@ -1,8 +1,8 @@
 <?php
     error_reporting(0);
-    date_default_timezone_set('Atlantic/Reykjavik');  //set default time zone as eastern time new york
     include "supplyment/dbAccess.php";
     require_once 'users/init.php';
+    date_default_timezone_set('Atlantic/Reykjavik');  //set default time zone as UTC0
     $pid=$_GET["pid"];
     $url=$_GET["url"];
     $query = "select c.*, u.urlSource, su.* from Common c left join Url u on c.p_id=u.id join ScrapeUser su on c.userBelong=su.id where c.p_id=$pid";    
