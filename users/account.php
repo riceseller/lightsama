@@ -134,6 +134,15 @@ function displayBlock($row,$mode){
         return confirm('Are you sure?');
     }
 </script>
+<script>
+        $(document).on('click','#picUpLoad',function(event) {
+            event.preventDefault();
+            var modal = $('#modal').modal();
+            modal.find('.modal-body').load($(this).attr('href'), function () {
+                    modal.show();
+                });
+        });
+</script>
 </customHeader>
 
 <?php if($user->isLoggedIn()){ ?>
@@ -148,7 +157,8 @@ function displayBlock($row,$mode){
     </div>
   </div>
 </div>
-
+   
+       
 <div class="container" style="padding-top:8px;padding-bottom:8px;">
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -161,7 +171,7 @@ function displayBlock($row,$mode){
           <a class="nav-link" href="../users/accountFav.php">Favorite</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="../users/flickrUpload.php">Upload</a>
+          <a id="picUpLoad" class="nav-link" href="../users/flickrUpload.php">Upload</a>
       </li>
     </ul>                    
 </div>
@@ -189,4 +199,24 @@ function displayBlock($row,$mode){
     echo '<script type="text/javascript">alert("please sign in first!");</script>';
     echo "<script>window.location = '../users/new_login.php'</script>";
 }?>
-<?php mysqli_close($conn); ?>
+
+
+<?php $conn->close();?>
+
+
+<div id="modal" class="modal fade" 
+     tabindex="-1" role="dialog" aria-labelledby="plan-info" aria-hidden="true">
+    <div class="modal-dialog modal-full-screen">
+        <div class="modal-content">
+            <div class="modal-header">               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="ttt">Upload your picture here</h4>
+            </div>
+            <div class="modal-body">
+                <center class="loader m-x-auto"> </center>
+            </div>
+        </div>
+    </div>
+</div>

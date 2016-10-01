@@ -113,7 +113,6 @@ function changeContent(classActive){
         // load remote page via jquery
         $(document).on('click','.overlay',function(event) {
             event.preventDefault();            
-            
             var modal = $('#gridSystemModal').modal();
             modal.find('.modal-content').load($(this).attr('href'), function () {
                     //$('.modal-content').css('height',$( window ).height());
