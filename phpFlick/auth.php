@@ -67,9 +67,9 @@ if($user->isLoggedIn()){
     if ($conn->query($query2) === True){
         //insert success, run python code
         $test = shell_exec("python /home/luokerenz/realtime/flickr_refresh_RT.py $flickr_userID -u $scrape_link_id 2>&1");
-        echo $test;
+        #echo $test;
         echo '<script type="text/javascript">alert("insert success, ready to exit");</script>';
-        #echo "<script>window.location = '../users/account.php'</script>";
+        echo "<script>window.location = '../users/account.php'</script>";
     }else{
         print $conn->error;
         echo '<script type="text/javascript">alert("possible duplicate linking or this account is belong to others");</script>';
