@@ -148,51 +148,50 @@ function displayBlock($row,$mode){
 
 <?php if($user->isLoggedIn()){ ?>
 <div class="footerPusher">
-<div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
-  <div class="container">
-    <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);"></div>
-    <div class="user-info">
-        <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
-        <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?php echo $signupdate;?></a><br>
-        <a style="font-size:16px;font-weight:600;">Number of Logins: <?=$user->data()->logins?></a>
-    </div>
-  </div>
-</div>
-   
-       
-<div class="container" style="padding-top:8px;padding-bottom:8px;">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-          <a class="nav-link active">Linked Account</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="../users/user_settings.php">Edit Info</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="../users/accountFav.php">Favorite</a>
-      </li>
-      <li class="nav-item">
-          <a id="picUpLoad" class="nav-link" href="../users/flickrUpload.php">Upload</a>
-      </li>
-    </ul>                    
-</div>
-
-<div class="container">
-    <div class="card-deck-wrapper">
-        <div class="card-deck">
-        <?php
-            if($Umode==1){
-                //print $row[userID]
-                //displayBlock($row[scrapeUserID],$row[userID], $row[Ubelong]);
-                while($row = mysqli_fetch_array($result)) {
-                    displayBlock($row,1);
-                }
-            }
-            displayBlock($row,2);
-        ?>
+    <div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
+        <div class="container">
+            <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);"></div>
+                <div class="user-info">
+                    <a id="user-name" style="font-size:36px;font-weight:700;"><?=ucfirst($user->data()->username)?></a><br>
+                    <a id="user-add" style="font-size:16px;font-weight:600;">Member Since: <?php echo $signupdate;?></a><br>
+                    <a style="font-size:16px;font-weight:600;">Number of Logins: <?=$user->data()->logins?></a>
+                </div>
         </div>
     </div>
-</div>
+          
+    <div class="container first" style="padding-top:8px;padding-bottom:8px;">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active">Linked Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../users/user_settings.php">Edit Info</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../users/accountFav.php">Favorite</a>
+            </li>
+            <li class="nav-item">
+                <a id="picUpLoad" class="nav-link" href="../users/flickrUpload.php">Upload</a>
+            </li>
+        </ul>                    
+    </div>
+
+    <div class="container second">
+        <div class="card-deck-wrapper">
+            <div class="card-deck">
+                <?php
+                    if($Umode==1){
+                        //print $row[userID]
+                        //displayBlock($row[scrapeUserID],$row[userID], $row[Ubelong]);
+                        while($row = mysqli_fetch_array($result)) {
+                            displayBlock($row,1);
+                        }
+                    }
+                    displayBlock($row,2);
+                ?>
+            </div>
+        </div>
+    </div>
 </div>
     
 <?php require_once '../footer.php'; ?>
