@@ -66,7 +66,7 @@ if($user->isLoggedIn()){
     print $query2;
     if ($conn->query($query2) === True){
         //insert success, run python code
-        shell_exec("python /home/luokerenz/realtime/flickr_refresh_RT.py $flickr_userID -u $scrape_link_id 2>&1");
+        shell_exec("python /home/luokerenz/realtime/flickr_refresh_RT.py $flickr_userID -u $scrape_link_id ");
         #echo $test;
         echo '<script type="text/javascript">alert("insert success, ready to exit");</script>';
         echo "<script>window.location = '../users/account.php'</script>";
