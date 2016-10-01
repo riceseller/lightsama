@@ -159,7 +159,7 @@ function displayBlock($row,$mode){
         </div>
     </div>
           
-    <div class="container first" style="padding-top:8px;padding-bottom:8px;">
+    <div class="container-fluid first" style="padding-top:8px;padding-bottom:8px;">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active">Linked Account</a>
@@ -176,7 +176,7 @@ function displayBlock($row,$mode){
         </ul>                    
     </div>
 
-    <div class="container second">
+    <div class="container-fluid second">
         <div class="card-deck-wrapper">
             <div class="card-deck">
                 <?php
