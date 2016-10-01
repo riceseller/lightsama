@@ -45,6 +45,7 @@
 ?>
 
 <body>
+    <?php if($user->isLoggedIn()): ?>
     <div class="container">
         <h1>Photo Uploader Using Flickr</h1>
         <h2>Upload your Pic!</h2>
@@ -57,4 +58,7 @@
             <p><input type="submit" value="Submit"></p>
         </form>
     </div>
+    <?php else : ?>
+    
+    <?php endif; ?>
 </body>
