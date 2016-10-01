@@ -74,5 +74,6 @@ $conn->close();
         
 </customHeader>
 
+<?php include 'footer2.php';?>
 </body>
 </html>

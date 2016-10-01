@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../font-awesome-4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../users/css/new_index.css" />
 
 <style>
     .navbar{
@@ -93,6 +94,26 @@
     }
     */
 </style>
+<script src="/node_modules/jquery.collagePlus.js"></script>
+<script src="/node_modules/jquery.removeWhitespace.js"></script>
+<script>
+// All images need to be loaded for this plugin to work so
+    $(document).ready(function(){
+            collage();
+            //$('.Collage').collageCaption();
+    });
+    // Here we apply the actual CollagePlus plugin
+    function collage() {
+        $('.Collage').removeWhitespace().collagePlus(
+            {
+                'fadeSpeed'     : 1000,
+                'targetHeight'  : 400,
+                'allowPartialLastRow' : true
+            }
+        );
+    };
+</script>
+<title>PicShell</title>
 </header>
 
 <body>

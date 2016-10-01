@@ -10,27 +10,7 @@
         $page = 1;
     }
 ?>
-<link rel="stylesheet" type="text/css" href="users/css/new_index.css" />
-<script src="/node_modules/jquery.collagePlus.js"></script>
-<script src="/node_modules/jquery.removeWhitespace.js"></script>
 
-<script>
-// All images need to be loaded for this plugin to work so
-    $(document).ready(function(){
-            collage();
-            //$('.Collage').collageCaption();
-    });
-    // Here we apply the actual CollagePlus plugin
-    function collage() {
-        $('.Collage').removeWhitespace().collagePlus(
-            {
-                'fadeSpeed'     : 1000,
-                'targetHeight'  : 400,
-                'allowPartialLastRow' : true
-            }
-        );
-    };
-</script>
 
 <script>
 function changeContent(classActive){
@@ -74,10 +54,8 @@ function changeContent(classActive){
 }    
 </script>
 
-<title>PicShell</title>
-
   
-<div class="jumbotron">
+<div class="jumbotron" style="min-height: calc(80vh);">
         <h1>Link Your Flickr To The Outside World</h1>
         <p><a class="btn btn-primary btn-lg" href="<?=$us_url_root?>users/new_login.php?category=signup" role="button">Get Started</a></p>
 </div>
@@ -121,7 +99,7 @@ function changeContent(classActive){
         });
 </script>
 
-<div class="preLoadClass">
+<div class="favClass">
 <section class="Collage effect-parent" id="landscapeSection">
     <?php
         $query = "select distinct c.title, su.*, u.id as uid, u.url, u.width, u.height from Url u, Common c, ScrapeUser su, TagRelation tr where c.p_id!=160630813 and tr.pid=c.p_id and tr.tagid=1046 and u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";

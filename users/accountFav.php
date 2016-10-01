@@ -1,4 +1,7 @@
-<?php require_once "../newNavBar.php"; ?>
+<?php 
+error_reporting(0);
+require_once "../newNavBar.php"; 
+?>
 <?php 
 if(isset($_GET['page'])) {
     // get page number for location of the album list
@@ -104,12 +107,15 @@ function pageCount($inputStr){
         vertical-align:middle!important;
         text-align:center;
     }
+    .jumbotron .favJumbotron{
+        height: auto;
+    }
 </style>
 </customHeader>
 
 <?php if($user->isLoggedIn()){ ?>
 <div class="footerPusher">
-<div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
+<div class="jumbotron jumbotron-fluid favJumbotron" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
   <div class="container">
     <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);"></div>
     <div class="user-info">
@@ -120,7 +126,7 @@ function pageCount($inputStr){
   </div>
 </div>
 
-<div class="container" style="padding-top:8px;padding-bottom:8px;">
+<div class="container first" style="padding-top:8px;padding-bottom:8px;">
     <ul class="nav nav-tabs">
       <li class="nav-item">
           <a class="nav-link" href="../users/account.php">Linked Account</a>
@@ -137,11 +143,11 @@ function pageCount($inputStr){
     </ul>                    
 </div>
 
-<div class="container-Collage" style="padding:0;">
+<div class="preLoadClass">
 <section class="Collage effect-parent">
     <?php
         $off = $page*40-40;
-        $queryCo = "select distinct u.id, u.url, u.width, u.height from Url u join Common c on u.id=c.p_id join fav f on c.p_id=f.favpic where f.userid=$get_info_id and u.width is not null and u.height is not null order by c.dateR desc limit 40 offset $off";
+        $queryCo = "select distinct su.*, u.id as uid, u.url, u.width, u.height, c.* from Url u join Common c on u.id=c.p_id join fav f on c.p_id=f.favpic join ScrapeUser su on su.id=c.userBelong where f.userid=$get_info_id and u.width is not null and u.height is not null order by c.dateR desc limit 40 offset $off";
         $Pageurl = "../users/accountFav.php?";
         $totalPage = pageCount($queryCo);
         //echo $totalPage;
@@ -151,15 +157,44 @@ function pageCount($inputStr){
         $result=$conn->query($queryCo);
         if ($result->num_rows > 0) {
         // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row['id']."\">";
-            echo "<img src=\"".$row['url']."\" width=\"".$row['width']."\" height=\"".$row['height']."\">";
-            echo "</a>";
-            echo "</div>";
-        }
-    } else {
-        echo "0 results";
+            while($row = $result->fetch_assoc()) {
+                echo "<div class=\"Image_Wrapper\" style=\"width=\"".$row[width]."\" height=\"".$row[height]."\"\">";        
+                    echo "<div class=\"hovereffect\">";
+                        echo "<a style=\"text-decoration:none;\" href=\"#\">";
+                            echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
+                        echo "</a>";                    
+                        echo "<a class=\"overlay\" href=\"/indDisplay4.php?pid=".$row[uid]."&url=".$row[url]."\">";echo "</a>";
+                        
+                        echo "<div class=\"overlay_shadow\">";
+                            echo "<h2>$row[title]</h2>";
+                            echo "<div class=\"info\">";                       
+                            ?>
+                                <div class="users" onclick="jumpLink(<?php echo $row[id]?>)" style="<?php
+                                            if($row[Ubelong]=='flickr')
+                                            {
+                                                $server = $row[extraOne];
+                                                $farm = $row[extraTwo];
+                                                $userr = $row[userID];
+                                                print "background-image:url(https://c2.staticflickr.com/$farm/$server/buddyicons/".$userr.".jpg)";
+                                            }
+                                            elseif($row[Ubelong]=='500px')
+                                            {
+                                                print "background-image:url($row[extraTwo])";
+                                            }
+                                            else
+                                            {
+                                                print "background-image:url(/media/aperture.png)"; 
+                                            }
+                            ?>"></div>
+                            <?php
+                            echo "</div>";
+                        echo "</div>";
+                        
+                    echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "0 results";
     }
     ?>
 </section>
