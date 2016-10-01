@@ -194,7 +194,8 @@ function displayBlock($row,$mode){
     </div>
 </div>
     
-<?php require_once '../footer.php'; ?>
+<?php require_once '../footer2.php'; ?>
+
 <?php }else{
     echo '<script type="text/javascript">alert("please sign in first!");</script>';
     echo "<script>window.location = '../users/new_login.php'</script>";
