@@ -15,17 +15,16 @@
 <script>
 function changeContent(classActive){
         $(document).on('click',classActive,function(e) {
-            
-        document.getElementById('beauty').className="nav-link disabled";
-        document.getElementById('skyscraper').className="nav-link disabled";
-        document.getElementById('landscape').className="nav-link disabled";            
-        e.preventDefault();       
+            document.getElementById('beauty').className="nav-link disabled";
+            document.getElementById('skyscraper').className="nav-link disabled";
+            document.getElementById('landscape').className="nav-link disabled";            
+            e.preventDefault();       
     });
         
                                 
         if(classActive==='#landscape')
         {
-            $('.preLoadClass').load("sectionLoad.php?tabClick=landscape #landscapeSection", function(){
+            $('.favClass').load("sectionLoad.php?tabClick=landscape #landscapeSection", function(){
                 collage();
                 document.getElementById('beauty').className="nav-link";
                 document.getElementById('skyscraper').className="nav-link";
@@ -34,7 +33,7 @@ function changeContent(classActive){
         }
         else if(classActive==='#beauty')
         {
-            $('.preLoadClass').load("sectionLoad.php?tabClick=beauty #beautySection", function(){
+            $('.favClass').load("sectionLoad.php?tabClick=beauty #beautySection", function(){
                 collage();
                 document.getElementById('beauty').className="nav-link active";
                 document.getElementById('skyscraper').className="nav-link";
@@ -43,7 +42,7 @@ function changeContent(classActive){
         }
         else
         {
-            $('.preLoadClass').load("sectionLoad.php?tabClick=skyscraper #skyscraperSection", function(){
+            $('.favClass').load("sectionLoad.php?tabClick=skyscraper #skyscraperSection", function(){
                 collage();
                 document.getElementById('beauty').className="nav-link";
                 document.getElementById('skyscraper').className="nav-link active";
