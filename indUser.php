@@ -126,6 +126,18 @@ function pageCount($inputStr){
     </script>
 </customHeader>
 
+<script>
+        // load remote page via jquery
+        $(document).on('click','#userClick',function(event) {
+            event.preventDefault();            
+            var modal = $('#gridSystemModal').modal();
+            modal.find('.modal-content').load($(this).attr('href'), function () {
+                    //$('.modal-content').css('height',$( window ).height());
+                    modal.show();                   
+                });
+        });
+</script>
+
 <div class="jumbotron jumbotron-fluid" style="background-image:url(<?=$jumboBackground;?>);background-size: cover;margin-bottom:0;">
   <div class="container">
     <div id="userAvatar" style="background-image:url(<?=$gravMod;?>);"></div>
@@ -159,7 +171,7 @@ function pageCount($inputStr){
         // output data of each row
         while($row7 = $result7->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a style=\"text-decoration:none;\" href=\"/indDisplay4.php?pid=".$row7[id]."&url=".$row7[url]."\">";
+            echo "<a id=\"userClick\" style=\"text-decoration:none;\" href=\"/indDisplay4.php?pid=".$row7[id]."&url=".$row7[url]."\">";
             echo "<img src=\"".$row7['url']."\" width=\"".$row7['width']."\" height=\"".$row7['height']."\">";
             echo "</a>";
             echo "</div>";
@@ -208,3 +220,10 @@ function pageCount($inputStr){
 <?php mysqli_close($conn); ?>
 <?php require_once 'footer.php'; ?>
 
+<div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modalDialogID">
+    <div class="modal-content" id="modalContentID">
+      
+    </div>
+  </div>
+</div>
