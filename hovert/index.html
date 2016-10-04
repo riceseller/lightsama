@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+	<meta charset="UTF-8" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <title>Hover Effect Ideas | Set 1</title>
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/set1.css" />		
+    </head>
+    <body>
+    <div class="container">			
+        <div class="content">																
+            <div class="grid">
+                <figure class="effect-zoe">
+                    <img src="img/25.jpg" alt="img25"/>
+                        <figcaption>
+                            <h2>Creative <span>Zoe</span></h2>
+                            <p class="icon-links">
+                                <a href="#"><span class="icon-heart"></span></a>
+                                <a href="#"><span class="icon-eye"></span></a>
+                                <a href="#"><span class="icon-paper-clip"></span></a>
+                            </p>
+                            <p class="description">check hover position</p>
+                        </figcaption>			
+                </figure>
+            </div>				
+        </div>			
+    </div><!-- /container -->
+		<script>
+			// For Demo purposes only (show hover effect on mobile devices)
+			[].slice.call( document.querySelectorAll('a[href="#"') ).forEach( function(el) {
+				el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
+			} );
+		</script>
+    </body>
+</html>
