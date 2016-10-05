@@ -126,6 +126,18 @@ function pageCount($inputStr){
   </div>
 </div>
 
+<script>
+        // load remote page via jquery
+        $(document).on('click','.overlay',function(event) {
+            event.preventDefault();            
+            var modal = $('#gridSystemModal').modal();
+            modal.find('.modal-content').load($(this).attr('href'), function () {
+                    //$('.modal-content').css('height',$( window ).height());
+                    modal.show();                   
+                });
+        });
+</script>
+
 <div class="container first" style="padding-top:8px;padding-bottom:8px;">
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -206,3 +218,15 @@ function pageCount($inputStr){
     echo "<script>window.location = '../users/new_login.php'</script>";
 }?>
 <?php mysqli_close($conn); ?>
+
+
+<div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modalDialogID">
+    <div class="modal-content" id="modalContentID">
+      
+    </div>
+  </div>
+</div>
+    
+</body>
+</html>
