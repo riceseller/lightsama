@@ -70,11 +70,11 @@ function changeContent(classActive){
               <ul class="nav nav-tabs" style="display:inline-block;">
     
                     <li class="nav-item">
-                        <a class="nav-link active" href="#" id="landscape" onclick="changeContent('#landscape');">Landscape</a>
+                        <a class="nav-link" href="#" id="landscape" onclick="changeContent('#landscape');">Landscape</a>
                     </li>
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="beauty" onclick="changeContent('#beauty');">Beauty</a>
+                        <a class="nav-link active" href="#" id="beauty" onclick="changeContent('#beauty');">Beauty</a>
                     </li>
 
                     <li class="nav-item">
@@ -103,9 +103,9 @@ function changeContent(classActive){
 </script>
 
 <div class="favClass">
-<section class="Collage effect-parent" id="landscapeSection">
+<section class="Collage effect-parent" id="beautySection">
     <?php
-        $query = "select distinct c.title, su.*, u.id as uid, u.url, u.width, u.height from Url u, Common c, ScrapeUser su, TagRelation tr where c.p_id!=160630813 and tr.pid=c.p_id and tr.tagid=1046 and u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
+        $query = "select distinct c.title, su.*, u.id as uid, u.url, u.width, u.height from Url u, Common c, ScrapeUser su, TagRelation tr where c.p_id!=160630813 and tr.pid=c.p_id and tr.tagid=12048 and u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
         $result=$conn->query($query);
         if ($result->num_rows > 0) {
         // output data of each row
