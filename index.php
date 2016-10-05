@@ -157,7 +157,7 @@ function changeContent(classActive){
 <?php
     include "footer2.php";
 ?>
-
+<?php mysqli_close($conn); ?>
 
 <div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog" id="modalDialogID">

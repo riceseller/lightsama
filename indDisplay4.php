@@ -80,7 +80,6 @@
     $query_ip="insert into ipaddress(pid, address, times) values($pid, '$ip', NOW())";
     $conn->query($query_ip);    
 ?>
-
 <style>
 .col-md-9{
     padding: 0;
@@ -474,7 +473,7 @@ p.reply-content{
             document.getElementById('howManyFavs').innerHTML = d;                        
             $.ajax({
                 type: 'GET',
-                url: 'FavWrite.php',
+                url: '../FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,
                 success: function(){
                     document.getElementById("activateMyHeart").style.color = "red";
@@ -488,7 +487,7 @@ p.reply-content{
             document.getElementById('howManyFavs').innerHTML = d;                         
             $.ajax({
                 type: 'GET',
-                url: 'FavWrite.php',
+                url: '../FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,
                 success: function(){
                     document.getElementById("activateMyHeart").style.color = "white";
@@ -507,7 +506,7 @@ p.reply-content{
             document.getElementById('howManyFavs').innerHTML = d;                        
             $.ajax({
                 type: 'GET',
-                url: 'FavWrite.php',
+                url: '../FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,
                 success: function(){
                     document.getElementById("activateMyHeart").style.color = "red";
@@ -522,7 +521,7 @@ p.reply-content{
             document.getElementById('howManyFavs').innerHTML = d;
             $.ajax({
                 type: 'GET',
-                url: 'FavWrite.php',
+                url: '../FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c,
                 success: function(){
                     document.getElementById("activateMyHeart").style.color = "white";
@@ -556,7 +555,7 @@ function addComment() {
     
     $.ajax({
                 type: 'GET',
-                url: 'FavWrite.php',
+                url: '../FavWrite.php',
                 data: 'current_id=' + a +'&current_pid=' + b +'&current_cat=' + c +'&current_comment='+add_comment              
             });            
     document.getElementById('commentCount').innerHTML = q;                
@@ -571,7 +570,7 @@ function addComment() {
         var c='comment_delete';
         $.ajax({                            //delete query activated
                 type: 'GET',
-                url: 'FavWrite.php',
+                url: '../FavWrite.php',
                 data: 'current_cid=' + id_number + '&current_cat=' + c                           
                 });
         document.getElementById('commentCount').innerHTML = q; 
@@ -902,7 +901,7 @@ function addComment() {
         
     </div>
         
-        
+<?php mysqli_close($conn); ?>      
        
 
 
