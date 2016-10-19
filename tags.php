@@ -59,9 +59,8 @@ function pageCount($inputStr){
             if($tag=='nsfw'){
             // request ni dong de category
             $query = "select distinct u.id, u.url, u.width, u.height from Url u join "
-                    . "(select p_id from Common where nsfw=1 and dateR<now() order by c.dateR desc limit 40 offset $off) "
-                    . "as c on u.id=c.p_id "
-                    . "where u.width is not null and u.height is not null";
+                    . "(select p_id from Common where nsfw=1 and dateR<now() order by dateR desc limit 40 offset $off) "
+                    . "as c on u.id=c.p_id where u.width is not null and u.height is not null";
             echo    'body{background: #000000;}'
                     . '.Collage{background: #000000;}'
                     . '.menu {border-bottom: 1px solid #000000;}'
