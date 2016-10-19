@@ -145,9 +145,8 @@ function pageCount($inputStr){
 <div class="container" style="padding-bottom:8px;">
 <?php 
     $popTag = "select tagName from Tag join "
-        . "(select tagid, count(*) as count "
-        . "from TagRelation group by tagid order by count desc limit 10)"
-        . " as popTag on Tag.id=popTag.tagid limit 10";
+        . "(select tagid from TagRelation where rand()<=0.0005 group by tagid limit 10) "
+        . " as popTag on Tag.id=popTag.tagid";
     $arrayTag=$conn->query($popTag);
     while($showTag = $arrayTag->fetch_assoc()) {
         echo "<span style=\"margin-right:5px;\" class=\"tag tag-pill tag-info\">"
