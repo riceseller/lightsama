@@ -58,10 +58,10 @@ function pageCount($inputStr){
         if ($tag!='none'){
             if($tag=='nsfw'){
             // request ni dong de category
-            $query = "select distinct u.id, u.url, u.width, u.height from Url u, Common c "
-                    . "where c.nsfw=1 AND c.p_id=u.id and c.dateR<now() "
-                    . "and u.width is not null and u.height is not null "
-                    . "order by c.dateR desc limit 40 offset $off";
+            $query = "select distinct u.id, u.url, u.width, u.height from Url u join "
+                    . "(select p_id from Common where nsfw=1 and dateR<now() order by c.dateR desc limit 40 offset $off) "
+                    . "as c on u.id=c.p_id "
+                    . "where u.width is not null and u.height is not null";
             echo    'body{background: #000000;}'
                     . '.Collage{background: #000000;}'
                     . '.menu {border-bottom: 1px solid #000000;}'
@@ -69,6 +69,7 @@ function pageCount($inputStr){
                     . '.menu a:hover, .menu li.active a{color:#000000;border-bottom: 2px solid #be0e16;}'
                     . 'div.pagination-cont {background: linear-gradient(#c60712, #a1041d);}'
                     . 'ul.pagination li a {color:#ffffff;}';
+            $pageQ = "select count(*) from Common where nsfw=1 and dateR<now()";
             }else{
             // request user desired tag category
             $query = "select distinct u.id, u.url, u.width, u.height from Url u join "
