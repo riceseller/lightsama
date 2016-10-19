@@ -71,24 +71,24 @@ function pageCount($inputStr){
                     . 'ul.pagination li a {color:#ffffff;}';
             }else{
             // request user desired tag category
-            $query = "select distinct u.id, u.url, u.width, u.height from Url u, Common c, TagRelation tr, Tag t "
-                    . "WHERE t.tagName like '%".$tag."%' AND t.id=tr.tagid "
-                    . "AND tr.pid=c.p_id AND c.p_id=u.id and c.dateR<now() "
-                    . "and c.nsfw=0 and u.width is not null and u.height is not null "
-                    . "order by c.dateR desc limit 40 offset $off";
+            $query = "select distinct u.id, u.url, u.width, u.height from Url u join "
+                    . "(select p_id from Common join "
+                    . "(select pid from Tag t join TagRelation tr on t.id=tr.tagid where tagName like '%".tag."%') as tf "
+                    . "on p_id=tf.pid where dateR<now() and nsfw=0 limit 40 offset $off) as c on u.id=c.p_id";
+            $pageQ = "select count(*) from Common join "
+                    . "(select pid from Tag t join TagRelation tr on t.id=tr.tagid where tagName like '%".tag."%') as tf "
+                    . "on p_id=tf.pid where dateR<now() and nsfw=0";
             }
             $Pageurl = "/tags.php?cat=$tag&";
         }else{
         // no desire tag
-        $query = "select distinct u.id, u.url, u.width, u.height "
-                . "from Url u join Common c on u.id=c.p_id "
-                . "where c.nsfw=0 and c.dateR<now() "
-                . "and u.width is not null and u.height is not null "
-                . "order by c.dateR desc limit 40 offset $off";
+        $query = "select distinct u.id, u.url, u.width, u.height from Url u join "
+                . "(select p_id from Common where nsfw=0 and dateR<now() order by dateR desc limit 40 offset $off) as c "
+                . "on u.id=c.p_id where u.width is not null and u.height is not null";
+        $pageQ = "select count(*) from Common where nsfw=0 and dateR<now()";
         $Pageurl = "/tags.php?";
         }
-        $totalPage = pageCount($query);
-        $Presult=$conn->query($totalPage);
+        $Presult=$conn->query($pageQ);
         $Prow = $Presult->fetch_assoc();
         $totalPageNum = floor($Prow['count(*)']/40)+1;
         $result=$conn->query($query);

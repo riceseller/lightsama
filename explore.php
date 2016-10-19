@@ -84,9 +84,12 @@ function pageCount($inputStr){
 <section class="Collage effect-parent">
     <?php
         $off = $page*40-40;
-        $query = "select distinct u.id, u.url, u.width, u.height from Url u join Common c on u.id=c.p_id where c.nsfw=0 and u.width is not null and u.height is not null AND c.dateR<now() order by c.dateR desc limit 40 offset $off";
+        $query = "select distinct u.id, u.url, u.width, u.height from Url u join "
+                . "(select p_id from Common where nsfw=0 and dateR<now() order by dateR desc limit 40 offset $off) as c "
+                . "on u.id=c.p_id where u.width is not null and u.height is not null";
+        $pageQ = "select count(*) from Common where nsfw=0 and dateR<now()";
         $Pageurl = "../explore.php?";
-        $totalPage = pageCount($query);
+        $totalPage = pageCount($pageQ);
         //echo $totalPage;
         $Presult=$conn->query($totalPage);
         $Prow = $Presult->fetch_assoc();
