@@ -544,7 +544,7 @@ function addComment() {
     var userlink='<?php print $row2[custom2];?>';
     q++;
     var c='comment_write';
-    if(!add_comment || !a){
+    if(!add_comment || a === -5){
         alert("you either sumbit an empty comment or you did not log in at all");
         return;
     }
