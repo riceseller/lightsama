@@ -159,7 +159,7 @@ if(isset($_GET['search'])) {
 
 
 <?php
-    include "footer.php";    
+    include "footer2.php";    
 ?>
 
 
