@@ -57,7 +57,7 @@
             }
         }
     }
-    
+   
     //pull out all the comments associated with that picture
     $query_comment="select u.custom1, u.custom2, u.username, c.* from users u, comment c where u.id=c.userid and c.compic=$pid ORDER BY comdate DESC" ;
     $result_comment=$conn->query($query_comment);   //comment query ends 
