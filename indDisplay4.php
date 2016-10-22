@@ -585,7 +585,7 @@ function addComment() {
             alert("you have to login first then reply");
             return;
         }
-        if(userid==current_id)
+        if(userid === current_id)
         {
             alert("it is not suggested to reply to a comment made by yourself");
         }
