@@ -218,7 +218,7 @@ function pageCount($inputStr){
     </ul>
 </div>
 <?php mysqli_close($conn); ?>
-<?php require_once 'footer.php'; ?>
+<?php require_once 'footer2.php'; ?>
 
 <div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog" id="modalDialogID">
