@@ -63,7 +63,7 @@
         </em>
     </div>
     <div class="row foot-part" style="margin-top: 20px;margin-bottom: 40px;">
-        <div class="col-xs-4">
+        <div class="col-sm-4">
             <div class="footer-title">
                 About Us
             </div>
@@ -76,7 +76,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-xs-4">
+        <div class="col-sm-4">
             <div class="footer-title">
                 Report problems
             </div>
@@ -89,7 +89,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-xs-4">
+        <div class="col-sm-4">
             <div class="footer-title">
                 Contact Us
             </div>
