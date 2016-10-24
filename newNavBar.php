@@ -177,16 +177,7 @@
                     </li>
             <?php 
                 }    
-            ?>  
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search Categories</a>
-                    <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-                        <a class="dropdown-item" href="#">Cameras</a>
-                        <a class="dropdown-item" href="#">Keywords</a>
-                        <a class="dropdown-item" href="#">Locations By Name</a>
-                    </div>
-                    </li>
-                    
+            ?>                                         
                     
                     
     </ul>             
