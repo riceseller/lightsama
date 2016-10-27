@@ -14,7 +14,7 @@
             $mode = $_GET["mode"];
             $inputStr = $_GET["res2"];
             
-            include 'supplyment/dbAccess.php';
+            include '../supplyment/dbAccess.php';
             
             if($mode==="Lens")
             {
