@@ -9,8 +9,6 @@
         $page = 1;
     }
 ?>
-<html>
-    <header>
         <style>
             table {
                 width:45%;
@@ -60,9 +58,7 @@
                 . "              )c, (SELECT @rank :=0) b      "
                 . "             ORDER BY c.appearance DESC )c limit 5;";    //rank lens popularity
 	$resultt=$conn->query($queryt);
-        ?>
-     
-    </header>
+        ?>                 
     <explobody>
         <br></br>
         <br></br>
