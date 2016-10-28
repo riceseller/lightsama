@@ -11,9 +11,7 @@
 ?>
         <style>
             table {
-                width:45%;
-                margin-left: 25px;
-                margin-right: 25px;
+                width:100%;
             }
             table, th, td {
                 border: 1px solid black;
@@ -33,7 +31,14 @@
                 background-color: black;
                 color: white;
             }
-            
+            .CamCard {
+                background-color:#fefefe;
+                margin: auto; 
+                border: 1px solid #eee;
+            }
+            body{
+                background-color: #fefefe;
+            }
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="node_modules/jquery-lazyload/jquery.lazyload.js"></script>
@@ -58,12 +63,56 @@
                 . "              )c, (SELECT @rank :=0) b      "
                 . "             ORDER BY c.appearance DESC )c limit 5;";    //rank lens popularity
 	$resultt=$conn->query($queryt);
-        ?>                 
-    <explobody>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+        ?>
+        <div class="row CamCard">
+            <div class="col-lg-3">
+                <div class="card" style="text-align: center; border: none;">
+                    <img class="card-img-top" style="margin-top: 25px; background-color: #fefefe;" src="https://farm6.staticflickr.com/5616/cameras/72157626544376501_model_large_69e7e5cfc6.jpg" alt="Card image cap">
+                    <div class="card-block" style="background-color: #fefefe;">
+                        <h4 class="card-title">Iphone</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card" style="text-align: center; border: none;">
+                    <img class="card-img-top" style="margin-top: 25px; background-color: #fefefe;" src="https://farm6.staticflickr.com/5616/cameras/72157626544376501_model_large_69e7e5cfc6.jpg" alt="Card image cap">
+                    <div class="card-block" style="background-color: #fefefe;">
+                        <h4 class="card-title">Iphone</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card" style="text-align: center; border: none;">
+                    <img class="card-img-top" style="margin-top: 25px; background-color: #fefefe;" src="https://farm6.staticflickr.com/5616/cameras/72157626544376501_model_large_69e7e5cfc6.jpg" alt="Card image cap">
+                    <div class="card-block" style="background-color: #fefefe;">
+                        <h4 class="card-title">Iphone</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card" style="text-align: center; border: none;">
+                    <img class="card-img-top" style="margin-top: 25px; background-color: #fefefe;" src="https://farm6.staticflickr.com/5616/cameras/72157626544376501_model_large_69e7e5cfc6.jpg" alt="Card image cap">
+                    <div class="card-block" style="background-color: #fefefe;">
+                        <h4 class="card-title">Iphone</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        
+           <br>
+           <br>
+           <br>
+           <br>
+        <div class="row">
+        <div class="col-md-6">
         <?php
             if($result->num_rows>0)
             {
@@ -96,7 +145,10 @@
                     echo "</tr>";
                 }
                 echo "</table>";
-            }                
+            }?>
+        </div>
+        <div class="col-md-6">
+            <?php
             if($resultt->num_rows>0)
             {
                 //echo "<center>popular camera rank as of now</center>";
@@ -126,7 +178,8 @@
                 echo "</table>";
             }
         ?>
-    </explobody>
+        </div>
+        </div>
     </body>
     <?php mysqli_close($conn); ?>
 </html>
