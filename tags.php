@@ -11,6 +11,9 @@ if(isset($_GET['page'])) {
 if(isset($_GET['cat'])) {
     // id index exists
     $tag = $_GET["cat"];
+}else if(isset($_GET['search'])) {
+    // id index exists
+    $tag = $_GET["search"];
 }else{
     $tag = 'none';
 }

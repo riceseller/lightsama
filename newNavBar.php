@@ -182,10 +182,19 @@
                     
                     
     </ul>             
-    <form class="form-inline" action="../keyword.php" method="get">
+    <form class="form-inline" method="get">
         <?php if(empty($_GET['search'])){$sHolder="Search";}else{$sHolder=$_GET['search'];}?>
         <input class="form-control" type="text" name="search" placeholder="<?=$sHolder?>">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <div class="btn-group">
+            <button class="btn btn-secondary dropdown-toggle btn-outline-success" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Search Menu
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="btn btn-outline-success dropdown-item" type="submit" formaction="../keyword.php">Search For All</button>
+                <button class="btn btn-outline-success dropdown-item" type="submit" formaction="../tags.php">Search By Tag</button>
+                <button class="btn btn-outline-success dropdown-item" type="submit" formaction="../keyword.php">Search By Keyword</button>
+            </div>
+        </div>
     </form>
         
     </div>
