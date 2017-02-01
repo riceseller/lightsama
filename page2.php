@@ -6,7 +6,7 @@
  * and open the template in the editor.
 */
 
-echo "go fuck donald trump";
+echo "go get them";
 
 ?>
 
