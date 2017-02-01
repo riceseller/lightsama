@@ -104,18 +104,21 @@ function changeContent(classActive){
 
 <!--button controller operates in this section-->
 <div class="favClass">
-    <section class="Collage effect-parent" id="landscapeSection">
+    <section class="Collage effect-parent">
     <?php
         $query = "select distinct c.title, su.*, u.id as uid, u.url, u.width, u.height from Url u, Common c, ScrapeUser su, TagRelation tr where c.p_id!=160630813 and tr.pid=c.p_id and tr.tagid=1046 and u.id=c.p_id and c.nsfw=0 and c.userBelong=su.id and u.width is not null and u.height is not null and c.title is not null and c.title!='None' and c.title!='?' order by c.dateR desc limit 20";
         $result=$conn->query($query);
         if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            echo "<div class=\"Image_Wrapper\" style=\"width=\"".$row[width]."\" height=\"".$row[height]."\"\">";        
+            echo "<div class=\"Image_Wrapper\" style=\"width:".$row[width]." height: ".$row[height]." \">";        
                 echo "<div class=\"hovereffect\">";
                     echo "<a style=\"text-decoration:none;\" href=\"#\">";
                         echo "<img src=\"".$row[url]."\" width=\"".$row[width]."\" height=\"".$row[height]."\">";                      
                     echo "</a>"; 
+                    
+                    echo $row[width];
+                    echo $row[height];
                     
                     echo "<a class=\"overlay\" href=\"/indDisplay4.php?pid=".$row[uid]."&url=".$row[url]."\">";
                     echo "</a>";

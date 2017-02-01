@@ -4,48 +4,6 @@
     include("newNavBar.php");
     include "supplyment/dbAccess.php";
 ?>
-<!--this is a huge script section that controls button operations-->
-<script>
-function changeContent(classActive){
-    $(document).on('click',classActive,function(e) {
-        document.getElementById('beauty').className="nav-link disabled";
-        document.getElementById('skyscraper').className="nav-link disabled";
-        document.getElementById('landscape').className="nav-link disabled";            
-        e.preventDefault();       
-    });
-        
-                                
-    if(classActive==='#landscape')
-    {
-        $('.favClass').load("sectionLoad.php?tabClick=landscape #landscapeSection", function(){
-            collage();
-            document.getElementById('beauty').className="nav-link";
-            document.getElementById('skyscraper').className="nav-link";
-            document.getElementById('landscape').className="nav-link active";
-        });
-    }
-    else if(classActive==='#beauty')
-    {
-        $('.favClass').load("sectionLoad.php?tabClick=beauty #beautySection", function(){
-            collage();
-            document.getElementById('beauty').className="nav-link active";
-            document.getElementById('skyscraper').className="nav-link";
-            document.getElementById('landscape').className="nav-link";
-        });
-    }
-    else
-    {
-        $('.favClass').load("sectionLoad.php?tabClick=skyscraper #skyscraperSection", function(){
-            collage();
-            document.getElementById('beauty').className="nav-link";
-            document.getElementById('skyscraper').className="nav-link active";
-            document.getElementById('landscape').className="nav-link";
-        });
-    }
-        
-}    
-</script>
-<!--script ends-->
 
 <!--this is a section that redirects main page to user control screen-->
 <script>
@@ -70,38 +28,58 @@ function changeContent(classActive){
 <!--section ends-->
 
 <div class="jumbotron" style="min-height: calc(80vh);">
-        <h1>Link Your Flickr To The Outside World</h1>
-        <p><a class="btn btn-primary btn-lg" href="<?=$us_url_root?>users/new_login.php?category=signup" role="button">Get Started</a></p>
+    <h1>Link Your Flickr To The Outside World</h1>
+    <p><a class="btn btn-primary btn-lg" href="<?=$us_url_root?>users/new_login.php?category=signup" role="button">Get Started</a></p>
 </div>
 
 <div class="container first">
-        <h2>an indexing of high quality images</h2>
-        <p>All images are scrapped from Flickr, 500px and Pixabay. You may connect your Flickr account
+    <h2>an indexing of high quality images</h2>
+    <p>All images are scrapped from Flickr, 500px and Pixabay. You may connect your Flickr account
             to exchange resources with other sites. We make it faster<br><br><br></p>
 </div>
-
+    
+<!--page redirection controlling-->
 <div class="container second" style="text-align: center;">
     <ul class="nav nav-tabs" style="display:inline-block;">
         <li class="nav-item">
-            <a class="nav-link" href="#" id="landscape">Landscape</a>
+            <a class="nav-link" ng-class="{'active': category === 'landscape'}" href="#/landscape" id="landscape">Landscape</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#/beauty" id="beauty">Beauty</a>
+            <a class="nav-link" ng-class="{'active': category === 'beauty'}" href="#/beauty" id="beauty">Beauty</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#/skyscraper" id="skyscraper">Skyscraper</a>
+            <a class="nav-link" ng-class="{'active': category === 'skyscraper'}" href="#/skyscraper" id="skyscraper">Skyscraper</a>
         </li>
     </ul>
 </div>
 
+<!--the portion below is the associated image info-->
+<div class="favClass">
+    <section class="Collage effect-parent">
+        <div ng-repeat="pic in indexResult.list">
+            <div class="Image_Wrapper" style="width: {{pic.width}}; height: {{pic.height}}">
+                <div class="hovereffecrt">
+                    <a style="text-decoration: none" href="#">
+                        <img src="https:\/\/drscdn.500px.org\/photo\/183076705\/q%3D80_m%3D2000\/8054abe7df52315d5a48d8f89ddba0e4" width="{{pic.width}}" height="{{pic.height}}">
+                    </a>
+                    <a class="overlay" href="/indDisplay4.php?pid={{pic.uid}}&url=https:\/\/drscdn.500px.org\/photo\/183076705\/q%3D80_m%3D2000\/8054abe7df52315d5a48d8f89ddba0e4">
+                    </a>
+                    <div class="overlay_shadow">
+                        <h2>{{pic.title}}</h2>
+                        <div class="info">
+                            <!--<div class="users" onclick="JumpLink({{pic.id}})" style="background-image: url(https://c2.staticflickr.com/{{pic.extraTwo}}/{{pic.extraOne}}/buddyicons/{{pic.userID}}.jpg)">
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
-    <div class="favClass">
-        <div ng-view></div>
-    </div>
-
-    <?php
-        include "footer2.php";
-    ?>
+<?php
+    include "footer2.php";
+?>
 <?php mysqli_close($conn); ?>
 
 <div id="gridSystemModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

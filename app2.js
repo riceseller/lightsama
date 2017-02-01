@@ -1,28 +1,28 @@
+
 // module
 var picApp = angular.module('picApp', ['ngRoute', 'ngResource']);
+
+
 
 // router
 picApp.config(function($routeProvider) {
    $routeProvider
-   
             .when('/', {
-                templateUrl: 'page1.php',
+                templateUrl: '/',
                 controller: 'page1Controller'
-   })
-           .when('/page2.php', {
-               templateUrl: 'page2.php',
-               controller: 'page2Controller'
-   })
-   
-   
+            })
+            .when('/:category', {
+                templateUrl: '/',
+                controller: 'page1Controller'
+            })
 });
 
 // controller
-picApp.controller('page1Controller', ['$scope', function($scope){
+picApp.controller('page1Controller', ['$scope', '$resource', '$routeParams', function($scope, $resource, $routeParams){
         
-}]);
-
-picApp.controller('page2Controller', ['$scope', function($scope){
         
-}]);
+        $scope.category = $routeParams.category || 'landscape';                     // parse parameters
+        $scope.indexRequest = $resource("/index_json.php");
+        $scope.indexResult = $scope.indexRequest.get({category: $scope.category});  // get json encoding result 
 
+}]);
