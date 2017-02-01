@@ -94,10 +94,10 @@ function changeContent(classActive){
             <a class="nav-link" href="#" id="landscape" onclick="changeContent('#landscape')">Landscape</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#/beauty" id="beauty" onclick="changeContent('#beauty')">Beauty</a>
+            <a class="nav-link active" id="beauty" onclick="changeContent('#beauty')">Beauty</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#/skyscraper" id="skyscraper" onclick="changeContent('#skyscraper')">Skyscraper</a>
+            <a class="nav-link" id="skyscraper" onclick="changeContent('#skyscraper')">Skyscraper</a>
         </li>
     </ul>
 </div>
