@@ -8,11 +8,11 @@ var picApp = angular.module('picApp', ['ngRoute', 'ngResource']);
 picApp.config(function($routeProvider) {
    $routeProvider
             .when('/', {
-                templateUrl: '/',
+                templateUrl: 'page1.php',
                 controller: 'page1Controller'
             })
             .when('/:category', {
-                templateUrl: '/',
+                templateUrl: 'page1.php',
                 controller: 'page1Controller'
             })
 });
