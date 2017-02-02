@@ -9,30 +9,17 @@ picApp.config(function($routeProvider) {
    $routeProvider
             .when('/', {
                 templateUrl: 'page1.php',
-                controller: 'page1Controller'
+                controller: 'page1Controller',
+                directive: 'page1Directive'
             })
             .when('/:category', {
                 templateUrl: 'page1.php',
-                controller: 'page1Controller'
+                controller: 'page1Controller',
+                directive: 'page1Directive'
             })
 });
 
 // controller
-
-angular.element(document).ready(function () {
-        Collage();
-});
-
-function collage() {
-    console.log("function called");
-    $('.Collage').removeWhitespace().collagePlus(
-        {
-            'fadeSpeed'     : 1000,
-            'targetHeight'  : 400,
-            'allowPartialLastRow' : true
-        }
-    );
-};
 
 picApp.controller('page1Controller', ['$scope', '$resource', '$routeParams', function($scope, $resource, $routeParams){
         

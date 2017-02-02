@@ -14,6 +14,24 @@
     </ul>
 </div>
 
+<script>
+// All images need to be loaded for this plugin to work so
+    $(document).ready(function(){
+            collage();
+            //$('.Collage').collageCaption();
+    });
+    // Here we apply the actual CollagePlus plugin
+    function collage() {
+        $('.Collage').removeWhitespace().collagePlus(
+            {
+                'fadeSpeed'     : 1000,
+                'targetHeight'  : 400,
+                'allowPartialLastRow' : true
+            }
+        );
+    };
+</script>
+
 <!--the portion below is the associated image info-->
 <div class="favClass">
     <section class="Collage effect-parent">
