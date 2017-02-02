@@ -20,8 +20,19 @@ picApp.config(function($routeProvider) {
 // controller
 
 angular.element(document).ready(function () {
-        console.log("it's fucking ready");
+        Collage();
 });
+
+function collage() {
+    console.log("function called");
+    $('.Collage').removeWhitespace().collagePlus(
+        {
+            'fadeSpeed'     : 1000,
+            'targetHeight'  : 400,
+            'allowPartialLastRow' : true
+        }
+    );
+};
 
 picApp.controller('page1Controller', ['$scope', '$resource', '$routeParams', function($scope, $resource, $routeParams){
         
