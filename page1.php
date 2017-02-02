@@ -17,6 +17,7 @@
 <script>
 // All images need to be loaded for this plugin to work so
     $(document).ready(function(){
+            console.log("donno if it fired");
             collage();
             //$('.Collage').collageCaption();
     });
