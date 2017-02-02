@@ -101,7 +101,7 @@
 </style>
 <script src="/node_modules/jquery.collagePlus.js"></script>
 <script src="/node_modules/jquery.removeWhitespace.js"></script>
-<!--<script>
+<script>
 // All images need to be loaded for this plugin to work so
     $(document).ready(function(){
             collage();
@@ -117,7 +117,7 @@
             }
         );
     };
-</script>-->
+</script>
 <title>PicShell Image</title>
 </header>
 
