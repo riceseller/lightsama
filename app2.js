@@ -18,6 +18,11 @@ picApp.config(function($routeProvider) {
 });
 
 // controller
+
+angular.element(document).ready(function () {
+        console.log("it's fucking ready");
+});
+
 picApp.controller('page1Controller', ['$scope', '$resource', '$routeParams', function($scope, $resource, $routeParams){
         
         
