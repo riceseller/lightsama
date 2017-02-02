@@ -109,7 +109,7 @@
     });
     // Here we apply the actual CollagePlus plugin
     function collage() {
-        $('Collage').removeWhitespace().collagePlus(
+        $('.Collage').removeWhitespace().collagePlus(
             {
                 'fadeSpeed'     : 1000,
                 'targetHeight'  : 400,
