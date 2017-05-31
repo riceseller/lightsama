@@ -120,7 +120,7 @@ function changeContent(classActive){
                     echo $row[width];
                     echo $row[height];
                     
-                    echo "<a class=\"overlay\" href=\"/indDisplay4.php?pid=".$row[uid]."&url=".$row[url]."\">";
+                    echo "<a class=\"overlay\" href=\"/indDisplay2.php?pid=".$row[uid]."&url=".$row[url]."\">";
                     echo "</a>";
                     
                     echo "<div class=\"overlay_shadow\">";

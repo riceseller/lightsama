@@ -71,7 +71,7 @@ $conn->close();
             }
         });
     </script>
-        
+    
 </customHeader>
 
 <?php include 'footer2.php';?>
