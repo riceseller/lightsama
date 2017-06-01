@@ -171,7 +171,7 @@ function pageCount($inputStr){
         // output data of each row
         while($row7 = $result7->fetch_assoc()) {
             echo "<div class=\"Image_Wrapper\">";
-            echo "<a id=\"userClick\" style=\"text-decoration:none;\" href=\"/indDisplay4.php?pid=".$row7[id]."&url=".$row7[url]."\">";
+            echo "<a id=\"userClick\" style=\"text-decoration:none;\" href=\"/indDisplay2.php?pid=".$row7[id]."&url=".$row7[url]."\">";
             echo "<img src=\"".$row7['url']."\" width=\"".$row7['width']."\" height=\"".$row7['height']."\">";
             echo "</a>";
             echo "</div>";
